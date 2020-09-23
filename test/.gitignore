@@ -1,0 +1,6 @@
+*.gcda
+*.gcno
+*.gcov
+*.log
+*.test
+*.trs
