@@ -1,0 +1,4 @@
+<map id="ppht::scanner" name="ppht::scanner">
+<area shape="rect" id="node2" href="$structppht_1_1axis__scanner.html" title="A scanner optimized for lines parallel to an axis. " alt="" coords="5,79,139,117"/>
+<area shape="rect" id="node3" href="$structppht_1_1bresenham__scanner.html" title="A scanner based on Bresenham&#39;s line algorithm. " alt="" coords="163,79,339,117"/>
+</map>

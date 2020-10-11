@@ -1,0 +1,6 @@
+*.o
+.deps/
+/Doxyfile
+/autom4te.cache/
+/config.*
+Makefile
