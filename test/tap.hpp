@@ -161,19 +161,18 @@ static inline bool ok(bool result, Args &&... args) {
     return result;
 }
 
-template <template <class> class T> extern const char * const cmp_op;
+template <class T> extern const char * const cmp_op;
 
-template <> const char * cmp_op<std::equal_to> = "==";
-template <> const char * cmp_op<std::not_equal_to> = "!=";
-template <> const char * cmp_op<std::greater> = ">";
-template <> const char * cmp_op<std::greater_equal> = ">=";
-template <> const char * cmp_op<std::less> = "<";
-template <> const char * cmp_op<std::less_equal> = "<=";
+template <> const char * cmp_op<std::equal_to<>> = "==";
+template <> const char * cmp_op<std::not_equal_to<>> = "!=";
+template <> const char * cmp_op<std::greater<>> = ">";
+template <> const char * cmp_op<std::greater_equal<>> = ">=";
+template <> const char * cmp_op<std::less<>> = "<";
+template <> const char * cmp_op<std::less_equal<>> = "<=";
 
-template <template <class> class Comp, class X, class Y, class... Args>
+template <class Comp, class X, class Y, class... Args>
 static inline bool cmp(X &&x, Y &&y, Args &&... args) {
-    using value_type = typename std::remove_reference<Y>::type;
-    if (!ok(Comp<value_type>{}(x, y), std::forward<Args>(args)...)) {
+    if (!ok(Comp{}(x, y), std::forward<Args>(args)...)) {
         diag(x, ' ', cmp_op<Comp>, ' ', y, ": failed");
         return false;
     }
@@ -182,13 +181,13 @@ static inline bool cmp(X &&x, Y &&y, Args &&... args) {
 
 template <class X, class Y, class... Args>
 static inline bool eq(X &&x, Y &&y, Args &&... args) {
-    return cmp<std::equal_to>(std::forward<X>(x), std::forward<Y>(y),
+    return cmp<std::equal_to<>>(std::forward<X>(x), std::forward<Y>(y),
                                 std::forward<Args>(args)...);
 }
 
 template <class X, class Y, class... Args>
 static inline bool ne(X &&x, Y &&y, Args &&... args) {
-    return cmp<std::not_equal_to>(std::forward<X>(x), std::forward<Y>(y),
+    return cmp<std::not_equal_to<>>(std::forward<X>(x), std::forward<Y>(y),
                                     std::forward<Args>(args)...);
 }
 
@@ -200,19 +199,19 @@ static inline bool gt(X &&x, Y &&y, Args &&... args) {
 
 template <class X, class Y, class... Args>
 static inline bool ge(X &&x, Y &&y, Args &&... args) {
-    return cmp<std::greater_equal>(std::forward<X>(x), std::forward<Y>(y),
+    return cmp<std::greater_equal<>>(std::forward<X>(x), std::forward<Y>(y),
                                    std::forward<Args>(args)...);
 }
 
 template <class X, class Y, class... Args>
 static inline bool lt(X &&x, Y &&y, Args &&... args) {
-    return cmp<std::less>(std::forward<X>(x), std::forward<Y>(y),
+    return cmp<std::less<>>(std::forward<X>(x), std::forward<Y>(y),
                           std::forward<Args>(args)...);
 }
 
 template <class X, class Y, class... Args>
 static inline bool le(X &&x, Y &&y, Args &&... args) {
-    return cmp<std::less_equal>(std::forward<X>(x), std::forward<Y>(y),
+    return cmp<std::less_equal<>>(std::forward<X>(x), std::forward<Y>(y),
                                 std::forward<Args>(args)...);
 }
 

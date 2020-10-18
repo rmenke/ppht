@@ -75,10 +75,10 @@ class state {
         , _urbg(seed) {
         point_t p;
 
-        for (p.second = 0; p.second < _state.rows; ++p.second) {
-            auto const row = _state[p.second];
-            for (p.first = 0; p.first < _state.cols; ++p.first) {
-                if (row[p.first] == status_t::pending) {
+        for (p[1] = 0; p[1] < _state.rows; ++p[1]) {
+            auto const row = _state[p[1]];
+            for (p[0] = 0; p[0] < _state.cols; ++p[0]) {
+                if (row[p[0]] == status_t::pending) {
                     _pending.push_back(p);
                 }
             }
@@ -200,7 +200,7 @@ class state {
  *
  * @sa scan()
  */
-static inline std::set<std::pair<int, int>>
+static inline std::set<offset_t>
 find_offsets(segment_t const &segment, unsigned radius) {
     // The vector [xn, yn] is normal to the segment.
 
@@ -214,7 +214,7 @@ find_offsets(segment_t const &segment, unsigned radius) {
     double len = std::hypot(xn, yn);
     xn /= len, yn /= len;
 
-    std::set<std::pair<int, int>> result{{0, 0}};
+    std::set<offset_t> result{{0, 0}};
 
     for (auto r = 1U; r <= radius; ++r) {
         auto dx = std::lround(xn * r);
@@ -269,13 +269,10 @@ point_set scan(state<Raster> &s, segment_t const &segment, unsigned radius,
         std::set<point_t> points;
 
         for (auto const &offset : offsets) {
-            auto x = point.first + offset.first;
-            auto y = point.second + offset.second;
+            auto p = point + offset;
 
-            if (x < 0 || x >= s.cols()) continue;
-            if (y < 0 || y >= s.rows()) continue;
-
-            point_t p{x, y};
+            if (p[0] < 0 || p[0] >= s.cols()) continue;
+            if (p[1] < 0 || p[1] >= s.rows()) continue;
 
             auto status = s.status(p);
 

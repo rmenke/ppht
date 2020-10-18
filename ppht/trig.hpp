@@ -1,6 +1,8 @@
 #ifndef ppht_trig_hpp
 #define ppht_trig_hpp
 
+#include <ppht/types.hpp>
+
 #include <cassert>
 #include <cmath>
 #include <cstdint>
@@ -17,11 +19,11 @@ namespace ppht {
  * (180°) indexed by a user-specified measurement called "parts."
  */
 class trig_table {
-    /// Pair describing sine and cosine value for a given measurement.
-    using sincos_t = std::pair<double, double>;
+    /// Pair describing cosine and sine value for a given measurement.
+    using cossin_t = vec2d<double>;
 
     /// The table of values.
-    std::unique_ptr<sincos_t[]> _data;
+    std::unique_ptr<cossin_t[]> _data;
 
   public:
     /**
@@ -41,7 +43,7 @@ class trig_table {
      * @param max_theta parts per semiturn
      */
     explicit trig_table(std::size_t max_theta)
-        : _data(new sincos_t[max_theta])
+        : _data(new cossin_t[max_theta])
         , max_theta(max_theta) {
         if (max_theta % 2 != 0) {
             throw std::invalid_argument{"max_theta not even"};
@@ -54,22 +56,22 @@ class trig_table {
             auto const angle = theta * radians_per_part;
             auto const s = sin(angle), c = cos(angle);
 
-            _data[theta] = sincos_t{s, c};
-            _data[theta + max_theta / 2] = sincos_t{c, -s};
+            _data[theta] = cossin_t{c, s};
+            _data[theta + max_theta / 2] = cossin_t{-s, c};
         }
     }
 
     /**
-     * Get the sine-cosine pair for the given angle.  @c theta must be
+     * Get the cosine-sine pair for the given angle.  @c theta must be
      * in [0, <code>max_theta</code>).
      *
      * @param theta the angle, measured in parts per turn.
      *
-     * @return a pair with the sine and cosine for the given angle.
+     * @return a pair with the cosine and sine for the given angle.
      *
      * @see max_theta
      */
-    const sincos_t &operator[](std::size_t theta) const {
+    const cossin_t &operator[](std::size_t theta) const {
         assert(theta < max_theta);
         return _data[theta];
     }

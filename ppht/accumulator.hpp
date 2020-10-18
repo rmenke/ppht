@@ -263,8 +263,9 @@ class accumulator {
 
         std::set<point_t> endpoints;
 
-        double sin_theta, cos_theta;
-        std::tie(sin_theta, cos_theta) = _trig[theta];
+        auto const &cossin = _trig[theta];
+        double const &sin_theta = cossin[1];
+        double const &cos_theta = cossin[0];
 
         auto get_x = [&](double y) -> long {
             double x = std::rint((rho - sin_theta * y) / cos_theta);
@@ -324,9 +325,6 @@ class accumulator {
      * @see unvote()
      */
     bool vote(point_t const &p, segment_t &segment) {
-        auto const x = p.first;
-        auto const y = p.second;
-
         auto const max_rho = _counters.rows();
         auto const max_theta = _counters.cols();
 
@@ -340,10 +338,7 @@ class accumulator {
         double rho;
 
         for (theta = 0; theta < max_theta; ++theta) {
-            double const sin_theta = _trig[theta].first;
-            double const cos_theta = _trig[theta].second;
-
-            rho = scale_rho(x * cos_theta + y * sin_theta);
+            rho = scale_rho(p.dot(_trig[theta]));
             if (rho < 0 || rho >= max_rho) continue;
 
             auto &counter = _counters[rho][theta];
@@ -454,19 +449,11 @@ class accumulator {
      * @param p the point to unregister
      */
     void unvote(point_t const &p) {
-        auto const x = p.first;
-        auto const y = p.second;
-
         auto const max_rho = _counters.rows();
         auto const max_theta = _counters.cols();
 
         for (std::size_t theta = 0; theta < max_theta; ++theta) {
-            double const sin_theta = _trig[theta].first;
-            double const cos_theta = _trig[theta].second;
-
-            double rho = x * cos_theta + y * sin_theta;
-            rho = scale_rho(rho);
-
+            double const rho = scale_rho(p.dot(_trig[theta]));
             if (rho < 0 || rho >= max_rho) continue;
 
             auto &counter = _counters[rho][theta];
