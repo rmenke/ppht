@@ -40,31 +40,31 @@ int main() {
 
     eq(1024U, trig.max_theta, "field initialized");
 
-    ok(eq_pair(ppht::vec2d<double>(0, 1), trig[0], 1E-6), "hi-res");
-    ok(eq_pair(ppht::vec2d<double>(1, 0), trig[512], 1E-6), "hi-res");
+    ok(eq_pair(ppht::vec2d<double>(1, 0), trig[0], 1E-6), "hi-res");
+    ok(eq_pair(ppht::vec2d<double>(0, 1), trig[512], 1E-6), "hi-res");
 
     ok(eq_pair(ppht::vec2d<double>(std::sqrt(0.5), std::sqrt(0.5)), trig[256],
                1E-6),
        "hi-res");
-    ok(eq_pair(ppht::vec2d<double>(std::sqrt(0.5), -std::sqrt(0.5)), trig[768],
+    ok(eq_pair(ppht::vec2d<double>(-std::sqrt(0.5), std::sqrt(0.5)), trig[768],
                1E-6),
        "hi-res");
 
-    ok(eq_pair(ppht::vec2d<double>(0.38268343, 0.92387953), trig[128], 1E-6),
+    ok(eq_pair(ppht::vec2d<double>(0.92387953, 0.38268343), trig[128], 1E-6),
        "hi-res");
 
     ppht::trig_table t2{8};
 
-    ok(eq_pair(ppht::vec2d<double>(0, 1), t2[0], 1E-6), "lo-res");
-    ok(eq_pair(ppht::vec2d<double>(1, 0), t2[4], 1E-6), "lo-res");
+    ok(eq_pair(ppht::vec2d<double>(1, 0), t2[0], 1E-6), "lo-res");
+    ok(eq_pair(ppht::vec2d<double>(0, 1), t2[4], 1E-6), "lo-res");
 
     ok(eq_pair(ppht::vec2d<double>(std::sqrt(0.5), std::sqrt(0.5)), t2[2], 1E-6),
        "lo-res");
-    ok(eq_pair(ppht::vec2d<double>(std::sqrt(0.5), -std::sqrt(0.5)), t2[6],
+    ok(eq_pair(ppht::vec2d<double>(-std::sqrt(0.5), std::sqrt(0.5)), t2[6],
                1E-6),
        "lo-res");
 
-    ok(eq_pair(ppht::vec2d<double>(0.38268343, 0.92387953), t2[1], 1E-6),
+    ok(eq_pair(ppht::vec2d<double>(0.92387953, 0.38268343), t2[1], 1E-6),
        "lo-res");
 
     try {

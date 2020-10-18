@@ -15,7 +15,18 @@ struct vec2d : std::array<T, 2> {
     friend std::ostream &operator <<(std::ostream &o, const vec2d &p) {
         return o << '(' << p[0] << ", " << p[1] << ')';
     }
+
+    template <class U>
+    auto dot(vec2d<U> const &u) const {
+        auto v = *this * u;
+        return v[0] + v[1];
+    }
 };
+
+template <class T, class U>
+static inline auto operator *(const vec2d<T> &t, const vec2d<U> &u) {
+    return vec2d<std::common_type_t<T, U>>{t[0] * u[0], t[1] * u[1]};
+}
 
 /// A basic integral point.
 using point_t = vec2d<std::size_t>;
