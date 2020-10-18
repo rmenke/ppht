@@ -11,8 +11,8 @@ TAP_INITIALIZE;
 namespace std {
 
 template <class F, class S>
-ostream &operator<<(ostream &o, const pair<F, S> &p) {
-    return o << '(' << p.first << ',' << p.second << ')';
+static inline ostream &operator<<(ostream &o, const pair<F, S> &p) {
+    return o << '(' << p.first << ", " << p.second << ')';
 }
 
 } // namespace std

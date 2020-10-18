@@ -20,6 +20,9 @@ struct vec2d : std::array<T, 2> {
 /// A basic integral point.
 using point_t = vec2d<std::size_t>;
 
+/// An offset from a point.
+using offset_t = vec2d<std::ptrdiff_t>;
+
 /// A pair of points representing a line segment.
 using segment_t = std::pair<point_t, point_t>;
 

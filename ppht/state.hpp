@@ -200,7 +200,7 @@ class state {
  *
  * @sa scan()
  */
-static inline std::set<std::pair<int, int>>
+static inline std::set<offset_t>
 find_offsets(segment_t const &segment, unsigned radius) {
     // The vector [xn, yn] is normal to the segment.
 
@@ -214,7 +214,7 @@ find_offsets(segment_t const &segment, unsigned radius) {
     double len = std::hypot(xn, yn);
     xn /= len, yn /= len;
 
-    std::set<std::pair<int, int>> result{{0, 0}};
+    std::set<offset_t> result{{0, 0}};
 
     for (auto r = 1U; r <= radius; ++r) {
         auto dx = std::lround(xn * r);
@@ -269,8 +269,8 @@ point_set scan(state<Raster> &s, segment_t const &segment, unsigned radius,
         std::set<point_t> points;
 
         for (auto const &offset : offsets) {
-            auto x = point[0] + offset.first;
-            auto y = point[1] + offset.second;
+            auto x = point[0] + offset[0];
+            auto y = point[1] + offset[1];
 
             if (x < 0 || x >= s.cols()) continue;
             if (y < 0 || y >= s.rows()) continue;

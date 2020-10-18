@@ -13,7 +13,7 @@ namespace std {
 
 template <class F, class S>
 static inline ostream &operator<<(ostream &o, pair<F, S> const &p) {
-    return o << '(' << p.first << ',' << p.second << ')';
+    return o << '(' << p.first << ", " << p.second << ')';
 }
 
 template <class T>
@@ -26,7 +26,7 @@ static inline ostream &operator<<(ostream &o, vector<T> const &v) {
     if (b != e) {
         o << *b;
         while (++b != e)
-            o << ',' << *b;
+            o << ", " << *b;
     }
 
     return o << ']';
