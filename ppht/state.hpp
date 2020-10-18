@@ -269,13 +269,10 @@ point_set scan(state<Raster> &s, segment_t const &segment, unsigned radius,
         std::set<point_t> points;
 
         for (auto const &offset : offsets) {
-            auto x = point[0] + offset[0];
-            auto y = point[1] + offset[1];
+            auto p = point + offset;
 
-            if (x < 0 || x >= s.cols()) continue;
-            if (y < 0 || y >= s.rows()) continue;
-
-            point_t p{x, y};
+            if (p[0] < 0 || p[0] >= s.cols()) continue;
+            if (p[1] < 0 || p[1] >= s.rows()) continue;
 
             auto status = s.status(p);
 

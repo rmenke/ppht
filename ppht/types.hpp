@@ -24,6 +24,11 @@ struct vec2d : std::array<T, 2> {
 };
 
 template <class T, class U>
+static inline auto operator +(const vec2d<T> &t, const vec2d<U> &u) {
+    return vec2d<std::common_type_t<T, U>>{t[0] + u[0], t[1] + u[1]};
+}
+
+template <class T, class U>
 static inline auto operator *(const vec2d<T> &t, const vec2d<U> &u) {
     return vec2d<std::common_type_t<T, U>>{t[0] * u[0], t[1] * u[1]};
 }
