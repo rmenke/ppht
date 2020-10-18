@@ -1,6 +1,8 @@
 #ifndef ppht_trig_hpp
 #define ppht_trig_hpp
 
+#include <ppht/types.hpp>
+
 #include <cassert>
 #include <cmath>
 #include <cstdint>
@@ -18,7 +20,7 @@ namespace ppht {
  */
 class trig_table {
     /// Pair describing sine and cosine value for a given measurement.
-    using sincos_t = std::pair<double, double>;
+    using sincos_t = vec2d<double>;
 
     /// The table of values.
     std::unique_ptr<sincos_t[]> _data;
