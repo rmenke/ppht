@@ -324,8 +324,8 @@ class accumulator {
      * @see unvote()
      */
     bool vote(point_t const &p, segment_t &segment) {
-        auto const x = p.first;
-        auto const y = p.second;
+        auto const x = p[0];
+        auto const y = p[1];
 
         auto const max_rho = _counters.rows();
         auto const max_theta = _counters.cols();
@@ -454,8 +454,8 @@ class accumulator {
      * @param p the point to unregister
      */
     void unvote(point_t const &p) {
-        auto const x = p.first;
-        auto const y = p.second;
+        auto const x = p[0];
+        auto const y = p[1];
 
         auto const max_rho = _counters.rows();
         auto const max_theta = _counters.cols();

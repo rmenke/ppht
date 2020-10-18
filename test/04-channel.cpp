@@ -11,7 +11,7 @@ namespace std {
 
 template <class F, class S>
 static inline ostream &operator<<(ostream &o, const pair<F, S> &p) {
-    return o << '(' << p.first << ',' << p.second << ')';
+    return o << '(' << p.first << ", " << p.second << ')';
 }
 
 static inline ostream &operator<<(ostream &o,
@@ -34,7 +34,7 @@ int main() {
     auto iter = channel.begin();
     auto end = channel.end();
 
-    eq(5, iter->second, "test field access operator");
+    eq(2, iter->size(), "test field access operator");
 
     eq(ppht::point_t{0, 5}, *iter, "correct value");
     ++iter;
@@ -84,25 +84,25 @@ int main() {
 
 
     p_old = p_new = segment.first; result->advance(p_new);
-    eq(1, p_new.first, "x-coord increased by one");
-    ge(p_old.second, p_new.second, "y-coord monotonically decreased");
+    eq(1, p_new[0], "x-coord increased by one");
+    ge(p_old[1], p_new[1], "y-coord monotonically decreased");
 
 
     p_old = p_new; result->advance(p_new);
-    eq(2, p_new.first, "x-coord increased by one");
-    ge(p_old.second, p_new.second, "y-coord monotonically decreased");
+    eq(2, p_new[0], "x-coord increased by one");
+    ge(p_old[1], p_new[1], "y-coord monotonically decreased");
 
     p_old = p_new; result->advance(p_new);
-    eq(3, p_new.first, "x-coord increased by one");
-    ge(p_old.second, p_new.second, "y-coord monotonically decreased");
+    eq(3, p_new[0], "x-coord increased by one");
+    ge(p_old[1], p_new[1], "y-coord monotonically decreased");
 
     p_old = p_new; result->advance(p_new);
-    eq(4, p_new.first, "x-coord increased by one");
-    ge(p_old.second, p_new.second, "y-coord monotonically decreased");
+    eq(4, p_new[0], "x-coord increased by one");
+    ge(p_old[1], p_new[1], "y-coord monotonically decreased");
 
     p_old = p_new; result->advance(p_new);
-    eq(5, p_new.first, "x-coord increased by one");
-    ge(p_old.second, p_new.second, "y-coord monotonically decreased");
+    eq(5, p_new[0], "x-coord increased by one");
+    ge(p_old[1], p_new[1], "y-coord monotonically decreased");
 
     // y-axis
 
@@ -114,29 +114,29 @@ int main() {
     instanceof<ppht::axis_scanner<1>>(*result->clone(), "correct scanner copy");
 
     p_old = p_new = segment.first; result->advance(p_new);
-    eq(p_old.first, p_new.first, "x-coord unchanged");
-    lt(p_old.second, p_new.second, "y-coord increased");
+    eq(p_old[0], p_new[0], "x-coord unchanged");
+    lt(p_old[1], p_new[1], "y-coord increased");
 
     p_old = p_new;
     result->advance(p_new);
-    eq(p_old.first, p_new.first, "x-coord unchanged");
-    lt(p_old.second, p_new.second, "y-coord increased");
+    eq(p_old[0], p_new[0], "x-coord unchanged");
+    lt(p_old[1], p_new[1], "y-coord increased");
 
     p_old = p_new; result->advance(p_new);
-    eq(p_old.first, p_new.first, "x-coord unchanged");
-    lt(p_old.second, p_new.second, "y-coord increased");
+    eq(p_old[0], p_new[0], "x-coord unchanged");
+    lt(p_old[1], p_new[1], "y-coord increased");
 
     p_old = p_new; result->advance(p_new);
-    eq(p_old.first, p_new.first, "x-coord unchanged");
-    lt(p_old.second, p_new.second, "y-coord increased");
+    eq(p_old[0], p_new[0], "x-coord unchanged");
+    lt(p_old[1], p_new[1], "y-coord increased");
 
     p_old = p_new; result->advance(p_new);
-    eq(p_old.first, p_new.first, "x-coord unchanged");
-    lt(p_old.second, p_new.second, "y-coord increased");
+    eq(p_old[0], p_new[0], "x-coord unchanged");
+    lt(p_old[1], p_new[1], "y-coord increased");
 
     p_old = p_new; result->advance(p_new);
-    eq(p_old.first, p_new.first, "x-coord unchanged");
-    lt(p_old.second, p_new.second, "y-coord increased");
+    eq(p_old[0], p_new[0], "x-coord unchanged");
+    lt(p_old[1], p_new[1], "y-coord increased");
 
     // x-axis
 
@@ -148,8 +148,8 @@ int main() {
     instanceof<ppht::axis_scanner<0>>(*result->clone(), "correct scanner copy");
 
     p_old = p_new = segment.first; result->advance(p_new);
-    eq(p_old.first + 1, p_new.first, "x-coord increased");
-    eq(p_old.second, p_new.second, "y-coord unchanged");
+    eq(p_old[0] + 1, p_new[0], "x-coord increased");
+    eq(p_old[1], p_new[1], "y-coord unchanged");
 
     // octent I
 
@@ -163,8 +163,8 @@ int main() {
     p_old = p_new = segment.first; result->advance(p_new);
 
     while (p_old != segment.second) {
-        eq(p_old.first + 1, p_new.first, "x-coord increased");
-        le(p_old.second, p_new.second, "y-coord increased");
+        eq(p_old[0] + 1, p_new[0], "x-coord increased");
+        le(p_old[1], p_new[1], "y-coord increased");
         p_old = p_new;
         result->advance(p_new);
     }
@@ -181,8 +181,8 @@ int main() {
     p_old = p_new = segment.first; result->advance(p_new);
 
     while (p_old != segment.second) {
-        le(p_old.first, p_new.first, "x-coord increased");
-        eq(p_old.second + 1, p_new.second, "y-coord increased");
+        le(p_old[0], p_new[0], "x-coord increased");
+        eq(p_old[1] + 1, p_new[1], "y-coord increased");
         p_old = p_new;
         result->advance(p_new);
     }
@@ -199,8 +199,8 @@ int main() {
     p_old = p_new = segment.first; result->advance(p_new);
 
     while (p_old != segment.second) {
-        ge(p_old.first, p_new.first, "x-coord decreased");
-        eq(p_old.second + 1, p_new.second, "y-coord increased");
+        ge(p_old[0], p_new[0], "x-coord decreased");
+        eq(p_old[1] + 1, p_new[1], "y-coord increased");
         p_old = p_new;
         result->advance(p_new);
     }

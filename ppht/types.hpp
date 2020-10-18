@@ -1,12 +1,24 @@
 #ifndef ppht_types_hpp
 #define ppht_types_hpp
 
+#include <array>
+#include <iostream>
 #include <utility>
 
 namespace ppht {
 
+template <class T>
+struct vec2d : std::array<T, 2> {
+    vec2d() {}
+    vec2d(T x, T y) : std::array<T, 2>({{x, y}}) {}
+
+    friend std::ostream &operator <<(std::ostream &o, const vec2d &p) {
+        return o << '(' << p[0] << ", " << p[1] << ')';
+    }
+};
+
 /// A basic integral point.
-using point_t = std::pair<std::size_t, std::size_t>;
+using point_t = vec2d<std::size_t>;
 
 /// A pair of points representing a line segment.
 using segment_t = std::pair<point_t, point_t>;

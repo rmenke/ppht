@@ -98,8 +98,8 @@ int main() {
                                        segment_t{{220, 100}, {300, 100}}};
 
     static auto within = [](const point_t &p1, const point_t &p2) {
-        auto dx = static_cast<double>(p1.first) - p2.first;
-        auto dy = static_cast<double>(p1.second) - p2.second;
+        auto dx = static_cast<double>(p1[0]) - p2[0];
+        auto dy = static_cast<double>(p1[1]) - p2[1];
         return dx * dx + dy * dy <= 25.0;
     };
 
