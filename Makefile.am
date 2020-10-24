@@ -7,7 +7,7 @@ nobase_include_HEADERS = ppht.hpp ppht/accumulator.hpp ppht/channel.hpp ppht/par
 git-add:
 	$(MAKE) distdir
 	@set -x; (cd "$(distdir)"; find . -depth -type f -print0) | \
-		(cd $(top_srcdir); xargs -0t git add)
+		(cd "$(top_srcdir)"; xargs -0t git add)
 	$(RM) -r "$(distdir)"
 
 git-doc:
@@ -20,6 +20,7 @@ git-doc:
 		git add doc
 
 git-tag:
+	cd "$(top_srcdir)"; \
 	git tag -f -a "v$(PACKAGE_VERSION)" -m "v$(PACKAGE_VERSION)"
 
 clean-local:

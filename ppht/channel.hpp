@@ -10,23 +10,6 @@
 namespace ppht {
 
 /**
- * @brief Returns the absolute difference of the two values correctly
- * even for unsigned types.
- *
- * @tparam T the argument type.
- *
- * @param a the first argument.
- *
- * @param b the second argument.
- *
- * @return the absolute value of the difference between the arguments.
- */
-template <class T>
-static inline T abs_diff(const T &a, const T &b) noexcept {
-    return (a > b) ? (a - b) : (b - a);
-}
-
-/**
  * @brief A class for tracking the state required to advance a point
  * along a segment.
  */

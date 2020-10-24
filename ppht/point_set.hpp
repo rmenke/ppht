@@ -1,7 +1,7 @@
 #ifndef ppht_point_set_hpp
 #define ppht_point_set_hpp
 
-#include "ppht/types.hpp"
+#include <ppht/types.hpp>
 
 #include <set>
 
@@ -95,14 +95,14 @@ public:
      *
      * @sa operator <()
      */
-    int length_squared() const {
+    std::ptrdiff_t length_squared() const {
         if (_points.empty()) return -1;
 
         const auto &a = std::get<0>(_segment);
         const auto &b = std::get<1>(_segment);
 
-        int dx = std::get<0>(b) - std::get<0>(a);
-        int dy = std::get<1>(b) - std::get<1>(a);
+        const auto dx = abs_diff(std::get<0>(a), std::get<0>(b));
+        const auto dy = abs_diff(std::get<1>(a), std::get<1>(b));
 
         return dx * dx + dy * dy;
     }

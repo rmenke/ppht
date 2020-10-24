@@ -8,6 +8,23 @@
 namespace ppht {
 
 /**
+ * @brief Utility function to return the distance between two values.
+ *
+ * Returns the absolute difference of the two values, even if the
+ * values are unsigned.
+ *
+ * @param a the first value
+ * @param b the second value
+ *
+ * @return the absolute value of the difference between the larger and
+ * smaller value.
+ */
+template <class T1, class T2>
+static inline auto abs_diff(const T1 &a, const T2 &b) {
+    return a > b ? a - b : b - a;
+}
+
+/**
  * @brief Simple type representing a two-dimensional vector.
  *
  * @tparam T the numeric type used for the vector components
