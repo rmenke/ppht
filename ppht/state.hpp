@@ -90,7 +90,7 @@ class state {
      *
      * @return the height of the underlying raster.
      */
-    std::size_t const &rows() const {
+    std::size_t rows() const {
         return _state.rows();
     }
 
@@ -99,7 +99,7 @@ class state {
      *
      * @return the width of the underlying raster.
      */
-    std::size_t const &cols() const {
+    std::size_t cols() const {
         return _state.cols();
     }
 
