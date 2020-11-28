@@ -1,7 +1,7 @@
 # -*- Autoconf -*-
 # Process this file with autoconf to produce a configure script.
 
-m4_define([ppht_semver],[m4_esyscmd_s([perl semver.pl])])dnl
+m4_define([ppht_semver],[m4_esyscmd_s([./git-semver])])dnl
 
 AC_PREREQ([2.69])
 AC_INIT([PPHT],[ppht_semver],[ppht-bugs@the-wabe.com],[],[http://www.the-wabe.com/ppht/])
