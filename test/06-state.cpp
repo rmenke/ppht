@@ -27,8 +27,8 @@ int main() {
     bool all_clear = true;
     ppht::point_t p;
 
-    for (p[1] = 0U; p[1] < state.rows(); ++p[1]) {
-        for (p[0] = 0U; p[0] < state.cols(); ++p[0]) {
+    for (p.y = 0U; p.y < state.rows(); ++p.y) {
+        for (p.x = 0U; p.x < state.cols(); ++p.x) {
             all_clear = all_clear &&
                 state.status(p) == ppht::status_t::unset;
         }

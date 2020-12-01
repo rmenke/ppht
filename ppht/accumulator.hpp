@@ -264,8 +264,8 @@ class accumulator {
         std::set<point_t> endpoints;
 
         auto const &cossin = _trig[theta];
-        double const &sin_theta = cossin[1];
-        double const &cos_theta = cossin[0];
+        double const &sin_theta = cossin.y;
+        double const &cos_theta = cossin.x;
 
         auto get_x = [&](double y) -> long {
             double x = std::rint((rho - sin_theta * y) / cos_theta);
@@ -338,7 +338,7 @@ class accumulator {
         double rho;
 
         for (theta = 0; theta < max_theta; ++theta) {
-            rho = scale_rho(p.dot(_trig[theta]));
+            rho = scale_rho(dot_product(p, _trig[theta]));
             if (rho < 0 || rho >= max_rho) continue;
 
             auto &counter = _counters[rho][theta];
@@ -453,7 +453,7 @@ class accumulator {
         auto const max_theta = _counters.cols();
 
         for (std::size_t theta = 0; theta < max_theta; ++theta) {
-            double const rho = scale_rho(p.dot(_trig[theta]));
+            double const rho = scale_rho(dot_product(p, _trig[theta]));
             if (rho < 0 || rho >= max_rho) continue;
 
             auto &counter = _counters[rho][theta];

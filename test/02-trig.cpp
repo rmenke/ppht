@@ -20,13 +20,13 @@ static inline ostream &operator<<(ostream &o, const pair<F, S> &p) {
 static inline
 bool eq_pair(const ppht::vec2d<double> &a, const ppht::vec2d<double> &b,
              double tolerance) {
-    bool first = std::fabs(a[0] - b[0]) <= tolerance;
-    bool second = std::fabs(a[1] - b[1]) <= tolerance;
+    bool first = std::fabs(a.x - b.x) <= tolerance;
+    bool second = std::fabs(a.y - b.y) <= tolerance;
 
     if (first && second) return true;
 
-    if (!first) tap::diag(b[0], " != ", a[0], "±", tolerance);
-    if (!second) tap::diag(b[1], " != ", a[1], "±", tolerance);
+    if (!first) tap::diag(b.x, " != ", a.x, "±", tolerance);
+    if (!second) tap::diag(b.y, " != ", a.y, "±", tolerance);
 
     return false;
 }

@@ -42,7 +42,7 @@ struct scanner {
  *
  * @see ppht::make_scanner(segment_t &)
  */
-template <std::size_t Ind>
+template <std::size_t point_t::*Ind>
 struct axis_scanner : scanner {
     ~axis_scanner() override {}
 
@@ -51,7 +51,7 @@ struct axis_scanner : scanner {
     }
 
     void advance(point_t &point) override {
-        std::get<Ind>(point) += 1;
+        point.*Ind += 1;
     }
 };
 
@@ -63,36 +63,12 @@ struct axis_scanner : scanner {
  * This class actually implements the four variants of the algorithm
  * by encoding the slope through the template parameters:
  *
- * <table style="border-style:none">
- * <tr>
- *   <td>octant I:</td>
- *   <td style="text-align:right">0</td>
- *   <td>&lt; m &lt;</td>
- *   <td style="text-align:right">+1,</td>
- *   <td>Δx &gt; 0</td>
- * </tr>
- * <tr>
- *   <td>octant II:</td>
- *   <td style="text-align:right">+1</td>
- *   <td>&lt; m &lt;</td>
- *   <td style="text-align:right">+∞,</td>
- *   <td>Δy &gt; 0</td>
- * </tr>
- * <tr>
- *   <td> octant III: </td>
- *   <td style="text-align:right">-1</td>
- *   <td>&gt; m &gt;</td>
- *   <td style="text-align:right">-∞,</td>
- *   <td>Δy &gt; 0</td>
- * </tr>
- * <tr>
- *   <td> octant VIII:</td>
- *   <td style="text-align:right">0</td>
- *   <td>&gt; m &gt;</td>
- *   <td style="text-align:right">-1,</td>
- *   <td>Δx &gt; 0</td>
- * </tr>
- * </table>
+ * @f{array}{{llr}
+ * \text{Octant I:}    & m\in(0,+1]       & \Delta x\gt 0 \\
+ * \text{Octant II:}   & m\in(+1,+\infty) & \Delta y\gt 0 \\
+ * \text{Octant III:}  & m\in(-\infty,-1) & \Delta y\gt 0 \\
+ * \text{Octant VIII:} & m\in[-1,0)       & \Delta x\gt 0 \\
+ * @f}
  *
  * All other cases are handled by reversing the direction of the scan.
  *
@@ -106,11 +82,8 @@ struct axis_scanner : scanner {
  *
  * @sa https://en.wikipedia.org/wiki/Bresenham's_line_algorithm
  */
-template <std::size_t Ind, int Increment>
+template <std::size_t point_t::*Ind, std::size_t point_t::*Dep, int Increment>
 struct bresenham_scanner : scanner {
-    /** The index of the dependent field of point_t. */
-    static constexpr std::size_t Dep = 1 - Ind;
-
     /** The ∆x and ∆y values for the segment. */
     const point_t delta;
 
@@ -120,8 +93,8 @@ struct bresenham_scanner : scanner {
     bresenham_scanner(std::size_t x0, std::size_t y0, std::size_t x1,
                       std::size_t y1)
         : delta(point_t{abs_diff(x0, x1), abs_diff(y0, y1)}) {
-        D = std::get<Dep>(delta) * 2;
-        D -= std::get<Ind>(delta);
+        D = delta.*Dep * 2;
+        D -= delta.*Ind;
     }
 
     ~bresenham_scanner() override {}
@@ -132,12 +105,12 @@ struct bresenham_scanner : scanner {
 
     void advance(point_t &point) override {
         if (D > 0) {
-            D -= 2 * std::get<Ind>(delta);
-            std::get<Dep>(point) += Increment;
+            D -= 2 * delta.*Ind;
+            point.*Dep += Increment;
         }
 
-        D += 2 * std::get<Dep>(delta);
-        std::get<Ind>(point) += 1;
+        D += 2 * delta.*Dep;
+        point.*Ind += 1;
     }
 };
 
@@ -156,48 +129,49 @@ static inline std::unique_ptr<scanner> make_scanner(segment_t &segment) {
     auto &a = std::get<0>(segment);
     auto &b = std::get<1>(segment);
 
-    auto &x0 = std::get<0>(a);
-    auto &y0 = std::get<1>(a);
-    auto &x1 = std::get<0>(b);
-    auto &y1 = std::get<1>(b);
+    const auto dx = abs_diff(a.x, b.x);
+    const auto dy = abs_diff(a.y, b.y);
 
-    const auto dx = abs_diff(x0, x1);
-    const auto dy = abs_diff(y0, y1);
+#define X_AXIS &point_t::x, &point_t::y
+#define Y_AXIS &point_t::y, &point_t::x
 
     if (dx >= dy) {
-        if (x0 > x1) {
+        if (a.x > b.x) {
             std::swap(a, b);
         }
 
-        if (y0 < y1) {
+        if (a.y < b.y) {
             return std::unique_ptr<scanner>(
-                new bresenham_scanner<0, +1>{x0, y0, x1, y1});
+                new bresenham_scanner<X_AXIS, +1>{a.x, a.y, b.x, b.y});
         }
-        else if (y0 == y1) {
-            return std::unique_ptr<scanner>(new axis_scanner<0>{});
+        else if (a.y == b.y) {
+            return std::unique_ptr<scanner>(new axis_scanner<&point_t::x>{});
         }
-        else { // y0 > y1
+        else { // a.y > b.y
             return std::unique_ptr<scanner>(
-                new bresenham_scanner<0, -1>{x0, y0, x1, y1});
+                new bresenham_scanner<X_AXIS, -1>{a.x, a.y, b.x, b.y});
         }
     }
     else {
-        if (y0 > y1) {
+        if (a.y > b.y) {
             std::swap(a, b);
         }
 
-        if (x0 < x1) {
+        if (a.x < b.x) {
             return std::unique_ptr<scanner>(
-                new bresenham_scanner<1, +1>{x0, y0, x1, y1});
+                new bresenham_scanner<Y_AXIS, +1>{a.x, a.y, b.x, b.y});
         }
-        else if (x0 == x1) {
-            return std::unique_ptr<scanner>(new axis_scanner<1>{});
+        else if (a.x == b.x) {
+            return std::unique_ptr<scanner>(new axis_scanner<&point_t::y>{});
         }
-        else { // x0 > x1
+        else { // a.x > b.x
             return std::unique_ptr<scanner>(
-                new bresenham_scanner<1, -1>{x0, y0, x1, y1});
+                new bresenham_scanner<Y_AXIS, -1>{a.x, a.y, b.x, b.y});
         }
     }
+
+#undef Y_AXIS
+#undef X_AXIS
 }
 
 /**
@@ -363,7 +337,7 @@ class channel {
          * @return the iterator
          */
         iterator &operator++() {
-            if (_segment.first == _segment.second) {
+            if (std::equal_to<point_t>()(_segment.first, _segment.second)) {
                 _scanner.reset();
             }
             else {
