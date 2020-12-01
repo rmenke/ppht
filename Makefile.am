@@ -10,14 +10,12 @@ git-add:
 		(cd "$(top_srcdir)"; xargs -0t git add)
 	$(RM) -r "$(distdir)"
 
-git-doc:
-	$(MAKE) Doxyfile; doxygen
-	@set -xe; TMP="`mktemp -u -t doxygen`"; \
-		mv doc "$${TMP}"; \
-		git co gh-pages; \
-		git rm -r doc; \
-		mv "$${TMP}" doc; \
-		git add doc
+git-doc: Doxyfile
+	cd "$(top_srcdir)"; doxygen "$(abs_top_builddir)/Doxyfile"
+	rm -rf doc; mv "$(top_srcdir)/doc" .
+	cd "$(top_srcdir)"; git co gh-pages
+	cd "$(top_srcdir)"; git rm -rf doc; \
+	mv "$(abs_top_builddir)/doc" .; git add doc
 
 git-tag:
 	cd "$(top_srcdir)"; \
