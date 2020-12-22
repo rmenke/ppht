@@ -20,7 +20,7 @@ namespace ppht {
  */
 class trig_table {
     /// Pair describing cosine and sine value for a given measurement.
-    using cossin_t = vec2d<double>;
+    using cossin_t = std::pair<double, double>;
 
     /// The table of values.
     std::unique_ptr<cossin_t[]> _data;
