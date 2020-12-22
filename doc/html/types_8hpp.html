@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">PPHT
-   &#160;<span id="projectnumber">1.0.5</span>
+   &#160;<span id="projectnumber">1.0.6</span>
    </div>
    <div id="projectbrief">An implementation of PPHT as a header-only library</div>
   </td>
@@ -79,8 +79,11 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structppht_1_1vec2d.html">ppht::vec2d&lt; T &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simple type representing a two-dimensional vector.  <a href="structppht_1_1vec2d.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structppht_1_1point__t.html">ppht::point_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A basic integral point.  <a href="structppht_1_1point__t.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structppht_1_1offset__t.html">ppht::offset_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An offset from a point.  <a href="structppht_1_1offset__t.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
@@ -91,12 +94,6 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:aaac7400c942264f91fe4775f927d80be"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceppht.html#aaac7400c942264f91fe4775f927d80be">ppht::point_t</a> = vec2d&lt; std::size_t &gt;</td></tr>
-<tr class="memdesc:aaac7400c942264f91fe4775f927d80be"><td class="mdescLeft">&#160;</td><td class="mdescRight">A basic integral point.  <a href="namespaceppht.html#aaac7400c942264f91fe4775f927d80be">More...</a><br /></td></tr>
-<tr class="separator:aaac7400c942264f91fe4775f927d80be"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a176d289e72fa78a8d942131fd2bcd47c"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceppht.html#a176d289e72fa78a8d942131fd2bcd47c">ppht::offset_t</a> = vec2d&lt; std::ptrdiff_t &gt;</td></tr>
-<tr class="memdesc:a176d289e72fa78a8d942131fd2bcd47c"><td class="mdescLeft">&#160;</td><td class="mdescRight">An offset from a point.  <a href="namespaceppht.html#a176d289e72fa78a8d942131fd2bcd47c">More...</a><br /></td></tr>
-<tr class="separator:a176d289e72fa78a8d942131fd2bcd47c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acefb02c86eb6437a82dc24246107fda7"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceppht.html#acefb02c86eb6437a82dc24246107fda7">ppht::segment_t</a> = std::pair&lt; point_t, point_t &gt;</td></tr>
 <tr class="memdesc:acefb02c86eb6437a82dc24246107fda7"><td class="mdescLeft">&#160;</td><td class="mdescRight">A pair of points representing a line segment.  <a href="namespaceppht.html#acefb02c86eb6437a82dc24246107fda7">More...</a><br /></td></tr>
 <tr class="separator:acefb02c86eb6437a82dc24246107fda7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -117,14 +114,8 @@ Functions</h2></td></tr>
 <tr class="memitem:a41a1d029f79e783306b59dadffea1bfd"><td class="memTemplItemLeft" align="right" valign="top">static auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceppht.html#a41a1d029f79e783306b59dadffea1bfd">ppht::abs_diff</a> (const T1 &amp;a, const T2 &amp;b)</td></tr>
 <tr class="memdesc:a41a1d029f79e783306b59dadffea1bfd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Utility function to return the distance between two values.  <a href="namespaceppht.html#a41a1d029f79e783306b59dadffea1bfd">More...</a><br /></td></tr>
 <tr class="separator:a41a1d029f79e783306b59dadffea1bfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa2d55cee3564bb363896e6ea93fd9434"><td class="memTemplParams" colspan="2">template&lt;class T , class U &gt; </td></tr>
-<tr class="memitem:aa2d55cee3564bb363896e6ea93fd9434"><td class="memTemplItemLeft" align="right" valign="top">static auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceppht.html#aa2d55cee3564bb363896e6ea93fd9434">ppht::operator+</a> (const vec2d&lt; T &gt; &amp;t, const vec2d&lt; U &gt; &amp;u)</td></tr>
-<tr class="memdesc:aa2d55cee3564bb363896e6ea93fd9434"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add two vectors.  <a href="namespaceppht.html#aa2d55cee3564bb363896e6ea93fd9434">More...</a><br /></td></tr>
-<tr class="separator:aa2d55cee3564bb363896e6ea93fd9434"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a45405fef581967c9d8f4bb7d60bb0e41"><td class="memTemplParams" colspan="2">template&lt;class T , class U &gt; </td></tr>
-<tr class="memitem:a45405fef581967c9d8f4bb7d60bb0e41"><td class="memTemplItemLeft" align="right" valign="top">static auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceppht.html#a45405fef581967c9d8f4bb7d60bb0e41">ppht::operator*</a> (const vec2d&lt; T &gt; &amp;t, const vec2d&lt; U &gt; &amp;u)</td></tr>
-<tr class="memdesc:a45405fef581967c9d8f4bb7d60bb0e41"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mutiply two vectors.  <a href="namespaceppht.html#a45405fef581967c9d8f4bb7d60bb0e41">More...</a><br /></td></tr>
-<tr class="separator:a45405fef581967c9d8f4bb7d60bb0e41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98f5f2b7cf28704f41f0c38edfeb8e2e"><td class="memItemLeft" align="right" valign="top">point_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceppht.html#a98f5f2b7cf28704f41f0c38edfeb8e2e">ppht::operator+</a> (const point_t &amp;p, const offset_t &amp;o)</td></tr>
+<tr class="separator:a98f5f2b7cf28704f41f0c38edfeb8e2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 <!-- start footer part -->

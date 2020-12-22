@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">PPHT
-   &#160;<span id="projectnumber">1.0.5</span>
+   &#160;<span id="projectnumber">1.0.6</span>
    </div>
    <div id="projectbrief">An implementation of PPHT as a header-only library</div>
   </td>
@@ -69,7 +69,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a561055a23dd00c50dc6cdf440dd42baf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check to see if any points have been added to the point set.  <a href="#a561055a23dd00c50dc6cdf440dd42baf">More...</a><br /></td></tr>
 <tr class="separator:a561055a23dd00c50dc6cdf440dd42baf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5b3ac47e83c0b2453f9044eaf3e85bd7"><td class="memTemplParams" colspan="2">template&lt;class Points &gt; </td></tr>
-<tr class="memitem:a5b3ac47e83c0b2453f9044eaf3e85bd7"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classppht_1_1point__set.html#a5b3ac47e83c0b2453f9044eaf3e85bd7">add_point</a> (<a class="el" href="namespaceppht.html#aaac7400c942264f91fe4775f927d80be">point_t</a> canonical, Points &amp;&amp;points)</td></tr>
+<tr class="memitem:a5b3ac47e83c0b2453f9044eaf3e85bd7"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classppht_1_1point__set.html#a5b3ac47e83c0b2453f9044eaf3e85bd7">add_point</a> (<a class="el" href="structppht_1_1point__t.html">point_t</a> canonical, Points &amp;&amp;points)</td></tr>
 <tr class="memdesc:a5b3ac47e83c0b2453f9044eaf3e85bd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a collection of points and their canonical representation to the point set.  <a href="#a5b3ac47e83c0b2453f9044eaf3e85bd7">More...</a><br /></td></tr>
 <tr class="separator:a5b3ac47e83c0b2453f9044eaf3e85bd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5f6649a964ef5ce6537617bdf35b8c8d"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="namespaceppht.html#acefb02c86eb6437a82dc24246107fda7">segment_t</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1point__set.html#a5f6649a964ef5ce6537617bdf35b8c8d">segment</a> () const</td></tr>
@@ -90,7 +90,7 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a9067faf5889e7dd86304e6ab58513957"><td class="memItemLeft" align="right" valign="top">std::set&lt; <a class="el" href="namespaceppht.html#aaac7400c942264f91fe4775f927d80be">point_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1point__set.html#a9067faf5889e7dd86304e6ab58513957">_points</a></td></tr>
+<tr class="memitem:a9067faf5889e7dd86304e6ab58513957"><td class="memItemLeft" align="right" valign="top">std::set&lt; <a class="el" href="structppht_1_1point__t.html">point_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1point__set.html#a9067faf5889e7dd86304e6ab58513957">_points</a></td></tr>
 <tr class="memdesc:a9067faf5889e7dd86304e6ab58513957"><td class="mdescLeft">&#160;</td><td class="mdescRight">The points added to the set.  <a href="#a9067faf5889e7dd86304e6ab58513957">More...</a><br /></td></tr>
 <tr class="separator:a9067faf5889e7dd86304e6ab58513957"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aef7877dac0c09bc4ab63698b8b6dc7c6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceppht.html#acefb02c86eb6437a82dc24246107fda7">segment_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1point__set.html#aef7877dac0c09bc4ab63698b8b6dc7c6">_segment</a></td></tr>
@@ -115,7 +115,7 @@ template&lt;class Points &gt; </div>
         <tr>
           <td class="memname">void ppht::point_set::add_point </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="namespaceppht.html#aaac7400c942264f91fe4775f927d80be">point_t</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="structppht_1_1point__t.html">point_t</a>&#160;</td>
           <td class="paramname"><em>canonical</em>, </td>
         </tr>
         <tr>
@@ -340,7 +340,7 @@ template&lt;class Points &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::set&lt;<a class="el" href="namespaceppht.html#aaac7400c942264f91fe4775f927d80be">point_t</a>&gt; ppht::point_set::_points</td>
+          <td class="memname">std::set&lt;<a class="el" href="structppht_1_1point__t.html">point_t</a>&gt; ppht::point_set::_points</td>
         </tr>
       </table>
   </td>

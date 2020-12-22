@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">PPHT
-   &#160;<span id="projectnumber">1.0.5</span>
+   &#160;<span id="projectnumber">1.0.6</span>
    </div>
    <div id="projectbrief">An implementation of PPHT as a header-only library</div>
   </td>
@@ -72,11 +72,17 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1channel.html">channel</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An abstract container that wraps around a line segment.  <a href="classppht_1_1channel.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structppht_1_1offset__t.html">offset_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An offset from a point.  <a href="structppht_1_1offset__t.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structppht_1_1parameters.html">parameters</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The tunable parameters of the analyzer.  <a href="structppht_1_1parameters.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1point__set.html">point_set</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A collection of points surrounding a line segment.  <a href="classppht_1_1point__set.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structppht_1_1point__t.html">point_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A basic integral point.  <a href="structppht_1_1point__t.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1raster.html">raster</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A simple class to manage a 2D array of elements.  <a href="classppht_1_1raster.html#details">More...</a><br /></td></tr>
@@ -90,19 +96,16 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1trig__table.html">trig_table</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A precomputed table of sine and cosine values.  <a href="classppht_1_1trig__table.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structppht_1_1vec2d.html">vec2d</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simple type representing a two-dimensional vector.  <a href="structppht_1_1vec2d.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:aaac7400c942264f91fe4775f927d80be"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceppht.html#aaac7400c942264f91fe4775f927d80be">point_t</a> = <a class="el" href="structppht_1_1vec2d.html">vec2d</a>&lt; std::size_t &gt;</td></tr>
-<tr class="memdesc:aaac7400c942264f91fe4775f927d80be"><td class="mdescLeft">&#160;</td><td class="mdescRight">A basic integral point.  <a href="#aaac7400c942264f91fe4775f927d80be">More...</a><br /></td></tr>
-<tr class="separator:aaac7400c942264f91fe4775f927d80be"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a176d289e72fa78a8d942131fd2bcd47c"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceppht.html#a176d289e72fa78a8d942131fd2bcd47c">offset_t</a> = <a class="el" href="structppht_1_1vec2d.html">vec2d</a>&lt; std::ptrdiff_t &gt;</td></tr>
-<tr class="memdesc:a176d289e72fa78a8d942131fd2bcd47c"><td class="mdescLeft">&#160;</td><td class="mdescRight">An offset from a point.  <a href="#a176d289e72fa78a8d942131fd2bcd47c">More...</a><br /></td></tr>
-<tr class="separator:a176d289e72fa78a8d942131fd2bcd47c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acefb02c86eb6437a82dc24246107fda7"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceppht.html#acefb02c86eb6437a82dc24246107fda7">segment_t</a> = std::pair&lt; <a class="el" href="namespaceppht.html#aaac7400c942264f91fe4775f927d80be">point_t</a>, <a class="el" href="namespaceppht.html#aaac7400c942264f91fe4775f927d80be">point_t</a> &gt;</td></tr>
+<tr class="memitem:ab0d90db214191dacf7d2b39793a8c7cf"><td class="memTemplParams" colspan="2">template&lt;int Increment&gt; </td></tr>
+<tr class="memitem:ab0d90db214191dacf7d2b39793a8c7cf"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceppht.html#ab0d90db214191dacf7d2b39793a8c7cf">h_scanner</a> = <a class="el" href="structppht_1_1bresenham__scanner.html">bresenham_scanner</a>&lt;&amp;<a class="el" href="structppht_1_1point__t.html#a1bea1597dc672c6a53b6615f9bbcdaf6">point_t::x</a>, &amp;<a class="el" href="structppht_1_1point__t.html#af38a5247b7cbe241c837e6c28e257fd0">point_t::y</a>, Increment &gt;</td></tr>
+<tr class="separator:ab0d90db214191dacf7d2b39793a8c7cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a603d7f2acf653498317462858259c618"><td class="memTemplParams" colspan="2">template&lt;int Increment&gt; </td></tr>
+<tr class="memitem:a603d7f2acf653498317462858259c618"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceppht.html#a603d7f2acf653498317462858259c618">v_scanner</a> = <a class="el" href="structppht_1_1bresenham__scanner.html">bresenham_scanner</a>&lt;&amp;<a class="el" href="structppht_1_1point__t.html#af38a5247b7cbe241c837e6c28e257fd0">point_t::y</a>, &amp;<a class="el" href="structppht_1_1point__t.html#a1bea1597dc672c6a53b6615f9bbcdaf6">point_t::x</a>, Increment &gt;</td></tr>
+<tr class="separator:a603d7f2acf653498317462858259c618"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acefb02c86eb6437a82dc24246107fda7"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceppht.html#acefb02c86eb6437a82dc24246107fda7">segment_t</a> = std::pair&lt; <a class="el" href="structppht_1_1point__t.html">point_t</a>, <a class="el" href="structppht_1_1point__t.html">point_t</a> &gt;</td></tr>
 <tr class="memdesc:acefb02c86eb6437a82dc24246107fda7"><td class="mdescLeft">&#160;</td><td class="mdescRight">A pair of points representing a line segment.  <a href="#acefb02c86eb6437a82dc24246107fda7">More...</a><br /></td></tr>
 <tr class="separator:acefb02c86eb6437a82dc24246107fda7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -120,7 +123,7 @@ Enumerations</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:ae8534014335620ab8cb9030d1e264853"><td class="memItemLeft" align="right" valign="top">static std::unique_ptr&lt; <a class="el" href="structppht_1_1scanner.html">scanner</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceppht.html#ae8534014335620ab8cb9030d1e264853">make_scanner</a> (<a class="el" href="namespaceppht.html#acefb02c86eb6437a82dc24246107fda7">segment_t</a> &amp;segment)</td></tr>
 <tr class="separator:ae8534014335620ab8cb9030d1e264853"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2c40e4f435821fe542a141d43ee01b54"><td class="memItemLeft" align="right" valign="top">static std::set&lt; <a class="el" href="namespaceppht.html#a176d289e72fa78a8d942131fd2bcd47c">offset_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceppht.html#a2c40e4f435821fe542a141d43ee01b54">find_offsets</a> (<a class="el" href="namespaceppht.html#acefb02c86eb6437a82dc24246107fda7">segment_t</a> const &amp;segment, unsigned radius)</td></tr>
+<tr class="memitem:a2c40e4f435821fe542a141d43ee01b54"><td class="memItemLeft" align="right" valign="top">static std::set&lt; <a class="el" href="structppht_1_1offset__t.html">offset_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceppht.html#a2c40e4f435821fe542a141d43ee01b54">find_offsets</a> (<a class="el" href="namespaceppht.html#acefb02c86eb6437a82dc24246107fda7">segment_t</a> const &amp;segment, unsigned radius)</td></tr>
 <tr class="memdesc:a2c40e4f435821fe542a141d43ee01b54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a set of offsets that are within a radius.  <a href="#a2c40e4f435821fe542a141d43ee01b54">More...</a><br /></td></tr>
 <tr class="separator:a2c40e4f435821fe542a141d43ee01b54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9f07cf00007b3c094373ca8b4c7bf6bd"><td class="memTemplParams" colspan="2">template&lt;template&lt; class &gt; class Raster&gt; </td></tr>
@@ -131,14 +134,8 @@ Functions</h2></td></tr>
 <tr class="memitem:a41a1d029f79e783306b59dadffea1bfd"><td class="memTemplItemLeft" align="right" valign="top">static auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceppht.html#a41a1d029f79e783306b59dadffea1bfd">abs_diff</a> (const T1 &amp;a, const T2 &amp;b)</td></tr>
 <tr class="memdesc:a41a1d029f79e783306b59dadffea1bfd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Utility function to return the distance between two values.  <a href="#a41a1d029f79e783306b59dadffea1bfd">More...</a><br /></td></tr>
 <tr class="separator:a41a1d029f79e783306b59dadffea1bfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa2d55cee3564bb363896e6ea93fd9434"><td class="memTemplParams" colspan="2">template&lt;class T , class U &gt; </td></tr>
-<tr class="memitem:aa2d55cee3564bb363896e6ea93fd9434"><td class="memTemplItemLeft" align="right" valign="top">static auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceppht.html#aa2d55cee3564bb363896e6ea93fd9434">operator+</a> (const <a class="el" href="structppht_1_1vec2d.html">vec2d</a>&lt; T &gt; &amp;t, const <a class="el" href="structppht_1_1vec2d.html">vec2d</a>&lt; U &gt; &amp;u)</td></tr>
-<tr class="memdesc:aa2d55cee3564bb363896e6ea93fd9434"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add two vectors.  <a href="#aa2d55cee3564bb363896e6ea93fd9434">More...</a><br /></td></tr>
-<tr class="separator:aa2d55cee3564bb363896e6ea93fd9434"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a45405fef581967c9d8f4bb7d60bb0e41"><td class="memTemplParams" colspan="2">template&lt;class T , class U &gt; </td></tr>
-<tr class="memitem:a45405fef581967c9d8f4bb7d60bb0e41"><td class="memTemplItemLeft" align="right" valign="top">static auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceppht.html#a45405fef581967c9d8f4bb7d60bb0e41">operator*</a> (const <a class="el" href="structppht_1_1vec2d.html">vec2d</a>&lt; T &gt; &amp;t, const <a class="el" href="structppht_1_1vec2d.html">vec2d</a>&lt; U &gt; &amp;u)</td></tr>
-<tr class="memdesc:a45405fef581967c9d8f4bb7d60bb0e41"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mutiply two vectors.  <a href="#a45405fef581967c9d8f4bb7d60bb0e41">More...</a><br /></td></tr>
-<tr class="separator:a45405fef581967c9d8f4bb7d60bb0e41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98f5f2b7cf28704f41f0c38edfeb8e2e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structppht_1_1point__t.html">point_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceppht.html#a98f5f2b7cf28704f41f0c38edfeb8e2e">operator+</a> (const <a class="el" href="structppht_1_1point__t.html">point_t</a> &amp;p, const <a class="el" href="structppht_1_1offset__t.html">offset_t</a> &amp;o)</td></tr>
+<tr class="separator:a98f5f2b7cf28704f41f0c38edfeb8e2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7d8007330c3cccf008b326c3faa37abd"><td class="memTemplParams" colspan="2">template&lt;class State , class Accumulator  = accumulator&lt;&gt;&gt; </td></tr>
 <tr class="memitem:a7d8007330c3cccf008b326c3faa37abd"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="namespaceppht.html#acefb02c86eb6437a82dc24246107fda7">segment_t</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceppht.html#a7d8007330c3cccf008b326c3faa37abd">find_segments</a> (State &amp;&amp;<a class="el" href="classppht_1_1state.html">state</a>, const <a class="el" href="structppht_1_1parameters.html">parameters</a> &amp;param=<a class="el" href="structppht_1_1parameters.html">parameters</a>{}, std::random_device::result_type seed=std::random_device{}())</td></tr>
 <tr class="memdesc:a7d8007330c3cccf008b326c3faa37abd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simplified interface to the PPHT algorithm.  <a href="#a7d8007330c3cccf008b326c3faa37abd">More...</a><br /></td></tr>
@@ -147,35 +144,19 @@ Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The basic namespace of the library. </p>
 </div><h2 class="groupheader">Typedef Documentation</h2>
-<a id="a176d289e72fa78a8d942131fd2bcd47c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a176d289e72fa78a8d942131fd2bcd47c">&sect;&nbsp;</a></span>offset_t</h2>
+<a id="ab0d90db214191dacf7d2b39793a8c7cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0d90db214191dacf7d2b39793a8c7cf">&sect;&nbsp;</a></span>h_scanner</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;int Increment&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="namespaceppht.html#a176d289e72fa78a8d942131fd2bcd47c">ppht::offset_t</a> = typedef <a class="el" href="structppht_1_1vec2d.html">vec2d</a>&lt;std::ptrdiff_t&gt;</td>
+          <td class="memname">using <a class="el" href="namespaceppht.html#ab0d90db214191dacf7d2b39793a8c7cf">ppht::h_scanner</a> = typedef <a class="el" href="structppht_1_1bresenham__scanner.html">bresenham_scanner</a>&lt;&amp;<a class="el" href="structppht_1_1point__t.html#a1bea1597dc672c6a53b6615f9bbcdaf6">point_t::x</a>, &amp;<a class="el" href="structppht_1_1point__t.html#af38a5247b7cbe241c837e6c28e257fd0">point_t::y</a>, Increment&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>An offset from a point. </p>
-
-</div>
-</div>
-<a id="aaac7400c942264f91fe4775f927d80be"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaac7400c942264f91fe4775f927d80be">&sect;&nbsp;</a></span>point_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">using <a class="el" href="namespaceppht.html#aaac7400c942264f91fe4775f927d80be">ppht::point_t</a> = typedef <a class="el" href="structppht_1_1vec2d.html">vec2d</a>&lt;std::size_t&gt;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>A basic integral point. </p>
 
 </div>
 </div>
@@ -186,12 +167,28 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="namespaceppht.html#acefb02c86eb6437a82dc24246107fda7">ppht::segment_t</a> = typedef std::pair&lt;<a class="el" href="namespaceppht.html#aaac7400c942264f91fe4775f927d80be">point_t</a>, <a class="el" href="namespaceppht.html#aaac7400c942264f91fe4775f927d80be">point_t</a>&gt;</td>
+          <td class="memname">using <a class="el" href="namespaceppht.html#acefb02c86eb6437a82dc24246107fda7">ppht::segment_t</a> = typedef std::pair&lt;<a class="el" href="structppht_1_1point__t.html">point_t</a>, <a class="el" href="structppht_1_1point__t.html">point_t</a>&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>A pair of points representing a line segment. </p>
+
+</div>
+</div>
+<a id="a603d7f2acf653498317462858259c618"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a603d7f2acf653498317462858259c618">&sect;&nbsp;</a></span>v_scanner</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int Increment&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="namespaceppht.html#a603d7f2acf653498317462858259c618">ppht::v_scanner</a> = typedef <a class="el" href="structppht_1_1bresenham__scanner.html">bresenham_scanner</a>&lt;&amp;<a class="el" href="structppht_1_1point__t.html#af38a5247b7cbe241c837e6c28e257fd0">point_t::y</a>, &amp;<a class="el" href="structppht_1_1point__t.html#a1bea1597dc672c6a53b6615f9bbcdaf6">point_t::x</a>, Increment&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -282,7 +279,7 @@ template&lt;class T1 , class T2 &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static std::set&lt;<a class="el" href="namespaceppht.html#a176d289e72fa78a8d942131fd2bcd47c">offset_t</a>&gt; ppht::find_offsets </td>
+          <td class="memname">static std::set&lt;<a class="el" href="structppht_1_1offset__t.html">offset_t</a>&gt; ppht::find_offsets </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="namespaceppht.html#acefb02c86eb6437a82dc24246107fda7">segment_t</a> const &amp;&#160;</td>
           <td class="paramname"><em>segment</em>, </td>
@@ -411,28 +408,23 @@ template&lt;class State , class Accumulator  = accumulator&lt;&gt;&gt; </div>
 
 </div>
 </div>
-<a id="a45405fef581967c9d8f4bb7d60bb0e41"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a45405fef581967c9d8f4bb7d60bb0e41">&sect;&nbsp;</a></span>operator*()</h2>
+<a id="a98f5f2b7cf28704f41f0c38edfeb8e2e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a98f5f2b7cf28704f41f0c38edfeb8e2e">&sect;&nbsp;</a></span>operator+()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;class T , class U &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static auto ppht::operator* </td>
+          <td class="memname"><a class="el" href="structppht_1_1point__t.html">point_t</a> ppht::operator+ </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structppht_1_1vec2d.html">vec2d</a>&lt; T &gt; &amp;&#160;</td>
-          <td class="paramname"><em>t</em>, </td>
+          <td class="paramtype">const <a class="el" href="structppht_1_1point__t.html">point_t</a> &amp;&#160;</td>
+          <td class="paramname"><em>p</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="structppht_1_1vec2d.html">vec2d</a>&lt; U &gt; &amp;&#160;</td>
-          <td class="paramname"><em>u</em>&#160;</td>
+          <td class="paramtype">const <a class="el" href="structppht_1_1offset__t.html">offset_t</a> &amp;&#160;</td>
+          <td class="paramname"><em>o</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -440,72 +432,7 @@ template&lt;class T , class U &gt; </div>
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
-
-<p>Mutiply two vectors. </p>
-<p>Returns the product of the individual components of the vectors as a new vector.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">t</td><td>the first vector </td></tr>
-    <tr><td class="paramname">u</td><td>the second vector</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>a vector made from the products of the components </dd></dl>
-
-</div>
-</div>
-<a id="aa2d55cee3564bb363896e6ea93fd9434"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa2d55cee3564bb363896e6ea93fd9434">&sect;&nbsp;</a></span>operator+()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T , class U &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static auto ppht::operator+ </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="structppht_1_1vec2d.html">vec2d</a>&lt; T &gt; &amp;&#160;</td>
-          <td class="paramname"><em>t</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="structppht_1_1vec2d.html">vec2d</a>&lt; U &gt; &amp;&#160;</td>
-          <td class="paramname"><em>u</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Add two vectors. </p>
-<p>Returns the sum of the individual components of the vectors as a new vector.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">t</td><td>the first vector </td></tr>
-    <tr><td class="paramname">u</td><td>the second vector</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>a vector made from the sums of the components </dd></dl>
 
 </div>
 </div>

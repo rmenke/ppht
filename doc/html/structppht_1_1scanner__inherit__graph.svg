@@ -37,7 +37,7 @@
 <g id="a_node3"><a xlink:href="structppht_1_1bresenham__scanner.html" target="_top" xlink:title="A scanner based on Bresenham&#39;s line algorithm. ">
 <polygon fill="#ffffff" stroke="#000000" points="117.877,-.5 117.877,-28.5 250.0635,-28.5 250.0635,-.5 117.877,-.5"/>
 <text text-anchor="start" x="125.877" y="-16.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">ppht::bresenham_scanner</text>
-<text text-anchor="middle" x="183.9702" y="-6.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">&lt; Ind, Increment &gt;</text>
+<text text-anchor="middle" x="183.9702" y="-6.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">&lt; Ind, Dep, Increment &gt;</text>
 </a>
 </g>
 </g>

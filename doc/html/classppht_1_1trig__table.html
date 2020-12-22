@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">PPHT
-   &#160;<span id="projectnumber">1.0.5</span>
+   &#160;<span id="projectnumber">1.0.6</span>
    </div>
    <div id="projectbrief">An implementation of PPHT as a header-only library</div>
   </td>
@@ -70,7 +70,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a6e191db2d8a5f2af35f5c1cec4343924"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1trig__table.html#a6e191db2d8a5f2af35f5c1cec4343924">trig_table</a> (std::size_t <a class="el" href="classppht_1_1trig__table.html#a42c078ec4002e109fce9fdac9cad5412">max_theta</a>)</td></tr>
 <tr class="memdesc:a6e191db2d8a5f2af35f5c1cec4343924"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a <code><a class="el" href="classppht_1_1trig__table.html" title="A precomputed table of sine and cosine values. ">trig_table</a></code>.  <a href="#a6e191db2d8a5f2af35f5c1cec4343924">More...</a><br /></td></tr>
 <tr class="separator:a6e191db2d8a5f2af35f5c1cec4343924"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a79a275ae7167655227baf8dcf5cb8dc5"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classppht_1_1trig__table.html#a6b9e761e1a0c0253cc8a5d8e09127975">cossin_t</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1trig__table.html#a79a275ae7167655227baf8dcf5cb8dc5">operator[]</a> (std::size_t theta) const</td></tr>
+<tr class="memitem:a79a275ae7167655227baf8dcf5cb8dc5"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classppht_1_1trig__table.html#a6e77f8d29b85b606d12d656cc4026d9c">cossin_t</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1trig__table.html#a79a275ae7167655227baf8dcf5cb8dc5">operator[]</a> (std::size_t theta) const</td></tr>
 <tr class="separator:a79a275ae7167655227baf8dcf5cb8dc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -81,13 +81,13 @@ Public Attributes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-types"></a>
 Private Types</h2></td></tr>
-<tr class="memitem:a6b9e761e1a0c0253cc8a5d8e09127975"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1trig__table.html#a6b9e761e1a0c0253cc8a5d8e09127975">cossin_t</a> = <a class="el" href="structppht_1_1vec2d.html">vec2d</a>&lt; double &gt;</td></tr>
-<tr class="memdesc:a6b9e761e1a0c0253cc8a5d8e09127975"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pair describing cosine and sine value for a given measurement.  <a href="#a6b9e761e1a0c0253cc8a5d8e09127975">More...</a><br /></td></tr>
-<tr class="separator:a6b9e761e1a0c0253cc8a5d8e09127975"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e77f8d29b85b606d12d656cc4026d9c"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1trig__table.html#a6e77f8d29b85b606d12d656cc4026d9c">cossin_t</a> = std::pair&lt; double, double &gt;</td></tr>
+<tr class="memdesc:a6e77f8d29b85b606d12d656cc4026d9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pair describing cosine and sine value for a given measurement.  <a href="#a6e77f8d29b85b606d12d656cc4026d9c">More...</a><br /></td></tr>
+<tr class="separator:a6e77f8d29b85b606d12d656cc4026d9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a3d26b727c0277ed2ed4c8036cd2dbd40"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classppht_1_1trig__table.html#a6b9e761e1a0c0253cc8a5d8e09127975">cossin_t</a>[]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1trig__table.html#a3d26b727c0277ed2ed4c8036cd2dbd40">_data</a></td></tr>
+<tr class="memitem:a3d26b727c0277ed2ed4c8036cd2dbd40"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classppht_1_1trig__table.html#a6e77f8d29b85b606d12d656cc4026d9c">cossin_t</a>[]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1trig__table.html#a3d26b727c0277ed2ed4c8036cd2dbd40">_data</a></td></tr>
 <tr class="memdesc:a3d26b727c0277ed2ed4c8036cd2dbd40"><td class="mdescLeft">&#160;</td><td class="mdescRight">The table of values.  <a href="#a3d26b727c0277ed2ed4c8036cd2dbd40">More...</a><br /></td></tr>
 <tr class="separator:a3d26b727c0277ed2ed4c8036cd2dbd40"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -95,8 +95,8 @@ Private Attributes</h2></td></tr>
 <div class="textblock"><p>A precomputed table of sine and cosine values. </p>
 <p>A <code><a class="el" href="classppht_1_1trig__table.html" title="A precomputed table of sine and cosine values. ">trig_table</a></code> contains sine and cosine values for the semiturn (180°) indexed by a user-specified measurement called "parts." </p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
-<a id="a6b9e761e1a0c0253cc8a5d8e09127975"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6b9e761e1a0c0253cc8a5d8e09127975">&sect;&nbsp;</a></span>cossin_t</h2>
+<a id="a6e77f8d29b85b606d12d656cc4026d9c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e77f8d29b85b606d12d656cc4026d9c">&sect;&nbsp;</a></span>cossin_t</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -105,7 +105,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="classppht_1_1trig__table.html#a6b9e761e1a0c0253cc8a5d8e09127975">ppht::trig_table::cossin_t</a> =  <a class="el" href="structppht_1_1vec2d.html">vec2d</a>&lt;double&gt;</td>
+          <td class="memname">using <a class="el" href="classppht_1_1trig__table.html#a6e77f8d29b85b606d12d656cc4026d9c">ppht::trig_table::cossin_t</a> =  std::pair&lt;double, double&gt;</td>
         </tr>
       </table>
   </td>
@@ -166,7 +166,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="classppht_1_1trig__table.html#a6b9e761e1a0c0253cc8a5d8e09127975">cossin_t</a>&amp; ppht::trig_table::operator[] </td>
+          <td class="memname">const <a class="el" href="classppht_1_1trig__table.html#a6e77f8d29b85b606d12d656cc4026d9c">cossin_t</a>&amp; ppht::trig_table::operator[] </td>
           <td>(</td>
           <td class="paramtype">std::size_t&#160;</td>
           <td class="paramname"><em>theta</em></td><td>)</td>
@@ -202,7 +202,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::unique_ptr&lt;<a class="el" href="classppht_1_1trig__table.html#a6b9e761e1a0c0253cc8a5d8e09127975">cossin_t</a>[]&gt; ppht::trig_table::_data</td>
+          <td class="memname">std::unique_ptr&lt;<a class="el" href="classppht_1_1trig__table.html#a6e77f8d29b85b606d12d656cc4026d9c">cossin_t</a>[]&gt; ppht::trig_table::_data</td>
         </tr>
       </table>
   </td>

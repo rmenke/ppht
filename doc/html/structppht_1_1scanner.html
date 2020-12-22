@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">PPHT
-   &#160;<span id="projectnumber">1.0.5</span>
+   &#160;<span id="projectnumber">1.0.6</span>
    </div>
    <div id="projectbrief">An implementation of PPHT as a header-only library</div>
   </td>
@@ -75,7 +75,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a6df42dd87cbc338be2e80a10a1781af0"><td class="memItemLeft" align="right" valign="top">virtual std::unique_ptr&lt; <a class="el" href="structppht_1_1scanner.html">scanner</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structppht_1_1scanner.html#a6df42dd87cbc338be2e80a10a1781af0">clone</a> () const =0</td></tr>
 <tr class="memdesc:a6df42dd87cbc338be2e80a10a1781af0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual "copy constructor.".  <a href="#a6df42dd87cbc338be2e80a10a1781af0">More...</a><br /></td></tr>
 <tr class="separator:a6df42dd87cbc338be2e80a10a1781af0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae19ad90dc79d7b0a96ecf7c2f80b456e"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structppht_1_1scanner.html#ae19ad90dc79d7b0a96ecf7c2f80b456e">advance</a> (<a class="el" href="namespaceppht.html#aaac7400c942264f91fe4775f927d80be">point_t</a> &amp;point)=0</td></tr>
+<tr class="memitem:ae19ad90dc79d7b0a96ecf7c2f80b456e"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structppht_1_1scanner.html#ae19ad90dc79d7b0a96ecf7c2f80b456e">advance</a> (<a class="el" href="structppht_1_1point__t.html">point_t</a> &amp;point)=0</td></tr>
 <tr class="memdesc:ae19ad90dc79d7b0a96ecf7c2f80b456e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the given point according to the state of the scanner.  <a href="#ae19ad90dc79d7b0a96ecf7c2f80b456e">More...</a><br /></td></tr>
 <tr class="separator:ae19ad90dc79d7b0a96ecf7c2f80b456e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -120,7 +120,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">virtual void ppht::scanner::advance </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="namespaceppht.html#aaac7400c942264f91fe4775f927d80be">point_t</a> &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="structppht_1_1point__t.html">point_t</a> &amp;&#160;</td>
           <td class="paramname"><em>point</em></td><td>)</td>
           <td></td>
         </tr>
@@ -140,7 +140,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="structppht_1_1bresenham__scanner.html#a58285f2848d4816de4f390d0ef519af4">ppht::bresenham_scanner&lt; Ind, Increment &gt;</a>, and <a class="el" href="structppht_1_1axis__scanner.html#a81e338f04738a8c19674dce862445436">ppht::axis_scanner&lt; Ind &gt;</a>.</p>
+<p>Implemented in <a class="el" href="structppht_1_1bresenham__scanner.html#a74c71e060d9ad177b7ec02d0cd127c97">ppht::bresenham_scanner&lt; Ind, Dep, Increment &gt;</a>, and <a class="el" href="structppht_1_1axis__scanner.html#a81e338f04738a8c19674dce862445436">ppht::axis_scanner&lt; Ind &gt;</a>.</p>
 
 </div>
 </div>
@@ -171,7 +171,7 @@ Public Member Functions</h2></td></tr>
 <p>Duplicate the underlying state and return a scanner.</p>
 <dl class="section return"><dt>Returns</dt><dd>a unique_ptr to a scanner of the same type and state. </dd></dl>
 
-<p>Implemented in <a class="el" href="structppht_1_1bresenham__scanner.html#adce1dc4b14ba3cfd66925c36674383ca">ppht::bresenham_scanner&lt; Ind, Increment &gt;</a>, and <a class="el" href="structppht_1_1axis__scanner.html#aef06fb55174bb739e1de9f722010f85c">ppht::axis_scanner&lt; Ind &gt;</a>.</p>
+<p>Implemented in <a class="el" href="structppht_1_1bresenham__scanner.html#aa61b67f7ff02ad9df4e4262736b8c1ff">ppht::bresenham_scanner&lt; Ind, Dep, Increment &gt;</a>, and <a class="el" href="structppht_1_1axis__scanner.html#aef06fb55174bb739e1de9f722010f85c">ppht::axis_scanner&lt; Ind &gt;</a>.</p>
 
 </div>
 </div>

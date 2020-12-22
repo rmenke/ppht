@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">PPHT
-   &#160;<span id="projectnumber">1.0.5</span>
+   &#160;<span id="projectnumber">1.0.6</span>
    </div>
    <div id="projectbrief">An implementation of PPHT as a header-only library</div>
   </td>
@@ -81,10 +81,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a8ff140558c3734deb891878d3fec802f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceppht.html#acefb02c86eb6437a82dc24246107fda7">segment_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1accumulator.html#a8ff140558c3734deb891878d3fec802f">find_segment</a> (std::size_t theta, double rho)</td></tr>
 <tr class="memdesc:a8ff140558c3734deb891878d3fec802f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find the portion of the line that lies within the bounds of the bitmap.  <a href="#a8ff140558c3734deb891878d3fec802f">More...</a><br /></td></tr>
 <tr class="separator:a8ff140558c3734deb891878d3fec802f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a02c160abbc583112e4706c4ce82ac389"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1accumulator.html#a02c160abbc583112e4706c4ce82ac389">vote</a> (<a class="el" href="namespaceppht.html#aaac7400c942264f91fe4775f927d80be">point_t</a> const &amp;p, <a class="el" href="namespaceppht.html#acefb02c86eb6437a82dc24246107fda7">segment_t</a> &amp;segment)</td></tr>
+<tr class="memitem:a02c160abbc583112e4706c4ce82ac389"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1accumulator.html#a02c160abbc583112e4706c4ce82ac389">vote</a> (<a class="el" href="structppht_1_1point__t.html">point_t</a> const &amp;p, <a class="el" href="namespaceppht.html#acefb02c86eb6437a82dc24246107fda7">segment_t</a> &amp;segment)</td></tr>
 <tr class="memdesc:a02c160abbc583112e4706c4ce82ac389"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add all lines passing through the given point to the accumulator.  <a href="#a02c160abbc583112e4706c4ce82ac389">More...</a><br /></td></tr>
 <tr class="separator:a02c160abbc583112e4706c4ce82ac389"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a81095d6f10832e7abae3d8c34d42f186"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1accumulator.html#a81095d6f10832e7abae3d8c34d42f186">unvote</a> (<a class="el" href="namespaceppht.html#aaac7400c942264f91fe4775f927d80be">point_t</a> const &amp;p)</td></tr>
+<tr class="memitem:a81095d6f10832e7abae3d8c34d42f186"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1accumulator.html#a81095d6f10832e7abae3d8c34d42f186">unvote</a> (<a class="el" href="structppht_1_1point__t.html">point_t</a> const &amp;p)</td></tr>
 <tr class="separator:a81095d6f10832e7abae3d8c34d42f186"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
@@ -110,6 +110,9 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:a793d5129b3dabe924a839bd5ccf3ffe2"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1accumulator.html#a793d5129b3dabe924a839bd5ccf3ffe2">unscale_rho</a> (double scaled_rho) const noexcept</td></tr>
 <tr class="memdesc:a793d5129b3dabe924a839bd5ccf3ffe2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a scaled rho value back to a raw value.  <a href="#a793d5129b3dabe924a839bd5ccf3ffe2">More...</a><br /></td></tr>
 <tr class="separator:a793d5129b3dabe924a839bd5ccf3ffe2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7616c3a039f1c35beec8f99541e4e7c"><td class="memTemplParams" colspan="2">template&lt;class B &gt; </td></tr>
+<tr class="memitem:af7616c3a039f1c35beec8f99541e4e7c"><td class="memTemplItemLeft" align="right" valign="top">double&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classppht_1_1accumulator.html#af7616c3a039f1c35beec8f99541e4e7c">dot</a> (const <a class="el" href="structppht_1_1point__t.html">point_t</a> &amp;a, const B &amp;b) noexcept</td></tr>
+<tr class="separator:af7616c3a039f1c35beec8f99541e4e7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae3d150514be932dee46295bba2b0aa86"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1accumulator.html#ae3d150514be932dee46295bba2b0aa86">accumulator</a> (std::size_t rows, std::size_t cols, std::size_t max_theta, const std::pair&lt; std::size_t, int &gt; &amp;<a class="el" href="classppht_1_1accumulator.html#aecb19a75dc4daeb949a9fd06ac4e42e6">rho_info</a>, double log_threshold, std::size_t min_trigger_points, <a class="el" href="classppht_1_1accumulator.html#a92ee869bb03a6ced5ecf470d4328f5c4">seed_t</a> seed) noexcept</td></tr>
 <tr class="memdesc:ae3d150514be932dee46295bba2b0aa86"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct an instance of <a class="el" href="classppht_1_1accumulator.html">accumulator</a>.  <a href="#ae3d150514be932dee46295bba2b0aa86">More...</a><br /></td></tr>
 <tr class="separator:ae3d150514be932dee46295bba2b0aa86"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -410,6 +413,61 @@ template&lt;class T , class U &gt; </div>
 
 </div>
 </div>
+<a id="af7616c3a039f1c35beec8f99541e4e7c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7616c3a039f1c35beec8f99541e4e7c">&sect;&nbsp;</a></span>dot()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Count  = std::uint16_t, template&lt; class &gt; class Raster = raster&gt; </div>
+<div class="memtemplate">
+template&lt;class B &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double <a class="el" href="classppht_1_1accumulator.html">ppht::accumulator</a>&lt; Count, Raster &gt;::dot </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structppht_1_1point__t.html">point_t</a> &amp;&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const B &amp;&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Compute a dot product of a point and an arbitrary tuple.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">B</td><td>a tuple-like type of at least size 2</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">a</td><td>the point </td></tr>
+    <tr><td class="paramname">b</td><td>the other point</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the inner product of <code>a</code> and <code>b</code> </dd></dl>
+
+</div>
+</div>
 <a id="a8ff140558c3734deb891878d3fec802f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8ff140558c3734deb891878d3fec802f">&sect;&nbsp;</a></span>find_segment()</h2>
 
@@ -607,7 +665,7 @@ template&lt;class Count  = std::uint16_t, template&lt; class &gt; class Raster =
         <tr>
           <td class="memname">void <a class="el" href="classppht_1_1accumulator.html">ppht::accumulator</a>&lt; Count, Raster &gt;::unvote </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="namespaceppht.html#aaac7400c942264f91fe4775f927d80be">point_t</a> const &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="structppht_1_1point__t.html">point_t</a> const &amp;&#160;</td>
           <td class="paramname"><em>p</em></td><td>)</td>
           <td></td>
         </tr>
@@ -642,7 +700,7 @@ template&lt;class Count  = std::uint16_t, template&lt; class &gt; class Raster =
         <tr>
           <td class="memname">bool <a class="el" href="classppht_1_1accumulator.html">ppht::accumulator</a>&lt; Count, Raster &gt;::vote </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="namespaceppht.html#aaac7400c942264f91fe4775f927d80be">point_t</a> const &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="structppht_1_1point__t.html">point_t</a> const &amp;&#160;</td>
           <td class="paramname"><em>p</em>, </td>
         </tr>
         <tr>
