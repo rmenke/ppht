@@ -136,22 +136,6 @@ class accumulator {
     }
 
     /**
-     * Compute a dot product of a point and an arbitrary tuple.
-     *
-     * @tparam B a tuple-like type of at least size 2
-     *
-     * @param a the point
-     * @param b the other point
-     *
-     * @result the inner product of @c a and @c b
-     */
-    template <class B>
-    double dot(const point_t &a, const B &b) noexcept {
-        using namespace std;
-        return a.x * get<0>(b) + a.y * get<1>(b);
-    }
-
-    /**
      * @brief Construct an instance of @ref accumulator.
      *
      * This constructor is called with the results of manipulation of
@@ -280,8 +264,8 @@ class accumulator {
         std::set<point_t> endpoints;
 
         auto const &cossin = _trig[theta];
-        double const &sin_theta = std::get<1>(cossin);
-        double const &cos_theta = std::get<0>(cossin);
+        auto const &sin_theta = std::get<1>(cossin);
+        auto const &cos_theta = std::get<0>(cossin);
 
         auto get_x = [&](double y) -> long {
             double x = std::rint((rho - sin_theta * y) / cos_theta);
@@ -357,7 +341,7 @@ class accumulator {
         // current maxima.
 
         for (theta = 0; theta < max_theta; ++theta) {
-            rho = scale_rho(dot(p, _trig[theta]));
+            rho = scale_rho(p.dot(_trig[theta]));
             if (rho < 0 || rho >= max_rho) continue;
 
             auto &counter = _counters[rho][theta];
@@ -476,7 +460,7 @@ class accumulator {
         auto const max_theta = _counters.cols();
 
         for (std::size_t theta = 0; theta < max_theta; ++theta) {
-            double const rho = scale_rho(dot(p, _trig[theta]));
+            double const rho = scale_rho(p.dot(_trig[theta]));
             if (rho < 0 || rho >= max_rho) continue;
 
             auto &counter = _counters[rho][theta];

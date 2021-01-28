@@ -27,8 +27,8 @@ int main() {
     bool all_clear = true;
     ppht::point_t p;
 
-    for (p.y = 0U; p.y < state.rows(); ++p.y) {
-        for (p.x = 0U; p.x < state.cols(); ++p.x) {
+    for (p[1] = 0U; p[1] < static_cast<long>(state.rows()); ++p[1]) {
+        for (p[0] = 0U; p[0] < static_cast<long>(state.cols()); ++p[0]) {
             all_clear = all_clear &&
                 state.status(p) == ppht::status_t::unset;
         }
@@ -54,16 +54,16 @@ int main() {
 
     auto found = ppht::find_offsets({{0, 0}, {4, 4}}, 0);
     eq(1, found.size(), "one point");
-    eq(ppht::offset_t(0, 0), *found.begin(), "zero offset");
+    eq(ppht::point_t(0L, 0L), *found.begin(), "zero offset");
 
     found = ppht::find_offsets({{0, 0}, {4, 4}}, 1);
     eq(3, found.size(), "one point");
 
     auto iter = found.begin();
 
-    eq(ppht::offset_t(-1, 1), *iter, "neg offset");
+    eq(ppht::point_t(-1, 1), *iter, "neg offset");
     ++iter;
-    eq(ppht::offset_t(0, 0), *iter, "zero offset");
+    eq(ppht::point_t(0, 0), *iter, "zero offset");
     ++iter;
-    eq(ppht::offset_t(1, -1), *iter, "pos offset");
+    eq(ppht::point_t(1, -1), *iter, "pos offset");
 }

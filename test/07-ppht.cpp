@@ -58,10 +58,10 @@ ppht::state<> _load_image(std::size_t rows, std::size_t cols,
 
     std::size_t bytes_per_row = (cols + 7) >> 3;
 
-    for (auto y = 0UL; y < rows; ++y) {
+    for (unsigned y = 0; y < rows; ++y) {
         auto row = data + y * bytes_per_row;
 
-        for (auto x = 0UL; x < cols; ++x) {
+        for (unsigned x = 0; x < cols; ++x) {
             auto bit = row[x >> 3] & (std::uint8_t{1} << (x & 7));
             if (bit) state.mark_pending({x, y});
         }
@@ -98,8 +98,8 @@ int main() {
                                        segment_t{{220, 100}, {300, 100}}};
 
     static auto within = [](const point_t &p1, const point_t &p2) {
-        auto dx = static_cast<double>(p1.x) - static_cast<double>(p2.x);
-        auto dy = static_cast<double>(p1.y) - static_cast<double>(p2.y);
+        auto dx = static_cast<double>(p1[0]) - p2[0];
+        auto dy = static_cast<double>(p1[1]) - p2[1];
         return dx * dx + dy * dy <= 25.0;
     };
 

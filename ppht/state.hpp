@@ -75,10 +75,10 @@ class state {
         , _urbg(seed) {
         point_t p;
 
-        for (p.y = 0; p.y < _state.rows; ++p.y) {
-            auto const row = _state[p.y];
-            for (p.x = 0; p.x < _state.cols; ++p.x) {
-                if (row[p.x] == status_t::pending) {
+        for (p[1] = 0; p[1] < _state.rows; ++p[1]) {
+            auto const row = _state[p[1]];
+            for (p[0] = 0; p[0] < _state.cols; ++p[0]) {
+                if (row[p[0]] == status_t::pending) {
                     _pending.push_back(p);
                 }
             }
@@ -111,7 +111,7 @@ class state {
      * @return the status of the pixel.
      */
     status_t status(point_t const &point) const {
-        return _state[point.y][point.x];
+        return _state[std::get<1>(point)][std::get<0>(point)];
     }
 
     /**
@@ -120,7 +120,10 @@ class state {
      * @param point the pixel to mark.
      */
     void mark_pending(point_t const &point) {
-        _state[point.y][point.x] = status_t::pending;
+        auto const x = std::get<0>(point);
+        auto const y = std::get<1>(point);
+
+        _state[y][x] = status_t::pending;
         _pending.emplace_back(point);
     }
 
@@ -130,7 +133,10 @@ class state {
      * @param point the pixel to mark.
      */
     void mark_done(point_t const &point) {
-        _state[point.y][point.x] = status_t::done;
+        auto const x = std::get<0>(point);
+        auto const y = std::get<1>(point);
+
+        _state[y][x] = status_t::done;
     }
 
     /**
@@ -166,7 +172,7 @@ class state {
 
         point = std::exchange(*iter, *(--end));
 
-        auto &cell = _state[point.y][point.x];
+        auto &cell = _state[std::get<1>(point)][std::get<0>(point)];
 
         assert(cell == status_t::pending);
 
@@ -194,22 +200,21 @@ class state {
  *
  * @sa scan()
  */
-static inline std::set<offset_t>
+static inline std::set<point_t>
 find_offsets(segment_t const &segment, unsigned radius) {
     // The vector [xn, yn] is normal to the segment.
 
-    const auto &a = segment.first;
-    const auto &b = segment.second;
-
-    double xn = static_cast<double>(b.y) - static_cast<double>(a.y);
-    double yn = static_cast<double>(a.x) - static_cast<double>(b.x);
+    double xn = std::get<1>(segment.second);
+    xn -= std::get<1>(segment.first);
+    double yn = std::get<0>(segment.first);
+    yn -= std::get<0>(segment.second);
 
     // Make [xn, yn] the unit normal vector.
 
     double len = std::hypot(xn, yn);
     xn /= len, yn /= len;
 
-    std::set<offset_t> result{{0, 0}};
+    std::set<point_t> result{{0, 0}};
 
     for (auto r = 1U; r <= radius; ++r) {
         auto dx = std::lround(xn * r);
@@ -266,8 +271,8 @@ point_set scan(state<Raster> &s, segment_t const &segment, unsigned radius,
         for (auto const &offset : offsets) {
             auto p = point + offset;
 
-            if (p.x < 0 || p.x >= s.cols()) continue;
-            if (p.y < 0 || p.y >= s.rows()) continue;
+            if (p[0] < 0 || p[0] >= static_cast<long>(s.cols())) continue;
+            if (p[1] < 0 || p[1] >= static_cast<long>(s.rows())) continue;
 
             auto status = s.status(p);
 

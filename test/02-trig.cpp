@@ -17,19 +17,15 @@ static inline ostream &operator<<(ostream &o, const pair<F, S> &p) {
 
 } // namespace std
 
-using cossin_t = std::pair<double, double>;
-
-static inline
-bool eq_pair(const cossin_t &a, const cossin_t &b, double tolerance) {
-    using namespace std;
-
-    bool first = fabs(get<0>(a) - get<0>(b)) <= tolerance;
-    bool second = fabs(get<1>(a) - get<1>(b)) <= tolerance;
+template <class A, class B> static inline
+bool eq_pair(A &&a, B &&b, double tolerance) {
+    bool first = std::fabs(std::get<0>(a) - std::get<0>(b)) <= tolerance;
+    bool second = std::fabs(std::get<1>(a) - std::get<1>(b)) <= tolerance;
 
     if (first && second) return true;
 
-    if (!first) tap::diag(get<0>(b), " != ", get<0>(a), "±", tolerance);
-    if (!second) tap::diag(get<1>(b), " != ", get<1>(a), "±", tolerance);
+    if (!first) tap::diag(std::get<0>(b), " != ", std::get<0>(a), "±", tolerance);
+    if (!second) tap::diag(std::get<1>(b), " != ", std::get<1>(a), "±", tolerance);
 
     return false;
 }
@@ -43,31 +39,31 @@ int main() {
 
     eq(1024U, trig.max_theta, "field initialized");
 
-    ok(eq_pair(cossin_t(1, 0), trig[0], 1E-6), "hi-res");
-    ok(eq_pair(cossin_t(0, 1), trig[512], 1E-6), "hi-res");
+    ok(eq_pair(std::make_pair(1, 0), trig[0], 1E-6), "hi-res");
+    ok(eq_pair(std::make_pair(0, 1), trig[512], 1E-6), "hi-res");
 
-    ok(eq_pair(cossin_t(std::sqrt(0.5), std::sqrt(0.5)), trig[256],
+    ok(eq_pair(std::make_pair(std::sqrt(0.5), std::sqrt(0.5)), trig[256],
                1E-6),
        "hi-res");
-    ok(eq_pair(cossin_t(-std::sqrt(0.5), std::sqrt(0.5)), trig[768],
+    ok(eq_pair(std::make_pair(-std::sqrt(0.5), std::sqrt(0.5)), trig[768],
                1E-6),
        "hi-res");
 
-    ok(eq_pair(cossin_t(0.92387953, 0.38268343), trig[128], 1E-6),
+    ok(eq_pair(std::make_pair(0.92387953, 0.38268343), trig[128], 1E-6),
        "hi-res");
 
     ppht::trig_table t2{8};
 
-    ok(eq_pair(cossin_t(1, 0), t2[0], 1E-6), "lo-res");
-    ok(eq_pair(cossin_t(0, 1), t2[4], 1E-6), "lo-res");
+    ok(eq_pair(std::make_pair(1, 0), t2[0], 1E-6), "lo-res");
+    ok(eq_pair(std::make_pair(0, 1), t2[4], 1E-6), "lo-res");
 
-    ok(eq_pair(cossin_t(std::sqrt(0.5), std::sqrt(0.5)), t2[2], 1E-6),
+    ok(eq_pair(std::make_pair(std::sqrt(0.5), std::sqrt(0.5)), t2[2], 1E-6),
        "lo-res");
-    ok(eq_pair(cossin_t(-std::sqrt(0.5), std::sqrt(0.5)), t2[6],
+    ok(eq_pair(std::make_pair(-std::sqrt(0.5), std::sqrt(0.5)), t2[6],
                1E-6),
        "lo-res");
 
-    ok(eq_pair(cossin_t(0.92387953, 0.38268343), t2[1], 1E-6),
+    ok(eq_pair(std::make_pair(0.92387953, 0.38268343), t2[1], 1E-6),
        "lo-res");
 
     try {
