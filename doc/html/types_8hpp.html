@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">PPHT
-   &#160;<span id="projectnumber">1.0.6</span>
+   &#160;<span id="projectnumber">1.0.8</span>
    </div>
    <div id="projectbrief">An implementation of PPHT as a header-only library</div>
   </td>
@@ -52,26 +52,25 @@ $(function() {
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
-<a href="#typedef-members">Typedefs</a> &#124;
-<a href="#enum-members">Enumerations</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#enum-members">Enumerations</a>  </div>
   <div class="headertitle">
 <div class="title">types.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;array&gt;</code><br />
+<code>#include &lt;cmath&gt;</code><br />
 <code>#include &lt;iostream&gt;</code><br />
 <code>#include &lt;utility&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for types.hpp:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="types_8hpp__incl.svg" width="236" height="110"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="types_8hpp__incl.svg" width="318" height="110"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="types_8hpp__dep__incl.svg" width="510" height="256"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="types_8hpp__dep__incl.svg" width="698" height="256"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div>
@@ -82,8 +81,7 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structppht_1_1point__t.html">ppht::point_t</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A basic integral point.  <a href="structppht_1_1point__t.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structppht_1_1offset__t.html">ppht::offset_t</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An offset from a point.  <a href="structppht_1_1offset__t.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1segment__t.html">ppht::segment_t</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
@@ -91,12 +89,6 @@ Namespaces</h2></td></tr>
 <tr class="memitem:namespaceppht"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceppht.html">ppht</a></td></tr>
 <tr class="memdesc:namespaceppht"><td class="mdescLeft">&#160;</td><td class="mdescRight">The basic namespace of the library. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
-Typedefs</h2></td></tr>
-<tr class="memitem:acefb02c86eb6437a82dc24246107fda7"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceppht.html#acefb02c86eb6437a82dc24246107fda7">ppht::segment_t</a> = std::pair&lt; point_t, point_t &gt;</td></tr>
-<tr class="memdesc:acefb02c86eb6437a82dc24246107fda7"><td class="mdescLeft">&#160;</td><td class="mdescRight">A pair of points representing a line segment.  <a href="namespaceppht.html#acefb02c86eb6437a82dc24246107fda7">More...</a><br /></td></tr>
-<tr class="separator:acefb02c86eb6437a82dc24246107fda7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -107,15 +99,6 @@ Enumerations</h2></td></tr>
  }<tr class="memdesc:a62df3910999f59d178dd7090a4c89d86"><td class="mdescLeft">&#160;</td><td class="mdescRight">The status of a pixel in a state map.  <a href="namespaceppht.html#a62df3910999f59d178dd7090a4c89d86">More...</a><br /></td></tr>
 </td></tr>
 <tr class="separator:a62df3910999f59d178dd7090a4c89d86"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:a41a1d029f79e783306b59dadffea1bfd"><td class="memTemplParams" colspan="2">template&lt;class T1 , class T2 &gt; </td></tr>
-<tr class="memitem:a41a1d029f79e783306b59dadffea1bfd"><td class="memTemplItemLeft" align="right" valign="top">static auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceppht.html#a41a1d029f79e783306b59dadffea1bfd">ppht::abs_diff</a> (const T1 &amp;a, const T2 &amp;b)</td></tr>
-<tr class="memdesc:a41a1d029f79e783306b59dadffea1bfd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Utility function to return the distance between two values.  <a href="namespaceppht.html#a41a1d029f79e783306b59dadffea1bfd">More...</a><br /></td></tr>
-<tr class="separator:a41a1d029f79e783306b59dadffea1bfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a98f5f2b7cf28704f41f0c38edfeb8e2e"><td class="memItemLeft" align="right" valign="top">point_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceppht.html#a98f5f2b7cf28704f41f0c38edfeb8e2e">ppht::operator+</a> (const point_t &amp;p, const offset_t &amp;o)</td></tr>
-<tr class="separator:a98f5f2b7cf28704f41f0c38edfeb8e2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 <!-- start footer part -->

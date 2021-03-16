@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">PPHT
-   &#160;<span id="projectnumber">1.0.6</span>
+   &#160;<span id="projectnumber">1.0.8</span>
    </div>
    <div id="projectbrief">An implementation of PPHT as a header-only library</div>
   </td>
@@ -47,7 +47,6 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
@@ -72,9 +71,6 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1channel.html">channel</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An abstract container that wraps around a line segment.  <a href="classppht_1_1channel.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structppht_1_1offset__t.html">offset_t</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An offset from a point.  <a href="structppht_1_1offset__t.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structppht_1_1parameters.html">parameters</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The tunable parameters of the analyzer.  <a href="structppht_1_1parameters.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -90,24 +86,14 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structppht_1_1scanner.html">scanner</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A class for tracking the state required to advance a point along a segment.  <a href="structppht_1_1scanner.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1segment__t.html">segment_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1state.html">state</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The state class represents the current state of the algorithm.  <a href="classppht_1_1state.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1trig__table.html">trig_table</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A precomputed table of sine and cosine values.  <a href="classppht_1_1trig__table.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
-Typedefs</h2></td></tr>
-<tr class="memitem:ab0d90db214191dacf7d2b39793a8c7cf"><td class="memTemplParams" colspan="2">template&lt;int Increment&gt; </td></tr>
-<tr class="memitem:ab0d90db214191dacf7d2b39793a8c7cf"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceppht.html#ab0d90db214191dacf7d2b39793a8c7cf">h_scanner</a> = <a class="el" href="structppht_1_1bresenham__scanner.html">bresenham_scanner</a>&lt;&amp;<a class="el" href="structppht_1_1point__t.html#a1bea1597dc672c6a53b6615f9bbcdaf6">point_t::x</a>, &amp;<a class="el" href="structppht_1_1point__t.html#af38a5247b7cbe241c837e6c28e257fd0">point_t::y</a>, Increment &gt;</td></tr>
-<tr class="separator:ab0d90db214191dacf7d2b39793a8c7cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a603d7f2acf653498317462858259c618"><td class="memTemplParams" colspan="2">template&lt;int Increment&gt; </td></tr>
-<tr class="memitem:a603d7f2acf653498317462858259c618"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceppht.html#a603d7f2acf653498317462858259c618">v_scanner</a> = <a class="el" href="structppht_1_1bresenham__scanner.html">bresenham_scanner</a>&lt;&amp;<a class="el" href="structppht_1_1point__t.html#af38a5247b7cbe241c837e6c28e257fd0">point_t::y</a>, &amp;<a class="el" href="structppht_1_1point__t.html#a1bea1597dc672c6a53b6615f9bbcdaf6">point_t::x</a>, Increment &gt;</td></tr>
-<tr class="separator:a603d7f2acf653498317462858259c618"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acefb02c86eb6437a82dc24246107fda7"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceppht.html#acefb02c86eb6437a82dc24246107fda7">segment_t</a> = std::pair&lt; <a class="el" href="structppht_1_1point__t.html">point_t</a>, <a class="el" href="structppht_1_1point__t.html">point_t</a> &gt;</td></tr>
-<tr class="memdesc:acefb02c86eb6437a82dc24246107fda7"><td class="mdescLeft">&#160;</td><td class="mdescRight">A pair of points representing a line segment.  <a href="#acefb02c86eb6437a82dc24246107fda7">More...</a><br /></td></tr>
-<tr class="separator:acefb02c86eb6437a82dc24246107fda7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -121,78 +107,34 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ae8534014335620ab8cb9030d1e264853"><td class="memItemLeft" align="right" valign="top">static std::unique_ptr&lt; <a class="el" href="structppht_1_1scanner.html">scanner</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceppht.html#ae8534014335620ab8cb9030d1e264853">make_scanner</a> (<a class="el" href="namespaceppht.html#acefb02c86eb6437a82dc24246107fda7">segment_t</a> &amp;segment)</td></tr>
+<tr class="memitem:ae8534014335620ab8cb9030d1e264853"><td class="memItemLeft" align="right" valign="top">static std::unique_ptr&lt; <a class="el" href="structppht_1_1scanner.html">scanner</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceppht.html#ae8534014335620ab8cb9030d1e264853">make_scanner</a> (<a class="el" href="classppht_1_1segment__t.html">segment_t</a> &amp;segment)</td></tr>
 <tr class="separator:ae8534014335620ab8cb9030d1e264853"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2c40e4f435821fe542a141d43ee01b54"><td class="memItemLeft" align="right" valign="top">static std::set&lt; <a class="el" href="structppht_1_1offset__t.html">offset_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceppht.html#a2c40e4f435821fe542a141d43ee01b54">find_offsets</a> (<a class="el" href="namespaceppht.html#acefb02c86eb6437a82dc24246107fda7">segment_t</a> const &amp;segment, unsigned radius)</td></tr>
-<tr class="memdesc:a2c40e4f435821fe542a141d43ee01b54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a set of offsets that are within a radius.  <a href="#a2c40e4f435821fe542a141d43ee01b54">More...</a><br /></td></tr>
-<tr class="separator:a2c40e4f435821fe542a141d43ee01b54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f7ea60086c280bdf0ffd08859d8523e"><td class="memTemplParams" colspan="2">template&lt;std::size_t Dim = 0, class RandomIt , class OutputIt &gt; </td></tr>
+<tr class="memitem:a8f7ea60086c280bdf0ffd08859d8523e"><td class="memTemplItemLeft" align="right" valign="top">OutputIt&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceppht.html#a8f7ea60086c280bdf0ffd08859d8523e">kd_search</a> (RandomIt begin, RandomIt end, OutputIt output, const <a class="el" href="structppht_1_1point__t.html">point_t</a> &amp;p, long limit)</td></tr>
+<tr class="separator:a8f7ea60086c280bdf0ffd08859d8523e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a794990442ae62f47b42fe2d47684ca60"><td class="memTemplParams" colspan="2">template&lt;class RandomIt &gt; </td></tr>
+<tr class="memitem:a794990442ae62f47b42fe2d47684ca60"><td class="memTemplItemLeft" align="right" valign="top">static auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceppht.html#a794990442ae62f47b42fe2d47684ca60">find_nearest</a> (RandomIt begin, RandomIt end, const <a class="el" href="structppht_1_1point__t.html">point_t</a> &amp;p, unsigned limit)</td></tr>
+<tr class="separator:a794990442ae62f47b42fe2d47684ca60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f61e6440511b00746ab496ca16ed58c"><td class="memItemLeft" align="right" valign="top">static auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceppht.html#a2f61e6440511b00746ab496ca16ed58c">distance_to_line_squared</a> (const <a class="el" href="structppht_1_1point__t.html">point_t</a> &amp;pnt1, const <a class="el" href="structppht_1_1point__t.html">point_t</a> &amp;pnt2)</td></tr>
+<tr class="separator:a2f61e6440511b00746ab496ca16ed58c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09260eb4004b9decd7ae86a0263afd51"><td class="memTemplParams" colspan="2">template&lt;class ForwardIt &gt; </td></tr>
+<tr class="memitem:a09260eb4004b9decd7ae86a0263afd51"><td class="memTemplItemLeft" align="right" valign="top">ForwardIt&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceppht.html#a09260eb4004b9decd7ae86a0263afd51">postprocess</a> (ForwardIt begin, ForwardIt end, unsigned limit)</td></tr>
+<tr class="separator:a09260eb4004b9decd7ae86a0263afd51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f99382dd9cdec90212b50393754b962"><td class="memItemLeft" align="right" valign="top">static std::set&lt; <a class="el" href="structppht_1_1point__t.html">point_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceppht.html#a2f99382dd9cdec90212b50393754b962">find_offsets</a> (<a class="el" href="classppht_1_1segment__t.html">segment_t</a> const &amp;segment, unsigned radius)</td></tr>
+<tr class="memdesc:a2f99382dd9cdec90212b50393754b962"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a set of offsets that are within a radius.  <a href="#a2f99382dd9cdec90212b50393754b962">More...</a><br /></td></tr>
+<tr class="separator:a2f99382dd9cdec90212b50393754b962"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9f07cf00007b3c094373ca8b4c7bf6bd"><td class="memTemplParams" colspan="2">template&lt;template&lt; class &gt; class Raster&gt; </td></tr>
-<tr class="memitem:a9f07cf00007b3c094373ca8b4c7bf6bd"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classppht_1_1point__set.html">point_set</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceppht.html#a9f07cf00007b3c094373ca8b4c7bf6bd">scan</a> (<a class="el" href="classppht_1_1state.html">state</a>&lt; Raster &gt; &amp;s, <a class="el" href="namespaceppht.html#acefb02c86eb6437a82dc24246107fda7">segment_t</a> const &amp;segment, unsigned radius, unsigned max_gap)</td></tr>
+<tr class="memitem:a9f07cf00007b3c094373ca8b4c7bf6bd"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classppht_1_1point__set.html">point_set</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceppht.html#a9f07cf00007b3c094373ca8b4c7bf6bd">scan</a> (<a class="el" href="classppht_1_1state.html">state</a>&lt; Raster &gt; &amp;s, <a class="el" href="classppht_1_1segment__t.html">segment_t</a> const &amp;segment, unsigned radius, unsigned max_gap)</td></tr>
 <tr class="memdesc:a9f07cf00007b3c094373ca8b4c7bf6bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Trace a scan channel.  <a href="#a9f07cf00007b3c094373ca8b4c7bf6bd">More...</a><br /></td></tr>
 <tr class="separator:a9f07cf00007b3c094373ca8b4c7bf6bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a41a1d029f79e783306b59dadffea1bfd"><td class="memTemplParams" colspan="2">template&lt;class T1 , class T2 &gt; </td></tr>
-<tr class="memitem:a41a1d029f79e783306b59dadffea1bfd"><td class="memTemplItemLeft" align="right" valign="top">static auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceppht.html#a41a1d029f79e783306b59dadffea1bfd">abs_diff</a> (const T1 &amp;a, const T2 &amp;b)</td></tr>
-<tr class="memdesc:a41a1d029f79e783306b59dadffea1bfd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Utility function to return the distance between two values.  <a href="#a41a1d029f79e783306b59dadffea1bfd">More...</a><br /></td></tr>
-<tr class="separator:a41a1d029f79e783306b59dadffea1bfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a98f5f2b7cf28704f41f0c38edfeb8e2e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structppht_1_1point__t.html">point_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceppht.html#a98f5f2b7cf28704f41f0c38edfeb8e2e">operator+</a> (const <a class="el" href="structppht_1_1point__t.html">point_t</a> &amp;p, const <a class="el" href="structppht_1_1offset__t.html">offset_t</a> &amp;o)</td></tr>
-<tr class="separator:a98f5f2b7cf28704f41f0c38edfeb8e2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7d8007330c3cccf008b326c3faa37abd"><td class="memTemplParams" colspan="2">template&lt;class State , class Accumulator  = accumulator&lt;&gt;&gt; </td></tr>
-<tr class="memitem:a7d8007330c3cccf008b326c3faa37abd"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="namespaceppht.html#acefb02c86eb6437a82dc24246107fda7">segment_t</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceppht.html#a7d8007330c3cccf008b326c3faa37abd">find_segments</a> (State &amp;&amp;<a class="el" href="classppht_1_1state.html">state</a>, const <a class="el" href="structppht_1_1parameters.html">parameters</a> &amp;param=<a class="el" href="structppht_1_1parameters.html">parameters</a>{}, std::random_device::result_type seed=std::random_device{}())</td></tr>
+<tr class="memitem:a7d8007330c3cccf008b326c3faa37abd"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classppht_1_1segment__t.html">segment_t</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceppht.html#a7d8007330c3cccf008b326c3faa37abd">find_segments</a> (State &amp;&amp;<a class="el" href="classppht_1_1state.html">state</a>, const <a class="el" href="structppht_1_1parameters.html">parameters</a> &amp;param=<a class="el" href="structppht_1_1parameters.html">parameters</a>{}, std::random_device::result_type seed=std::random_device{}())</td></tr>
 <tr class="memdesc:a7d8007330c3cccf008b326c3faa37abd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simplified interface to the PPHT algorithm.  <a href="#a7d8007330c3cccf008b326c3faa37abd">More...</a><br /></td></tr>
 <tr class="separator:a7d8007330c3cccf008b326c3faa37abd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The basic namespace of the library. </p>
-</div><h2 class="groupheader">Typedef Documentation</h2>
-<a id="ab0d90db214191dacf7d2b39793a8c7cf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab0d90db214191dacf7d2b39793a8c7cf">&sect;&nbsp;</a></span>h_scanner</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int Increment&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">using <a class="el" href="namespaceppht.html#ab0d90db214191dacf7d2b39793a8c7cf">ppht::h_scanner</a> = typedef <a class="el" href="structppht_1_1bresenham__scanner.html">bresenham_scanner</a>&lt;&amp;<a class="el" href="structppht_1_1point__t.html#a1bea1597dc672c6a53b6615f9bbcdaf6">point_t::x</a>, &amp;<a class="el" href="structppht_1_1point__t.html#af38a5247b7cbe241c837e6c28e257fd0">point_t::y</a>, Increment&gt;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="acefb02c86eb6437a82dc24246107fda7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acefb02c86eb6437a82dc24246107fda7">&sect;&nbsp;</a></span>segment_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">using <a class="el" href="namespaceppht.html#acefb02c86eb6437a82dc24246107fda7">ppht::segment_t</a> = typedef std::pair&lt;<a class="el" href="structppht_1_1point__t.html">point_t</a>, <a class="el" href="structppht_1_1point__t.html">point_t</a>&gt;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>A pair of points representing a line segment. </p>
-
-</div>
-</div>
-<a id="a603d7f2acf653498317462858259c618"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a603d7f2acf653498317462858259c618">&sect;&nbsp;</a></span>v_scanner</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int Increment&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">using <a class="el" href="namespaceppht.html#a603d7f2acf653498317462858259c618">ppht::v_scanner</a> = typedef <a class="el" href="structppht_1_1bresenham__scanner.html">bresenham_scanner</a>&lt;&amp;<a class="el" href="structppht_1_1point__t.html#af38a5247b7cbe241c837e6c28e257fd0">point_t::y</a>, &amp;<a class="el" href="structppht_1_1point__t.html#a1bea1597dc672c6a53b6615f9bbcdaf6">point_t::x</a>, Increment&gt;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<h2 class="groupheader">Enumeration Type Documentation</h2>
+</div><h2 class="groupheader">Enumeration Type Documentation</h2>
 <a id="a62df3910999f59d178dd7090a4c89d86"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a62df3910999f59d178dd7090a4c89d86">&sect;&nbsp;</a></span>status_t</h2>
 
@@ -220,28 +162,26 @@ template&lt;int Increment&gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a41a1d029f79e783306b59dadffea1bfd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a41a1d029f79e783306b59dadffea1bfd">&sect;&nbsp;</a></span>abs_diff()</h2>
+<a id="a2f61e6440511b00746ab496ca16ed58c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f61e6440511b00746ab496ca16ed58c">&sect;&nbsp;</a></span>distance_to_line_squared()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;class T1 , class T2 &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static auto ppht::abs_diff </td>
+          <td class="memname">static auto ppht::distance_to_line_squared </td>
           <td>(</td>
-          <td class="paramtype">const T1 &amp;&#160;</td>
-          <td class="paramname"><em>a</em>, </td>
+          <td class="paramtype">const <a class="el" href="structppht_1_1point__t.html">point_t</a> &amp;&#160;</td>
+          <td class="paramname"><em>pnt1</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const T2 &amp;&#160;</td>
-          <td class="paramname"><em>b</em>&#160;</td>
+          <td class="paramtype">const <a class="el" href="structppht_1_1point__t.html">point_t</a> &amp;&#160;</td>
+          <td class="paramname"><em>pnt2</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -256,21 +196,60 @@ template&lt;class T1 , class T2 &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Utility function to return the distance between two values. </p>
-<p>Returns the absolute difference of the two values, even if the values are unsigned.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">a</td><td>the first value </td></tr>
-    <tr><td class="paramname">b</td><td>the second value</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>the absolute value of the difference between the larger and smaller value. </dd></dl>
+</div>
+</div>
+<a id="a794990442ae62f47b42fe2d47684ca60"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a794990442ae62f47b42fe2d47684ca60">&sect;&nbsp;</a></span>find_nearest()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class RandomIt &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static auto ppht::find_nearest </td>
+          <td>(</td>
+          <td class="paramtype">RandomIt&#160;</td>
+          <td class="paramname"><em>begin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">RandomIt&#160;</td>
+          <td class="paramname"><em>end</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structppht_1_1point__t.html">point_t</a> &amp;&#160;</td>
+          <td class="paramname"><em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>limit</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
-<a id="a2c40e4f435821fe542a141d43ee01b54"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2c40e4f435821fe542a141d43ee01b54">&sect;&nbsp;</a></span>find_offsets()</h2>
+<a id="a2f99382dd9cdec90212b50393754b962"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f99382dd9cdec90212b50393754b962">&sect;&nbsp;</a></span>find_offsets()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -279,9 +258,9 @@ template&lt;class T1 , class T2 &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static std::set&lt;<a class="el" href="structppht_1_1offset__t.html">offset_t</a>&gt; ppht::find_offsets </td>
+          <td class="memname">static std::set&lt;<a class="el" href="structppht_1_1point__t.html">point_t</a>&gt; ppht::find_offsets </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="namespaceppht.html#acefb02c86eb6437a82dc24246107fda7">segment_t</a> const &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="classppht_1_1segment__t.html">segment_t</a> const &amp;&#160;</td>
           <td class="paramname"><em>segment</em>, </td>
         </tr>
         <tr>
@@ -326,7 +305,7 @@ template&lt;class T1 , class T2 &gt; </div>
 template&lt;class State , class Accumulator  = accumulator&lt;&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;<a class="el" href="namespaceppht.html#acefb02c86eb6437a82dc24246107fda7">segment_t</a>&gt; ppht::find_segments </td>
+          <td class="memname">std::vector&lt;<a class="el" href="classppht_1_1segment__t.html">segment_t</a>&gt; ppht::find_segments </td>
           <td>(</td>
           <td class="paramtype">State &amp;&amp;&#160;</td>
           <td class="paramname"><em>state</em>, </td>
@@ -373,6 +352,74 @@ template&lt;class State , class Accumulator  = accumulator&lt;&gt;&gt; </div>
 
 </div>
 </div>
+<a id="a8f7ea60086c280bdf0ffd08859d8523e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f7ea60086c280bdf0ffd08859d8523e">&sect;&nbsp;</a></span>kd_search()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;std::size_t Dim = 0, class RandomIt , class OutputIt &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">OutputIt ppht::kd_search </td>
+          <td>(</td>
+          <td class="paramtype">RandomIt&#160;</td>
+          <td class="paramname"><em>begin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">RandomIt&#160;</td>
+          <td class="paramname"><em>end</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">OutputIt&#160;</td>
+          <td class="paramname"><em>output</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structppht_1_1point__t.html">point_t</a> &amp;&#160;</td>
+          <td class="paramname"><em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">long&#160;</td>
+          <td class="paramname"><em>limit</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Perform a modified <em>kd</em>-tree search on the elements of the given range.</p>
+<p>Given a list of points [<code>begin</code>, <code>end</code>) and a reference point <code>p</code>, finds the intersection of the list and the closed disc centered at <code>p</code> with radius <code>limit</code>.</p>
+<p>The template parameter <code>Dim</code> controls the scan mode of the function. The default 0 value starts the search by partitioning along the x-axis; a 1 would partition along the y-axis. Each recursive call toggles the mode.</p>
+<dl class="section note"><dt>Note</dt><dd>The elements of the range will be shuffled as part of the search. This may invalidate iterators.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">begin</td><td>the start of the sequence to search </td></tr>
+    <tr><td class="paramname">end</td><td>the end of the sequence to search </td></tr>
+    <tr><td class="paramname">output</td><td>where to store the results of the search </td></tr>
+    <tr><td class="paramname">p</td><td>the center of the disc </td></tr>
+    <tr><td class="paramname">limit</td><td>the radius of the disc </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Dim</td><td>the axis along which the range will be partitioned </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="ae8534014335620ab8cb9030d1e264853"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae8534014335620ab8cb9030d1e264853">&sect;&nbsp;</a></span>make_scanner()</h2>
 
@@ -385,7 +432,7 @@ template&lt;class State , class Accumulator  = accumulator&lt;&gt;&gt; </div>
         <tr>
           <td class="memname">static std::unique_ptr&lt;<a class="el" href="structppht_1_1scanner.html">scanner</a>&gt; ppht::make_scanner </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="namespaceppht.html#acefb02c86eb6437a82dc24246107fda7">segment_t</a> &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="classppht_1_1segment__t.html">segment_t</a> &amp;&#160;</td>
           <td class="paramname"><em>segment</em></td><td>)</td>
           <td></td>
         </tr>
@@ -408,23 +455,31 @@ template&lt;class State , class Accumulator  = accumulator&lt;&gt;&gt; </div>
 
 </div>
 </div>
-<a id="a98f5f2b7cf28704f41f0c38edfeb8e2e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a98f5f2b7cf28704f41f0c38edfeb8e2e">&sect;&nbsp;</a></span>operator+()</h2>
+<a id="a09260eb4004b9decd7ae86a0263afd51"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09260eb4004b9decd7ae86a0263afd51">&sect;&nbsp;</a></span>postprocess()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class ForwardIt &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structppht_1_1point__t.html">point_t</a> ppht::operator+ </td>
+          <td class="memname">ForwardIt ppht::postprocess </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structppht_1_1point__t.html">point_t</a> &amp;&#160;</td>
-          <td class="paramname"><em>p</em>, </td>
+          <td class="paramtype">ForwardIt&#160;</td>
+          <td class="paramname"><em>begin</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="structppht_1_1offset__t.html">offset_t</a> &amp;&#160;</td>
-          <td class="paramname"><em>o</em>&#160;</td>
+          <td class="paramtype">ForwardIt&#160;</td>
+          <td class="paramname"><em>end</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>limit</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -453,7 +508,7 @@ template&lt;template&lt; class &gt; class Raster&gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespaceppht.html#acefb02c86eb6437a82dc24246107fda7">segment_t</a> const &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="classppht_1_1segment__t.html">segment_t</a> const &amp;&#160;</td>
           <td class="paramname"><em>segment</em>, </td>
         </tr>
         <tr>
@@ -494,7 +549,7 @@ template&lt;template&lt; class &gt; class Raster&gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="namespaceppht.html#a2c40e4f435821fe542a141d43ee01b54" title="Return a set of offsets that are within a radius. ">find_offsets()</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="namespaceppht.html#a2f99382dd9cdec90212b50393754b962" title="Return a set of offsets that are within a radius. ">find_offsets()</a> </dd></dl>
 
 </div>
 </div>

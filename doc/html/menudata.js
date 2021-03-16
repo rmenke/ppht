@@ -6,7 +6,6 @@ var menudata={children:[
 {text:'Namespace Members',url:'namespacemembers.html',children:[
 {text:'All',url:'namespacemembers.html'},
 {text:'Functions',url:'namespacemembers_func.html'},
-{text:'Typedefs',url:'namespacemembers_type.html'},
 {text:'Enumerations',url:'namespacemembers_enum.html'},
 {text:'Enumerator',url:'namespacemembers_eval.html'}]}]},
 {text:'Classes',url:'annotated.html',children:[
@@ -33,8 +32,6 @@ var menudata={children:[
 {text:'t',url:'functions.html#index_t'},
 {text:'u',url:'functions.html#index_u'},
 {text:'v',url:'functions.html#index_v'},
-{text:'x',url:'functions.html#index_x'},
-{text:'y',url:'functions.html#index_y'},
 {text:'~',url:'functions.html#index_0x7e'}]},
 {text:'Functions',url:'functions_func.html',children:[
 {text:'a',url:'functions_func.html#index_a'},
@@ -60,9 +57,7 @@ var menudata={children:[
 {text:'c',url:'functions_vars.html#index_c'},
 {text:'d',url:'functions_vars.html#index_d'},
 {text:'m',url:'functions_vars.html#index_m'},
-{text:'t',url:'functions_vars.html#index_t'},
-{text:'x',url:'functions_vars.html#index_x'},
-{text:'y',url:'functions_vars.html#index_y'}]},
+{text:'t',url:'functions_vars.html#index_t'}]},
 {text:'Typedefs',url:'functions_type.html'},
 {text:'Related Functions',url:'functions_rela.html'}]}]},
 {text:'Files',url:'files.html',children:[
