@@ -9,13 +9,8 @@ TAP_INITIALIZE;
 
 namespace std {
 
-template <class F, class S>
-static inline ostream &operator<<(ostream &o, const pair<F, S> &p) {
-    return o << '(' << p.first << ',' << p.second << ')';
-}
-
 template <class T>
-static inline ostream &operator<<(ostream &o, const vector<T> &v) {
+static inline ostream &operator <<(ostream &o, const vector<T> &v) {
     auto b = v.begin();
     auto e = v.end();
 
@@ -24,11 +19,32 @@ static inline ostream &operator<<(ostream &o, const vector<T> &v) {
     if (b != e) {
         o << *b;
         while (++b != e) {
-            o << ',' << *b;
+            o << ", " << *b;
         }
     }
 
     return o << ']';
+}
+
+template <class T>
+static inline ostream &print_tuple(ostream &o, const T &, index_sequence<>) {
+    return o;
+}
+
+template <class T, std::size_t Ix, std::size_t... Ir>
+static inline ostream &print_tuple(ostream &o, const T &t, index_sequence<Ix, Ir...>) {
+    if (Ix > 0) o << ", ";
+    return print_tuple(o << get<Ix>(t), t, index_sequence<Ir...>{});
+}
+
+template <class... T>
+static inline ostream &operator <<(ostream &o, const tuple<T...> &t) {
+    return print_tuple(o << '(', t, index_sequence_for<T...>{}) << ')';
+}
+
+template <class F, class S>
+static inline ostream &operator <<(ostream &o, const pair<F, S> &p) {
+    return print_tuple(o << '(', p, make_index_sequence<2>{}) << ')';
 }
 
 } // namespace std
@@ -153,4 +169,6 @@ int main() {
     if (!ok(expected.empty(), "no unexpected segments seen")) {
         diag("unexpected: ", expected);
     }
+
+    return test_status();
 }

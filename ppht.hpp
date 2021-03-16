@@ -92,11 +92,11 @@
 #ifndef ppht_hpp
 #define ppht_hpp
 
-#include <ppht/raster.hpp>
-
 #include "ppht/accumulator.hpp"
 #include "ppht/parameters.hpp"
 #include "ppht/point_set.hpp"
+#include "ppht/postprocess.hpp"
+#include "ppht/raster.hpp"
 #include "ppht/state.hpp"
 
 /**
@@ -155,12 +155,14 @@ find_segments(State &&state, const parameters &param = parameters{},
 
     point_t point;
 
+    const auto channel_radius = param.channel_width >> 1;
+
     while (state.next(point)) {
         segment_t scan_channel;
 
         if (accumulator.vote(point, scan_channel)) {
-            point_set found = scan(state, scan_channel,
-                                   param.channel_width >> 1, param.max_gap);
+            point_set found = scan(state, scan_channel, channel_radius,
+                                   param.max_gap);
 
             if (found.length_squared() >= min_length_squared) {
                 for (auto &&point : found) {
@@ -185,6 +187,9 @@ find_segments(State &&state, const parameters &param = parameters{},
             }
         }
     }
+
+    segments.erase(postprocess(segments.begin(), segments.end(),
+                               channel_radius), segments.end());
 
     return segments;
 }

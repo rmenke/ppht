@@ -88,7 +88,7 @@ POST_UNINSTALL = :
 TESTS = 01-raster.test$(EXEEXT) 02-trig.test$(EXEEXT) \
 	03-accumulator.test$(EXEEXT) 04-channel.test$(EXEEXT) \
 	05-point_set.test$(EXEEXT) 06-state.test$(EXEEXT) \
-	07-ppht.test$(EXEEXT)
+	07-ppht.test$(EXEEXT) 08-postprocess.test$(EXEEXT)
 check_PROGRAMS = $(am__EXEEXT_1)
 subdir = test
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
@@ -103,28 +103,31 @@ CONFIG_CLEAN_VPATH_FILES =
 am__EXEEXT_1 = 01-raster.test$(EXEEXT) 02-trig.test$(EXEEXT) \
 	03-accumulator.test$(EXEEXT) 04-channel.test$(EXEEXT) \
 	05-point_set.test$(EXEEXT) 06-state.test$(EXEEXT) \
-	07-ppht.test$(EXEEXT)
-am_01_raster_test_OBJECTS = 01-raster.$(OBJEXT)
-01_raster_test_OBJECTS = $(am_01_raster_test_OBJECTS)
+	07-ppht.test$(EXEEXT) 08-postprocess.test$(EXEEXT)
+01_raster_test_SOURCES = 01-raster.cpp
+01_raster_test_OBJECTS = 01-raster.$(OBJEXT)
 01_raster_test_LDADD = $(LDADD)
-am_02_trig_test_OBJECTS = 02-trig.$(OBJEXT)
-02_trig_test_OBJECTS = $(am_02_trig_test_OBJECTS)
+02_trig_test_SOURCES = 02-trig.cpp
+02_trig_test_OBJECTS = 02-trig.$(OBJEXT)
 02_trig_test_LDADD = $(LDADD)
-am_03_accumulator_test_OBJECTS = 03-accumulator.$(OBJEXT)
-03_accumulator_test_OBJECTS = $(am_03_accumulator_test_OBJECTS)
+03_accumulator_test_SOURCES = 03-accumulator.cpp
+03_accumulator_test_OBJECTS = 03-accumulator.$(OBJEXT)
 03_accumulator_test_LDADD = $(LDADD)
-am_04_channel_test_OBJECTS = 04-channel.$(OBJEXT)
-04_channel_test_OBJECTS = $(am_04_channel_test_OBJECTS)
+04_channel_test_SOURCES = 04-channel.cpp
+04_channel_test_OBJECTS = 04-channel.$(OBJEXT)
 04_channel_test_LDADD = $(LDADD)
-am_05_point_set_test_OBJECTS = 05-point_set.$(OBJEXT)
-05_point_set_test_OBJECTS = $(am_05_point_set_test_OBJECTS)
+05_point_set_test_SOURCES = 05-point_set.cpp
+05_point_set_test_OBJECTS = 05-point_set.$(OBJEXT)
 05_point_set_test_LDADD = $(LDADD)
-am_06_state_test_OBJECTS = 06-state.$(OBJEXT)
-06_state_test_OBJECTS = $(am_06_state_test_OBJECTS)
+06_state_test_SOURCES = 06-state.cpp
+06_state_test_OBJECTS = 06-state.$(OBJEXT)
 06_state_test_LDADD = $(LDADD)
-am_07_ppht_test_OBJECTS = 07-ppht.$(OBJEXT)
-07_ppht_test_OBJECTS = $(am_07_ppht_test_OBJECTS)
+07_ppht_test_SOURCES = 07-ppht.cpp
+07_ppht_test_OBJECTS = 07-ppht.$(OBJEXT)
 07_ppht_test_LDADD = $(LDADD)
+08_postprocess_test_SOURCES = 08-postprocess.cpp
+08_postprocess_test_OBJECTS = 08-postprocess.$(OBJEXT)
+08_postprocess_test_LDADD = $(LDADD)
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
 am__v_P_0 = false
@@ -143,7 +146,7 @@ am__maybe_remake_depfiles = depfiles
 am__depfiles_remade = ./$(DEPDIR)/01-raster.Po ./$(DEPDIR)/02-trig.Po \
 	./$(DEPDIR)/03-accumulator.Po ./$(DEPDIR)/04-channel.Po \
 	./$(DEPDIR)/05-point_set.Po ./$(DEPDIR)/06-state.Po \
-	./$(DEPDIR)/07-ppht.Po
+	./$(DEPDIR)/07-ppht.Po ./$(DEPDIR)/08-postprocess.Po
 am__mv = mv -f
 CXXCOMPILE = $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
 	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
@@ -158,26 +161,11 @@ AM_V_CXXLD = $(am__v_CXXLD_@AM_V@)
 am__v_CXXLD_ = $(am__v_CXXLD_@AM_DEFAULT_V@)
 am__v_CXXLD_0 = @echo "  CXXLD   " $@;
 am__v_CXXLD_1 = 
-COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
-	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
-AM_V_CC = $(am__v_CC_@AM_V@)
-am__v_CC_ = $(am__v_CC_@AM_DEFAULT_V@)
-am__v_CC_0 = @echo "  CC      " $@;
-am__v_CC_1 = 
-CCLD = $(CC)
-LINK = $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
-AM_V_CCLD = $(am__v_CCLD_@AM_V@)
-am__v_CCLD_ = $(am__v_CCLD_@AM_DEFAULT_V@)
-am__v_CCLD_0 = @echo "  CCLD    " $@;
-am__v_CCLD_1 = 
-SOURCES = $(01_raster_test_SOURCES) $(02_trig_test_SOURCES) \
-	$(03_accumulator_test_SOURCES) $(04_channel_test_SOURCES) \
-	$(05_point_set_test_SOURCES) $(06_state_test_SOURCES) \
-	$(07_ppht_test_SOURCES)
-DIST_SOURCES = $(01_raster_test_SOURCES) $(02_trig_test_SOURCES) \
-	$(03_accumulator_test_SOURCES) $(04_channel_test_SOURCES) \
-	$(05_point_set_test_SOURCES) $(06_state_test_SOURCES) \
-	$(07_ppht_test_SOURCES)
+SOURCES = 01-raster.cpp 02-trig.cpp 03-accumulator.cpp 04-channel.cpp \
+	05-point_set.cpp 06-state.cpp 07-ppht.cpp 08-postprocess.cpp
+DIST_SOURCES = 01-raster.cpp 02-trig.cpp 03-accumulator.cpp \
+	04-channel.cpp 05-point_set.cpp 06-state.cpp 07-ppht.cpp \
+	08-postprocess.cpp
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -496,13 +484,8 @@ TEST_LOG_DRIVER = env AM_TAP_AWK='$(AWK)' $(SHELL) \
 
 AM_CPPFLAGS = -I$(abs_top_srcdir) -I$(abs_srcdir)
 AM_CXXFLAGS = -Wall -Wpedantic
-01_raster_test_SOURCES = 01-raster.cpp tap.hpp
-02_trig_test_SOURCES = 02-trig.cpp tap.hpp
-03_accumulator_test_SOURCES = 03-accumulator.cpp tap.hpp
-04_channel_test_SOURCES = 04-channel.cpp tap.hpp
-05_point_set_test_SOURCES = 05-point_set.cpp tap.hpp
-06_state_test_SOURCES = 06-state.cpp tap.hpp
-07_ppht_test_SOURCES = 07-ppht.cpp tap.hpp image-01.hpp image-02.hpp
+AM_DEFAULT_SOURCE_EXT = .cpp
+EXTRA_DIST = tap.hpp image-01.hpp image-02.hpp
 all: all-am
 
 .SUFFIXES:
@@ -568,6 +551,10 @@ clean-checkPROGRAMS:
 	@rm -f 07-ppht.test$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(07_ppht_test_OBJECTS) $(07_ppht_test_LDADD) $(LIBS)
 
+08-postprocess.test$(EXEEXT): $(08_postprocess_test_OBJECTS) $(08_postprocess_test_DEPENDENCIES) $(EXTRA_08_postprocess_test_DEPENDENCIES) 
+	@rm -f 08-postprocess.test$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(08_postprocess_test_OBJECTS) $(08_postprocess_test_LDADD) $(LIBS)
+
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
 
@@ -581,6 +568,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/05-point_set.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/06-state.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/07-ppht.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/08-postprocess.Po@am__quote@ # am--include-marker
 
 $(am__depfiles_remade):
 	@$(MKDIR_P) $(@D)
@@ -896,6 +884,7 @@ distclean: distclean-am
 	-rm -f ./$(DEPDIR)/05-point_set.Po
 	-rm -f ./$(DEPDIR)/06-state.Po
 	-rm -f ./$(DEPDIR)/07-ppht.Po
+	-rm -f ./$(DEPDIR)/08-postprocess.Po
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-tags
@@ -948,6 +937,7 @@ maintainer-clean: maintainer-clean-am
 	-rm -f ./$(DEPDIR)/05-point_set.Po
 	-rm -f ./$(DEPDIR)/06-state.Po
 	-rm -f ./$(DEPDIR)/07-ppht.Po
+	-rm -f ./$(DEPDIR)/08-postprocess.Po
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 
