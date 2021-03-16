@@ -204,4 +204,6 @@ int main() {
         p_old = p_new;
         result->advance(p_new);
     }
+
+    return test_status();
 }

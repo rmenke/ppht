@@ -2,18 +2,20 @@ ACLOCAL_AMFLAGS = -I m4 --install
 
 SUBDIRS = test
 
-nobase_include_HEADERS = ppht.hpp ppht/accumulator.hpp ppht/channel.hpp ppht/parameters.hpp ppht/point_set.hpp ppht/raster.hpp ppht/state.hpp ppht/trig.hpp ppht/types.hpp
+nobase_include_HEADERS = ppht.hpp ppht/accumulator.hpp ppht/channel.hpp ppht/kd-search.hpp ppht/parameters.hpp ppht/point_set.hpp ppht/postprocess.hpp ppht/raster.hpp ppht/state.hpp ppht/trig.hpp ppht/types.hpp
 
 git-add:
 	$(MAKE) distdir
-	@set -x; (cd "$(distdir)"; find . -depth -type f -print0) | \
-		(cd "$(top_srcdir)"; xargs -0t git add)
+	@(cd "$(distdir)"; find . -depth -type f -print0) | \
+		(cd "$(top_srcdir)"; xargs -0t git add --verbose)
 	$(RM) -r "$(distdir)"
 
-git-doc: Doxyfile
+doc: Doxyfile
 	cd "$(top_srcdir)"; doxygen "$(abs_top_builddir)/Doxyfile"
 	rm -rf doc; mv "$(top_srcdir)/doc" .
-	cd "$(top_srcdir)"; git co gh-pages
+
+git-doc: doc
+	cd "$(top_srcdir)"; git checkout gh-pages
 	cd "$(top_srcdir)"; git rm -rf doc; \
 	mv "$(abs_top_builddir)/doc" .; git add doc
 

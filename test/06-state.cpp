@@ -66,4 +66,6 @@ int main() {
     eq(ppht::point_t(0, 0), *iter, "zero offset");
     ++iter;
     eq(ppht::point_t(1, -1), *iter, "pos offset");
+
+    return test_status();
 }

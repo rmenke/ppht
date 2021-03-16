@@ -83,4 +83,6 @@ int main() {
     ok(b != e, "iterator not done");
     eq(ppht::point_t{6,6}, *(b++), "point 4");
     ok(b == e, "iterator done");
+
+    return test_status();
 }

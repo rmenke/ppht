@@ -2,6 +2,7 @@
 #define ppht_types_hpp
 
 #include <array>
+#include <cmath>
 #include <iostream>
 #include <utility>
 
@@ -18,16 +19,33 @@ struct point_t : std::array<long, 2> {
 
     point_t(long a, long b) : std::array<long, 2>({{a, b}}) {}
 
-    template <class P>
-    point_t operator +(const P &p) const {
+    long length_squared() const {
+        auto &x = std::get<0>(*this);
+        auto &y = std::get<1>(*this);
+        return x * x + y * y;
+    }
+
+    double length() const {
+        return std::hypot(std::get<0>(*this), std::get<1>(*this));
+    }
+
+    point_t operator +(const point_t &p) const {
         return {std::get<0>(*this) + std::get<0>(p),
                 std::get<1>(*this) + std::get<1>(p)};
     }
 
-    template <class P>
-    point_t operator *(const P &p) const {
+    point_t operator -(const point_t &p) const {
+        return {std::get<0>(*this) - std::get<0>(p),
+                std::get<1>(*this) - std::get<1>(p)};
+    }
+
+    point_t operator *(const point_t &p) const {
         return {std::get<0>(*this) * std::get<0>(p),
                 std::get<1>(*this) * std::get<1>(p)};
+    }
+
+    point_t operator /(long d) const {
+        return {std::get<0>(*this) / d, std::get<1>(*this) / d};
     }
 
     template <class P>
@@ -41,11 +59,39 @@ struct point_t : std::array<long, 2> {
     }
 };
 
-/// An offset from a point.
-using offset_t [[deprecated]] = point_t;
+/**
+ * A pair of points representing a line segment.
+ */
+class segment_t : public std::pair<point_t, point_t> {
+    using std::pair<point_t, point_t>::pair;
 
-/// A pair of points representing a line segment.
-using segment_t = std::pair<point_t, point_t>;
+public:
+    /**
+     * Implementation of the equality predicate.
+     *
+     * Segments are equivalent if they have the same endpoints in
+     * either order.
+     *
+     * @param rhs the segment to compare
+     *
+     * @return true if the segments are equal
+     */
+    bool operator ==(const segment_t &rhs) const {
+        return (first == rhs.first && second == rhs.second)
+            || (first == rhs.second && second == rhs.first);
+    }
+
+    /**
+     * Implementation of the inequality predicate.
+     *
+     * @param rhs the segment to compare
+     *
+     * @return true if the segments are not equal
+     */
+    bool operator !=(const segment_t &rhs) const {
+        return !operator ==(rhs);
+    }
+};
 
 /// The status of a pixel in a @ref state map.
 enum status_t {

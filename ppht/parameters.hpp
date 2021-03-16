@@ -1,5 +1,5 @@
-#ifndef parameters_hpp
-#define parameters_hpp
+#ifndef ppht_parameters_hpp
+#define ppht_parameters_hpp
 
 #include <cstdint>
 
@@ -147,4 +147,4 @@ struct parameters {
 
 } // namespace ppht
 
-#endif /* parameters_hpp */
+#endif /* ppht_parameters_hpp */
