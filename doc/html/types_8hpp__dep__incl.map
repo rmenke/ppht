@@ -1,8 +1,11 @@
 <map id="ppht/types.hpp" name="ppht/types.hpp">
-<area shape="rect" id="node2" href="$trig_8hpp.html" title="ppht/trig.hpp" alt="" coords="5,79,101,104"/>
-<area shape="rect" id="node3" href="$accumulator_8hpp.html" title="ppht/accumulator.hpp" alt="" coords="64,152,213,177"/>
-<area shape="rect" id="node5" href="$channel_8hpp.html" title="ppht/channel.hpp" alt="" coords="175,79,299,104"/>
-<area shape="rect" id="node6" href="$state_8hpp.html" title="ppht/state.hpp" alt="" coords="283,152,389,177"/>
-<area shape="rect" id="node7" href="$point__set_8hpp.html" title="ppht/point_set.hpp" alt="" coords="373,79,504,104"/>
-<area shape="rect" id="node4" href="$ppht_8hpp.html" title="ppht.hpp" alt="" coords="299,225,372,251"/>
+<area shape="rect" id="node1" title=" " alt="" coords="233,5,342,31"/>
+<area shape="rect" id="node2" href="$accumulator_8hpp.html" title=" " alt="" coords="64,152,213,177"/>
+<area shape="rect" id="node4" href="$channel_8hpp.html" title=" " alt="" coords="226,79,350,104"/>
+<area shape="rect" id="node5" href="$state_8hpp.html" title=" " alt="" coords="251,152,357,177"/>
+<area shape="rect" id="node6" href="$kd-search_8hpp.html" title=" " alt="" coords="580,79,715,104"/>
+<area shape="rect" id="node7" href="$postprocess_8hpp.html" title=" " alt="" coords="468,152,617,177"/>
+<area shape="rect" id="node8" href="$point__set_8hpp.html" title=" " alt="" coords="374,79,505,104"/>
+<area shape="rect" id="node9" href="$trig_8hpp.html" title=" " alt="" coords="5,79,101,104"/>
+<area shape="rect" id="node3" href="$ppht_8hpp.html" title=" " alt="" coords="312,225,386,251"/>
 </map>

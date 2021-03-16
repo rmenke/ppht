@@ -1,3 +1,4 @@
-<map id="ppht::bresenham_scanner&lt; Ind, Dep, Increment &gt;" name="ppht::bresenham_scanner&lt; Ind, Dep, Increment &gt;">
-<area shape="rect" id="node2" href="$structppht_1_1scanner.html" title="A class for tracking the state required to advance a point along a segment. " alt="" coords="42,5,145,31"/>
+<map id="ppht::bresenham_scanner&lt; Ind, Increment &gt;" name="ppht::bresenham_scanner&lt; Ind, Increment &gt;">
+<area shape="rect" id="node1" title="A scanner based on Bresenham&#39;s line algorithm." alt="" coords="5,79,182,117"/>
+<area shape="rect" id="node2" href="$structppht_1_1scanner.html" title="A class for tracking the state required to advance a point along a segment." alt="" coords="42,5,145,31"/>
 </map>
