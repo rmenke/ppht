@@ -17,11 +17,16 @@ doc: Doxyfile
 git-doc: doc
 	cd "$(top_srcdir)"; git checkout gh-pages
 	cd "$(top_srcdir)"; git rm -rf doc; \
-	mv "$(abs_top_builddir)/doc" .; git add doc
+	mv "$(abs_top_builddir)/doc" .; git add -f doc
 
 git-tag:
 	cd "$(top_srcdir)"; \
 	git tag -f -a "v$(PACKAGE_VERSION)" -m "v$(PACKAGE_VERSION)"
+
+gh-release: git-tag dist-gzip
+	cd "$(top_srcdir)"; \
+	gh release create "v$(PACKAGE_VERSION)" \
+		"$(abs_top_builddir)/$(distdir).tar.gz"
 
 clean-local:
 	@find . -name '*~' -print0 | xargs -0t $(RM)
