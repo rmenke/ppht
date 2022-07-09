@@ -1,7 +1,6 @@
-#include "ppht/types.hpp"
-#include <tap.hpp>
+// Copyright (C) 2020-2022 by Rob Menke
 
-TAP_INITIALIZE;
+#include "tap.hpp"
 
 #include <ppht/state.hpp>
 

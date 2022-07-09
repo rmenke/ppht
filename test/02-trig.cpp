@@ -1,12 +1,12 @@
-#include <cmath>
-#include <ostream>
-#include <utility>
+// Copyright (C) 2020-2022 by Rob Menke
 
-#include <tap.hpp>
+#include "tap.hpp"
 
 #include <ppht/trig.hpp>
 
-TAP_INITIALIZE;
+#include <cmath>
+#include <ostream>
+#include <utility>
 
 namespace std {
 

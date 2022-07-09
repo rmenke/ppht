@@ -1,13 +1,16 @@
+// Copyright (C) 2020-2022 by Rob Menke
+
+#include "tap.hpp"
+
+#include <ppht/accumulator.hpp>
+#include <ppht/types.hpp>
+
 #include <algorithm>
 #include <cmath>
 #include <cstdlib>
 #include <numeric>
 #include <ostream>
 #include <random>
-
-#include <tap.hpp>
-
-TAP_INITIALIZE;
 
 namespace std {
 
@@ -33,9 +36,6 @@ static inline ostream &operator<<(ostream &o, vector<T> const &v) {
 }
 
 } // namespace std
-
-#include <ppht/accumulator.hpp>
-#include <ppht/types.hpp>
 
 using seed_t = std::random_device::result_type;
 

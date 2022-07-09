@@ -15,7 +15,7 @@ AC_CONFIG_SRCDIR([ppht.hpp])
 AM_INIT_AUTOMAKE([-Wall foreign nostdinc subdir-objects])
 
 AC_LANG([C++])
-AX_CXX_COMPILE_STDCXX([14],[noext],[mandatory])
+AX_CXX_COMPILE_STDCXX([17],[noext],[mandatory])
 
 AC_CONFIG_FILES([Makefile test/Makefile Doxyfile])
 

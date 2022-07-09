@@ -6,8 +6,7 @@ nobase_include_HEADERS = ppht.hpp ppht/accumulator.hpp ppht/channel.hpp ppht/kd-
 
 git-add:
 	$(MAKE) distdir
-	@(cd "$(distdir)"; find . -depth -type f -print0) | \
-		(cd "$(top_srcdir)"; xargs -0t git add --verbose)
+	@(cd "$(distdir)"; find . -depth -type f -print0) | (cd "$(top_srcdir)"; xargs -0t git add --verbose)
 	$(RM) -r "$(distdir)"
 
 doc: Doxyfile
@@ -20,8 +19,7 @@ git-doc: doc
 	mv "$(abs_top_builddir)/doc" .; git add -f doc
 
 git-tag:
-	cd "$(top_srcdir)"; \
-	git tag -f -a "v$(PACKAGE_VERSION)" -m "v$(PACKAGE_VERSION)"
+	cd "$(top_srcdir)"; git tag -f -a "v$(PACKAGE_VERSION)" -m "v$(PACKAGE_VERSION)"
 
 gh-release: git-tag dist-gzip
 	cd "$(top_srcdir)"; \

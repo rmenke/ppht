@@ -1,8 +1,8 @@
-#include <tap.hpp>
+// Copyright (C) 2020-2022 by Rob Menke
+
+#include "tap.hpp"
 
 #include <ppht/raster.hpp>
-
-TAP_INITIALIZE;
 
 int main() {
     using namespace tap;

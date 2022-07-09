@@ -1,3 +1,5 @@
+// Copyright (C) 2022 by Rob Menke
+
 #ifndef _tap_hpp_
 #define _tap_hpp_
 
@@ -41,7 +43,7 @@ class test_plan {
 
     test_plan *_parent;
 
-    static test_plan *_current_plan;
+    static inline test_plan *_current_plan = nullptr;
 
   public:
     test_plan(unsigned plan = 0)
@@ -246,9 +248,6 @@ static inline test_plan skip(unsigned count, Args &&... args) {
 int test_status() {
     return test_plan::current_plan()->status();
 }
-
-#define TAP_INITIALIZE \
-    ::tap::test_plan * ::tap::test_plan::_current_plan = nullptr
 
 } // namespace tap
 
