@@ -183,51 +183,6 @@ class state {
 };
 
 /**
- * @brief Return a set of offsets that are within a radius.
- *
- * The number of offsets generated is controlled by the @c radius
- * parameter.  For a radius @f$r@f$, the returned offsets will be
- * @f$0,1,\ldots,r@f$ pixels from the origin, along the perpendicular
- * to the @c segment parameter.  Both directions are considered, so
- * @f$2^r+1@f$ offsets will be generated before duplicates are
- * removed.
- *
- * @param segment used to determine the orientation of the perpendicular.
- *
- * @param radius determines the number of offsets to calculate.
- *
- * @return a non-empty set of offsets.
- *
- * @sa scan()
- */
-static inline std::set<point_t>
-find_offsets(segment_t const &segment, unsigned radius) {
-    // The vector [xn, yn] is normal to the segment.
-
-    double xn = std::get<1>(segment.second);
-    xn -= std::get<1>(segment.first);
-    double yn = std::get<0>(segment.first);
-    yn -= std::get<0>(segment.second);
-
-    // Make [xn, yn] the unit normal vector.
-
-    double len = std::hypot(xn, yn);
-    xn /= len, yn /= len;
-
-    std::set<point_t> result{{0, 0}};
-
-    for (auto r = 1U; r <= radius; ++r) {
-        auto dx = std::lround(xn * r);
-        auto dy = std::lround(yn * r);
-
-        result.emplace(dx, dy);
-        result.emplace(-dx, -dy);
-    }
-
-    return result;
-}
-
-/**
  * @brief Trace a scan channel.
  *
  * Iterate over the points in the scan channel described by @c
@@ -257,37 +212,39 @@ find_offsets(segment_t const &segment, unsigned radius) {
 template <template <class> class Raster>
 point_set scan(state<Raster> &s, segment_t const &segment, unsigned radius,
                unsigned max_gap) {
-    auto const offsets = find_offsets(segment, radius);
-
     // The initial gap is technically infinite, but anything
     // larger than max_gap will do.
     auto gap = max_gap + 1;
 
     std::vector<point_set> point_sets;
 
-    for (auto const &point : channel(segment)) {
-        std::set<point_t> points;
+    auto const &p0 = std::get<0>(segment);
+    auto const &p1 = std::get<1>(segment);
 
-        for (auto const &offset : offsets) {
-            auto p = point + offset;
+    auto const r = s.rows();
+    auto const c = s.cols();
 
-            if (p[0] < 0 || p[0] >= static_cast<long>(s.cols())) continue;
-            if (p[1] < 0 || p[1] >= static_cast<long>(s.rows())) continue;
+    for (auto const &[point, points] : channel(p0, p1, radius)) {
+        std::set<point_t> found;
+
+        for (auto const &p : points) {
+            if (p[0] < 0 || p[0] >= c) continue;
+            if (p[1] < 0 || p[1] >= r) continue;
 
             auto status = s.status(p);
 
             if (status == status_t::pending || status == status_t::voted) {
-                points.emplace(p);
+                found.insert(p);
             }
         }
 
-        if (points.empty()) { // no hits
+        if (found.empty()) { // no hits
             ++gap;
         }
         else {
             // If the gap is too large to ignore, start a new point set.
             if (gap > max_gap) point_sets.emplace_back();
-            point_sets.back().add_point(point, points);
+            point_sets.back().add_point(point, found);
 
             gap = 0;
         }

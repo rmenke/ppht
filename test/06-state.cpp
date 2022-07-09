@@ -51,20 +51,5 @@ int main() {
 
     eq(ppht::status_t::done, state.status({3, 2}), "marked as done");
 
-    auto found = ppht::find_offsets({{0, 0}, {4, 4}}, 0);
-    eq(1, found.size(), "one point");
-    eq(ppht::point_t(0L, 0L), *found.begin(), "zero offset");
-
-    found = ppht::find_offsets({{0, 0}, {4, 4}}, 1);
-    eq(3, found.size(), "one point");
-
-    auto iter = found.begin();
-
-    eq(ppht::point_t(-1, 1), *iter, "neg offset");
-    ++iter;
-    eq(ppht::point_t(0, 0), *iter, "zero offset");
-    ++iter;
-    eq(ppht::point_t(1, -1), *iter, "pos offset");
-
     return test_status();
 }
