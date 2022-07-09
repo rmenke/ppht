@@ -1,3 +1,6 @@
+// Copyright (C) 2020-2022 by Rob Menke.  All rights reserved.  See
+// accompanying LICENSE.txt file for details.
+
 #ifndef ppht_trig_hpp
 #define ppht_trig_hpp
 

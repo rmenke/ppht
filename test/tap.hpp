@@ -1,4 +1,5 @@
-// Copyright (C) 2022 by Rob Menke
+// Copyright (C) 2020-2022 by Rob Menke.  All rights reserved.  See
+// accompanying LICENSE.txt file for details.
 
 #ifndef _tap_hpp_
 #define _tap_hpp_

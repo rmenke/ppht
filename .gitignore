@@ -3,5 +3,6 @@
 /Doxyfile
 /autom4te.cache/
 /config.*
+/libtool
 Makefile
 TAGS
