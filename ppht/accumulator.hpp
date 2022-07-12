@@ -49,9 +49,6 @@ class accumulator {
     /// The type of seed for the @ref URBG.
     using seed_t = std::random_device::result_type;
 
-    /// Trigonometry tables quantized by max_theta.
-    trig_table const _trig;
-
     /// Height of bitmap image.
     std::size_t const _rows;
 
@@ -149,8 +146,6 @@ class accumulator {
      *
      * @param cols the width of the image
      *
-     * @param max_theta the number of parts per semiturn
-     *
      * @param rho_info the maximum value a scaled rho can take and the
      *   scale factor
      *
@@ -162,12 +157,11 @@ class accumulator {
      *
      * @param seed the seed for the URBG
      */
-    accumulator(std::size_t rows, std::size_t cols, std::size_t max_theta,
+    accumulator(std::size_t rows, std::size_t cols,
                 const std::pair<std::size_t, int> &rho_info,
                 double log_threshold, std::size_t min_trigger_points,
                 seed_t seed) noexcept
-        : _trig(max_theta)
-        , _rows(rows)
+        : _rows(rows)
         , _cols(cols)
         , _rho_scale(rho_info.second)
         , _log_threshold(log_threshold)
@@ -192,13 +186,10 @@ class accumulator {
      *
      * @param cols the width of the bitmap in pixels
      *
-     * @param max_theta the range of theta
-     *
      * @return a pair containing scaling information for rho
      */
     static std::pair<std::size_t, int>
-    rho_info(std::size_t rows, std::size_t cols,
-             std::size_t max_theta) noexcept {
+    rho_info(std::size_t rows, std::size_t cols) noexcept {
         double diag = std::ceil(std::hypot(rows - 1, cols - 1));
         int rho_exp = std::ilogb(max_theta / (diag * 2.0 + 1.0));
 
@@ -238,8 +229,7 @@ class accumulator {
      */
     accumulator(std::size_t rows, std::size_t cols, parameters const &param,
                 seed_t seed = std::random_device{}())
-        : accumulator(rows, cols, param.max_theta,
-                      rho_info(rows, cols, param.max_theta),
+        : accumulator(rows, cols, rho_info(rows, cols),
                       std::log(param.threshold), param.min_trigger_points,
                       seed) {}
 
@@ -266,9 +256,8 @@ class accumulator {
 
         std::set<point_t> endpoints;
 
-        auto const &cossin = _trig[theta];
-        auto const &sin_theta = std::get<1>(cossin);
-        auto const &cos_theta = std::get<0>(cossin);
+        auto const &cos_theta = std::get<0>(cossin[theta]);
+        auto const &sin_theta = std::get<1>(cossin[theta]);
 
         auto get_x = [&](double y) -> long {
             double x = std::rint((rho - sin_theta * y) / cos_theta);
@@ -329,7 +318,6 @@ class accumulator {
      */
     bool vote(point_t const &p, segment_t &segment) {
         auto const max_rho = _counters.rows();
-        auto const max_theta = _counters.cols();
 
         Count n = _min_trigger_points;
 
@@ -344,7 +332,7 @@ class accumulator {
         // current maxima.
 
         for (theta = 0; theta < max_theta; ++theta) {
-            rho = scale_rho(p.dot(_trig[theta]));
+            rho = scale_rho(p.dot(cossin[theta]));
             if (rho < 0 || rho >= max_rho) continue;
 
             auto &counter = _counters[rho][theta];
@@ -460,10 +448,9 @@ class accumulator {
      */
     void unvote(point_t const &p) {
         auto const max_rho = _counters.rows();
-        auto const max_theta = _counters.cols();
 
         for (std::size_t theta = 0; theta < max_theta; ++theta) {
-            double const rho = scale_rho(p.dot(_trig[theta]));
+            double const rho = scale_rho(p.dot(cossin[theta]));
             if (rho < 0 || rho >= max_rho) continue;
 
             auto &counter = _counters[rho][theta];

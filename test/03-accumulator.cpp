@@ -43,56 +43,49 @@ void test_rho_scaling() {
     using namespace tap;
     using accumulator = ppht::accumulator<>;
 
-    auto max_rho = accumulator::rho_info(10, 10, 1024);
+    auto max_rho = accumulator::rho_info(10, 10);
 
-    eq(833U, max_rho.first, "correct resizing 1");
-    eq(5, max_rho.second, "correct scaling 1");
+    eq(3329U, max_rho.first, "correct resizing 1");
+    eq(7, max_rho.second, "correct scaling 1");
 
-    max_rho = accumulator::rho_info(240, 320, 1024);
+    max_rho = accumulator::rho_info(240, 320);
 
-    eq(799U, max_rho.first, "correct resizing 2");
-    eq(0, max_rho.second, "correct scaling 2");
-
-    max_rho = accumulator::rho_info(240, 320, 256);
-
-    eq(201U, max_rho.first, "correct resizing 3");
-    eq(-2, max_rho.second, "correct scaling 3");
+    eq(3193U, max_rho.first, "correct resizing 2");
+    eq(2, max_rho.second, "correct scaling 2");
 }
 
 void test_intersection(seed_t seed) {
     using namespace tap;
 
-    auto param = ppht::parameters{}.set_max_theta(1024);
-
-    ppht::accumulator<> acc(240, 320, param, seed);
+    ppht::accumulator<> acc(240, 320, ppht::parameters{}, seed);
 
     ppht::segment_t expected{{0, 141}, {141, 0}};
-    ppht::segment_t actual = acc.find_segment(256, 100);
+    ppht::segment_t actual = acc.find_segment(900, 100);
 
     eq(expected, actual, "simple intersection");
 
     expected = ppht::segment_t{{44, 239}, {283, 0}};
-    actual = acc.find_segment(256, 200);
+    actual = acc.find_segment(900, 200);
 
     eq(expected, actual, "truncated intersection 1");
 
     expected = ppht::segment_t{{185, 239}, {319, 105}};
-    actual = acc.find_segment(256, 300);
+    actual = acc.find_segment(900, 300);
 
     eq(expected, actual, "truncated intersection 2");
 
     expected = ppht::segment_t{{0, 0}, {0, 0}};
-    actual = acc.find_segment(256, 0);
+    actual = acc.find_segment(900, 0);
 
     eq(expected, actual, "degenerate intersection 1");
 
     expected = ppht::segment_t{{0, 0}, {239, 239}};
-    actual = acc.find_segment(768, 0);
+    actual = acc.find_segment(2700, 0);
 
     eq(expected, actual, "degenerate intersection 2");
 
     try {
-        actual = acc.find_segment(256, 1000);
+        actual = acc.find_segment(900, 1000);
         fail("no intersection");
     }
     catch (...) {
@@ -111,8 +104,7 @@ void test_voting(seed_t seed) {
 
     ppht::segment_t segment;
 
-    auto param = ppht::parameters{}.set_max_theta(4096);
-    ppht::accumulator<> acc(240, 320, param, seed);
+    ppht::accumulator<> acc(240, 320, ppht::parameters{}, seed);
 
     bool segment_found = false;
 
@@ -167,7 +159,7 @@ void test_unvoting(seed_t seed) {
 int main() {
     using namespace tap;
 
-    test_plan plan{19};
+    test_plan plan{17};
 
     // Make the test deterministic
     seed_t const seed = 696408486U;
@@ -178,6 +170,4 @@ int main() {
     test_intersection(seed);
     test_voting(seed);
     test_unvoting(seed);
-
-    return test_status();
 }

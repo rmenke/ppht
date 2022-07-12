@@ -33,45 +33,20 @@ bool eq_pair(A &&a, B &&b, double tolerance) {
 int main() {
     using namespace tap;
 
-    test_plan plan{12};
+    test_plan plan{6};
 
-    ppht::trig_table trig{1024};
+    eq(3600U, ppht::max_theta, "constant");
 
-    eq(1024U, trig.max_theta, "field initialized");
+    ok(eq_pair(std::make_pair(1, 0), ppht::cossin[0], 1E-6), "cossin 1");
+    ok(eq_pair(std::make_pair(0, 1), ppht::cossin[1800], 1E-6), "cossin 2");
 
-    ok(eq_pair(std::make_pair(1, 0), trig[0], 1E-6), "hi-res");
-    ok(eq_pair(std::make_pair(0, 1), trig[512], 1E-6), "hi-res");
-
-    ok(eq_pair(std::make_pair(std::sqrt(0.5), std::sqrt(0.5)), trig[256],
+    ok(eq_pair(std::make_pair(std::sqrt(0.5), std::sqrt(0.5)), ppht::cossin[900],
                1E-6),
        "hi-res");
-    ok(eq_pair(std::make_pair(-std::sqrt(0.5), std::sqrt(0.5)), trig[768],
+    ok(eq_pair(std::make_pair(-std::sqrt(0.5), std::sqrt(0.5)), ppht::cossin[2700],
                1E-6),
        "hi-res");
 
-    ok(eq_pair(std::make_pair(0.92387953, 0.38268343), trig[128], 1E-6),
+    ok(eq_pair(std::make_pair(0.92387953, 0.38268343), ppht::cossin[450], 1E-6),
        "hi-res");
-
-    ppht::trig_table t2{8};
-
-    ok(eq_pair(std::make_pair(1, 0), t2[0], 1E-6), "lo-res");
-    ok(eq_pair(std::make_pair(0, 1), t2[4], 1E-6), "lo-res");
-
-    ok(eq_pair(std::make_pair(std::sqrt(0.5), std::sqrt(0.5)), t2[2], 1E-6),
-       "lo-res");
-    ok(eq_pair(std::make_pair(-std::sqrt(0.5), std::sqrt(0.5)), t2[6],
-               1E-6),
-       "lo-res");
-
-    ok(eq_pair(std::make_pair(0.92387953, 0.38268343), t2[1], 1E-6),
-       "lo-res");
-
-    try {
-        ppht::trig_table{91};
-        fail("exception thrown");
-    } catch (...) {
-        pass("exception thrown");
-    }
-
-    return test_status();
 }

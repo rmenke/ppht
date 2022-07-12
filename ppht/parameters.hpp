@@ -17,13 +17,6 @@ namespace ppht {
  */
 struct parameters {
     /**
-     * @brief The number of parts per turn.
-     *
-     * This value must be a multiple of four.
-     */
-    std::uint16_t max_theta = 2048;
-
-    /**
      * @brief The minimum number of voting points required to
      * trigger a scan.
      *
@@ -74,18 +67,6 @@ struct parameters {
      * @sa min_trigger_points
      */
     std::uint16_t min_length = 10;
-
-    /**
-     * @brief Chained constructor operation.
-     *
-     * @param max_theta the new value for @ref max_theta
-     *
-     * @return the parameters object
-     */
-    parameters &set_max_theta(std::uint16_t max_theta) {
-        this->max_theta = max_theta;
-        return *this;
-    }
 
     /**
      * @brief Chained constructor operation.

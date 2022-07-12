@@ -69,8 +69,8 @@ restart:
 }
 
 ppht::state<> _load_image(std::size_t rows, std::size_t cols,
-                          std::uint8_t *data) {
-    ppht::state<> state{rows, cols};
+                          std::uint8_t *data, unsigned seed) {
+    ppht::state<> state{rows, cols, seed};
 
     std::size_t bytes_per_row = (cols + 7) >> 3;
 
@@ -86,7 +86,7 @@ ppht::state<> _load_image(std::size_t rows, std::size_t cols,
     return state;
 }
 
-#define LOAD(X) _load_image(X##_height, X##_width, X##_bits)
+#define LOAD(X) _load_image(X##_height, X##_width, X##_bits, seed)
 
 int main() {
     using namespace tap;
@@ -94,11 +94,14 @@ int main() {
 
     test_plan plan;
 
+    auto seed = 1353350243U;
+    diag("seed = ", seed);
+
     auto image_01 = LOAD(image_01);
     eq(320, image_01.cols(), "image_01 cols");
     eq(120, image_01.rows(), "image_01 rows");
 
-    auto actual = find_segments(image_01);
+    auto actual = find_segments(image_01, parameters(), seed);
 
     std::vector<segment_t> expected = {segment_t{{20, 20}, {100, 20}},
                                        segment_t{{20, 20}, {20, 100}},
@@ -133,19 +136,19 @@ int main() {
     actual.erase(e1, actual.end());
     expected.erase(e2, expected.end());
 
-    if (!ok(actual.empty(), "all expected segments seen")) {
-        diag("expected: ", actual);
+    if (!ok(expected.empty(), "all expected segments seen")) {
+        diag("expected: ", expected);
     }
 
-    if (!ok(expected.empty(), "no unexpected segments seen")) {
-        diag("unexpected: ", expected);
+    if (!ok(actual.empty(), "no unexpected segments seen")) {
+        diag("unexpected: ", actual);
     }
 
     auto image_02 = LOAD(image_02);
     eq(100, image_02.cols(), "image_02 cols");
     eq(160, image_02.rows(), "image_02 rows");
 
-    actual = find_segments(image_02);
+    actual = find_segments(image_02, parameters(), seed);
 
     expected = {segment_t{{20, 20}, {80, 20}},
                 segment_t{{20, 20}, {20, 140}},
@@ -169,6 +172,4 @@ int main() {
     if (!ok(expected.empty(), "no unexpected segments seen")) {
         diag("unexpected: ", expected);
     }
-
-    return test_status();
 }
