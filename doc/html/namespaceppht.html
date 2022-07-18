@@ -25,7 +25,7 @@ MathJax.Hub.Config({
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">PPHT<span id="projectnumber">&#160;1.0.9</span>
+   <div id="projectname">PPHT<span id="projectnumber">&#160;2.0.0-alpha.5</span>
    </div>
    <div id="projectbrief">An implementation of PPHT as a header-only library</div>
   </td>
@@ -49,8 +49,10 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">ppht Namespace Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -63,14 +65,8 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1accumulator.html">accumulator</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A collection of counters for line candidates.  <a href="classppht_1_1accumulator.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structppht_1_1axis__scanner.html">axis_scanner</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A scanner optimized for lines parallel to an axis.  <a href="structppht_1_1axis__scanner.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structppht_1_1bresenham__scanner.html">bresenham_scanner</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A scanner based on Bresenham's line algorithm.  <a href="structppht_1_1bresenham__scanner.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1channel.html">channel</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An abstract container that wraps around a line segment.  <a href="classppht_1_1channel.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An object representing a line segment between two points.  <a href="classppht_1_1channel.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structppht_1_1parameters.html">parameters</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The tunable parameters of the analyzer.  <a href="structppht_1_1parameters.html#details">More...</a><br /></td></tr>
@@ -84,17 +80,16 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1raster.html">raster</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A simple class to manage a 2D array of elements.  <a href="classppht_1_1raster.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structppht_1_1scanner.html">scanner</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A class for tracking the state required to advance a point along a segment.  <a href="structppht_1_1scanner.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1segment__t.html">segment_t</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1state.html">state</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The state class represents the current state of the algorithm.  <a href="classppht_1_1state.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1trig__table.html">trig_table</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A precomputed table of sine and cosine values.  <a href="classppht_1_1trig__table.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a02fc71b676539c0877ed6869feca3853"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceppht.html#a02fc71b676539c0877ed6869feca3853">cossin_t</a> = std::pair&lt; double, double &gt;</td></tr>
+<tr class="separator:a02fc71b676539c0877ed6869feca3853"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -112,8 +107,6 @@ Functions</h2></td></tr>
 <tr class="memitem:a65cf942dc09d432abd4bac48af8804ed"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classppht_1_1segment__t.html">segment_t</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceppht.html#a65cf942dc09d432abd4bac48af8804ed">find_segments</a> (State &amp;&amp;<a class="el" href="classppht_1_1state.html">state</a>, const <a class="el" href="structppht_1_1parameters.html">parameters</a> &amp;param=<a class="el" href="structppht_1_1parameters.html">parameters</a>{}, std::random_device::result_type seed=std::random_device{}())</td></tr>
 <tr class="memdesc:a65cf942dc09d432abd4bac48af8804ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simplified interface to the PPHT algorithm.  <a href="namespaceppht.html#a65cf942dc09d432abd4bac48af8804ed">More...</a><br /></td></tr>
 <tr class="separator:a65cf942dc09d432abd4bac48af8804ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afa43fde4290ae78a00d1951918976316"><td class="memItemLeft" align="right" valign="top">static std::unique_ptr&lt; <a class="el" href="structppht_1_1scanner.html">scanner</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceppht.html#afa43fde4290ae78a00d1951918976316">make_scanner</a> (<a class="el" href="classppht_1_1segment__t.html">segment_t</a> &amp;segment)</td></tr>
-<tr class="separator:afa43fde4290ae78a00d1951918976316"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8f7ea60086c280bdf0ffd08859d8523e"><td class="memTemplParams" colspan="2">template&lt;std::size_t Dim = 0, class RandomIt , class OutputIt &gt; </td></tr>
 <tr class="memitem:a8f7ea60086c280bdf0ffd08859d8523e"><td class="memTemplItemLeft" align="right" valign="top">OutputIt&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceppht.html#a8f7ea60086c280bdf0ffd08859d8523e">kd_search</a> (RandomIt begin, RandomIt end, OutputIt output, const <a class="el" href="structppht_1_1point__t.html">point_t</a> &amp;p, long limit)</td></tr>
 <tr class="separator:a8f7ea60086c280bdf0ffd08859d8523e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -125,17 +118,36 @@ Functions</h2></td></tr>
 <tr class="memitem:a09260eb4004b9decd7ae86a0263afd51"><td class="memTemplParams" colspan="2">template&lt;class ForwardIt &gt; </td></tr>
 <tr class="memitem:a09260eb4004b9decd7ae86a0263afd51"><td class="memTemplItemLeft" align="right" valign="top">ForwardIt&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceppht.html#a09260eb4004b9decd7ae86a0263afd51">postprocess</a> (ForwardIt begin, ForwardIt end, unsigned limit)</td></tr>
 <tr class="separator:a09260eb4004b9decd7ae86a0263afd51"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac7b2af876fd481103e6263d9b5ec94a8"><td class="memItemLeft" align="right" valign="top">static std::set&lt; <a class="el" href="structppht_1_1point__t.html">point_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceppht.html#ac7b2af876fd481103e6263d9b5ec94a8">find_offsets</a> (<a class="el" href="classppht_1_1segment__t.html">segment_t</a> const &amp;segment, unsigned radius)</td></tr>
-<tr class="memdesc:ac7b2af876fd481103e6263d9b5ec94a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a set of offsets that are within a radius.  <a href="namespaceppht.html#ac7b2af876fd481103e6263d9b5ec94a8">More...</a><br /></td></tr>
-<tr class="separator:ac7b2af876fd481103e6263d9b5ec94a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9f07cf00007b3c094373ca8b4c7bf6bd"><td class="memTemplParams" colspan="2">template&lt;template&lt; class &gt; class Raster&gt; </td></tr>
 <tr class="memitem:a9f07cf00007b3c094373ca8b4c7bf6bd"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classppht_1_1point__set.html">point_set</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceppht.html#a9f07cf00007b3c094373ca8b4c7bf6bd">scan</a> (<a class="el" href="classppht_1_1state.html">state</a>&lt; Raster &gt; &amp;s, <a class="el" href="classppht_1_1segment__t.html">segment_t</a> const &amp;segment, unsigned radius, unsigned max_gap)</td></tr>
 <tr class="memdesc:a9f07cf00007b3c094373ca8b4c7bf6bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Trace a scan channel.  <a href="namespaceppht.html#a9f07cf00007b3c094373ca8b4c7bf6bd">More...</a><br /></td></tr>
 <tr class="separator:a9f07cf00007b3c094373ca8b4c7bf6bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a5f6a8b027d6255d2c2b746906c3bc902"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceppht.html#a02fc71b676539c0877ed6869feca3853">cossin_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceppht.html#a5f6a8b027d6255d2c2b746906c3bc902">cossin</a> []</td></tr>
+<tr class="separator:a5f6a8b027d6255d2c2b746906c3bc902"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe497eaaaebd439ef153819b72f7096b"><td class="memItemLeft" align="right" valign="top">static constexpr std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceppht.html#afe497eaaaebd439ef153819b72f7096b">max_theta</a></td></tr>
+<tr class="separator:afe497eaaaebd439ef153819b72f7096b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >The basic namespace of the library. </p>
-</div><h2 class="groupheader">Enumeration Type Documentation</h2>
+</div><h2 class="groupheader">Typedef Documentation</h2>
+<a id="a02fc71b676539c0877ed6869feca3853" name="a02fc71b676539c0877ed6869feca3853"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02fc71b676539c0877ed6869feca3853">&#9670;&nbsp;</a></span>cossin_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="namespaceppht.html#a02fc71b676539c0877ed6869feca3853">ppht::cossin_t</a> = typedef std::pair&lt;double, double&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
 <a id="a62df3910999f59d178dd7090a4c89d86" name="a62df3910999f59d178dd7090a4c89d86"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a62df3910999f59d178dd7090a4c89d86">&#9670;&nbsp;</a></span>status_t</h2>
 
@@ -249,54 +261,6 @@ template&lt;class RandomIt &gt; </div>
 
 </div>
 </div>
-<a id="ac7b2af876fd481103e6263d9b5ec94a8" name="ac7b2af876fd481103e6263d9b5ec94a8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac7b2af876fd481103e6263d9b5ec94a8">&#9670;&nbsp;</a></span>find_offsets()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static std::set&lt; <a class="el" href="structppht_1_1point__t.html">point_t</a> &gt; ppht::find_offsets </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classppht_1_1segment__t.html">segment_t</a> const &amp;&#160;</td>
-          <td class="paramname"><em>segment</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">unsigned&#160;</td>
-          <td class="paramname"><em>radius</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Return a set of offsets that are within a radius. </p>
-<p >The number of offsets generated is controlled by the <code>radius</code> parameter. For a radius \(r\), the returned offsets will be \(0,1,\ldots,r\) pixels from the origin, along the perpendicular to the <code>segment</code> parameter. Both directions are considered, so \(2^r+1\) offsets will be generated before duplicates are removed.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">segment</td><td>used to determine the orientation of the perpendicular.</td></tr>
-    <tr><td class="paramname">radius</td><td>determines the number of offsets to calculate.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>a non-empty set of offsets.</dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="namespaceppht.html#a9f07cf00007b3c094373ca8b4c7bf6bd" title="Trace a scan channel.">scan()</a> </dd></dl>
-
-</div>
-</div>
 <a id="a65cf942dc09d432abd4bac48af8804ed" name="a65cf942dc09d432abd4bac48af8804ed"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a65cf942dc09d432abd4bac48af8804ed">&#9670;&nbsp;</a></span>find_segments()</h2>
 
@@ -345,9 +309,9 @@ template&lt;class State , class Accumulator  = accumulator&lt;&gt;&gt; </div>
 <div class="line">}</div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">auto</span> segments = <a class="code hl_function" href="namespaceppht.html#a65cf942dc09d432abd4bac48af8804ed">ppht::find_segments</a>(std::move(state));</div>
-<div class="ttc" id="aclassppht_1_1state_html"><div class="ttname"><a href="classppht_1_1state.html">ppht::state</a></div><div class="ttdoc">The state class represents the current state of the algorithm.</div><div class="ttdef"><b>Definition:</b> state.hpp:28</div></div>
-<div class="ttc" id="aclassppht_1_1state_html_ac924d3997ba5265607c271d27defe368"><div class="ttname"><a href="classppht_1_1state.html#ac924d3997ba5265607c271d27defe368">ppht::state::mark_pending</a></div><div class="ttdeci">void mark_pending(point_t const &amp;point)</div><div class="ttdoc">Mark a pixel in the raster as pending.</div><div class="ttdef"><b>Definition:</b> state.hpp:122</div></div>
-<div class="ttc" id="anamespaceppht_html_a65cf942dc09d432abd4bac48af8804ed"><div class="ttname"><a href="namespaceppht.html#a65cf942dc09d432abd4bac48af8804ed">ppht::find_segments</a></div><div class="ttdeci">std::vector&lt; segment_t &gt; find_segments(State &amp;&amp;state, const parameters &amp;param=parameters{}, std::random_device::result_type seed=std::random_device{}())</div><div class="ttdoc">Simplified interface to the PPHT algorithm.</div><div class="ttdef"><b>Definition:</b> ppht.hpp:148</div></div>
+<div class="ttc" id="aclassppht_1_1state_html"><div class="ttname"><a href="classppht_1_1state.html">ppht::state</a></div><div class="ttdoc">The state class represents the current state of the algorithm.</div><div class="ttdef"><b>Definition:</b> state.hpp:31</div></div>
+<div class="ttc" id="aclassppht_1_1state_html_ac924d3997ba5265607c271d27defe368"><div class="ttname"><a href="classppht_1_1state.html#ac924d3997ba5265607c271d27defe368">ppht::state::mark_pending</a></div><div class="ttdeci">void mark_pending(point_t const &amp;point)</div><div class="ttdoc">Mark a pixel in the raster as pending.</div><div class="ttdef"><b>Definition:</b> state.hpp:125</div></div>
+<div class="ttc" id="anamespaceppht_html_a65cf942dc09d432abd4bac48af8804ed"><div class="ttname"><a href="namespaceppht.html#a65cf942dc09d432abd4bac48af8804ed">ppht::find_segments</a></div><div class="ttdeci">std::vector&lt; segment_t &gt; find_segments(State &amp;&amp;state, const parameters &amp;param=parameters{}, std::random_device::result_type seed=std::random_device{}())</div><div class="ttdoc">Simplified interface to the PPHT algorithm.</div><div class="ttdef"><b>Definition:</b> ppht.hpp:151</div></div>
 </div><!-- fragment --><dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">State</td><td>the class of the state parameter</td></tr>
@@ -432,41 +396,6 @@ template&lt;std::size_t Dim = 0, class RandomIt , class OutputIt &gt; </div>
   </table>
   </dd>
 </dl>
-
-</div>
-</div>
-<a id="afa43fde4290ae78a00d1951918976316" name="afa43fde4290ae78a00d1951918976316"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afa43fde4290ae78a00d1951918976316">&#9670;&nbsp;</a></span>make_scanner()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static std::unique_ptr&lt; <a class="el" href="structppht_1_1scanner.html">scanner</a> &gt; ppht::make_scanner </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classppht_1_1segment__t.html">segment_t</a> &amp;&#160;</td>
-          <td class="paramname"><em>segment</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p >Factory function to create the appropriate scanner for the given segment. If the segment is not oriented correctly, then it will be corrected by exchanging the endpoints.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">segment</td><td>the segment to scan.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>a pointer to an instance of <a class="el" href="structppht_1_1scanner.html">scanner</a>.</dd></dl>
-<dl class="section note"><dt>Note</dt><dd>this function modifies its arguments. </dd></dl>
 
 </div>
 </div>
@@ -564,8 +493,56 @@ template&lt;template&lt; class &gt; class Raster&gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="namespaceppht.html#ac7b2af876fd481103e6263d9b5ec94a8" title="Return a set of offsets that are within a radius.">find_offsets()</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd>find_offsets() </dd></dl>
 
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="a5f6a8b027d6255d2c2b746906c3bc902" name="a5f6a8b027d6255d2c2b746906c3bc902"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f6a8b027d6255d2c2b746906c3bc902">&#9670;&nbsp;</a></span>cossin</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespaceppht.html#a02fc71b676539c0877ed6869feca3853">cossin_t</a> ppht::cossin[]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afe497eaaaebd439ef153819b72f7096b" name="afe497eaaaebd439ef153819b72f7096b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe497eaaaebd439ef153819b72f7096b">&#9670;&nbsp;</a></span>max_theta</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr std::size_t ppht::max_theta</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">    std::extent&lt;<span class="keyword">decltype</span>(<a class="code hl_variable" href="namespaceppht.html#a5f6a8b027d6255d2c2b746906c3bc902">cossin</a>)&gt;::value</div>
+<div class="ttc" id="anamespaceppht_html_a5f6a8b027d6255d2c2b746906c3bc902"><div class="ttname"><a href="namespaceppht.html#a5f6a8b027d6255d2c2b746906c3bc902">ppht::cossin</a></div><div class="ttdeci">cossin_t cossin[]</div><div class="ttdef"><b>Definition:</b> trig.hpp:13</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->

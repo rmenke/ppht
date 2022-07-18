@@ -25,7 +25,7 @@ MathJax.Hub.Config({
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">PPHT<span id="projectnumber">&#160;1.0.9</span>
+   <div id="projectname">PPHT<span id="projectnumber">&#160;2.0.0-alpha.5</span>
    </div>
    <div id="projectbrief">An implementation of PPHT as a header-only library</div>
   </td>
@@ -50,22 +50,22 @@ $(function() {
 &#160;
 
 <h3><a id="index_a" name="index_a"></a>- a -</h3><ul>
-<li>accumulator()&#160;:&#160;<a class="el" href="classppht_1_1accumulator.html#ae3d150514be932dee46295bba2b0aa86">ppht::accumulator&lt; Count, Raster &gt;</a></li>
+<li>accumulator()&#160;:&#160;<a class="el" href="classppht_1_1accumulator.html#a13c220fc16e37ce9ffbfa176a2c1e210">ppht::accumulator&lt; Count, Raster &gt;</a></li>
 <li>add_point()&#160;:&#160;<a class="el" href="classppht_1_1point__set.html#a5b3ac47e83c0b2453f9044eaf3e85bd7">ppht::point_set</a></li>
-<li>advance()&#160;:&#160;<a class="el" href="structppht_1_1axis__scanner.html#a81e338f04738a8c19674dce862445436">ppht::axis_scanner&lt; Ind &gt;</a>, <a class="el" href="structppht_1_1bresenham__scanner.html#a58285f2848d4816de4f390d0ef519af4">ppht::bresenham_scanner&lt; Ind, Increment &gt;</a>, <a class="el" href="structppht_1_1scanner.html#ae19ad90dc79d7b0a96ecf7c2f80b456e">ppht::scanner</a></li>
+<li>advance()&#160;:&#160;<a class="el" href="classppht_1_1channel_1_1axial__scanner.html#aef1441e0e37f5cbcc5504245f2686b9d">ppht::channel&lt; Point &gt;::axial_scanner&lt; Major &gt;</a>, <a class="el" href="classppht_1_1channel_1_1bresenham__scanner.html#ac8a3a9e5fccd2ca3a782ed23e77aa4d1">ppht::channel&lt; Point &gt;::bresenham_scanner&lt; Major &gt;</a>, <a class="el" href="classppht_1_1channel_1_1scanner.html#a92031cb9aae65afbea8e5a0deb5f2c7d">ppht::channel&lt; Point &gt;::scanner</a></li>
+<li>axial_scanner()&#160;:&#160;<a class="el" href="classppht_1_1channel_1_1axial__scanner.html#aff0b253b0c939395600f0409aa7de3f7">ppht::channel&lt; Point &gt;::axial_scanner&lt; Major &gt;</a></li>
 </ul>
 
 
 <h3><a id="index_b" name="index_b"></a>- b -</h3><ul>
-<li>begin()&#160;:&#160;<a class="el" href="classppht_1_1channel.html#a2295da00c023b6cd7c31408307fe6d77">ppht::channel</a>, <a class="el" href="classppht_1_1point__set.html#a1b63096d9bd05e83602da48b47fe5fb9">ppht::point_set</a></li>
-<li>bresenham_scanner()&#160;:&#160;<a class="el" href="structppht_1_1bresenham__scanner.html#aa0da36374567ef7490aa54b714054cb1">ppht::bresenham_scanner&lt; Ind, Increment &gt;</a></li>
+<li>begin()&#160;:&#160;<a class="el" href="classppht_1_1channel.html#a60d68a9bde5f602befc28e8df47d971d">ppht::channel&lt; Point &gt;</a>, <a class="el" href="classppht_1_1point__set.html#a1b63096d9bd05e83602da48b47fe5fb9">ppht::point_set</a></li>
+<li>bresenham_scanner()&#160;:&#160;<a class="el" href="classppht_1_1channel_1_1bresenham__scanner.html#a9cc4d49c2e07e9f943fbc66b80c4dda8">ppht::channel&lt; Point &gt;::bresenham_scanner&lt; Major &gt;</a></li>
 </ul>
 
 
 <h3><a id="index_c" name="index_c"></a>- c -</h3><ul>
-<li>channel()&#160;:&#160;<a class="el" href="classppht_1_1channel.html#a9a41b8f1bd843313c11454422c788712">ppht::channel</a></li>
+<li>channel()&#160;:&#160;<a class="el" href="classppht_1_1channel.html#a3318e7cb73ae13c69edddc99145e25a6">ppht::channel&lt; Point &gt;</a></li>
 <li>clamp()&#160;:&#160;<a class="el" href="classppht_1_1accumulator.html#a836391184051253c1ddb8239b4f0212d">ppht::accumulator&lt; Count, Raster &gt;</a></li>
-<li>clone()&#160;:&#160;<a class="el" href="structppht_1_1axis__scanner.html#acfbbc537bb5962078e341cacba5c8a3c">ppht::axis_scanner&lt; Ind &gt;</a>, <a class="el" href="structppht_1_1bresenham__scanner.html#aecd6cde1c243389f8f298dd69b279c48">ppht::bresenham_scanner&lt; Ind, Increment &gt;</a>, <a class="el" href="structppht_1_1scanner.html#acf04584157f74793b3cd74610b9343d4">ppht::scanner</a></li>
 <li>cols()&#160;:&#160;<a class="el" href="classppht_1_1raster.html#ad589d3e36e017bce4d8f5ca677d925cc">ppht::raster&lt; T &gt;</a>, <a class="el" href="classppht_1_1state.html#a7adb74c5303d1110c9847ae91ef3426e">ppht::state&lt; Raster &gt;</a></li>
 </ul>
 
@@ -77,17 +77,18 @@ $(function() {
 
 <h3><a id="index_e" name="index_e"></a>- e -</h3><ul>
 <li>empty()&#160;:&#160;<a class="el" href="classppht_1_1point__set.html#a561055a23dd00c50dc6cdf440dd42baf">ppht::point_set</a></li>
-<li>end()&#160;:&#160;<a class="el" href="classppht_1_1channel.html#ae519ca9ef8ea84e0594d78c8a66d133e">ppht::channel</a>, <a class="el" href="classppht_1_1point__set.html#a31b5ceaa59004db07af39b1f2db5f18b">ppht::point_set</a></li>
+<li>end()&#160;:&#160;<a class="el" href="classppht_1_1channel.html#ad1409e447158c389acefd7a21ef51eed">ppht::channel&lt; Point &gt;</a>, <a class="el" href="classppht_1_1point__set.html#a31b5ceaa59004db07af39b1f2db5f18b">ppht::point_set</a></li>
 </ul>
 
 
 <h3><a id="index_f" name="index_f"></a>- f -</h3><ul>
+<li>fill()&#160;:&#160;<a class="el" href="classppht_1_1channel_1_1axial__scanner.html#a213a5ee5b289d7857eff7959278b629d">ppht::channel&lt; Point &gt;::axial_scanner&lt; Major &gt;</a>, <a class="el" href="classppht_1_1channel_1_1bresenham__scanner.html#a63547a7a72c8c2e9762b7757861b9534">ppht::channel&lt; Point &gt;::bresenham_scanner&lt; Major &gt;</a>, <a class="el" href="classppht_1_1channel_1_1scanner.html#ac2e00c7c3d9d4116a31410345809a731">ppht::channel&lt; Point &gt;::scanner</a></li>
 <li>find_segment()&#160;:&#160;<a class="el" href="classppht_1_1accumulator.html#a8ff140558c3734deb891878d3fec802f">ppht::accumulator&lt; Count, Raster &gt;</a></li>
 </ul>
 
 
 <h3><a id="index_i" name="index_i"></a>- i -</h3><ul>
-<li>iterator()&#160;:&#160;<a class="el" href="classppht_1_1channel_1_1iterator.html#a771d584d587cd0be8f0c25a887a8c9b0">ppht::channel::iterator</a></li>
+<li>iterator()&#160;:&#160;<a class="el" href="classppht_1_1channel_1_1iterator.html#a965da0a377979350599e2b517a02cfbe">ppht::channel&lt; Point &gt;::iterator</a></li>
 </ul>
 
 
@@ -98,6 +99,7 @@ $(function() {
 
 
 <h3><a id="index_m" name="index_m"></a>- m -</h3><ul>
+<li>make_scanner()&#160;:&#160;<a class="el" href="classppht_1_1channel.html#adfc0732f06cef6e97cccf20c3b1f7b9a">ppht::channel&lt; Point &gt;</a></li>
 <li>mark_done()&#160;:&#160;<a class="el" href="classppht_1_1state.html#ac54edf057d67ff97e6a177f342dfa040">ppht::state&lt; Raster &gt;</a></li>
 <li>mark_pending()&#160;:&#160;<a class="el" href="classppht_1_1state.html#ac924d3997ba5265607c271d27defe368">ppht::state&lt; Raster &gt;</a></li>
 </ul>
@@ -109,28 +111,29 @@ $(function() {
 
 
 <h3><a id="index_o" name="index_o"></a>- o -</h3><ul>
-<li>operator!=()&#160;:&#160;<a class="el" href="classppht_1_1channel_1_1iterator.html#a44b2231eedcb643679de449956d57a6b">ppht::channel::iterator</a>, <a class="el" href="classppht_1_1segment__t.html#a69fbb42967af610af45d93599c1090c1">ppht::segment_t</a></li>
-<li>operator*()&#160;:&#160;<a class="el" href="classppht_1_1channel_1_1iterator.html#a4873d2f75099e73bf4c347c5056d5ef9">ppht::channel::iterator</a>, <a class="el" href="structppht_1_1point__t.html#a708fe3e5e009677f9be8ceac7a163b72">ppht::point_t</a></li>
+<li>operator!=()&#160;:&#160;<a class="el" href="classppht_1_1channel_1_1iterator.html#aa16af2dfb823bf4c2e9bdc106dbb5745">ppht::channel&lt; Point &gt;::iterator</a>, <a class="el" href="classppht_1_1segment__t.html#a69fbb42967af610af45d93599c1090c1">ppht::segment_t</a></li>
+<li>operator*()&#160;:&#160;<a class="el" href="classppht_1_1channel_1_1iterator.html#ab3721a1bb7df286b0271b879f3875640">ppht::channel&lt; Point &gt;::iterator</a>, <a class="el" href="structppht_1_1point__t.html#a708fe3e5e009677f9be8ceac7a163b72">ppht::point_t</a></li>
 <li>operator+()&#160;:&#160;<a class="el" href="structppht_1_1point__t.html#a2edc2da4c5ada7b076bf07077635af69">ppht::point_t</a></li>
-<li>operator++()&#160;:&#160;<a class="el" href="classppht_1_1channel_1_1iterator.html#acc4d8c368f53b7e54bb7ac8bde2c6e23">ppht::channel::iterator</a></li>
+<li>operator++()&#160;:&#160;<a class="el" href="classppht_1_1channel_1_1iterator.html#abb8c944eb1915ceade9d13be70598eef">ppht::channel&lt; Point &gt;::iterator</a></li>
 <li>operator-()&#160;:&#160;<a class="el" href="structppht_1_1point__t.html#a2d5b73285aeef84f3de2c2f3aee4f57b">ppht::point_t</a></li>
-<li>operator-&gt;()&#160;:&#160;<a class="el" href="classppht_1_1channel_1_1iterator.html#a41a50f1701df4390ef08fb6d3f248a51">ppht::channel::iterator</a></li>
+<li>operator-&gt;()&#160;:&#160;<a class="el" href="classppht_1_1channel_1_1iterator.html#ac734518bc6d4671676de6d5da4327ba7">ppht::channel&lt; Point &gt;::iterator</a></li>
 <li>operator/()&#160;:&#160;<a class="el" href="structppht_1_1point__t.html#ae86666e976d0a84869a1c898f71ac36c">ppht::point_t</a></li>
 <li>operator&lt;()&#160;:&#160;<a class="el" href="classppht_1_1point__set.html#ab5dde965963f05655c727d7eccd9a6b4">ppht::point_set</a></li>
-<li>operator=()&#160;:&#160;<a class="el" href="classppht_1_1channel_1_1iterator.html#a482fd7f287eb8621295254775e02e9d3">ppht::channel::iterator</a></li>
-<li>operator==()&#160;:&#160;<a class="el" href="classppht_1_1channel_1_1iterator.html#a26ed533b53b2530535f4622061627d8e">ppht::channel::iterator</a>, <a class="el" href="classppht_1_1segment__t.html#a7b8e1cb7b5e7c9c171b7f51516259237">ppht::segment_t</a></li>
-<li>operator[]()&#160;:&#160;<a class="el" href="classppht_1_1raster.html#a9bd85a57b9b0d1b66590b3742244e646">ppht::raster&lt; T &gt;</a>, <a class="el" href="classppht_1_1trig__table.html#a8e6078184a23183c7a800ee464bbd6e4">ppht::trig_table</a></li>
+<li>operator=()&#160;:&#160;<a class="el" href="classppht_1_1channel_1_1iterator.html#a7446ece6b62c71450972ff348975fd7b">ppht::channel&lt; Point &gt;::iterator</a></li>
+<li>operator==()&#160;:&#160;<a class="el" href="classppht_1_1channel_1_1iterator.html#a76895ab4ac3701072e1ebc98c6e704f0">ppht::channel&lt; Point &gt;::iterator</a>, <a class="el" href="classppht_1_1segment__t.html#a7b8e1cb7b5e7c9c171b7f51516259237">ppht::segment_t</a></li>
+<li>operator[]()&#160;:&#160;<a class="el" href="classppht_1_1raster.html#a9bd85a57b9b0d1b66590b3742244e646">ppht::raster&lt; T &gt;</a></li>
 </ul>
 
 
 <h3><a id="index_p" name="index_p"></a>- p -</h3><ul>
+<li>perpendiculars()&#160;:&#160;<a class="el" href="classppht_1_1channel_1_1bresenham__scanner.html#a2671184f33069df912b1eaa088d707bf">ppht::channel&lt; Point &gt;::bresenham_scanner&lt; Major &gt;</a></li>
 <li>point_t()&#160;:&#160;<a class="el" href="structppht_1_1point__t.html#a24249c3072dd64f9e62a88b9f2e0a938">ppht::point_t</a></li>
 </ul>
 
 
 <h3><a id="index_r" name="index_r"></a>- r -</h3><ul>
 <li>raster()&#160;:&#160;<a class="el" href="classppht_1_1raster.html#a3e486d4b89603764ed06a21fe3e61db3">ppht::raster&lt; T &gt;</a></li>
-<li>rho_info()&#160;:&#160;<a class="el" href="classppht_1_1accumulator.html#a0d90892842b9a1b4f3b5581c4d94d9f4">ppht::accumulator&lt; Count, Raster &gt;</a></li>
+<li>rho_info()&#160;:&#160;<a class="el" href="classppht_1_1accumulator.html#a51ddcfb6a6d4705122d998e8a46fa45d">ppht::accumulator&lt; Count, Raster &gt;</a></li>
 <li>rows()&#160;:&#160;<a class="el" href="classppht_1_1raster.html#a364ae0b6100cdf312896eba0575cd3ad">ppht::raster&lt; T &gt;</a>, <a class="el" href="classppht_1_1state.html#a4b68195a8a49040365dd316df1e4a0b7">ppht::state&lt; Raster &gt;</a></li>
 </ul>
 
@@ -140,17 +143,12 @@ $(function() {
 <li>segment()&#160;:&#160;<a class="el" href="classppht_1_1point__set.html#ad71c718c597452ac32f73ff316812547">ppht::point_set</a></li>
 <li>set_channel_width()&#160;:&#160;<a class="el" href="structppht_1_1parameters.html#ac4d377fd056a7c8e9e9fc70f3b987c6f">ppht::parameters</a></li>
 <li>set_max_gap()&#160;:&#160;<a class="el" href="structppht_1_1parameters.html#a4781c675a705d9f50be6b6c78e415426">ppht::parameters</a></li>
-<li>set_max_theta()&#160;:&#160;<a class="el" href="structppht_1_1parameters.html#a36dfd36819a39f4a4e69ee08293101de">ppht::parameters</a></li>
 <li>set_min_length()&#160;:&#160;<a class="el" href="structppht_1_1parameters.html#ab99173ea9c192c170f1850570978ec15">ppht::parameters</a></li>
 <li>set_min_trigger_points()&#160;:&#160;<a class="el" href="structppht_1_1parameters.html#aef3ed4aec3e421d02017a6747059f3f4">ppht::parameters</a></li>
 <li>set_threshold()&#160;:&#160;<a class="el" href="structppht_1_1parameters.html#ad7ae42cfdd5c36ce026548be18ba0bfa">ppht::parameters</a></li>
+<li>signum()&#160;:&#160;<a class="el" href="classppht_1_1channel.html#a7868f42ab58bab771352ee54cca40a6a">ppht::channel&lt; Point &gt;</a></li>
 <li>state()&#160;:&#160;<a class="el" href="classppht_1_1state.html#a5703db967f021ecb2696d22b9a75592a">ppht::state&lt; Raster &gt;</a></li>
 <li>status()&#160;:&#160;<a class="el" href="classppht_1_1state.html#a9a76b2021e196b1971beb9dd11bebaf2">ppht::state&lt; Raster &gt;</a></li>
-</ul>
-
-
-<h3><a id="index_t" name="index_t"></a>- t -</h3><ul>
-<li>trig_table()&#160;:&#160;<a class="el" href="classppht_1_1trig__table.html#a6e191db2d8a5f2af35f5c1cec4343924">ppht::trig_table</a></li>
 </ul>
 
 
@@ -166,9 +164,7 @@ $(function() {
 
 
 <h3><a id="index__7E" name="index__7E"></a>- ~ -</h3><ul>
-<li>~axis_scanner()&#160;:&#160;<a class="el" href="structppht_1_1axis__scanner.html#aa32ca3a69770d33642eafe7630f6d249">ppht::axis_scanner&lt; Ind &gt;</a></li>
-<li>~bresenham_scanner()&#160;:&#160;<a class="el" href="structppht_1_1bresenham__scanner.html#a3e7d464d71ba7453797ebfd23ca926d0">ppht::bresenham_scanner&lt; Ind, Increment &gt;</a></li>
-<li>~scanner()&#160;:&#160;<a class="el" href="structppht_1_1scanner.html#a05ad7d89644d9df19aa385eab743a74b">ppht::scanner</a></li>
+<li>~scanner()&#160;:&#160;<a class="el" href="classppht_1_1channel_1_1scanner.html#ae809e7b54ddad50dc961d98a407f8ccd">ppht::channel&lt; Point &gt;::scanner</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

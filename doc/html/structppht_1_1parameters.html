@@ -25,7 +25,7 @@ MathJax.Hub.Config({
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">PPHT<span id="projectnumber">&#160;1.0.9</span>
+   <div id="projectname">PPHT<span id="projectnumber">&#160;2.0.0-alpha.5</span>
    </div>
    <div id="projectbrief">An implementation of PPHT as a header-only library</div>
   </td>
@@ -66,9 +66,6 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a36dfd36819a39f4a4e69ee08293101de"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structppht_1_1parameters.html">parameters</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structppht_1_1parameters.html#a36dfd36819a39f4a4e69ee08293101de">set_max_theta</a> (std::uint16_t <a class="el" href="structppht_1_1parameters.html#a21ac1168853a9bfbb4905b819ee5e34a">max_theta</a>)</td></tr>
-<tr class="memdesc:a36dfd36819a39f4a4e69ee08293101de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Chained constructor operation.  <a href="structppht_1_1parameters.html#a36dfd36819a39f4a4e69ee08293101de">More...</a><br /></td></tr>
-<tr class="separator:a36dfd36819a39f4a4e69ee08293101de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aef3ed4aec3e421d02017a6747059f3f4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structppht_1_1parameters.html">parameters</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structppht_1_1parameters.html#aef3ed4aec3e421d02017a6747059f3f4">set_min_trigger_points</a> (std::uint16_t <a class="el" href="structppht_1_1parameters.html#a70ad3a0d4896c9b9d0fd3611820b33c8">min_trigger_points</a>)</td></tr>
 <tr class="memdesc:aef3ed4aec3e421d02017a6747059f3f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Chained constructor operation.  <a href="structppht_1_1parameters.html#aef3ed4aec3e421d02017a6747059f3f4">More...</a><br /></td></tr>
 <tr class="separator:aef3ed4aec3e421d02017a6747059f3f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -87,9 +84,6 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a21ac1168853a9bfbb4905b819ee5e34a"><td class="memItemLeft" align="right" valign="top">std::uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structppht_1_1parameters.html#a21ac1168853a9bfbb4905b819ee5e34a">max_theta</a> = 2048</td></tr>
-<tr class="memdesc:a21ac1168853a9bfbb4905b819ee5e34a"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of parts per turn.  <a href="structppht_1_1parameters.html#a21ac1168853a9bfbb4905b819ee5e34a">More...</a><br /></td></tr>
-<tr class="separator:a21ac1168853a9bfbb4905b819ee5e34a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a70ad3a0d4896c9b9d0fd3611820b33c8"><td class="memItemLeft" align="right" valign="top">std::uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structppht_1_1parameters.html#a70ad3a0d4896c9b9d0fd3611820b33c8">min_trigger_points</a> = 3</td></tr>
 <tr class="memdesc:a70ad3a0d4896c9b9d0fd3611820b33c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">The minimum number of voting points required to trigger a scan.  <a href="structppht_1_1parameters.html#a70ad3a0d4896c9b9d0fd3611820b33c8">More...</a><br /></td></tr>
 <tr class="separator:a70ad3a0d4896c9b9d0fd3611820b33c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -173,41 +167,6 @@ Public Attributes</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">max_gap</td><td>the new value for <a class="el" href="structppht_1_1parameters.html#a3dbe0f552b4390f81e70ea1e62f365f4">max_gap</a></td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>the parameters object </dd></dl>
-
-</div>
-</div>
-<a id="a36dfd36819a39f4a4e69ee08293101de" name="a36dfd36819a39f4a4e69ee08293101de"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a36dfd36819a39f4a4e69ee08293101de">&#9670;&nbsp;</a></span>set_max_theta()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structppht_1_1parameters.html">parameters</a> &amp; ppht::parameters::set_max_theta </td>
-          <td>(</td>
-          <td class="paramtype">std::uint16_t&#160;</td>
-          <td class="paramname"><em>max_theta</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Chained constructor operation. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">max_theta</td><td>the new value for <a class="el" href="structppht_1_1parameters.html#a21ac1168853a9bfbb4905b819ee5e34a">max_theta</a></td></tr>
   </table>
   </dd>
 </dl>
@@ -352,23 +311,6 @@ Public Attributes</h2></td></tr>
 <p>The maximum number of pixels that can be absent within a continuous segment. </p>
 <p >Gaps in a segment occur when previous scans erase pixels. If two segments intersect, then the second segment to be scanned will be missing <a class="el" href="structppht_1_1parameters.html#a53da8739e3db36d01cfb31f3ff8c33e1">channel_width</a> pixels but that gap is spurious. If more than this number of pixels are missing during a channel scan, the scanner closes the current segment and begins a new one.</p>
 <p >This value should be no less than <a class="el" href="structppht_1_1parameters.html#a53da8739e3db36d01cfb31f3ff8c33e1">channel_width</a>. </p>
-
-</div>
-</div>
-<a id="a21ac1168853a9bfbb4905b819ee5e34a" name="a21ac1168853a9bfbb4905b819ee5e34a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a21ac1168853a9bfbb4905b819ee5e34a">&#9670;&nbsp;</a></span>max_theta</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::uint16_t ppht::parameters::max_theta = 2048</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>The number of parts per turn. </p>
-<p >This value must be a multiple of four. </p>
 
 </div>
 </div>

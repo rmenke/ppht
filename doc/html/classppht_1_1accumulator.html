@@ -25,7 +25,7 @@ MathJax.Hub.Config({
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">PPHT<span id="projectnumber">&#160;1.0.9</span>
+   <div id="projectname">PPHT<span id="projectnumber">&#160;2.0.0-alpha.5</span>
    </div>
    <div id="projectbrief">An implementation of PPHT as a header-only library</div>
   </td>
@@ -67,12 +67,6 @@ $(function() {
  <a href="classppht_1_1accumulator.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="accumulator_8hpp_source.html">accumulator.hpp</a>&gt;</code></p>
-<div class="dynheader">
-Collaboration diagram for ppht::accumulator&lt; Count, Raster &gt;:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classppht_1_1accumulator__coll__graph.svg" width="146" height="136"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -90,9 +84,9 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a0d90892842b9a1b4f3b5581c4d94d9f4"><td class="memItemLeft" align="right" valign="top">static std::pair&lt; std::size_t, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1accumulator.html#a0d90892842b9a1b4f3b5581c4d94d9f4">rho_info</a> (std::size_t rows, std::size_t cols, std::size_t max_theta) noexcept</td></tr>
-<tr class="memdesc:a0d90892842b9a1b4f3b5581c4d94d9f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate parameters for scaling rho.  <a href="classppht_1_1accumulator.html#a0d90892842b9a1b4f3b5581c4d94d9f4">More...</a><br /></td></tr>
-<tr class="separator:a0d90892842b9a1b4f3b5581c4d94d9f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51ddcfb6a6d4705122d998e8a46fa45d"><td class="memItemLeft" align="right" valign="top">static std::pair&lt; std::size_t, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1accumulator.html#a51ddcfb6a6d4705122d998e8a46fa45d">rho_info</a> (std::size_t rows, std::size_t cols) noexcept</td></tr>
+<tr class="memdesc:a51ddcfb6a6d4705122d998e8a46fa45d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate parameters for scaling rho.  <a href="classppht_1_1accumulator.html#a51ddcfb6a6d4705122d998e8a46fa45d">More...</a><br /></td></tr>
+<tr class="separator:a51ddcfb6a6d4705122d998e8a46fa45d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-types" name="pri-types"></a>
 Private Types</h2></td></tr>
@@ -111,9 +105,9 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:a793d5129b3dabe924a839bd5ccf3ffe2"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1accumulator.html#a793d5129b3dabe924a839bd5ccf3ffe2">unscale_rho</a> (double scaled_rho) const noexcept</td></tr>
 <tr class="memdesc:a793d5129b3dabe924a839bd5ccf3ffe2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a scaled rho value back to a raw value.  <a href="classppht_1_1accumulator.html#a793d5129b3dabe924a839bd5ccf3ffe2">More...</a><br /></td></tr>
 <tr class="separator:a793d5129b3dabe924a839bd5ccf3ffe2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae3d150514be932dee46295bba2b0aa86"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1accumulator.html#ae3d150514be932dee46295bba2b0aa86">accumulator</a> (std::size_t rows, std::size_t cols, std::size_t max_theta, const std::pair&lt; std::size_t, int &gt; &amp;<a class="el" href="classppht_1_1accumulator.html#a0d90892842b9a1b4f3b5581c4d94d9f4">rho_info</a>, double log_threshold, std::size_t min_trigger_points, <a class="el" href="classppht_1_1accumulator.html#a92ee869bb03a6ced5ecf470d4328f5c4">seed_t</a> seed) noexcept</td></tr>
-<tr class="memdesc:ae3d150514be932dee46295bba2b0aa86"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct an instance of <a class="el" href="classppht_1_1accumulator.html">accumulator</a>.  <a href="classppht_1_1accumulator.html#ae3d150514be932dee46295bba2b0aa86">More...</a><br /></td></tr>
-<tr class="separator:ae3d150514be932dee46295bba2b0aa86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13c220fc16e37ce9ffbfa176a2c1e210"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1accumulator.html#a13c220fc16e37ce9ffbfa176a2c1e210">accumulator</a> (std::size_t rows, std::size_t cols, const std::pair&lt; std::size_t, int &gt; &amp;<a class="el" href="classppht_1_1accumulator.html#a51ddcfb6a6d4705122d998e8a46fa45d">rho_info</a>, double log_threshold, std::size_t min_trigger_points, <a class="el" href="classppht_1_1accumulator.html#a92ee869bb03a6ced5ecf470d4328f5c4">seed_t</a> seed) noexcept</td></tr>
+<tr class="memdesc:a13c220fc16e37ce9ffbfa176a2c1e210"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct an instance of <a class="el" href="classppht_1_1accumulator.html">accumulator</a>.  <a href="classppht_1_1accumulator.html#a13c220fc16e37ce9ffbfa176a2c1e210">More...</a><br /></td></tr>
+<tr class="separator:a13c220fc16e37ce9ffbfa176a2c1e210"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
 Static Private Member Functions</h2></td></tr>
@@ -124,9 +118,6 @@ Static Private Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a37106c56bcf48642217b214e60229444"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classppht_1_1trig__table.html">trig_table</a> const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1accumulator.html#a37106c56bcf48642217b214e60229444">_trig</a></td></tr>
-<tr class="memdesc:a37106c56bcf48642217b214e60229444"><td class="mdescLeft">&#160;</td><td class="mdescRight">Trigonometry tables quantized by max_theta.  <a href="classppht_1_1accumulator.html#a37106c56bcf48642217b214e60229444">More...</a><br /></td></tr>
-<tr class="separator:a37106c56bcf48642217b214e60229444"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa791a41afd8aa1774a6bcb34f0ca286d"><td class="memItemLeft" align="right" valign="top">std::size_t const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1accumulator.html#aa791a41afd8aa1774a6bcb34f0ca286d">_rows</a></td></tr>
 <tr class="memdesc:aa791a41afd8aa1774a6bcb34f0ca286d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Height of bitmap image.  <a href="classppht_1_1accumulator.html#aa791a41afd8aa1774a6bcb34f0ca286d">More...</a><br /></td></tr>
 <tr class="separator:aa791a41afd8aa1774a6bcb34f0ca286d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -217,8 +208,8 @@ template&lt;class Count  = std::uint16_t, template&lt; class &gt; class Raster =
 </div>
 </div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="ae3d150514be932dee46295bba2b0aa86" name="ae3d150514be932dee46295bba2b0aa86"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae3d150514be932dee46295bba2b0aa86">&#9670;&nbsp;</a></span>accumulator() <span class="overload">[1/2]</span></h2>
+<a id="a13c220fc16e37ce9ffbfa176a2c1e210" name="a13c220fc16e37ce9ffbfa176a2c1e210"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13c220fc16e37ce9ffbfa176a2c1e210">&#9670;&nbsp;</a></span>accumulator() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -239,12 +230,6 @@ template&lt;class Count  = std::uint16_t, template&lt; class &gt; class Raster =
           <td></td>
           <td class="paramtype">std::size_t&#160;</td>
           <td class="paramname"><em>cols</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
-          <td class="paramname"><em>max_theta</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -289,7 +274,6 @@ template&lt;class Count  = std::uint16_t, template&lt; class &gt; class Raster =
   <table class="params">
     <tr><td class="paramname">rows</td><td>the height of the image</td></tr>
     <tr><td class="paramname">cols</td><td>the width of the image</td></tr>
-    <tr><td class="paramname">max_theta</td><td>the number of parts per semiturn</td></tr>
     <tr><td class="paramname">rho_info</td><td>the maximum value a scaled rho can take and the scale factor</td></tr>
     <tr><td class="paramname">log_threshold</td><td>the natural logarithm of the threshold at which we reject the null hypothesis</td></tr>
     <tr><td class="paramname">min_trigger_points</td><td>the number of colinear points required before testing the null hypothesis</td></tr>
@@ -458,8 +442,8 @@ template&lt;class Count  = std::uint16_t, template&lt; class &gt; class Raster =
 
 </div>
 </div>
-<a id="a0d90892842b9a1b4f3b5581c4d94d9f4" name="a0d90892842b9a1b4f3b5581c4d94d9f4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0d90892842b9a1b4f3b5581c4d94d9f4">&#9670;&nbsp;</a></span>rho_info()</h2>
+<a id="a51ddcfb6a6d4705122d998e8a46fa45d" name="a51ddcfb6a6d4705122d998e8a46fa45d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51ddcfb6a6d4705122d998e8a46fa45d">&#9670;&nbsp;</a></span>rho_info()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -479,13 +463,7 @@ template&lt;class Count  = std::uint16_t, template&lt; class &gt; class Raster =
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">std::size_t&#160;</td>
-          <td class="paramname"><em>cols</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
-          <td class="paramname"><em>max_theta</em>&#160;</td>
+          <td class="paramname"><em>cols</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -507,7 +485,6 @@ template&lt;class Count  = std::uint16_t, template&lt; class &gt; class Raster =
   <table class="params">
     <tr><td class="paramname">rows</td><td>the height of the bitmap in pixels</td></tr>
     <tr><td class="paramname">cols</td><td>the width of the bitmap in pixels</td></tr>
-    <tr><td class="paramname">max_theta</td><td>the range of theta</td></tr>
   </table>
   </dd>
 </dl>
@@ -831,32 +808,6 @@ template&lt;class Count  = std::uint16_t, template&lt; class &gt; class Raster =
 </div><div class="memdoc">
 
 <p>Height of bitmap image. </p>
-
-</div>
-</div>
-<a id="a37106c56bcf48642217b214e60229444" name="a37106c56bcf48642217b214e60229444"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a37106c56bcf48642217b214e60229444">&#9670;&nbsp;</a></span>_trig</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class Count  = std::uint16_t, template&lt; class &gt; class Raster = raster&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classppht_1_1trig__table.html">trig_table</a> const <a class="el" href="classppht_1_1accumulator.html">ppht::accumulator</a>&lt; Count, Raster &gt;::_trig</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Trigonometry tables quantized by max_theta. </p>
 
 </div>
 </div>

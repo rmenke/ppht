@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>PPHT: ppht::channel::iterator Class Reference</title>
+<title>PPHT: ppht::channel&lt; Point &gt;::iterator Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,7 +25,7 @@ MathJax.Hub.Config({
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">PPHT<span id="projectnumber">&#160;1.0.9</span>
+   <div id="projectname">PPHT<span id="projectnumber">&#160;2.0.0-alpha.5</span>
    </div>
    <div id="projectbrief">An implementation of PPHT as a header-only library</div>
   </td>
@@ -56,273 +56,269 @@ $(function() {
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classppht_1_1channel_1_1iterator-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">ppht::channel::iterator Class Reference</div></div>
+  <div class="headertitle"><div class="title">ppht::channel&lt; Point &gt;::iterator Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>A forward iterator wrapping a scanner.  
+<p>The workhorse of the channel.  
  <a href="classppht_1_1channel_1_1iterator.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="channel_8hpp_source.html">channel.hpp</a>&gt;</code></p>
-<div class="dynheader">
-Collaboration diagram for ppht::channel::iterator:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classppht_1_1channel_1_1iterator__coll__graph.svg" width="162" height="211"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:aeadedf2d1439eaeba376fa2e1e926ede"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1channel_1_1iterator.html#aeadedf2d1439eaeba376fa2e1e926ede">difference_type</a> = std::ptrdiff_t</td></tr>
-<tr class="memdesc:aeadedf2d1439eaeba376fa2e1e926ede"><td class="mdescLeft">&#160;</td><td class="mdescRight">Support for std::iterator_traits.  <a href="classppht_1_1channel_1_1iterator.html#aeadedf2d1439eaeba376fa2e1e926ede">More...</a><br /></td></tr>
-<tr class="separator:aeadedf2d1439eaeba376fa2e1e926ede"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3e796dc721c101bf3d0b20b68c1515ba"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1channel_1_1iterator.html#a3e796dc721c101bf3d0b20b68c1515ba">value_type</a> = <a class="el" href="structppht_1_1point__t.html">point_t</a></td></tr>
-<tr class="memdesc:a3e796dc721c101bf3d0b20b68c1515ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Support for std::iterator_traits.  <a href="classppht_1_1channel_1_1iterator.html#a3e796dc721c101bf3d0b20b68c1515ba">More...</a><br /></td></tr>
-<tr class="separator:a3e796dc721c101bf3d0b20b68c1515ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aba204a90514b98aa95d0c4da98722870"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1channel_1_1iterator.html#aba204a90514b98aa95d0c4da98722870">reference</a> = const <a class="el" href="classppht_1_1channel_1_1iterator.html#a3e796dc721c101bf3d0b20b68c1515ba">value_type</a> &amp;</td></tr>
-<tr class="memdesc:aba204a90514b98aa95d0c4da98722870"><td class="mdescLeft">&#160;</td><td class="mdescRight">Support for std::iterator_traits.  <a href="classppht_1_1channel_1_1iterator.html#aba204a90514b98aa95d0c4da98722870">More...</a><br /></td></tr>
-<tr class="separator:aba204a90514b98aa95d0c4da98722870"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4d6422532de1f4f53cdaba61a6badca3"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1channel_1_1iterator.html#a4d6422532de1f4f53cdaba61a6badca3">pointer</a> = const <a class="el" href="classppht_1_1channel_1_1iterator.html#a3e796dc721c101bf3d0b20b68c1515ba">value_type</a> *</td></tr>
-<tr class="memdesc:a4d6422532de1f4f53cdaba61a6badca3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Support for std::iterator_traits.  <a href="classppht_1_1channel_1_1iterator.html#a4d6422532de1f4f53cdaba61a6badca3">More...</a><br /></td></tr>
-<tr class="separator:a4d6422532de1f4f53cdaba61a6badca3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d63ad3897da35a659758fa030a608d2"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1channel_1_1iterator.html#a2d63ad3897da35a659758fa030a608d2">iterator_category</a> = std::forward_iterator_tag</td></tr>
-<tr class="memdesc:a2d63ad3897da35a659758fa030a608d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Support for std::iterator_traits.  <a href="classppht_1_1channel_1_1iterator.html#a2d63ad3897da35a659758fa030a608d2">More...</a><br /></td></tr>
-<tr class="separator:a2d63ad3897da35a659758fa030a608d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc80a0bb0ebf4542c7194fbccb1c64f5"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1channel_1_1iterator.html#afc80a0bb0ebf4542c7194fbccb1c64f5">value_type</a> = std::pair&lt; Point, std::set&lt; Point &gt; &gt;</td></tr>
+<tr class="memdesc:afc80a0bb0ebf4542c7194fbccb1c64f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of values returned by dereferencing the iterator.  <a href="classppht_1_1channel_1_1iterator.html#afc80a0bb0ebf4542c7194fbccb1c64f5">More...</a><br /></td></tr>
+<tr class="separator:afc80a0bb0ebf4542c7194fbccb1c64f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a991a62fe2ff1844aa34e6fb0f9eb9b02"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1channel_1_1iterator.html#a991a62fe2ff1844aa34e6fb0f9eb9b02">reference</a> = const <a class="el" href="classppht_1_1channel_1_1iterator.html#afc80a0bb0ebf4542c7194fbccb1c64f5">value_type</a> &amp;</td></tr>
+<tr class="memdesc:a991a62fe2ff1844aa34e6fb0f9eb9b02"><td class="mdescLeft">&#160;</td><td class="mdescRight">A constant reference to the value returned.  <a href="classppht_1_1channel_1_1iterator.html#a991a62fe2ff1844aa34e6fb0f9eb9b02">More...</a><br /></td></tr>
+<tr class="separator:a991a62fe2ff1844aa34e6fb0f9eb9b02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd28489d7575503948b15b205f150bd3"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1channel_1_1iterator.html#acd28489d7575503948b15b205f150bd3">pointer</a> = const <a class="el" href="classppht_1_1channel_1_1iterator.html#afc80a0bb0ebf4542c7194fbccb1c64f5">value_type</a> *</td></tr>
+<tr class="memdesc:acd28489d7575503948b15b205f150bd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">A constant pointer to the value returned.  <a href="classppht_1_1channel_1_1iterator.html#acd28489d7575503948b15b205f150bd3">More...</a><br /></td></tr>
+<tr class="separator:acd28489d7575503948b15b205f150bd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31462bf3c661c207fffbd5728b582c6e"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1channel_1_1iterator.html#a31462bf3c661c207fffbd5728b582c6e">difference_type</a> = std::ptrdiff_t</td></tr>
+<tr class="memdesc:a31462bf3c661c207fffbd5728b582c6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">The difference between two iterators.  <a href="classppht_1_1channel_1_1iterator.html#a31462bf3c661c207fffbd5728b582c6e">More...</a><br /></td></tr>
+<tr class="separator:a31462bf3c661c207fffbd5728b582c6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1dfdabfbf5469477c98f3e9a910c8308"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1channel_1_1iterator.html#a1dfdabfbf5469477c98f3e9a910c8308">iterator_category</a> = std::input_iterator_tag</td></tr>
+<tr class="memdesc:a1dfdabfbf5469477c98f3e9a910c8308"><td class="mdescLeft">&#160;</td><td class="mdescRight">The category of this iterator class.  <a href="classppht_1_1channel_1_1iterator.html#a1dfdabfbf5469477c98f3e9a910c8308">More...</a><br /></td></tr>
+<tr class="separator:a1dfdabfbf5469477c98f3e9a910c8308"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a771d584d587cd0be8f0c25a887a8c9b0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1channel_1_1iterator.html#a771d584d587cd0be8f0c25a887a8c9b0">iterator</a> ()</td></tr>
-<tr class="separator:a771d584d587cd0be8f0c25a887a8c9b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a295d88c8dad261e1a6e6f4177ce135e0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1channel_1_1iterator.html#a295d88c8dad261e1a6e6f4177ce135e0">iterator</a> (const <a class="el" href="classppht_1_1segment__t.html">segment_t</a> &amp;segment)</td></tr>
-<tr class="separator:a295d88c8dad261e1a6e6f4177ce135e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7a2e53bd079d7de5b70198250525f5dc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1channel_1_1iterator.html#a7a2e53bd079d7de5b70198250525f5dc">iterator</a> (const <a class="el" href="classppht_1_1channel_1_1iterator.html">iterator</a> &amp;r)</td></tr>
-<tr class="memdesc:a7a2e53bd079d7de5b70198250525f5dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy the iterator.  <a href="classppht_1_1channel_1_1iterator.html#a7a2e53bd079d7de5b70198250525f5dc">More...</a><br /></td></tr>
-<tr class="separator:a7a2e53bd079d7de5b70198250525f5dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab149be5cf6f002d9b3ffd10b1212a5de"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1channel_1_1iterator.html#ab149be5cf6f002d9b3ffd10b1212a5de">iterator</a> (<a class="el" href="classppht_1_1channel_1_1iterator.html">iterator</a> &amp;&amp;r)=default</td></tr>
-<tr class="memdesc:ab149be5cf6f002d9b3ffd10b1212a5de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move the iterator.  <a href="classppht_1_1channel_1_1iterator.html#ab149be5cf6f002d9b3ffd10b1212a5de">More...</a><br /></td></tr>
-<tr class="separator:ab149be5cf6f002d9b3ffd10b1212a5de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a482fd7f287eb8621295254775e02e9d3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classppht_1_1channel_1_1iterator.html">iterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1channel_1_1iterator.html#a482fd7f287eb8621295254775e02e9d3">operator=</a> (const <a class="el" href="classppht_1_1channel_1_1iterator.html">iterator</a> &amp;r)</td></tr>
-<tr class="memdesc:a482fd7f287eb8621295254775e02e9d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy-assign the iterator.  <a href="classppht_1_1channel_1_1iterator.html#a482fd7f287eb8621295254775e02e9d3">More...</a><br /></td></tr>
-<tr class="separator:a482fd7f287eb8621295254775e02e9d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a430cdebc291b1c494fc955c0fc0b471a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classppht_1_1channel_1_1iterator.html">iterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1channel_1_1iterator.html#a430cdebc291b1c494fc955c0fc0b471a">operator=</a> (<a class="el" href="classppht_1_1channel_1_1iterator.html">iterator</a> &amp;&amp;r)=default</td></tr>
-<tr class="memdesc:a430cdebc291b1c494fc955c0fc0b471a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move-assign the iterator.  <a href="classppht_1_1channel_1_1iterator.html#a430cdebc291b1c494fc955c0fc0b471a">More...</a><br /></td></tr>
-<tr class="separator:a430cdebc291b1c494fc955c0fc0b471a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4873d2f75099e73bf4c347c5056d5ef9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classppht_1_1channel_1_1iterator.html#aba204a90514b98aa95d0c4da98722870">reference</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1channel_1_1iterator.html#a4873d2f75099e73bf4c347c5056d5ef9">operator*</a> () const</td></tr>
-<tr class="memdesc:a4873d2f75099e73bf4c347c5056d5ef9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current point of the scan.  <a href="classppht_1_1channel_1_1iterator.html#a4873d2f75099e73bf4c347c5056d5ef9">More...</a><br /></td></tr>
-<tr class="separator:a4873d2f75099e73bf4c347c5056d5ef9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a41a50f1701df4390ef08fb6d3f248a51"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classppht_1_1channel_1_1iterator.html#a4d6422532de1f4f53cdaba61a6badca3">pointer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1channel_1_1iterator.html#a41a50f1701df4390ef08fb6d3f248a51">operator-&gt;</a> () const</td></tr>
-<tr class="memdesc:a41a50f1701df4390ef08fb6d3f248a51"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current point of the scan.  <a href="classppht_1_1channel_1_1iterator.html#a41a50f1701df4390ef08fb6d3f248a51">More...</a><br /></td></tr>
-<tr class="separator:a41a50f1701df4390ef08fb6d3f248a51"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a26ed533b53b2530535f4622061627d8e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1channel_1_1iterator.html#a26ed533b53b2530535f4622061627d8e">operator==</a> (const <a class="el" href="classppht_1_1channel_1_1iterator.html">iterator</a> &amp;r) const</td></tr>
-<tr class="memdesc:a26ed533b53b2530535f4622061627d8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check for equality.  <a href="classppht_1_1channel_1_1iterator.html#a26ed533b53b2530535f4622061627d8e">More...</a><br /></td></tr>
-<tr class="separator:a26ed533b53b2530535f4622061627d8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a44b2231eedcb643679de449956d57a6b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1channel_1_1iterator.html#a44b2231eedcb643679de449956d57a6b">operator!=</a> (const <a class="el" href="classppht_1_1channel_1_1iterator.html">iterator</a> &amp;r) const</td></tr>
-<tr class="memdesc:a44b2231eedcb643679de449956d57a6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check for inequality.  <a href="classppht_1_1channel_1_1iterator.html#a44b2231eedcb643679de449956d57a6b">More...</a><br /></td></tr>
-<tr class="separator:a44b2231eedcb643679de449956d57a6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acc4d8c368f53b7e54bb7ac8bde2c6e23"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classppht_1_1channel_1_1iterator.html">iterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1channel_1_1iterator.html#acc4d8c368f53b7e54bb7ac8bde2c6e23">operator++</a> ()</td></tr>
-<tr class="memdesc:acc4d8c368f53b7e54bb7ac8bde2c6e23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Increment the iterator to the next point.  <a href="classppht_1_1channel_1_1iterator.html#acc4d8c368f53b7e54bb7ac8bde2c6e23">More...</a><br /></td></tr>
-<tr class="separator:acc4d8c368f53b7e54bb7ac8bde2c6e23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a965da0a377979350599e2b517a02cfbe"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1channel_1_1iterator.html#a965da0a377979350599e2b517a02cfbe">iterator</a> (const Point &amp;p, const Point &amp;delta, std::size_t <a class="el" href="classppht_1_1channel_1_1iterator.html#aa013a66a62b40c7b9d5726a0ff25213c">radius</a>)</td></tr>
+<tr class="memdesc:a965da0a377979350599e2b517a02cfbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct an iterator following the given segment.  <a href="classppht_1_1channel_1_1iterator.html#a965da0a377979350599e2b517a02cfbe">More...</a><br /></td></tr>
+<tr class="separator:a965da0a377979350599e2b517a02cfbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a76c3f6eddab6df5e4d18353fb2294b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1channel_1_1iterator.html#a6a76c3f6eddab6df5e4d18353fb2294b">iterator</a> (const <a class="el" href="classppht_1_1channel_1_1iterator.html">iterator</a> &amp;)=delete</td></tr>
+<tr class="separator:a6a76c3f6eddab6df5e4d18353fb2294b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c3ef04d2f72fe6e95d9842623fd84d0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1channel_1_1iterator.html#a3c3ef04d2f72fe6e95d9842623fd84d0">iterator</a> (<a class="el" href="classppht_1_1channel_1_1iterator.html">iterator</a> &amp;&amp;r)</td></tr>
+<tr class="memdesc:a3c3ef04d2f72fe6e95d9842623fd84d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move constructor.  <a href="classppht_1_1channel_1_1iterator.html#a3c3ef04d2f72fe6e95d9842623fd84d0">More...</a><br /></td></tr>
+<tr class="separator:a3c3ef04d2f72fe6e95d9842623fd84d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7446ece6b62c71450972ff348975fd7b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classppht_1_1channel_1_1iterator.html">iterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1channel_1_1iterator.html#a7446ece6b62c71450972ff348975fd7b">operator=</a> (const <a class="el" href="classppht_1_1channel_1_1iterator.html">iterator</a> &amp;)=delete</td></tr>
+<tr class="separator:a7446ece6b62c71450972ff348975fd7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9b4eaf1cdf7da897918ff1821594ab1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classppht_1_1channel_1_1iterator.html">iterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1channel_1_1iterator.html#ac9b4eaf1cdf7da897918ff1821594ab1">operator=</a> (<a class="el" href="classppht_1_1channel_1_1iterator.html">iterator</a> &amp;&amp;r)</td></tr>
+<tr class="memdesc:ac9b4eaf1cdf7da897918ff1821594ab1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move assignment operator.  <a href="classppht_1_1channel_1_1iterator.html#ac9b4eaf1cdf7da897918ff1821594ab1">More...</a><br /></td></tr>
+<tr class="separator:ac9b4eaf1cdf7da897918ff1821594ab1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3721a1bb7df286b0271b879f3875640"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classppht_1_1channel_1_1iterator.html#a991a62fe2ff1844aa34e6fb0f9eb9b02">reference</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1channel_1_1iterator.html#ab3721a1bb7df286b0271b879f3875640">operator*</a> () const</td></tr>
+<tr class="memdesc:ab3721a1bb7df286b0271b879f3875640"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dereference the iterator.  <a href="classppht_1_1channel_1_1iterator.html#ab3721a1bb7df286b0271b879f3875640">More...</a><br /></td></tr>
+<tr class="separator:ab3721a1bb7df286b0271b879f3875640"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac734518bc6d4671676de6d5da4327ba7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classppht_1_1channel_1_1iterator.html#acd28489d7575503948b15b205f150bd3">pointer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1channel_1_1iterator.html#ac734518bc6d4671676de6d5da4327ba7">operator-&gt;</a> () const</td></tr>
+<tr class="memdesc:ac734518bc6d4671676de6d5da4327ba7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indirectly access the state of the iterator.  <a href="classppht_1_1channel_1_1iterator.html#ac734518bc6d4671676de6d5da4327ba7">More...</a><br /></td></tr>
+<tr class="separator:ac734518bc6d4671676de6d5da4327ba7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76895ab4ac3701072e1ebc98c6e704f0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1channel_1_1iterator.html#a76895ab4ac3701072e1ebc98c6e704f0">operator==</a> (const <a class="el" href="classppht_1_1channel_1_1iterator.html">iterator</a> &amp;r) const</td></tr>
+<tr class="memdesc:a76895ab4ac3701072e1ebc98c6e704f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compare two iterators for equality.  <a href="classppht_1_1channel_1_1iterator.html#a76895ab4ac3701072e1ebc98c6e704f0">More...</a><br /></td></tr>
+<tr class="separator:a76895ab4ac3701072e1ebc98c6e704f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa16af2dfb823bf4c2e9bdc106dbb5745"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1channel_1_1iterator.html#aa16af2dfb823bf4c2e9bdc106dbb5745">operator!=</a> (const <a class="el" href="classppht_1_1channel_1_1iterator.html">iterator</a> &amp;r) const</td></tr>
+<tr class="memdesc:aa16af2dfb823bf4c2e9bdc106dbb5745"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compare two iterators for inequality.  <a href="classppht_1_1channel_1_1iterator.html#aa16af2dfb823bf4c2e9bdc106dbb5745">More...</a><br /></td></tr>
+<tr class="separator:aa16af2dfb823bf4c2e9bdc106dbb5745"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb8c944eb1915ceade9d13be70598eef"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classppht_1_1channel_1_1iterator.html">iterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1channel_1_1iterator.html#abb8c944eb1915ceade9d13be70598eef">operator++</a> ()</td></tr>
+<tr class="memdesc:abb8c944eb1915ceade9d13be70598eef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Advance the iterator.  <a href="classppht_1_1channel_1_1iterator.html#abb8c944eb1915ceade9d13be70598eef">More...</a><br /></td></tr>
+<tr class="separator:abb8c944eb1915ceade9d13be70598eef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:aa7466bf767650031ca712bf2223e42d5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classppht_1_1segment__t.html">segment_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1channel_1_1iterator.html#aa7466bf767650031ca712bf2223e42d5">_segment</a></td></tr>
-<tr class="memdesc:aa7466bf767650031ca712bf2223e42d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">The segment from the channel.  <a href="classppht_1_1channel_1_1iterator.html#aa7466bf767650031ca712bf2223e42d5">More...</a><br /></td></tr>
-<tr class="separator:aa7466bf767650031ca712bf2223e42d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a98f263c4c29f55352031af28a013c889"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="structppht_1_1scanner.html">scanner</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1channel_1_1iterator.html#a98f263c4c29f55352031af28a013c889">_scanner</a></td></tr>
-<tr class="memdesc:a98f263c4c29f55352031af28a013c889"><td class="mdescLeft">&#160;</td><td class="mdescRight">The underlying scanner.  <a href="classppht_1_1channel_1_1iterator.html#a98f263c4c29f55352031af28a013c889">More...</a><br /></td></tr>
-<tr class="separator:a98f263c4c29f55352031af28a013c889"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e5f098d259a2dfc640ed577c9bbcf5a"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classppht_1_1channel_1_1scanner.html">scanner</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1channel_1_1iterator.html#a4e5f098d259a2dfc640ed577c9bbcf5a">scanner</a></td></tr>
+<tr class="memdesc:a4e5f098d259a2dfc640ed577c9bbcf5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">The iterator implementation to use.  <a href="classppht_1_1channel_1_1iterator.html#a4e5f098d259a2dfc640ed577c9bbcf5a">More...</a><br /></td></tr>
+<tr class="separator:a4e5f098d259a2dfc640ed577c9bbcf5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa013a66a62b40c7b9d5726a0ff25213c"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1channel_1_1iterator.html#aa013a66a62b40c7b9d5726a0ff25213c">radius</a></td></tr>
+<tr class="memdesc:aa013a66a62b40c7b9d5726a0ff25213c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The radius of the channel.  <a href="classppht_1_1channel_1_1iterator.html#aa013a66a62b40c7b9d5726a0ff25213c">More...</a><br /></td></tr>
+<tr class="separator:aa013a66a62b40c7b9d5726a0ff25213c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4c76806a7b5865fcb241b287a44c5f2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classppht_1_1channel_1_1iterator.html#afc80a0bb0ebf4542c7194fbccb1c64f5">value_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1channel_1_1iterator.html#ad4c76806a7b5865fcb241b287a44c5f2">value</a></td></tr>
+<tr class="memdesc:ad4c76806a7b5865fcb241b287a44c5f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current state of the iterator.  <a href="classppht_1_1channel_1_1iterator.html#ad4c76806a7b5865fcb241b287a44c5f2">More...</a><br /></td></tr>
+<tr class="separator:ad4c76806a7b5865fcb241b287a44c5f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >A forward iterator wrapping a scanner. </p>
-<p >The iterator acts as a façade over the <a class="el" href="structppht_1_1scanner.html">scanner</a> interface. </p>
+<div class="textblock"><div class="compoundTemplParams">template&lt;class Point&gt;<br />
+class ppht::channel&lt; Point &gt;::iterator</div><p >The workhorse of the channel. </p>
+<p >The iterator contains a point <code>p</code> and an internal state based on the slope <code>delta</code> of the line. It is an input iterator: there is no multipass guarantee. The reference returned by the dereferencing operator is to an internal variable and will not be valid after increment.</p>
+<p >The value of the iterator is a pair consisting of the canonical point (the point on the ideal Bresenham line segment) and a set of points describing a perpendicular line segment through that point of length <code>2 * radius - 1</code>. In very rare cases the canonical point will not be a part of the perpendicular point set but will be adjacent. The thickness of the perpendicular segment varies between 1 and 2 pixels, depending on the position of the canonical point and the slope of the segment. These segments are guaranteed to cover the entire thick line segment and not overlap. </p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
-<a id="aeadedf2d1439eaeba376fa2e1e926ede" name="aeadedf2d1439eaeba376fa2e1e926ede"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeadedf2d1439eaeba376fa2e1e926ede">&#9670;&nbsp;</a></span>difference_type</h2>
+<a id="a31462bf3c661c207fffbd5728b582c6e" name="a31462bf3c661c207fffbd5728b582c6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31462bf3c661c207fffbd5728b582c6e">&#9670;&nbsp;</a></span>difference_type</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class Point &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="classppht_1_1channel_1_1iterator.html#aeadedf2d1439eaeba376fa2e1e926ede">ppht::channel::iterator::difference_type</a> =  std::ptrdiff_t</td>
+          <td class="memname">using <a class="el" href="classppht_1_1channel.html">ppht::channel</a>&lt; Point &gt;::<a class="el" href="classppht_1_1channel_1_1iterator.html#a31462bf3c661c207fffbd5728b582c6e">iterator::difference_type</a> =  std::ptrdiff_t</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Support for std::iterator_traits. </p>
+<p>The difference between two iterators. </p>
 
 </div>
 </div>
-<a id="a2d63ad3897da35a659758fa030a608d2" name="a2d63ad3897da35a659758fa030a608d2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2d63ad3897da35a659758fa030a608d2">&#9670;&nbsp;</a></span>iterator_category</h2>
+<a id="a1dfdabfbf5469477c98f3e9a910c8308" name="a1dfdabfbf5469477c98f3e9a910c8308"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1dfdabfbf5469477c98f3e9a910c8308">&#9670;&nbsp;</a></span>iterator_category</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class Point &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="classppht_1_1channel_1_1iterator.html#a2d63ad3897da35a659758fa030a608d2">ppht::channel::iterator::iterator_category</a> =  std::forward_iterator_tag</td>
+          <td class="memname">using <a class="el" href="classppht_1_1channel.html">ppht::channel</a>&lt; Point &gt;::<a class="el" href="classppht_1_1channel_1_1iterator.html#a1dfdabfbf5469477c98f3e9a910c8308">iterator::iterator_category</a> =  std::input_iterator_tag</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Support for std::iterator_traits. </p>
+<p>The category of this iterator class. </p>
 
 </div>
 </div>
-<a id="a4d6422532de1f4f53cdaba61a6badca3" name="a4d6422532de1f4f53cdaba61a6badca3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4d6422532de1f4f53cdaba61a6badca3">&#9670;&nbsp;</a></span>pointer</h2>
+<a id="acd28489d7575503948b15b205f150bd3" name="acd28489d7575503948b15b205f150bd3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd28489d7575503948b15b205f150bd3">&#9670;&nbsp;</a></span>pointer</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class Point &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="classppht_1_1channel_1_1iterator.html#a4d6422532de1f4f53cdaba61a6badca3">ppht::channel::iterator::pointer</a> =  const <a class="el" href="classppht_1_1channel_1_1iterator.html#a3e796dc721c101bf3d0b20b68c1515ba">value_type</a> *</td>
+          <td class="memname">using <a class="el" href="classppht_1_1channel.html">ppht::channel</a>&lt; Point &gt;::<a class="el" href="classppht_1_1channel_1_1iterator.html#acd28489d7575503948b15b205f150bd3">iterator::pointer</a> =  const <a class="el" href="classppht_1_1channel_1_1iterator.html#afc80a0bb0ebf4542c7194fbccb1c64f5">value_type</a> *</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Support for std::iterator_traits. </p>
+<p>A constant pointer to the value returned. </p>
 
 </div>
 </div>
-<a id="aba204a90514b98aa95d0c4da98722870" name="aba204a90514b98aa95d0c4da98722870"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aba204a90514b98aa95d0c4da98722870">&#9670;&nbsp;</a></span>reference</h2>
+<a id="a991a62fe2ff1844aa34e6fb0f9eb9b02" name="a991a62fe2ff1844aa34e6fb0f9eb9b02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a991a62fe2ff1844aa34e6fb0f9eb9b02">&#9670;&nbsp;</a></span>reference</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class Point &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="classppht_1_1channel_1_1iterator.html#aba204a90514b98aa95d0c4da98722870">ppht::channel::iterator::reference</a> =  const <a class="el" href="classppht_1_1channel_1_1iterator.html#a3e796dc721c101bf3d0b20b68c1515ba">value_type</a> &amp;</td>
+          <td class="memname">using <a class="el" href="classppht_1_1channel.html">ppht::channel</a>&lt; Point &gt;::<a class="el" href="classppht_1_1channel_1_1iterator.html#a991a62fe2ff1844aa34e6fb0f9eb9b02">iterator::reference</a> =  const <a class="el" href="classppht_1_1channel_1_1iterator.html#afc80a0bb0ebf4542c7194fbccb1c64f5">value_type</a> &amp;</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Support for std::iterator_traits. </p>
+<p>A constant reference to the value returned. </p>
 
 </div>
 </div>
-<a id="a3e796dc721c101bf3d0b20b68c1515ba" name="a3e796dc721c101bf3d0b20b68c1515ba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3e796dc721c101bf3d0b20b68c1515ba">&#9670;&nbsp;</a></span>value_type</h2>
+<a id="afc80a0bb0ebf4542c7194fbccb1c64f5" name="afc80a0bb0ebf4542c7194fbccb1c64f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc80a0bb0ebf4542c7194fbccb1c64f5">&#9670;&nbsp;</a></span>value_type</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class Point &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="classppht_1_1channel_1_1iterator.html#a3e796dc721c101bf3d0b20b68c1515ba">ppht::channel::iterator::value_type</a> =  <a class="el" href="structppht_1_1point__t.html">point_t</a></td>
+          <td class="memname">using <a class="el" href="classppht_1_1channel.html">ppht::channel</a>&lt; Point &gt;::<a class="el" href="classppht_1_1channel_1_1iterator.html#afc80a0bb0ebf4542c7194fbccb1c64f5">iterator::value_type</a> =  std::pair&lt;Point, std::set&lt;Point&gt; &gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Support for std::iterator_traits. </p>
+<p>The type of values returned by dereferencing the iterator. </p>
 
 </div>
 </div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a771d584d587cd0be8f0c25a887a8c9b0" name="a771d584d587cd0be8f0c25a887a8c9b0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a771d584d587cd0be8f0c25a887a8c9b0">&#9670;&nbsp;</a></span>iterator() <span class="overload">[1/4]</span></h2>
+<a id="a965da0a377979350599e2b517a02cfbe" name="a965da0a377979350599e2b517a02cfbe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a965da0a377979350599e2b517a02cfbe">&#9670;&nbsp;</a></span>iterator() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class Point &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">ppht::channel::iterator::iterator </td>
+          <td class="memname"><a class="el" href="classppht_1_1channel.html">ppht::channel</a>&lt; Point &gt;::iterator::iterator </td>
           <td>(</td>
+          <td class="paramtype">const Point &amp;&#160;</td>
+          <td class="paramname"><em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Point &amp;&#160;</td>
+          <td class="paramname"><em>delta</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>radius</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Construct an iterator following the given segment. </p>
+<p >The iterator will originate from point <code>p</code> and move in the direction specified by <code>delta</code>. When it reaches <code>p + delta</code> it will have the same internal state that it had from the start.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p</td><td>the initial point </td></tr>
+    <tr><td class="paramname">delta</td><td>the difference between the initial and terminal point </td></tr>
+    <tr><td class="paramname">radius</td><td>the radius (half-width) of the line segment </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6a76c3f6eddab6df5e4d18353fb2294b" name="a6a76c3f6eddab6df5e4d18353fb2294b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a76c3f6eddab6df5e4d18353fb2294b">&#9670;&nbsp;</a></span>iterator() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Point &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classppht_1_1channel.html">ppht::channel</a>&lt; Point &gt;::iterator::iterator </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classppht_1_1channel_1_1iterator.html">iterator</a> &amp;&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
-<p >Constructs the end-of-sequence iterator. </p>
 
 </div>
 </div>
-<a id="a295d88c8dad261e1a6e6f4177ce135e0" name="a295d88c8dad261e1a6e6f4177ce135e0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a295d88c8dad261e1a6e6f4177ce135e0">&#9670;&nbsp;</a></span>iterator() <span class="overload">[2/4]</span></h2>
+<a id="a3c3ef04d2f72fe6e95d9842623fd84d0" name="a3c3ef04d2f72fe6e95d9842623fd84d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c3ef04d2f72fe6e95d9842623fd84d0">&#9670;&nbsp;</a></span>iterator() <span class="overload">[3/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class Point &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">ppht::channel::iterator::iterator </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="classppht_1_1segment__t.html">segment_t</a> &amp;&#160;</td>
-          <td class="paramname"><em>segment</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p >Construct an iterator that returns the points making up the segment.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">segment</td><td>the segment over which to iterate.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="namespaceppht.html#afa43fde4290ae78a00d1951918976316">make_scanner()</a> </dd></dl>
-
-</div>
-</div>
-<a id="a7a2e53bd079d7de5b70198250525f5dc" name="a7a2e53bd079d7de5b70198250525f5dc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7a2e53bd079d7de5b70198250525f5dc">&#9670;&nbsp;</a></span>iterator() <span class="overload">[3/4]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">ppht::channel::iterator::iterator </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="classppht_1_1channel_1_1iterator.html">iterator</a> &amp;&#160;</td>
-          <td class="paramname"><em>r</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Copy the iterator. </p>
-<p >The underlying scanner will also be copied.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">r</td><td>the other iterator. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="ab149be5cf6f002d9b3ffd10b1212a5de" name="ab149be5cf6f002d9b3ffd10b1212a5de"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab149be5cf6f002d9b3ffd10b1212a5de">&#9670;&nbsp;</a></span>iterator() <span class="overload">[4/4]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">ppht::channel::iterator::iterator </td>
+          <td class="memname"><a class="el" href="classppht_1_1channel.html">ppht::channel</a>&lt; Point &gt;::iterator::iterator </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classppht_1_1channel_1_1iterator.html">iterator</a> &amp;&amp;&#160;</td>
           <td class="paramname"><em>r</em></td><td>)</td>
@@ -331,33 +327,29 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">default</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Move the iterator. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">r</td><td>the other iterator. </td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Move constructor. </p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a44b2231eedcb643679de449956d57a6b" name="a44b2231eedcb643679de449956d57a6b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a44b2231eedcb643679de449956d57a6b">&#9670;&nbsp;</a></span>operator!=()</h2>
+<a id="aa16af2dfb823bf4c2e9bdc106dbb5745" name="aa16af2dfb823bf4c2e9bdc106dbb5745"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa16af2dfb823bf4c2e9bdc106dbb5745">&#9670;&nbsp;</a></span>operator!=()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class Point &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool ppht::channel::iterator::operator!= </td>
+          <td class="memname">bool <a class="el" href="classppht_1_1channel.html">ppht::channel</a>&lt; Point &gt;::iterator::operator!= </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="classppht_1_1channel_1_1iterator.html">iterator</a> &amp;&#160;</td>
           <td class="paramname"><em>r</em></td><td>)</td>
@@ -371,29 +363,31 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Check for inequality. </p>
-<p >Two iterators are considered equal only if they are both end-of-range iterators.</p>
+<p>Compare two iterators for inequality. </p>
+<p >Equivalent to <code>!(*this == r).</code></p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">r</td><td>the other iterator</td></tr>
+    <tr><td class="paramname">r</td><td>the other iterator </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true if either iterator is not end-of-range </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the iterators reference different points </dd></dl>
 
 </div>
 </div>
-<a id="a4873d2f75099e73bf4c347c5056d5ef9" name="a4873d2f75099e73bf4c347c5056d5ef9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4873d2f75099e73bf4c347c5056d5ef9">&#9670;&nbsp;</a></span>operator*()</h2>
+<a id="ab3721a1bb7df286b0271b879f3875640" name="ab3721a1bb7df286b0271b879f3875640"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3721a1bb7df286b0271b879f3875640">&#9670;&nbsp;</a></span>operator*()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class Point &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classppht_1_1channel_1_1iterator.html#aba204a90514b98aa95d0c4da98722870">reference</a> ppht::channel::iterator::operator* </td>
+          <td class="memname"><a class="el" href="classppht_1_1channel_1_1iterator.html#a991a62fe2ff1844aa34e6fb0f9eb9b02">reference</a> <a class="el" href="classppht_1_1channel.html">ppht::channel</a>&lt; Point &gt;::iterator::operator* </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -406,22 +400,25 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Get the current point of the scan. </p>
-<dl class="section return"><dt>Returns</dt><dd>a const reference to the current point. </dd></dl>
+<p>Dereference the iterator. </p>
+<p >Returns a reference to the internal state of the iterator. If the state is incomplete because the iterator was just created or incremented, rebuilds the state from the available information.</p>
+<dl class="section return"><dt>Returns</dt><dd>a reference to a <code>value_type</code> pair </dd></dl>
 
 </div>
 </div>
-<a id="acc4d8c368f53b7e54bb7ac8bde2c6e23" name="acc4d8c368f53b7e54bb7ac8bde2c6e23"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acc4d8c368f53b7e54bb7ac8bde2c6e23">&#9670;&nbsp;</a></span>operator++()</h2>
+<a id="abb8c944eb1915ceade9d13be70598eef" name="abb8c944eb1915ceade9d13be70598eef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb8c944eb1915ceade9d13be70598eef">&#9670;&nbsp;</a></span>operator++()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class Point &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classppht_1_1channel_1_1iterator.html">iterator</a> &amp; ppht::channel::iterator::operator++ </td>
+          <td class="memname"><a class="el" href="classppht_1_1channel_1_1iterator.html">iterator</a> &amp; <a class="el" href="classppht_1_1channel.html">ppht::channel</a>&lt; Point &gt;::iterator::operator++ </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -434,23 +431,25 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Increment the iterator to the next point. </p>
-<p >The iterator will return the second point of the segment before making itself end-of-range.</p>
+<p>Advance the iterator. </p>
+<p >All references returned by this iterator prior to this operation are invalid.</p>
 <dl class="section return"><dt>Returns</dt><dd>the iterator </dd></dl>
 
 </div>
 </div>
-<a id="a41a50f1701df4390ef08fb6d3f248a51" name="a41a50f1701df4390ef08fb6d3f248a51"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a41a50f1701df4390ef08fb6d3f248a51">&#9670;&nbsp;</a></span>operator-&gt;()</h2>
+<a id="ac734518bc6d4671676de6d5da4327ba7" name="ac734518bc6d4671676de6d5da4327ba7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac734518bc6d4671676de6d5da4327ba7">&#9670;&nbsp;</a></span>operator-&gt;()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class Point &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classppht_1_1channel_1_1iterator.html#a4d6422532de1f4f53cdaba61a6badca3">pointer</a> ppht::channel::iterator::operator-&gt; </td>
+          <td class="memname"><a class="el" href="classppht_1_1channel_1_1iterator.html#acd28489d7575503948b15b205f150bd3">pointer</a> <a class="el" href="classppht_1_1channel.html">ppht::channel</a>&lt; Point &gt;::iterator::operator-&gt; </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -463,57 +462,53 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Get the current point of the scan. </p>
-<dl class="section return"><dt>Returns</dt><dd>a const pointer to the current point. </dd></dl>
+<p>Indirectly access the state of the iterator. </p>
+<p >Returns a pointer to the internal state of the iterator. If the state is incomplete because the iterator was just created or incremented, rebuilds the state from the available information.</p>
+<dl class="section return"><dt>Returns</dt><dd>a pointer to a <code>value_type</code> pair </dd></dl>
 
 </div>
 </div>
-<a id="a482fd7f287eb8621295254775e02e9d3" name="a482fd7f287eb8621295254775e02e9d3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a482fd7f287eb8621295254775e02e9d3">&#9670;&nbsp;</a></span>operator=() <span class="overload">[1/2]</span></h2>
+<a id="a7446ece6b62c71450972ff348975fd7b" name="a7446ece6b62c71450972ff348975fd7b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7446ece6b62c71450972ff348975fd7b">&#9670;&nbsp;</a></span>operator=() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class Point &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classppht_1_1channel_1_1iterator.html">iterator</a> &amp; ppht::channel::iterator::operator= </td>
+          <td class="memname"><a class="el" href="classppht_1_1channel_1_1iterator.html">iterator</a> &amp; <a class="el" href="classppht_1_1channel.html">ppht::channel</a>&lt; Point &gt;::iterator::operator= </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="classppht_1_1channel_1_1iterator.html">iterator</a> &amp;&#160;</td>
-          <td class="paramname"><em>r</em></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Copy-assign the iterator. </p>
-<p >The underlying scanner will also be copied.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">r</td><td>the other iterator. </td></tr>
-  </table>
-  </dd>
-</dl>
-
 </div>
 </div>
-<a id="a430cdebc291b1c494fc955c0fc0b471a" name="a430cdebc291b1c494fc955c0fc0b471a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a430cdebc291b1c494fc955c0fc0b471a">&#9670;&nbsp;</a></span>operator=() <span class="overload">[2/2]</span></h2>
+<a id="ac9b4eaf1cdf7da897918ff1821594ab1" name="ac9b4eaf1cdf7da897918ff1821594ab1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9b4eaf1cdf7da897918ff1821594ab1">&#9670;&nbsp;</a></span>operator=() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class Point &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classppht_1_1channel_1_1iterator.html">iterator</a> &amp; ppht::channel::iterator::operator= </td>
+          <td class="memname"><a class="el" href="classppht_1_1channel_1_1iterator.html">iterator</a> &amp; <a class="el" href="classppht_1_1channel.html">ppht::channel</a>&lt; Point &gt;::iterator::operator= </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classppht_1_1channel_1_1iterator.html">iterator</a> &amp;&amp;&#160;</td>
           <td class="paramname"><em>r</em></td><td>)</td>
@@ -522,32 +517,28 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">default</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Move-assign the iterator. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">r</td><td>the other iterator. </td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Move assignment operator. </p>
 
 </div>
 </div>
-<a id="a26ed533b53b2530535f4622061627d8e" name="a26ed533b53b2530535f4622061627d8e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a26ed533b53b2530535f4622061627d8e">&#9670;&nbsp;</a></span>operator==()</h2>
+<a id="a76895ab4ac3701072e1ebc98c6e704f0" name="a76895ab4ac3701072e1ebc98c6e704f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76895ab4ac3701072e1ebc98c6e704f0">&#9670;&nbsp;</a></span>operator==()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class Point &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool ppht::channel::iterator::operator== </td>
+          <td class="memname">bool <a class="el" href="classppht_1_1channel.html">ppht::channel</a>&lt; Point &gt;::iterator::operator== </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="classppht_1_1channel_1_1iterator.html">iterator</a> &amp;&#160;</td>
           <td class="paramname"><em>r</em></td><td>)</td>
@@ -561,30 +552,32 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Check for equality. </p>
-<p >Two iterators are considered equal only if they are both end-of-range iterators.</p>
+<p>Compare two iterators for equality. </p>
+<p >Two iterators are considered equal if the canonical point they reference is the same by value.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">r</td><td>the other iterator</td></tr>
+    <tr><td class="paramname">r</td><td>the other iterator </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true if both iterators are end-of-range </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the iterators reference the same point </dd></dl>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a98f263c4c29f55352031af28a013c889" name="a98f263c4c29f55352031af28a013c889"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a98f263c4c29f55352031af28a013c889">&#9670;&nbsp;</a></span>_scanner</h2>
+<a id="aa013a66a62b40c7b9d5726a0ff25213c" name="aa013a66a62b40c7b9d5726a0ff25213c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa013a66a62b40c7b9d5726a0ff25213c">&#9670;&nbsp;</a></span>radius</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class Point &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::unique_ptr&lt;<a class="el" href="structppht_1_1scanner.html">scanner</a>&gt; ppht::channel::iterator::_scanner</td>
+          <td class="memname">std::size_t <a class="el" href="classppht_1_1channel.html">ppht::channel</a>&lt; Point &gt;::iterator::radius</td>
         </tr>
       </table>
   </td>
@@ -594,21 +587,23 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>The underlying scanner. </p>
+<p>The radius of the channel. </p>
 
 </div>
 </div>
-<a id="aa7466bf767650031ca712bf2223e42d5" name="aa7466bf767650031ca712bf2223e42d5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa7466bf767650031ca712bf2223e42d5">&#9670;&nbsp;</a></span>_segment</h2>
+<a id="a4e5f098d259a2dfc640ed577c9bbcf5a" name="a4e5f098d259a2dfc640ed577c9bbcf5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e5f098d259a2dfc640ed577c9bbcf5a">&#9670;&nbsp;</a></span>scanner</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class Point &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classppht_1_1segment__t.html">segment_t</a> ppht::channel::iterator::_segment</td>
+          <td class="memname">std::unique_ptr&lt;<a class="el" href="classppht_1_1channel_1_1scanner.html">scanner</a>&gt; <a class="el" href="classppht_1_1channel.html">ppht::channel</a>&lt; Point &gt;::iterator::scanner</td>
         </tr>
       </table>
   </td>
@@ -618,7 +613,34 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>The segment from the channel. </p>
+<p>The iterator implementation to use. </p>
+
+</div>
+</div>
+<a id="ad4c76806a7b5865fcb241b287a44c5f2" name="ad4c76806a7b5865fcb241b287a44c5f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4c76806a7b5865fcb241b287a44c5f2">&#9670;&nbsp;</a></span>value</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Point &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classppht_1_1channel_1_1iterator.html#afc80a0bb0ebf4542c7194fbccb1c64f5">value_type</a> <a class="el" href="classppht_1_1channel.html">ppht::channel</a>&lt; Point &gt;::iterator::value</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">mutable</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The current state of the iterator. </p>
+<p >This is a mutable field because it is calculated on-demand from "constant" methods. </p>
 
 </div>
 </div>
