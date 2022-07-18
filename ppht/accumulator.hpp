@@ -264,20 +264,42 @@ class accumulator {
         _min_trigger_points = min_trigger_points;
     }
 
-    /**
-     * @brief Find the portion of the line that lies within the bounds
-     * of the bitmap.
-     *
-     * Given a line in @f$\theta\rho@f$-space, return the line segment
-     * that is the portion of the line that intersects the bitmap.
-     *
-     * @param theta the angle of the perpendicular
-     *
-     * @param rho the length of the perpendicular
-     *
-     * @return the portion of the line within the bounds of the bitmap
-     * in integral coordinates.
-     */
+    /// @brief Find lines that are parallel to major axes.
+    ///
+    /// Returns the line most likely to be correct based on its angle.
+    /// A line is more "correct" if its angle is a simple fraction of
+    /// π: ½, ⅔, ⅘, &c.
+    ///
+    /// @param begin the start of the range
+    /// @param end the end of the range
+    ///
+    /// @return an iterator to the best candidate line
+    template <class ForwardIt>
+    ForwardIt best_candidate(ForwardIt begin, ForwardIt end) {
+        auto best = std::gcd(std::get<0>(*begin), max_theta / 2);
+
+        for (auto iter = std::next(begin); iter != end; ++iter) {
+            auto gcd = std::gcd(std::get<0>(*iter), max_theta / 2);
+            if (best < gcd) {
+                begin = iter;
+                best = gcd;
+            }
+        }
+
+        return begin;
+    }
+
+    /// @brief Find the portion of the line that lies within the bounds
+    /// of the bitmap.
+    ///
+    /// Given a line in @f$\theta\rho@f$-space, return the line segment
+    /// that is the portion of the line that intersects the bitmap.
+    ///
+    /// @param theta the angle of the perpendicular
+    /// @param rho the length of the perpendicular
+    ///
+    /// @return the portion of the line within the bounds of the bitmap
+    /// in integral coordinates.
     segment_t find_segment(std::size_t theta, double rho) {
         // There are a few degenerate cases where multiple matches for
         // the same endpoint can be found, e.g., a line through the
@@ -417,56 +439,9 @@ class accumulator {
 
         // Reject the null hypothesis.
 
-        if (found.size() == 1) {
-            std::tie(theta, rho) = found.at(0);
-        }
-        else {
-            auto begin = found.begin();
-            auto end = found.end();
+        assert(!found.empty());
 
-            if (begin->first == 0 && (end-1)->first == max_theta - 1) {
-                // If we have values at both ends of the vector there
-                // is a chance that we have a "wraparound" cluster.
-                // Since every line (θ, ρ) has a counterpart of (θ +
-                // π/2, -ρ), replace the points at the beginning of
-                // the vector with their counterparts, effectively
-                // transplanting the points with angles in quadrant I
-                // into points with angles in quadrant III.
-
-                for (auto iter = begin; iter != end; ++iter) {
-                    if (iter->first < max_theta / 2) {
-                        iter->first += max_theta;
-                        iter->second = -(iter->second);
-                    }
-                    else {
-                        break;
-                    }
-                }
-
-                std::sort(begin, end);
-            }
-
-            // Recalculate the maximum distance between the first and
-            // last in the cluster.
-
-            auto const diff = (end-1)->first - begin->first + 1;
-
-            // If the difference is the same as the number of points
-            // in the cluster, then the range is continuous and it is
-            // safe to take the median value.  Otherwise, return.
-
-            if (diff != found.size()) return false;
-
-            auto median = begin + diff / 2;
-            std::tie(theta, rho) = *median;
-
-            // If the median is in quadrant III, move it back to
-            // quadrant I.
-
-            if (theta >= max_theta) {
-                theta -= max_theta, rho = -rho;
-            }
-        }
+        std::tie(theta, rho) = *best_candidate(found.begin(), found.end());
 
         segment = find_segment(theta, rho);
         return true;
