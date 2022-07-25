@@ -14,7 +14,7 @@ AM_CPPFLAGS = -I$(abs_top_srcdir) -I$(abs_srcdir)
 AM_CXXFLAGS = -Wall -Wpedantic
 AM_DEFAULT_SOURCE_EXT = .cpp
 
-EXTRA_DIST = tap.hpp image-01.hpp image-02.hpp
+EXTRA_DIST = tap.hpp image-01.hpp image-02.hpp image-03.hpp
 
 check_PROGRAMS = $(TESTS)
 
