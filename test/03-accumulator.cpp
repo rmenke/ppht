@@ -57,7 +57,7 @@ void test_rho_scaling() {
 void test_intersection(seed_t seed) {
     using namespace tap;
 
-    ppht::accumulator<> acc(240, 320, ppht::parameters{}, seed);
+    ppht::accumulator<> acc(240, 320, seed);
 
     ppht::segment_t expected{{0, 141}, {141, 0}};
     ppht::segment_t actual = acc.find_segment(900, 100);
@@ -104,7 +104,7 @@ void test_voting(seed_t seed) {
 
     ppht::segment_t segment;
 
-    ppht::accumulator<> acc(240, 320, ppht::parameters{}, seed);
+    ppht::accumulator<> acc(240, 320, seed);
 
     bool segment_found = false;
 
@@ -134,7 +134,7 @@ void test_voting(seed_t seed) {
 void test_unvoting(seed_t seed) {
     using namespace tap;
 
-    ppht::accumulator<> acc(240, 320, ppht::parameters{}, seed);
+    ppht::accumulator<> acc(240, 320, seed);
 
     try {
         ppht::segment_t segment;

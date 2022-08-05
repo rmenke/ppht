@@ -2,7 +2,7 @@ ACLOCAL_AMFLAGS = -I m4 --install
 
 SUBDIRS = test
 
-nobase_include_HEADERS = ppht.hpp ppht/accumulator.hpp ppht/channel.hpp ppht/kd-search.hpp ppht/parameters.hpp ppht/point_set.hpp ppht/postprocess.hpp ppht/raster.hpp ppht/state.hpp ppht/trig.hpp ppht/types.hpp
+nobase_include_HEADERS = ppht.hpp ppht/accumulator.hpp ppht/channel.hpp ppht/kd-search.hpp ppht/point_set.hpp ppht/postprocess.hpp ppht/raster.hpp ppht/state.hpp ppht/trig.hpp ppht/types.hpp
 
 git-add:
 	$(MAKE) distdir

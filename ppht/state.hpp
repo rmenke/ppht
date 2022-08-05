@@ -224,8 +224,8 @@ point_set scan(state<Raster> &s, segment_t const &segment, unsigned radius,
     auto const &p0 = std::get<0>(segment);
     auto const &p1 = std::get<1>(segment);
 
-    auto const r = s.rows();
-    auto const c = s.cols();
+    long const r = s.rows();
+    long const c = s.cols();
 
     for (auto const &[point, points] : channel(p0, p1, radius)) {
         std::set<point_t> found;

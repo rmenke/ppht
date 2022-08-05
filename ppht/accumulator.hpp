@@ -4,7 +4,6 @@
 #ifndef ppht_accumulator_hpp
 #define ppht_accumulator_hpp
 
-#include <ppht/parameters.hpp>
 #include <ppht/raster.hpp>
 #include <ppht/trig.hpp>
 #include <ppht/types.hpp>
@@ -43,34 +42,36 @@ namespace ppht {
 template <class Count = std::uint16_t,
           template <class> class Raster = raster>
 class accumulator {
-    /// A uniform random bit generator.
+    /// @brief A uniform random bit generator.
     using URBG = std::default_random_engine;
 
-    /// The type of seed for the @ref URBG.
+    /// @brief The type of seed for the @ref URBG.
     using seed_t = std::random_device::result_type;
 
-    /// Height of bitmap image.
+    /// @brief Height of bitmap image.
     std::size_t const _rows;
 
-    /// Width of bitmap image.
+    /// @brief Width of bitmap image.
     std::size_t const _cols;
 
-    /// Exponent by which to scale raw rho values.
+    /// @brief Exponent by which to scale raw rho values.
     int const _rho_scale;
 
-    /// Log-probability threshold for rejecting the null hypothesis.
-    double const _log_threshold;
+    /// @brief Log-probability threshold for rejecting the null
+    /// hypothesis.
+    double _log_threshold = std::log(1E-12);
 
-    /// Number of points required to trigger a channel scan.
-    Count const _min_trigger_points;
+    /// @brief The minimum number of points required to trigger a
+    /// scan.
+    Count _min_trigger_points = 3;
 
-    /// Matrix of counters (quantized @f$\theta\rho@f$-space).
+    /// @brief Matrix of counters (quantized @f$\theta\rho@f$-space).
     Raster<Count> _counters;
 
-    /// Votes still in effect.
+    /// @brief Votes still in effect.
     Count _votes = 0;
 
-    /// Random number generator.
+    /// @brief Random number generator.
     URBG _urbg;
 
     /**
@@ -122,7 +123,7 @@ class accumulator {
      * @return the value restricted to the limits of the target type
      */
     template <class T, class U>
-    static T clamp(U value) noexcept {
+    static constexpr T clamp(U value) noexcept {
         using limit = std::numeric_limits<T>;
 
         if (value >= static_cast<U>(limit::max())) {
@@ -149,23 +150,14 @@ class accumulator {
      * @param rho_info the maximum value a scaled rho can take and the
      *   scale factor
      *
-     * @param log_threshold the natural logarithm of the threshold at
-     *   which we reject the null hypothesis
-     *
-     * @param min_trigger_points the number of colinear points
-     *   required before testing the null hypothesis
-     *
      * @param seed the seed for the URBG
      */
     accumulator(std::size_t rows, std::size_t cols,
                 const std::pair<std::size_t, int> &rho_info,
-                double log_threshold, std::size_t min_trigger_points,
                 seed_t seed) noexcept
         : _rows(rows)
         , _cols(cols)
         , _rho_scale(rho_info.second)
-        , _log_threshold(log_threshold)
-        , _min_trigger_points(min_trigger_points)
         , _counters(rho_info.first, max_theta)
         , _urbg(seed) {}
 
@@ -222,16 +214,55 @@ class accumulator {
      *
      * @param cols the width of the bitmap
      *
-     * @param param parameters controlling the operation of the accumulator
-     *
      * @param seed the seed for the random number generator used to
      *        break ties.
      */
-    accumulator(std::size_t rows, std::size_t cols, parameters const &param,
+    accumulator(std::size_t rows, std::size_t cols,
                 seed_t seed = std::random_device{}())
         : accumulator(rows, cols, rho_info(rows, cols),
-                      std::log(param.threshold), param.min_trigger_points,
                       seed) {}
+
+    /// @brief Get the probability threshold for rejecting the null
+    /// hypothesis.
+    double threshold() const noexcept {
+        return std::exp(_log_threshold);
+    }
+
+    /// @brief Set the probability threshold for rejecting the null
+    /// hypothesis.
+    ///
+    /// If the probability of the null hypothesis is less than this
+    /// value, then a channel scan will be triggered.  Lowering this
+    /// value results in fewer false positives but increases the
+    /// chance of missing small segments.
+    ///
+    /// @param threshold the new threshold
+    ///
+    /// @sa min_trigger_points(double)
+    void threshold(double threshold) noexcept {
+        _log_threshold = std::log(threshold);
+    }
+
+    /// @brief Get the minimum number of voting points required to
+    /// trigger a scan.
+    double min_trigger_points() const noexcept {
+        return _min_trigger_points;
+    }
+
+    /// @brief Set the minimum number of voting points required to
+    /// trigger a scan.
+    ///
+    /// The simplification that the Poisson distribution approximates
+    /// the likelihood of random noise breaks down for small numbers.
+    /// Skip the probability calculation if the number of votes is
+    /// less than this.
+    ///
+    /// @param min_trigger_points the new count required to trigger a scan
+    ///
+    /// @sa threshold(double)
+    void min_trigger_points(double min_trigger_points) noexcept {
+        _min_trigger_points = min_trigger_points;
+    }
 
     /**
      * @brief Find the portion of the line that lies within the bounds

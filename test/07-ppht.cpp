@@ -101,7 +101,7 @@ int main() {
     eq(320, image_01.cols(), "image_01 cols");
     eq(120, image_01.rows(), "image_01 rows");
 
-    auto actual = find_segments(image_01, parameters(), seed);
+    auto actual = find_segments(image_01, 3, 3, 10, seed);
 
     std::vector<segment_t> expected = {segment_t{{20, 20}, {100, 20}},
                                        segment_t{{20, 20}, {20, 100}},
@@ -148,7 +148,7 @@ int main() {
     eq(100, image_02.cols(), "image_02 cols");
     eq(160, image_02.rows(), "image_02 rows");
 
-    actual = find_segments(image_02, parameters(), seed);
+    actual = find_segments(image_02, 3, 3, 10, seed);
 
     expected = {segment_t{{20, 20}, {80, 20}},
                 segment_t{{20, 20}, {20, 140}},

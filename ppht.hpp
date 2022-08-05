@@ -96,11 +96,12 @@
 #define ppht_hpp
 
 #include "ppht/accumulator.hpp"
-#include "ppht/parameters.hpp"
 #include "ppht/point_set.hpp"
 #include "ppht/postprocess.hpp"
 #include "ppht/raster.hpp"
 #include "ppht/state.hpp"
+
+#include <cstdint>
 
 /**
  * @namespace ppht
@@ -139,33 +140,32 @@ namespace ppht {
  * @param state an initialized @ref ppht::state object or something
  * similar
  *
- * @param param optional tuning parameters to adjust the behavior of
- * the algorithm
- *
  * @param seed a value to use as a seed for the URBG
  *
  * @returns a vector of line segments
  */
 template <class State, class Accumulator = accumulator<>>
-std::vector<segment_t>
-find_segments(State &&state, const parameters &param = parameters{},
-              std::random_device::result_type seed = std::random_device{}()) {
-    const auto min_length_squared = param.min_length * param.min_length;
+std::vector<segment_t> find_segments(
+    State &&state, std::uint16_t channel_width = 3,
+    std::uint16_t max_gap = 3,
+    std::uint16_t min_length = 10,
+    std::random_device::result_type seed = std::random_device{}()) {
+    const auto min_length_squared = min_length * min_length;
 
     std::vector<segment_t> segments;
 
-    Accumulator accumulator{state.rows(), state.cols(), param, seed};
+    Accumulator accumulator{state.rows(), state.cols(), seed};
 
     point_t point;
 
-    const auto channel_radius = param.channel_width >> 1;
+    const auto channel_radius = channel_width >> 1;
 
     while (state.next(point)) {
         segment_t scan_channel;
 
         if (accumulator.vote(point, scan_channel)) {
             point_set found = scan(state, scan_channel, channel_radius,
-                                   param.max_gap);
+                                   max_gap);
 
             if (found.length_squared() >= min_length_squared) {
                 for (auto &&point : found) {
