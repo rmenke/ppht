@@ -54,45 +54,6 @@ void test_rho_scaling() {
     eq(2, max_rho.second, "correct scaling 2");
 }
 
-void test_intersection(seed_t seed) {
-    using namespace tap;
-
-    ppht::accumulator<> acc(240, 320, seed);
-
-    ppht::segment_t expected{{0, 141}, {141, 0}};
-    ppht::segment_t actual = acc.find_segment(900, 100);
-
-    eq(expected, actual, "simple intersection");
-
-    expected = ppht::segment_t{{44, 239}, {283, 0}};
-    actual = acc.find_segment(900, 200);
-
-    eq(expected, actual, "truncated intersection 1");
-
-    expected = ppht::segment_t{{185, 239}, {319, 105}};
-    actual = acc.find_segment(900, 300);
-
-    eq(expected, actual, "truncated intersection 2");
-
-    expected = ppht::segment_t{{0, 0}, {0, 0}};
-    actual = acc.find_segment(900, 0);
-
-    eq(expected, actual, "degenerate intersection 1");
-
-    expected = ppht::segment_t{{0, 0}, {239, 239}};
-    actual = acc.find_segment(2700, 0);
-
-    eq(expected, actual, "degenerate intersection 2");
-
-    try {
-        actual = acc.find_segment(900, 1000);
-        fail("no intersection");
-    }
-    catch (...) {
-        pass("no intersection");
-    }
-}
-
 void test_voting(seed_t seed) {
     using namespace tap;
 
@@ -159,7 +120,7 @@ void test_unvoting(seed_t seed) {
 int main() {
     using namespace tap;
 
-    test_plan plan{17};
+    test_plan plan{11};
 
     // Make the test deterministic
     seed_t const seed = 696408486U;
@@ -167,7 +128,6 @@ int main() {
     diag("random seed is ", seed);
 
     test_rho_scaling();
-    test_intersection(seed);
     test_voting(seed);
     test_unvoting(seed);
 }

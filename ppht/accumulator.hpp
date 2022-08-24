@@ -7,6 +7,7 @@
 #include <ppht/raster.hpp>
 #include <ppht/trig.hpp>
 #include <ppht/types.hpp>
+#include <ppht/state.hpp>
 
 #include <algorithm>
 #include <cassert>
@@ -289,69 +290,6 @@ class accumulator {
         return begin;
     }
 
-    /// @brief Find the portion of the line that lies within the bounds
-    /// of the bitmap.
-    ///
-    /// Given a line in @f$\theta\rho@f$-space, return the line segment
-    /// that is the portion of the line that intersects the bitmap.
-    ///
-    /// @param theta the angle of the perpendicular
-    /// @param rho the length of the perpendicular
-    ///
-    /// @return the portion of the line within the bounds of the bitmap
-    /// in integral coordinates.
-    segment_t find_segment(std::size_t theta, double rho) {
-        // There are a few degenerate cases where multiple matches for
-        // the same endpoint can be found, e.g., a line through the
-        // origin.  Using a set eliminates most of these cases.  See
-        // the comment at the end for what happens to those that slip
-        // through.
-
-        std::set<point_t> endpoints;
-
-        auto const &cos_theta = std::get<0>(cossin[theta]);
-        auto const &sin_theta = std::get<1>(cossin[theta]);
-
-        auto get_x = [&](double y) -> long {
-            double x = std::rint((rho - sin_theta * y) / cos_theta);
-            return clamp<long>(x);
-        };
-
-        auto get_y = [&](double x) -> long {
-            double y = std::rint((rho - cos_theta * x) / sin_theta);
-            return clamp<long>(y);
-        };
-
-        auto x_min = get_x(0);
-        auto y_min = get_y(0);
-        auto x_max = get_x(_rows - 1);
-        auto y_max = get_y(_cols - 1);
-
-        if (0 <= y_min && y_min < static_cast<int>(_rows)) {
-            endpoints.emplace(0, y_min);
-        }
-        if (0 <= x_min && x_min < static_cast<int>(_cols)) {
-            endpoints.emplace(x_min, 0);
-        }
-        if (0 <= y_max && y_max < static_cast<int>(_rows)) {
-            endpoints.emplace(_cols - 1, y_max);
-        }
-        if (0 <= x_max && x_max < static_cast<int>(_cols)) {
-            endpoints.emplace(x_max, _rows - 1);
-        }
-
-        if (endpoints.empty()) {
-            throw std::logic_error{"line (" + std::to_string(theta) + ", " +
-                                   std::to_string(rho) +
-                                   ") does not intersect bitmap"};
-        }
-
-        // If endpoints.size() > 2, ignore the points in the middle.
-        // If endpoints.size() == 1, create single-pixel segment.
-
-        return segment_t{*endpoints.begin(), *endpoints.rbegin()};
-    }
-
     /**
      * @brief Add all lines passing through the given point to the
      * accumulator.
@@ -373,8 +311,6 @@ class accumulator {
         auto const max_rho = _counters.rows();
 
         Count n = _min_trigger_points;
-
-        using line_t = std::pair<std::size_t, double>;
 
         std::vector<line_t> found;
 
@@ -441,9 +377,9 @@ class accumulator {
 
         assert(!found.empty());
 
-        std::tie(theta, rho) = *best_candidate(found.begin(), found.end());
+        line_t const& best = *best_candidate(found.begin(), found.end());
 
-        segment = find_segment(theta, rho);
+        segment = state<>{_rows, _cols}.line_intersect(best);
         return true;
     }
 

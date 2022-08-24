@@ -16,10 +16,49 @@ static inline ostream &operator<<(ostream &o, const pair<F, S> &p) {
 
 } // namespace std
 
+void test_intersection() {
+    using namespace tap;
+
+    ppht::state<> s(240, 320);
+
+    ppht::segment_t expected{{0, 141}, {141, 0}};
+    ppht::segment_t actual = s.line_intersect({900, 100});
+
+    eq(expected, actual, "simple intersection");
+
+    expected = ppht::segment_t{{44, 239}, {283, 0}};
+    actual = s.line_intersect({900, 200});
+
+    eq(expected, actual, "truncated intersection 1");
+
+    expected = ppht::segment_t{{185, 239}, {319, 105}};
+    actual = s.line_intersect({900, 300});
+
+    eq(expected, actual, "truncated intersection 2");
+
+    expected = ppht::segment_t{{0, 0}, {0, 0}};
+    actual = s.line_intersect({900, 0});
+
+    eq(expected, actual, "degenerate intersection 1");
+
+    expected = ppht::segment_t{{0, 0}, {239, 239}};
+    actual = s.line_intersect({2700, 0});
+
+    eq(expected, actual, "degenerate intersection 2");
+
+    try {
+        actual = s.line_intersect({900, 1000});
+        fail("no intersection");
+    }
+    catch (...) {
+        pass("no intersection");
+    }
+}
+
 int main() {
     using namespace tap;
 
-    test_plan plan;
+    test_plan plan{13};
 
     ppht::state<> state(5, 5);
 
@@ -51,5 +90,5 @@ int main() {
 
     eq(ppht::status_t::done, state.status({3, 2}), "marked as done");
 
-    return test_status();
+    test_intersection();
 }

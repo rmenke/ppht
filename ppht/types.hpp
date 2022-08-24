@@ -96,6 +96,9 @@ public:
     }
 };
 
+/// The definition of a line in Hough space.
+using line_t = std::pair<std::size_t, double>;
+
 /// The status of a pixel in a @ref state map.
 enum status_t {
     unset,                      ///< Pixel is unset.

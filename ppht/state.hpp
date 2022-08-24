@@ -7,6 +7,7 @@
 #include <ppht/channel.hpp>
 #include <ppht/point_set.hpp>
 #include <ppht/raster.hpp>
+#include <ppht/trig.hpp>
 #include <ppht/types.hpp>
 
 #include <algorithm>
@@ -168,8 +169,8 @@ class state {
 
         using index_type = typename decltype(_pending)::difference_type;
 
-        std::uniform_int_distribution<index_type>
-            dist{0, std::distance(begin, end) - 1};
+        std::uniform_int_distribution<index_type> dist{
+            0, std::distance(begin, end) - 1};
 
         auto iter = begin + dist(_urbg);
 
@@ -182,6 +183,70 @@ class state {
         cell = status_t::voted;
 
         return true;
+    }
+
+    /// @brief Find the portion of the line that lies within the bounds
+    /// of the bitmap.
+    ///
+    /// Given a line in @f$\theta\rho@f$-space, return the line segment
+    /// that is the portion of the line that intersects the bitmap.
+    ///
+    /// @param line the line in @f$(\theta,\rho)@f$ format
+    ///
+    /// @return the portion of the line within the bounds of the bitmap
+    /// in integral coordinates.
+    segment_t line_intersect(line_t const &line) const {
+        // There are a few degenerate cases where multiple matches for
+        // the same endpoint can be found, e.g., a line through the
+        // origin.  Using a set eliminates most of these cases.  See
+        // the comment at the end for what happens to those that slip
+        // through.
+
+        auto const &t = std::get<0>(line);
+        auto const &r = std::get<1>(line);
+
+        std::set<point_t> endpoints;
+
+        auto const &cost = std::get<0>(cossin[t]);
+        auto const &sint = std::get<1>(cossin[t]);
+
+        using limit = std::numeric_limits<long>;
+        static constexpr long lo = limit::min();
+        static constexpr long hi = limit::max();
+
+        auto get_x = [&](double y) -> long {
+            double x = std::rint((r - sint * y) / cost);
+            return x < lo ? lo : hi < x ? hi : x;
+        };
+
+        auto get_y = [&](double x) -> long {
+            double y = std::rint((r - cost * x) / sint);
+            return y < lo ? lo : hi < y ? hi : y;
+        };
+
+        const long w = cols() - 1;
+        const long h = rows() - 1;
+
+        const long x_min = get_x(0);
+        const long y_min = get_y(0);
+        const long x_max = get_x(h);
+        const long y_max = get_y(w);
+
+        if (0 <= y_min && y_min <= h) endpoints.emplace(0, y_min);
+        if (0 <= x_min && x_min <= w) endpoints.emplace(x_min, 0);
+        if (0 <= y_max && y_max <= h) endpoints.emplace(w, y_max);
+        if (0 <= x_max && x_max <= w) endpoints.emplace(x_max, h);
+
+        if (endpoints.empty()) {
+            throw std::logic_error{"line (" + std::to_string(t) + ", " +
+                                   std::to_string(r) +
+                                   ") does not intersect bitmap"};
+        }
+
+        // If endpoints.size() > 2, ignore the points in the middle.
+        // If endpoints.size() == 1, create single-pixel segment.
+
+        return segment_t{*endpoints.begin(), *endpoints.rbegin()};
     }
 };
 
