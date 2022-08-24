@@ -49,12 +49,6 @@ class accumulator {
     /// @brief The type of seed for the @ref URBG.
     using seed_t = std::random_device::result_type;
 
-    /// @brief Height of bitmap image.
-    std::size_t const _rows;
-
-    /// @brief Width of bitmap image.
-    std::size_t const _cols;
-
     /// @brief Exponent by which to scale raw rho values.
     int const _rho_scale;
 
@@ -144,21 +138,14 @@ class accumulator {
      * the members of the @ref parameters object: the logarithm of the
      * threshold and the computed range and scale factor for rho.
      *
-     * @param rows the height of the image
-     *
-     * @param cols the width of the image
-     *
      * @param rho_info the maximum value a scaled rho can take and the
      *   scale factor
      *
      * @param seed the seed for the URBG
      */
-    accumulator(std::size_t rows, std::size_t cols,
-                const std::pair<std::size_t, int> &rho_info,
+    accumulator(const std::pair<std::size_t, int> &rho_info,
                 seed_t seed) noexcept
-        : _rows(rows)
-        , _cols(cols)
-        , _rho_scale(rho_info.second)
+        : _rho_scale(rho_info.second)
         , _counters(rho_info.first, max_theta)
         , _urbg(seed) {}
 
@@ -220,8 +207,7 @@ class accumulator {
      */
     accumulator(std::size_t rows, std::size_t cols,
                 seed_t seed = std::random_device{}())
-        : accumulator(rows, cols, rho_info(rows, cols),
-                      seed) {}
+        : accumulator(rho_info(rows, cols), seed) {}
 
     /// @brief Get the probability threshold for rejecting the null
     /// hypothesis.
@@ -294,20 +280,17 @@ class accumulator {
      * @brief Add all lines passing through the given point to the
      * accumulator.
      *
-     * Returns true if the likelihood of the largest count in the
+     * Returns a value if the likelihood of the largest count in the
      * register exceeds the threshold.
      *
      * @param p the point to register
      *
-     * @param segment set to the intersection of the line found and
-     *   the bounds of the image only if the function returns true
-     *
-     * @return true if the number of votes for the line segment pass
-     *   the threshold
+     * @return an optional that has a value if the number of votes for
+     * the line segment pass the threshold
      *
      * @see unvote()
      */
-    bool vote(point_t const &p, segment_t &segment) {
+    std::optional<line_t> vote(point_t const &p) {
         auto const max_rho = _counters.rows();
 
         Count n = _min_trigger_points;
@@ -345,7 +328,7 @@ class accumulator {
 
         // If we do not have a candidate line, stop.
 
-        if (found.empty()) return false;
+        if (found.empty()) return std::nullopt;
 
         // There are max_theta * max_rho cells in the register.
         // Each vote will increment max_theta of these cells, one
@@ -371,16 +354,13 @@ class accumulator {
         // significance threshold, we assume that the bin was filled
         // by noise and tell the caller we did not find a segment.
 
-        if (lnp >= _log_threshold) return false;
+        if (lnp >= _log_threshold) return std::nullopt;
 
         // Reject the null hypothesis.
 
         assert(!found.empty());
 
-        line_t const& best = *best_candidate(found.begin(), found.end());
-
-        segment = state<>{_rows, _cols}.line_intersect(best);
-        return true;
+        return *best_candidate(found.begin(), found.end());
     }
 
     /**

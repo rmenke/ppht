@@ -147,8 +147,7 @@ namespace ppht {
 template <class State, class Accumulator = accumulator<>>
 std::vector<segment_t> find_segments(
     State &&state, std::uint16_t channel_width = 3,
-    std::uint16_t max_gap = 3,
-    std::uint16_t min_length = 10,
+    std::uint16_t max_gap = 3, std::uint16_t min_length = 10,
     std::random_device::result_type seed = std::random_device{}()) {
     const auto min_length_squared = min_length * min_length;
 
@@ -161,11 +160,11 @@ std::vector<segment_t> find_segments(
     const auto channel_radius = channel_width >> 1;
 
     while (state.next(point)) {
-        segment_t scan_channel;
+        if (auto result = accumulator.vote(point); result) {
+            auto const scan_channel = state.line_intersect(*result);
 
-        if (accumulator.vote(point, scan_channel)) {
-            point_set found = scan(state, scan_channel, channel_radius,
-                                   max_gap);
+            point_set found =
+                scan(state, scan_channel, channel_radius, max_gap);
 
             if (found.length_squared() >= min_length_squared) {
                 for (auto &&point : found) {
@@ -191,8 +190,9 @@ std::vector<segment_t> find_segments(
         }
     }
 
-    segments.erase(postprocess(segments.begin(), segments.end(),
-                               channel_radius), segments.end());
+    segments.erase(
+        postprocess(segments.begin(), segments.end(), channel_radius),
+        segments.end());
 
     return segments;
 }

@@ -28,8 +28,7 @@ static inline ostream &operator<<(ostream &o, vector<T> const &v) {
 
     if (b != e) {
         o << *b;
-        while (++b != e)
-            o << ", " << *b;
+        while (++b != e) o << ", " << *b;
     }
 
     return o << ']';
@@ -63,33 +62,33 @@ void test_voting(seed_t seed) {
     std::iota(std::begin(point), std::end(point), 50);
     std::shuffle(std::begin(point), std::end(point), urbg);
 
-    ppht::segment_t segment;
-
     ppht::accumulator<> acc(240, 320, seed);
 
-    bool segment_found = false;
+    std::optional<ppht::line_t> found;
 
     for (auto &&i : point) {
-        segment_found = true;
-        if (acc.vote(ppht::point_t{i, i}, segment)) break;
-        segment_found = false;
+        if ((found = acc.vote({i, i}))) break;
     }
 
-    ok(segment_found, "unique segment found 1");
-    eq(std::make_pair(ppht::point_t{0, 0}, ppht::point_t{239, 239}),
-       segment, "correct segment found 1");
+    if (ok(found.has_value(), "unique segment found 1")) {
+        eq(ppht::line_t{2700, 0.0}, *found, "correct segment found 1");
+    }
+    else {
+        fail("correct segment found 1");
+    }
 
-    segment_found = false;
+    found.reset();
 
     for (auto &&i : point) {
-        segment_found = true;
-        if (acc.vote(ppht::point_t{i, i - 10}, segment)) break;
-        segment_found = false;
+        if ((found = acc.vote({i, i - 10}))) break;
     }
 
-    ok(segment_found, "unique segment found 2");
-    eq(std::make_pair(ppht::point_t{10, 0}, ppht::point_t{249, 239}),
-       segment, "correct segment found 2");
+    if (ok(found.has_value(), "unique segment found 2")) {
+        eq(ppht::line_t{2700, -7.0}, *found, "correct segment found 2");
+    }
+    else {
+        fail("correct segment found 2");
+    }
 }
 
 void test_unvoting(seed_t seed) {
@@ -98,9 +97,7 @@ void test_unvoting(seed_t seed) {
     ppht::accumulator<> acc(240, 320, seed);
 
     try {
-        ppht::segment_t segment;
-
-        ok(!acc.vote(ppht::point_t{50, 50}, segment), "vote recorded");
+        ok(!acc.vote(ppht::point_t{50, 50}), "vote recorded");
         acc.unvote(ppht::point_t{50, 50});
         pass("no exception thrown");
     }
