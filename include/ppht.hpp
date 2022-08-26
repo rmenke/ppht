@@ -95,11 +95,11 @@
 #ifndef ppht_hpp
 #define ppht_hpp
 
-#include "ppht/accumulator.hpp"
-#include "ppht/point_set.hpp"
-#include "ppht/postprocess.hpp"
-#include "ppht/raster.hpp"
-#include "ppht/state.hpp"
+#include "accumulator.hpp"
+#include "point_set.hpp"
+#include "postprocess.hpp"
+#include "raster.hpp"
+#include "state.hpp"
 
 #include <cstdint>
 

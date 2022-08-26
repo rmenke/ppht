@@ -2,7 +2,7 @@
 
 #include "tap.hpp"
 
-#include <ppht/raster.hpp>
+#include "raster.hpp"
 
 int main() {
     using namespace tap;

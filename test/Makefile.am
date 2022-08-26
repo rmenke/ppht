@@ -10,7 +10,7 @@ TESTS = 01-raster.test \
 TEST_LOG_DRIVER = env AM_TAP_AWK='$(AWK)' $(SHELL) \
 	$(top_srcdir)/build-aux/tap-driver.sh
 
-AM_CPPFLAGS = -I$(abs_top_srcdir) -I$(abs_srcdir)
+AM_CPPFLAGS = -I$(top_srcdir)/include
 AM_CXXFLAGS = -Wall -Wpedantic
 AM_DEFAULT_SOURCE_EXT = .cpp
 

@@ -4,7 +4,7 @@
 #ifndef ppht_point_set_hpp
 #define ppht_point_set_hpp
 
-#include <ppht/types.hpp>
+#include "types.hpp"
 
 #include <set>
 

@@ -2,7 +2,7 @@
 
 #include "tap.hpp"
 
-#include <ppht/trig.hpp>
+#include "trig.hpp"
 
 #include <cmath>
 #include <ostream>

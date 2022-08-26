@@ -4,11 +4,11 @@
 #ifndef ppht_state_hpp
 #define ppht_state_hpp
 
-#include <ppht/channel.hpp>
-#include <ppht/point_set.hpp>
-#include <ppht/raster.hpp>
-#include <ppht/trig.hpp>
-#include <ppht/types.hpp>
+#include "channel.hpp"
+#include "point_set.hpp"
+#include "raster.hpp"
+#include "trig.hpp"
+#include "types.hpp"
 
 #include <algorithm>
 #include <cassert>

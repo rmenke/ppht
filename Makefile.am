@@ -2,14 +2,18 @@ ACLOCAL_AMFLAGS = -I m4 --install
 
 SUBDIRS = test
 
-nobase_include_HEADERS = ppht.hpp ppht/accumulator.hpp ppht/channel.hpp ppht/kd-search.hpp ppht/point_set.hpp ppht/postprocess.hpp ppht/raster.hpp ppht/state.hpp ppht/trig.hpp ppht/types.hpp
+include_HEADERS = include/ppht.hpp
+
+pphtdir = $(includedir)/ppht
+
+ppht_HEADERS = include/accumulator.hpp include/channel.hpp include/kd-search.hpp include/point_set.hpp include/postprocess.hpp include/raster.hpp include/state.hpp include/trig.hpp include/types.hpp
 
 git-add:
 	$(MAKE) distdir
 	@(cd "$(distdir)"; find . -depth -type f -print0) | (cd "$(top_srcdir)"; xargs -0t git add --verbose)
 	$(RM) -r "$(distdir)"
 
-doc: Doxyfile $(nobase_include_HEADERS)
+doc: Doxyfile $(include_HEADERS) $(ppht_HEADERS)
 	$(RM) -r "$(top_builddir)/doc"
 	cd "$(top_srcdir)"; doxygen "$(abs_top_builddir)/Doxyfile"
 	@set -x; TMPDIR="`mktemp -d`"; trap "$(RM) -r $${TMPDIR}" 0 1 2 15; mv "$(top_srcdir)/doc" "$${TMPDIR}/doc" && $(RM) -r "$(top_builddir)/doc" && mv "$${TMPDIR}/doc" "$(top_builddir)/doc"

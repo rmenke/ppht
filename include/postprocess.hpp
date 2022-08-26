@@ -4,8 +4,8 @@
 #ifndef ppht_postprocess_hpp
 #define ppht_postprocess_hpp
 
-#include <ppht/kd-search.hpp>
-#include <ppht/types.hpp>
+#include "kd-search.hpp"
+#include "types.hpp"
 
 #include <cassert>
 #include <queue>

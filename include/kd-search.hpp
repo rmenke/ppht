@@ -4,7 +4,7 @@
 #ifndef ppht_kd_search_hpp
 #define ppht_kd_search_hpp
 
-#include <ppht/types.hpp>
+#include "types.hpp"
 
 #include <algorithm>
 

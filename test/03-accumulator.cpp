@@ -2,8 +2,8 @@
 
 #include "tap.hpp"
 
-#include <ppht/accumulator.hpp>
-#include <ppht/types.hpp>
+#include "accumulator.hpp"
+#include "types.hpp"
 
 #include <algorithm>
 #include <cmath>

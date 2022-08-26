@@ -4,10 +4,10 @@
 #ifndef ppht_accumulator_hpp
 #define ppht_accumulator_hpp
 
-#include <ppht/raster.hpp>
-#include <ppht/trig.hpp>
-#include <ppht/types.hpp>
-#include <ppht/state.hpp>
+#include "raster.hpp"
+#include "trig.hpp"
+#include "types.hpp"
+#include "state.hpp"
 
 #include <algorithm>
 #include <cassert>

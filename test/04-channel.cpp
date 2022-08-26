@@ -2,8 +2,8 @@
 
 #include "tap.hpp"
 
-#include <ppht/channel.hpp>
-#include <ppht/types.hpp>
+#include "channel.hpp"
+#include "types.hpp"
 
 #include <cstdlib>
 #include <random>
