@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>PPHT: ppht/types.hpp Source File</title>
+<title>PPHT: include/types.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,7 +25,7 @@ MathJax.Hub.Config({
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">PPHT<span id="projectnumber">&#160;2.0.0-alpha.5</span>
+   <div id="projectname">PPHT<span id="projectnumber">&#160;2.0.0-alpha.11</span>
    </div>
    <div id="projectbrief">An implementation of PPHT as a header-only library</div>
   </td>
@@ -47,7 +47,7 @@ $(function() {
 <div id="main-nav"></div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_535e8af6a958c3727bafbc9640e03ec7.html">ppht</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -131,25 +131,28 @@ $(function() {
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    }</div>
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>};</div>
 <div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="namespaceppht.html#a62df3910999f59d178dd7090a4c89d86">  100</a></span><span class="keyword">enum</span> <a class="code hl_enumeration" href="namespaceppht.html#a62df3910999f59d178dd7090a4c89d86">status_t</a> {</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno"><a class="line" href="namespaceppht.html#a62df3910999f59d178dd7090a4c89d86a0f45ad41c1c3261e309b3fd0bcab017a">  101</a></span>    <a class="code hl_enumvalue" href="namespaceppht.html#a62df3910999f59d178dd7090a4c89d86a0f45ad41c1c3261e309b3fd0bcab017a">unset</a>,                      </div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno"><a class="line" href="namespaceppht.html#a62df3910999f59d178dd7090a4c89d86afb573f653d4d73258e47c80e98bad364">  102</a></span>    <a class="code hl_enumvalue" href="namespaceppht.html#a62df3910999f59d178dd7090a4c89d86afb573f653d4d73258e47c80e98bad364">pending</a>,                    </div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno"><a class="line" href="namespaceppht.html#a62df3910999f59d178dd7090a4c89d86ae6c5099536830b50645dc1f77dfc4873">  103</a></span>    <a class="code hl_enumvalue" href="namespaceppht.html#a62df3910999f59d178dd7090a4c89d86ae6c5099536830b50645dc1f77dfc4873">voted</a>,                      </div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <a class="code hl_enumvalue" href="namespaceppht.html#a62df3910999f59d178dd7090a4c89d86a68622b152a1cf239b30f26696906b3eb">done</a>                        </div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno"><a class="line" href="namespaceppht.html#a62df3910999f59d178dd7090a4c89d86a68622b152a1cf239b30f26696906b3eb">  106</a></span>};</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>} <span class="comment">// namespace ppht</span></div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="preprocessor">#endif </span><span class="comment">/* ppht_types_hpp */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="namespaceppht.html#a396a33a395bd44d0f83357c8efe2d9b3">  100</a></span><span class="keyword">using</span> <a class="code hl_typedef" href="namespaceppht.html#a396a33a395bd44d0f83357c8efe2d9b3">line_t</a> = std::pair&lt;std::size_t, double&gt;;</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno"><a class="line" href="namespaceppht.html#a62df3910999f59d178dd7090a4c89d86">  103</a></span><span class="keyword">enum</span> <a class="code hl_enumeration" href="namespaceppht.html#a62df3910999f59d178dd7090a4c89d86">status_t</a> {</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno"><a class="line" href="namespaceppht.html#a62df3910999f59d178dd7090a4c89d86a0f45ad41c1c3261e309b3fd0bcab017a">  104</a></span>    <a class="code hl_enumvalue" href="namespaceppht.html#a62df3910999f59d178dd7090a4c89d86a0f45ad41c1c3261e309b3fd0bcab017a">unset</a>,                      </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno"><a class="line" href="namespaceppht.html#a62df3910999f59d178dd7090a4c89d86afb573f653d4d73258e47c80e98bad364">  105</a></span>    <a class="code hl_enumvalue" href="namespaceppht.html#a62df3910999f59d178dd7090a4c89d86afb573f653d4d73258e47c80e98bad364">pending</a>,                    </div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno"><a class="line" href="namespaceppht.html#a62df3910999f59d178dd7090a4c89d86ae6c5099536830b50645dc1f77dfc4873">  106</a></span>    <a class="code hl_enumvalue" href="namespaceppht.html#a62df3910999f59d178dd7090a4c89d86ae6c5099536830b50645dc1f77dfc4873">voted</a>,                      </div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    <a class="code hl_enumvalue" href="namespaceppht.html#a62df3910999f59d178dd7090a4c89d86a68622b152a1cf239b30f26696906b3eb">done</a>                        </div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno"><a class="line" href="namespaceppht.html#a62df3910999f59d178dd7090a4c89d86a68622b152a1cf239b30f26696906b3eb">  109</a></span>};</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>} <span class="comment">// namespace ppht</span></div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span><span class="preprocessor">#endif </span><span class="comment">/* ppht_types_hpp */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="aclassppht_1_1segment__t_html"><div class="ttname"><a href="classppht_1_1segment__t.html">ppht::segment_t</a></div><div class="ttdef"><b>Definition:</b> types.hpp:68</div></div>
 <div class="ttc" id="aclassppht_1_1segment__t_html_a69fbb42967af610af45d93599c1090c1"><div class="ttname"><a href="classppht_1_1segment__t.html#a69fbb42967af610af45d93599c1090c1">ppht::segment_t::operator!=</a></div><div class="ttdeci">bool operator!=(const segment_t &amp;rhs) const</div><div class="ttdef"><b>Definition:</b> types.hpp:94</div></div>
 <div class="ttc" id="aclassppht_1_1segment__t_html_a7b8e1cb7b5e7c9c171b7f51516259237"><div class="ttname"><a href="classppht_1_1segment__t.html#a7b8e1cb7b5e7c9c171b7f51516259237">ppht::segment_t::operator==</a></div><div class="ttdeci">bool operator==(const segment_t &amp;rhs) const</div><div class="ttdef"><b>Definition:</b> types.hpp:82</div></div>
-<div class="ttc" id="anamespaceppht_html"><div class="ttname"><a href="namespaceppht.html">ppht</a></div><div class="ttdoc">The basic namespace of the library.</div></div>
-<div class="ttc" id="anamespaceppht_html_a62df3910999f59d178dd7090a4c89d86"><div class="ttname"><a href="namespaceppht.html#a62df3910999f59d178dd7090a4c89d86">ppht::status_t</a></div><div class="ttdeci">status_t</div><div class="ttdoc">The status of a pixel in a state map.</div><div class="ttdef"><b>Definition:</b> types.hpp:100</div></div>
-<div class="ttc" id="anamespaceppht_html_a62df3910999f59d178dd7090a4c89d86a0f45ad41c1c3261e309b3fd0bcab017a"><div class="ttname"><a href="namespaceppht.html#a62df3910999f59d178dd7090a4c89d86a0f45ad41c1c3261e309b3fd0bcab017a">ppht::unset</a></div><div class="ttdeci">@ unset</div><div class="ttdoc">Pixel is unset.</div><div class="ttdef"><b>Definition:</b> types.hpp:101</div></div>
-<div class="ttc" id="anamespaceppht_html_a62df3910999f59d178dd7090a4c89d86a68622b152a1cf239b30f26696906b3eb"><div class="ttname"><a href="namespaceppht.html#a62df3910999f59d178dd7090a4c89d86a68622b152a1cf239b30f26696906b3eb">ppht::done</a></div><div class="ttdeci">@ done</div><div class="ttdoc">Pixel has been incorporated into a segment.</div><div class="ttdef"><b>Definition:</b> types.hpp:104</div></div>
-<div class="ttc" id="anamespaceppht_html_a62df3910999f59d178dd7090a4c89d86ae6c5099536830b50645dc1f77dfc4873"><div class="ttname"><a href="namespaceppht.html#a62df3910999f59d178dd7090a4c89d86ae6c5099536830b50645dc1f77dfc4873">ppht::voted</a></div><div class="ttdeci">@ voted</div><div class="ttdoc">Pixel is set and voted.</div><div class="ttdef"><b>Definition:</b> types.hpp:103</div></div>
-<div class="ttc" id="anamespaceppht_html_a62df3910999f59d178dd7090a4c89d86afb573f653d4d73258e47c80e98bad364"><div class="ttname"><a href="namespaceppht.html#a62df3910999f59d178dd7090a4c89d86afb573f653d4d73258e47c80e98bad364">ppht::pending</a></div><div class="ttdeci">@ pending</div><div class="ttdoc">Pixel is set but not yet voted.</div><div class="ttdef"><b>Definition:</b> types.hpp:102</div></div>
+<div class="ttc" id="anamespaceppht_html"><div class="ttname"><a href="namespaceppht.html">ppht</a></div><div class="ttdoc">The basic namespace of the library.</div><div class="ttdef"><b>Definition:</b> accumulator.hpp:28</div></div>
+<div class="ttc" id="anamespaceppht_html_a396a33a395bd44d0f83357c8efe2d9b3"><div class="ttname"><a href="namespaceppht.html#a396a33a395bd44d0f83357c8efe2d9b3">ppht::line_t</a></div><div class="ttdeci">std::pair&lt; std::size_t, double &gt; line_t</div><div class="ttdoc">The definition of a line in Hough space.</div><div class="ttdef"><b>Definition:</b> types.hpp:100</div></div>
+<div class="ttc" id="anamespaceppht_html_a62df3910999f59d178dd7090a4c89d86"><div class="ttname"><a href="namespaceppht.html#a62df3910999f59d178dd7090a4c89d86">ppht::status_t</a></div><div class="ttdeci">status_t</div><div class="ttdoc">The status of a pixel in a state map.</div><div class="ttdef"><b>Definition:</b> types.hpp:103</div></div>
+<div class="ttc" id="anamespaceppht_html_a62df3910999f59d178dd7090a4c89d86a0f45ad41c1c3261e309b3fd0bcab017a"><div class="ttname"><a href="namespaceppht.html#a62df3910999f59d178dd7090a4c89d86a0f45ad41c1c3261e309b3fd0bcab017a">ppht::unset</a></div><div class="ttdeci">@ unset</div><div class="ttdoc">Pixel is unset.</div><div class="ttdef"><b>Definition:</b> types.hpp:104</div></div>
+<div class="ttc" id="anamespaceppht_html_a62df3910999f59d178dd7090a4c89d86a68622b152a1cf239b30f26696906b3eb"><div class="ttname"><a href="namespaceppht.html#a62df3910999f59d178dd7090a4c89d86a68622b152a1cf239b30f26696906b3eb">ppht::done</a></div><div class="ttdeci">@ done</div><div class="ttdoc">Pixel has been incorporated into a segment.</div><div class="ttdef"><b>Definition:</b> types.hpp:107</div></div>
+<div class="ttc" id="anamespaceppht_html_a62df3910999f59d178dd7090a4c89d86ae6c5099536830b50645dc1f77dfc4873"><div class="ttname"><a href="namespaceppht.html#a62df3910999f59d178dd7090a4c89d86ae6c5099536830b50645dc1f77dfc4873">ppht::voted</a></div><div class="ttdeci">@ voted</div><div class="ttdoc">Pixel is set and voted.</div><div class="ttdef"><b>Definition:</b> types.hpp:106</div></div>
+<div class="ttc" id="anamespaceppht_html_a62df3910999f59d178dd7090a4c89d86afb573f653d4d73258e47c80e98bad364"><div class="ttname"><a href="namespaceppht.html#a62df3910999f59d178dd7090a4c89d86afb573f653d4d73258e47c80e98bad364">ppht::pending</a></div><div class="ttdeci">@ pending</div><div class="ttdoc">Pixel is set but not yet voted.</div><div class="ttdef"><b>Definition:</b> types.hpp:105</div></div>
 <div class="ttc" id="astructppht_1_1point__t_html"><div class="ttname"><a href="structppht_1_1point__t.html">ppht::point_t</a></div><div class="ttdoc">A basic integral point.</div><div class="ttdef"><b>Definition:</b> types.hpp:15</div></div>
 <div class="ttc" id="astructppht_1_1point__t_html_a1f295c63fb3f11b2207e05d60d317ae6"><div class="ttname"><a href="structppht_1_1point__t.html#a1f295c63fb3f11b2207e05d60d317ae6">ppht::point_t::length</a></div><div class="ttdeci">double length() const</div><div class="ttdef"><b>Definition:</b> types.hpp:31</div></div>
 <div class="ttc" id="astructppht_1_1point__t_html_a24249c3072dd64f9e62a88b9f2e0a938"><div class="ttname"><a href="structppht_1_1point__t.html#a24249c3072dd64f9e62a88b9f2e0a938">ppht::point_t::point_t</a></div><div class="ttdeci">point_t()</div><div class="ttdef"><b>Definition:</b> types.hpp:18</div></div>

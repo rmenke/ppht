@@ -25,7 +25,7 @@ MathJax.Hub.Config({
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">PPHT<span id="projectnumber">&#160;2.0.0-alpha.5</span>
+   <div id="projectname">PPHT<span id="projectnumber">&#160;2.0.0-alpha.11</span>
    </div>
    <div id="projectbrief">An implementation of PPHT as a header-only library</div>
   </td>
@@ -70,15 +70,28 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a520d44b081be8797bf89dc9afbefd6a0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1accumulator.html#a520d44b081be8797bf89dc9afbefd6a0">accumulator</a> (std::size_t rows, std::size_t cols, <a class="el" href="structppht_1_1parameters.html">parameters</a> const &amp;param, <a class="el" href="classppht_1_1accumulator.html#a92ee869bb03a6ced5ecf470d4328f5c4">seed_t</a> seed=std::random_device{}())</td></tr>
-<tr class="memdesc:a520d44b081be8797bf89dc9afbefd6a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct an instance of <a class="el" href="classppht_1_1accumulator.html">accumulator</a>.  <a href="classppht_1_1accumulator.html#a520d44b081be8797bf89dc9afbefd6a0">More...</a><br /></td></tr>
-<tr class="separator:a520d44b081be8797bf89dc9afbefd6a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8ff140558c3734deb891878d3fec802f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classppht_1_1segment__t.html">segment_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1accumulator.html#a8ff140558c3734deb891878d3fec802f">find_segment</a> (std::size_t theta, double rho)</td></tr>
-<tr class="memdesc:a8ff140558c3734deb891878d3fec802f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find the portion of the line that lies within the bounds of the bitmap.  <a href="classppht_1_1accumulator.html#a8ff140558c3734deb891878d3fec802f">More...</a><br /></td></tr>
-<tr class="separator:a8ff140558c3734deb891878d3fec802f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a02c160abbc583112e4706c4ce82ac389"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1accumulator.html#a02c160abbc583112e4706c4ce82ac389">vote</a> (<a class="el" href="structppht_1_1point__t.html">point_t</a> const &amp;p, <a class="el" href="classppht_1_1segment__t.html">segment_t</a> &amp;segment)</td></tr>
-<tr class="memdesc:a02c160abbc583112e4706c4ce82ac389"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add all lines passing through the given point to the accumulator.  <a href="classppht_1_1accumulator.html#a02c160abbc583112e4706c4ce82ac389">More...</a><br /></td></tr>
-<tr class="separator:a02c160abbc583112e4706c4ce82ac389"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea10b31857bf8480130c33d25bcfe2d0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1accumulator.html#aea10b31857bf8480130c33d25bcfe2d0">accumulator</a> (std::size_t rows, std::size_t cols, <a class="el" href="classppht_1_1accumulator.html#a92ee869bb03a6ced5ecf470d4328f5c4">seed_t</a> seed=std::random_device{}())</td></tr>
+<tr class="memdesc:aea10b31857bf8480130c33d25bcfe2d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct an instance of <a class="el" href="classppht_1_1accumulator.html">accumulator</a>.  <a href="classppht_1_1accumulator.html#aea10b31857bf8480130c33d25bcfe2d0">More...</a><br /></td></tr>
+<tr class="separator:aea10b31857bf8480130c33d25bcfe2d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae06c3bcd09882792dfb1a78078609729"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1accumulator.html#ae06c3bcd09882792dfb1a78078609729">threshold</a> () const noexcept</td></tr>
+<tr class="memdesc:ae06c3bcd09882792dfb1a78078609729"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the probability threshold for rejecting the null hypothesis.  <a href="classppht_1_1accumulator.html#ae06c3bcd09882792dfb1a78078609729">More...</a><br /></td></tr>
+<tr class="separator:ae06c3bcd09882792dfb1a78078609729"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b974d3915410833c4a9057af8bbe68d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1accumulator.html#a5b974d3915410833c4a9057af8bbe68d">threshold</a> (double threshold) noexcept</td></tr>
+<tr class="memdesc:a5b974d3915410833c4a9057af8bbe68d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the probability threshold for rejecting the null hypothesis.  <a href="classppht_1_1accumulator.html#a5b974d3915410833c4a9057af8bbe68d">More...</a><br /></td></tr>
+<tr class="separator:a5b974d3915410833c4a9057af8bbe68d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f8b0454f86478e78511773da2cee808"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1accumulator.html#a6f8b0454f86478e78511773da2cee808">min_trigger_points</a> () const noexcept</td></tr>
+<tr class="memdesc:a6f8b0454f86478e78511773da2cee808"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the minimum number of voting points required to trigger a scan.  <a href="classppht_1_1accumulator.html#a6f8b0454f86478e78511773da2cee808">More...</a><br /></td></tr>
+<tr class="separator:a6f8b0454f86478e78511773da2cee808"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6908da4927eac93a6947dae71bb1ee14"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1accumulator.html#a6908da4927eac93a6947dae71bb1ee14">min_trigger_points</a> (double min_trigger_points) noexcept</td></tr>
+<tr class="memdesc:a6908da4927eac93a6947dae71bb1ee14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the minimum number of voting points required to trigger a scan.  <a href="classppht_1_1accumulator.html#a6908da4927eac93a6947dae71bb1ee14">More...</a><br /></td></tr>
+<tr class="separator:a6908da4927eac93a6947dae71bb1ee14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a678b544a8ec9b7a70075c39719d271ac"><td class="memTemplParams" colspan="2">template&lt;class ForwardIt &gt; </td></tr>
+<tr class="memitem:a678b544a8ec9b7a70075c39719d271ac"><td class="memTemplItemLeft" align="right" valign="top">ForwardIt&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classppht_1_1accumulator.html#a678b544a8ec9b7a70075c39719d271ac">best_candidate</a> (ForwardIt begin, ForwardIt end)</td></tr>
+<tr class="memdesc:a678b544a8ec9b7a70075c39719d271ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find lines that are parallel to major axes.  <a href="classppht_1_1accumulator.html#a678b544a8ec9b7a70075c39719d271ac">More...</a><br /></td></tr>
+<tr class="separator:a678b544a8ec9b7a70075c39719d271ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c96fb1adda550a2771a1f84c14ea6c1"><td class="memItemLeft" align="right" valign="top">std::optional&lt; <a class="el" href="namespaceppht.html#a396a33a395bd44d0f83357c8efe2d9b3">line_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1accumulator.html#a2c96fb1adda550a2771a1f84c14ea6c1">vote</a> (<a class="el" href="structppht_1_1point__t.html">point_t</a> const &amp;p)</td></tr>
+<tr class="memdesc:a2c96fb1adda550a2771a1f84c14ea6c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add all lines passing through the given point to the accumulator.  <a href="classppht_1_1accumulator.html#a2c96fb1adda550a2771a1f84c14ea6c1">More...</a><br /></td></tr>
+<tr class="separator:a2c96fb1adda550a2771a1f84c14ea6c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a81095d6f10832e7abae3d8c34d42f186"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1accumulator.html#a81095d6f10832e7abae3d8c34d42f186">unvote</a> (<a class="el" href="structppht_1_1point__t.html">point_t</a> const &amp;p)</td></tr>
 <tr class="separator:a81095d6f10832e7abae3d8c34d42f186"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -105,34 +118,28 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:a793d5129b3dabe924a839bd5ccf3ffe2"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1accumulator.html#a793d5129b3dabe924a839bd5ccf3ffe2">unscale_rho</a> (double scaled_rho) const noexcept</td></tr>
 <tr class="memdesc:a793d5129b3dabe924a839bd5ccf3ffe2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a scaled rho value back to a raw value.  <a href="classppht_1_1accumulator.html#a793d5129b3dabe924a839bd5ccf3ffe2">More...</a><br /></td></tr>
 <tr class="separator:a793d5129b3dabe924a839bd5ccf3ffe2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a13c220fc16e37ce9ffbfa176a2c1e210"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1accumulator.html#a13c220fc16e37ce9ffbfa176a2c1e210">accumulator</a> (std::size_t rows, std::size_t cols, const std::pair&lt; std::size_t, int &gt; &amp;<a class="el" href="classppht_1_1accumulator.html#a51ddcfb6a6d4705122d998e8a46fa45d">rho_info</a>, double log_threshold, std::size_t min_trigger_points, <a class="el" href="classppht_1_1accumulator.html#a92ee869bb03a6ced5ecf470d4328f5c4">seed_t</a> seed) noexcept</td></tr>
-<tr class="memdesc:a13c220fc16e37ce9ffbfa176a2c1e210"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct an instance of <a class="el" href="classppht_1_1accumulator.html">accumulator</a>.  <a href="classppht_1_1accumulator.html#a13c220fc16e37ce9ffbfa176a2c1e210">More...</a><br /></td></tr>
-<tr class="separator:a13c220fc16e37ce9ffbfa176a2c1e210"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e7018f01360a88edd6ce4497cd7f099"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1accumulator.html#a8e7018f01360a88edd6ce4497cd7f099">accumulator</a> (const std::pair&lt; std::size_t, int &gt; &amp;<a class="el" href="classppht_1_1accumulator.html#a51ddcfb6a6d4705122d998e8a46fa45d">rho_info</a>, <a class="el" href="classppht_1_1accumulator.html#a92ee869bb03a6ced5ecf470d4328f5c4">seed_t</a> seed) noexcept</td></tr>
+<tr class="memdesc:a8e7018f01360a88edd6ce4497cd7f099"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct an instance of <a class="el" href="classppht_1_1accumulator.html">accumulator</a>.  <a href="classppht_1_1accumulator.html#a8e7018f01360a88edd6ce4497cd7f099">More...</a><br /></td></tr>
+<tr class="separator:a8e7018f01360a88edd6ce4497cd7f099"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
 Static Private Member Functions</h2></td></tr>
-<tr class="memitem:a836391184051253c1ddb8239b4f0212d"><td class="memTemplParams" colspan="2">template&lt;class T , class U &gt; </td></tr>
-<tr class="memitem:a836391184051253c1ddb8239b4f0212d"><td class="memTemplItemLeft" align="right" valign="top">static T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classppht_1_1accumulator.html#a836391184051253c1ddb8239b4f0212d">clamp</a> (U value) noexcept</td></tr>
-<tr class="memdesc:a836391184051253c1ddb8239b4f0212d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restrict the value to the range of the target type.  <a href="classppht_1_1accumulator.html#a836391184051253c1ddb8239b4f0212d">More...</a><br /></td></tr>
-<tr class="separator:a836391184051253c1ddb8239b4f0212d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb0c13f74ed3568b1798fe07eb6f284e"><td class="memTemplParams" colspan="2">template&lt;class T , class U &gt; </td></tr>
+<tr class="memitem:acb0c13f74ed3568b1798fe07eb6f284e"><td class="memTemplItemLeft" align="right" valign="top">static constexpr T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classppht_1_1accumulator.html#acb0c13f74ed3568b1798fe07eb6f284e">clamp</a> (U value) noexcept</td></tr>
+<tr class="memdesc:acb0c13f74ed3568b1798fe07eb6f284e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restrict the value to the range of the target type.  <a href="classppht_1_1accumulator.html#acb0c13f74ed3568b1798fe07eb6f284e">More...</a><br /></td></tr>
+<tr class="separator:acb0c13f74ed3568b1798fe07eb6f284e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:aa791a41afd8aa1774a6bcb34f0ca286d"><td class="memItemLeft" align="right" valign="top">std::size_t const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1accumulator.html#aa791a41afd8aa1774a6bcb34f0ca286d">_rows</a></td></tr>
-<tr class="memdesc:aa791a41afd8aa1774a6bcb34f0ca286d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Height of bitmap image.  <a href="classppht_1_1accumulator.html#aa791a41afd8aa1774a6bcb34f0ca286d">More...</a><br /></td></tr>
-<tr class="separator:aa791a41afd8aa1774a6bcb34f0ca286d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a43000d45677f61f8f2069602da3eea06"><td class="memItemLeft" align="right" valign="top">std::size_t const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1accumulator.html#a43000d45677f61f8f2069602da3eea06">_cols</a></td></tr>
-<tr class="memdesc:a43000d45677f61f8f2069602da3eea06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Width of bitmap image.  <a href="classppht_1_1accumulator.html#a43000d45677f61f8f2069602da3eea06">More...</a><br /></td></tr>
-<tr class="separator:a43000d45677f61f8f2069602da3eea06"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a15ab5949c754cb724863eb0539af7317"><td class="memItemLeft" align="right" valign="top">int const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1accumulator.html#a15ab5949c754cb724863eb0539af7317">_rho_scale</a></td></tr>
 <tr class="memdesc:a15ab5949c754cb724863eb0539af7317"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exponent by which to scale raw rho values.  <a href="classppht_1_1accumulator.html#a15ab5949c754cb724863eb0539af7317">More...</a><br /></td></tr>
 <tr class="separator:a15ab5949c754cb724863eb0539af7317"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5096b40064eeb7b961f2f00158163ff2"><td class="memItemLeft" align="right" valign="top">double const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1accumulator.html#a5096b40064eeb7b961f2f00158163ff2">_log_threshold</a></td></tr>
-<tr class="memdesc:a5096b40064eeb7b961f2f00158163ff2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Log-probability threshold for rejecting the null hypothesis.  <a href="classppht_1_1accumulator.html#a5096b40064eeb7b961f2f00158163ff2">More...</a><br /></td></tr>
-<tr class="separator:a5096b40064eeb7b961f2f00158163ff2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a627ac1a7abe04abf8ce01d630c6d8420"><td class="memItemLeft" align="right" valign="top">Count const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1accumulator.html#a627ac1a7abe04abf8ce01d630c6d8420">_min_trigger_points</a></td></tr>
-<tr class="memdesc:a627ac1a7abe04abf8ce01d630c6d8420"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of points required to trigger a channel scan.  <a href="classppht_1_1accumulator.html#a627ac1a7abe04abf8ce01d630c6d8420">More...</a><br /></td></tr>
-<tr class="separator:a627ac1a7abe04abf8ce01d630c6d8420"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a093a0043f6840743a70cef694308c862"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1accumulator.html#a093a0043f6840743a70cef694308c862">_log_threshold</a> = std::log(1E-12)</td></tr>
+<tr class="memdesc:a093a0043f6840743a70cef694308c862"><td class="mdescLeft">&#160;</td><td class="mdescRight">Log-probability threshold for rejecting the null hypothesis.  <a href="classppht_1_1accumulator.html#a093a0043f6840743a70cef694308c862">More...</a><br /></td></tr>
+<tr class="separator:a093a0043f6840743a70cef694308c862"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a752366deaa0bd4e22492be5f9e9f9883"><td class="memItemLeft" align="right" valign="top">Count&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1accumulator.html#a752366deaa0bd4e22492be5f9e9f9883">_min_trigger_points</a> = 3</td></tr>
+<tr class="memdesc:a752366deaa0bd4e22492be5f9e9f9883"><td class="mdescLeft">&#160;</td><td class="mdescRight">The minimum number of points required to trigger a scan.  <a href="classppht_1_1accumulator.html#a752366deaa0bd4e22492be5f9e9f9883">More...</a><br /></td></tr>
+<tr class="separator:a752366deaa0bd4e22492be5f9e9f9883"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0685499b80d4adbb6cb3799651ab53cf"><td class="memItemLeft" align="right" valign="top">Raster&lt; Count &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1accumulator.html#a0685499b80d4adbb6cb3799651ab53cf">_counters</a></td></tr>
 <tr class="memdesc:a0685499b80d4adbb6cb3799651ab53cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Matrix of counters (quantized \(\theta\rho\)-space).  <a href="classppht_1_1accumulator.html#a0685499b80d4adbb6cb3799651ab53cf">More...</a><br /></td></tr>
 <tr class="separator:a0685499b80d4adbb6cb3799651ab53cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -208,8 +215,8 @@ template&lt;class Count  = std::uint16_t, template&lt; class &gt; class Raster =
 </div>
 </div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a13c220fc16e37ce9ffbfa176a2c1e210" name="a13c220fc16e37ce9ffbfa176a2c1e210"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a13c220fc16e37ce9ffbfa176a2c1e210">&#9670;&nbsp;</a></span>accumulator() <span class="overload">[1/2]</span></h2>
+<a id="a8e7018f01360a88edd6ce4497cd7f099" name="a8e7018f01360a88edd6ce4497cd7f099"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e7018f01360a88edd6ce4497cd7f099">&#9670;&nbsp;</a></span>accumulator() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -222,32 +229,8 @@ template&lt;class Count  = std::uint16_t, template&lt; class &gt; class Raster =
         <tr>
           <td class="memname"><a class="el" href="classppht_1_1accumulator.html">ppht::accumulator</a>&lt; Count, Raster &gt;::<a class="el" href="classppht_1_1accumulator.html">accumulator</a> </td>
           <td>(</td>
-          <td class="paramtype">std::size_t&#160;</td>
-          <td class="paramname"><em>rows</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
-          <td class="paramname"><em>cols</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype">const std::pair&lt; std::size_t, int &gt; &amp;&#160;</td>
           <td class="paramname"><em>rho_info</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>log_threshold</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
-          <td class="paramname"><em>min_trigger_points</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -269,14 +252,10 @@ template&lt;class Count  = std::uint16_t, template&lt; class &gt; class Raster =
 </div><div class="memdoc">
 
 <p>Construct an instance of <a class="el" href="classppht_1_1accumulator.html">accumulator</a>. </p>
-<p >This constructor is called with the results of manipulation of the members of the <a class="el" href="structppht_1_1parameters.html">parameters</a> object: the logarithm of the threshold and the computed range and scale factor for rho.</p>
+<p >This constructor is called with the results of manipulation of the members of the parameters object: the logarithm of the threshold and the computed range and scale factor for rho.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">rows</td><td>the height of the image</td></tr>
-    <tr><td class="paramname">cols</td><td>the width of the image</td></tr>
     <tr><td class="paramname">rho_info</td><td>the maximum value a scaled rho can take and the scale factor</td></tr>
-    <tr><td class="paramname">log_threshold</td><td>the natural logarithm of the threshold at which we reject the null hypothesis</td></tr>
-    <tr><td class="paramname">min_trigger_points</td><td>the number of colinear points required before testing the null hypothesis</td></tr>
     <tr><td class="paramname">seed</td><td>the seed for the URBG </td></tr>
   </table>
   </dd>
@@ -284,8 +263,8 @@ template&lt;class Count  = std::uint16_t, template&lt; class &gt; class Raster =
 
 </div>
 </div>
-<a id="a520d44b081be8797bf89dc9afbefd6a0" name="a520d44b081be8797bf89dc9afbefd6a0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a520d44b081be8797bf89dc9afbefd6a0">&#9670;&nbsp;</a></span>accumulator() <span class="overload">[2/2]</span></h2>
+<a id="aea10b31857bf8480130c33d25bcfe2d0" name="aea10b31857bf8480130c33d25bcfe2d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea10b31857bf8480130c33d25bcfe2d0">&#9670;&nbsp;</a></span>accumulator() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -306,12 +285,6 @@ template&lt;class Count  = std::uint16_t, template&lt; class &gt; class Raster =
           <td></td>
           <td class="paramtype">std::size_t&#160;</td>
           <td class="paramname"><em>cols</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="structppht_1_1parameters.html">parameters</a> const &amp;&#160;</td>
-          <td class="paramname"><em>param</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -337,7 +310,6 @@ template&lt;class Count  = std::uint16_t, template&lt; class &gt; class Raster =
   <table class="params">
     <tr><td class="paramname">rows</td><td>the height of the bitmap</td></tr>
     <tr><td class="paramname">cols</td><td>the width of the bitmap</td></tr>
-    <tr><td class="paramname">param</td><td>parameters controlling the operation of the accumulator</td></tr>
     <tr><td class="paramname">seed</td><td>the seed for the random number generator used to break ties. </td></tr>
   </table>
   </dd>
@@ -346,8 +318,59 @@ template&lt;class Count  = std::uint16_t, template&lt; class &gt; class Raster =
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a836391184051253c1ddb8239b4f0212d" name="a836391184051253c1ddb8239b4f0212d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a836391184051253c1ddb8239b4f0212d">&#9670;&nbsp;</a></span>clamp()</h2>
+<a id="a678b544a8ec9b7a70075c39719d271ac" name="a678b544a8ec9b7a70075c39719d271ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a678b544a8ec9b7a70075c39719d271ac">&#9670;&nbsp;</a></span>best_candidate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Count  = std::uint16_t, template&lt; class &gt; class Raster = raster&gt; </div>
+<div class="memtemplate">
+template&lt;class ForwardIt &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ForwardIt <a class="el" href="classppht_1_1accumulator.html">ppht::accumulator</a>&lt; Count, Raster &gt;::best_candidate </td>
+          <td>(</td>
+          <td class="paramtype">ForwardIt&#160;</td>
+          <td class="paramname"><em>begin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ForwardIt&#160;</td>
+          <td class="paramname"><em>end</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Find lines that are parallel to major axes. </p>
+<p >Returns the line most likely to be correct based on its angle. A line is more "correct" if its angle is a simple fraction of π: ½, ⅔, ⅘, &amp;c.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">begin</td><td>the start of the range </td></tr>
+    <tr><td class="paramname">end</td><td>the end of the range</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>an iterator to the best candidate line </dd></dl>
+
+</div>
+</div>
+<a id="acb0c13f74ed3568b1798fe07eb6f284e" name="acb0c13f74ed3568b1798fe07eb6f284e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb0c13f74ed3568b1798fe07eb6f284e">&#9670;&nbsp;</a></span>clamp()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -360,7 +383,7 @@ template&lt;class T , class U &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static T <a class="el" href="classppht_1_1accumulator.html">ppht::accumulator</a>&lt; Count, Raster &gt;::clamp </td>
+          <td class="memname">static constexpr T <a class="el" href="classppht_1_1accumulator.html">ppht::accumulator</a>&lt; Count, Raster &gt;::clamp </td>
           <td>(</td>
           <td class="paramtype">U&#160;</td>
           <td class="paramname"><em>value</em></td><td>)</td>
@@ -369,7 +392,7 @@ template&lt;class T , class U &gt; </div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">constexpr</span><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -393,8 +416,8 @@ template&lt;class T , class U &gt; </div>
 
 </div>
 </div>
-<a id="a8ff140558c3734deb891878d3fec802f" name="a8ff140558c3734deb891878d3fec802f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8ff140558c3734deb891878d3fec802f">&#9670;&nbsp;</a></span>find_segment()</h2>
+<a id="a6f8b0454f86478e78511773da2cee808" name="a6f8b0454f86478e78511773da2cee808"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f8b0454f86478e78511773da2cee808">&#9670;&nbsp;</a></span>min_trigger_points() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -405,40 +428,58 @@ template&lt;class Count  = std::uint16_t, template&lt; class &gt; class Raster =
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classppht_1_1segment__t.html">segment_t</a> <a class="el" href="classppht_1_1accumulator.html">ppht::accumulator</a>&lt; Count, Raster &gt;::find_segment </td>
+          <td class="memname">double <a class="el" href="classppht_1_1accumulator.html">ppht::accumulator</a>&lt; Count, Raster &gt;::min_trigger_points </td>
           <td>(</td>
-          <td class="paramtype">std::size_t&#160;</td>
-          <td class="paramname"><em>theta</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>rho</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Find the portion of the line that lies within the bounds of the bitmap. </p>
-<p >Given a line in \(\theta\rho\)-space, return the line segment that is the portion of the line that intersects the bitmap.</p>
+<p>Get the minimum number of voting points required to trigger a scan. </p>
+
+</div>
+</div>
+<a id="a6908da4927eac93a6947dae71bb1ee14" name="a6908da4927eac93a6947dae71bb1ee14"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6908da4927eac93a6947dae71bb1ee14">&#9670;&nbsp;</a></span>min_trigger_points() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Count  = std::uint16_t, template&lt; class &gt; class Raster = raster&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classppht_1_1accumulator.html">ppht::accumulator</a>&lt; Count, Raster &gt;::min_trigger_points </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>min_trigger_points</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set the minimum number of voting points required to trigger a scan. </p>
+<p >The simplification that the Poisson distribution approximates the likelihood of random noise breaks down for small numbers. Skip the probability calculation if the number of votes is less than this.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">theta</td><td>the angle of the perpendicular</td></tr>
-    <tr><td class="paramname">rho</td><td>the length of the perpendicular</td></tr>
+    <tr><td class="paramname">min_trigger_points</td><td>the new count required to trigger a scan</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>the portion of the line within the bounds of the bitmap in integral coordinates. </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classppht_1_1accumulator.html#a5b974d3915410833c4a9057af8bbe68d" title="Set the probability threshold for rejecting the null hypothesis.">threshold(double)</a> </dd></dl>
 
 </div>
 </div>
@@ -531,6 +572,73 @@ template&lt;class Count  = std::uint16_t, template&lt; class &gt; class Raster =
 
 </div>
 </div>
+<a id="ae06c3bcd09882792dfb1a78078609729" name="ae06c3bcd09882792dfb1a78078609729"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae06c3bcd09882792dfb1a78078609729">&#9670;&nbsp;</a></span>threshold() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Count  = std::uint16_t, template&lt; class &gt; class Raster = raster&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double <a class="el" href="classppht_1_1accumulator.html">ppht::accumulator</a>&lt; Count, Raster &gt;::threshold </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the probability threshold for rejecting the null hypothesis. </p>
+
+</div>
+</div>
+<a id="a5b974d3915410833c4a9057af8bbe68d" name="a5b974d3915410833c4a9057af8bbe68d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b974d3915410833c4a9057af8bbe68d">&#9670;&nbsp;</a></span>threshold() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Count  = std::uint16_t, template&lt; class &gt; class Raster = raster&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classppht_1_1accumulator.html">ppht::accumulator</a>&lt; Count, Raster &gt;::threshold </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>threshold</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set the probability threshold for rejecting the null hypothesis. </p>
+<p >If the probability of the null hypothesis is less than this value, then a channel scan will be triggered. Lowering this value results in fewer false positives but increases the chance of missing small segments.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">threshold</td><td>the new threshold</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classppht_1_1accumulator.html#a6908da4927eac93a6947dae71bb1ee14" title="Set the minimum number of voting points required to trigger a scan.">min_trigger_points(double)</a> </dd></dl>
+
+</div>
+</div>
 <a id="a793d5129b3dabe924a839bd5ccf3ffe2" name="a793d5129b3dabe924a839bd5ccf3ffe2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a793d5129b3dabe924a839bd5ccf3ffe2">&#9670;&nbsp;</a></span>unscale_rho()</h2>
 
@@ -594,7 +702,7 @@ template&lt;class Count  = std::uint16_t, template&lt; class &gt; class Raster =
   </tr>
 </table>
 </div><div class="memdoc">
-<p >Update the register by undoing a previous call to <a class="el" href="classppht_1_1accumulator.html#a02c160abbc583112e4706c4ce82ac389">vote()</a>.</p>
+<p >Update the register by undoing a previous call to <a class="el" href="classppht_1_1accumulator.html#a2c96fb1adda550a2771a1f84c14ea6c1">vote()</a>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">p</td><td>the point to unregister </td></tr>
@@ -604,8 +712,8 @@ template&lt;class Count  = std::uint16_t, template&lt; class &gt; class Raster =
 
 </div>
 </div>
-<a id="a02c160abbc583112e4706c4ce82ac389" name="a02c160abbc583112e4706c4ce82ac389"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a02c160abbc583112e4706c4ce82ac389">&#9670;&nbsp;</a></span>vote()</h2>
+<a id="a2c96fb1adda550a2771a1f84c14ea6c1" name="a2c96fb1adda550a2771a1f84c14ea6c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c96fb1adda550a2771a1f84c14ea6c1">&#9670;&nbsp;</a></span>vote()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -616,21 +724,11 @@ template&lt;class Count  = std::uint16_t, template&lt; class &gt; class Raster =
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool <a class="el" href="classppht_1_1accumulator.html">ppht::accumulator</a>&lt; Count, Raster &gt;::vote </td>
+          <td class="memname">std::optional&lt; <a class="el" href="namespaceppht.html#a396a33a395bd44d0f83357c8efe2d9b3">line_t</a> &gt; <a class="el" href="classppht_1_1accumulator.html">ppht::accumulator</a>&lt; Count, Raster &gt;::vote </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structppht_1_1point__t.html">point_t</a> const &amp;&#160;</td>
-          <td class="paramname"><em>p</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"><em>p</em></td><td>)</td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classppht_1_1segment__t.html">segment_t</a> &amp;&#160;</td>
-          <td class="paramname"><em>segment</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -641,46 +739,19 @@ template&lt;class Count  = std::uint16_t, template&lt; class &gt; class Raster =
 </div><div class="memdoc">
 
 <p>Add all lines passing through the given point to the accumulator. </p>
-<p >Returns true if the likelihood of the largest count in the register exceeds the threshold.</p>
+<p >Returns a value if the likelihood of the largest count in the register exceeds the threshold.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">p</td><td>the point to register</td></tr>
-    <tr><td class="paramname">segment</td><td>set to the intersection of the line found and the bounds of the image only if the function returns true</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true if the number of votes for the line segment pass the threshold</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>an optional that has a value if the number of votes for the line segment pass the threshold</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classppht_1_1accumulator.html#a81095d6f10832e7abae3d8c34d42f186">unvote()</a> </dd></dl>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a43000d45677f61f8f2069602da3eea06" name="a43000d45677f61f8f2069602da3eea06"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a43000d45677f61f8f2069602da3eea06">&#9670;&nbsp;</a></span>_cols</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class Count  = std::uint16_t, template&lt; class &gt; class Raster = raster&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::size_t const <a class="el" href="classppht_1_1accumulator.html">ppht::accumulator</a>&lt; Count, Raster &gt;::_cols</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Width of bitmap image. </p>
-
-</div>
-</div>
 <a id="a0685499b80d4adbb6cb3799651ab53cf" name="a0685499b80d4adbb6cb3799651ab53cf"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0685499b80d4adbb6cb3799651ab53cf">&#9670;&nbsp;</a></span>_counters</h2>
 
@@ -707,8 +778,8 @@ template&lt;class Count  = std::uint16_t, template&lt; class &gt; class Raster =
 
 </div>
 </div>
-<a id="a5096b40064eeb7b961f2f00158163ff2" name="a5096b40064eeb7b961f2f00158163ff2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5096b40064eeb7b961f2f00158163ff2">&#9670;&nbsp;</a></span>_log_threshold</h2>
+<a id="a093a0043f6840743a70cef694308c862" name="a093a0043f6840743a70cef694308c862"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a093a0043f6840743a70cef694308c862">&#9670;&nbsp;</a></span>_log_threshold</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -719,7 +790,7 @@ template&lt;class Count  = std::uint16_t, template&lt; class &gt; class Raster =
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">double const <a class="el" href="classppht_1_1accumulator.html">ppht::accumulator</a>&lt; Count, Raster &gt;::_log_threshold</td>
+          <td class="memname">double <a class="el" href="classppht_1_1accumulator.html">ppht::accumulator</a>&lt; Count, Raster &gt;::_log_threshold = std::log(1E-12)</td>
         </tr>
       </table>
   </td>
@@ -733,8 +804,8 @@ template&lt;class Count  = std::uint16_t, template&lt; class &gt; class Raster =
 
 </div>
 </div>
-<a id="a627ac1a7abe04abf8ce01d630c6d8420" name="a627ac1a7abe04abf8ce01d630c6d8420"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a627ac1a7abe04abf8ce01d630c6d8420">&#9670;&nbsp;</a></span>_min_trigger_points</h2>
+<a id="a752366deaa0bd4e22492be5f9e9f9883" name="a752366deaa0bd4e22492be5f9e9f9883"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a752366deaa0bd4e22492be5f9e9f9883">&#9670;&nbsp;</a></span>_min_trigger_points</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -745,7 +816,7 @@ template&lt;class Count  = std::uint16_t, template&lt; class &gt; class Raster =
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Count const <a class="el" href="classppht_1_1accumulator.html">ppht::accumulator</a>&lt; Count, Raster &gt;::_min_trigger_points</td>
+          <td class="memname">Count <a class="el" href="classppht_1_1accumulator.html">ppht::accumulator</a>&lt; Count, Raster &gt;::_min_trigger_points = 3</td>
         </tr>
       </table>
   </td>
@@ -755,7 +826,7 @@ template&lt;class Count  = std::uint16_t, template&lt; class &gt; class Raster =
 </table>
 </div><div class="memdoc">
 
-<p>Number of points required to trigger a channel scan. </p>
+<p>The minimum number of points required to trigger a scan. </p>
 
 </div>
 </div>
@@ -782,32 +853,6 @@ template&lt;class Count  = std::uint16_t, template&lt; class &gt; class Raster =
 </div><div class="memdoc">
 
 <p>Exponent by which to scale raw rho values. </p>
-
-</div>
-</div>
-<a id="aa791a41afd8aa1774a6bcb34f0ca286d" name="aa791a41afd8aa1774a6bcb34f0ca286d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa791a41afd8aa1774a6bcb34f0ca286d">&#9670;&nbsp;</a></span>_rows</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class Count  = std::uint16_t, template&lt; class &gt; class Raster = raster&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::size_t const <a class="el" href="classppht_1_1accumulator.html">ppht::accumulator</a>&lt; Count, Raster &gt;::_rows</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Height of bitmap image. </p>
 
 </div>
 </div>
@@ -864,7 +909,7 @@ template&lt;class Count  = std::uint16_t, template&lt; class &gt; class Raster =
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>ppht/<a class="el" href="accumulator_8hpp_source.html">accumulator.hpp</a></li>
+<li>include/<a class="el" href="accumulator_8hpp_source.html">accumulator.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

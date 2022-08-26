@@ -25,7 +25,7 @@ MathJax.Hub.Config({
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">PPHT<span id="projectnumber">&#160;2.0.0-alpha.5</span>
+   <div id="projectname">PPHT<span id="projectnumber">&#160;2.0.0-alpha.11</span>
    </div>
    <div id="projectbrief">An implementation of PPHT as a header-only library</div>
   </td>
@@ -68,9 +68,6 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1channel.html">channel</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An object representing a line segment between two points.  <a href="classppht_1_1channel.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structppht_1_1parameters.html">parameters</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The tunable parameters of the analyzer.  <a href="structppht_1_1parameters.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1point__set.html">point_set</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A collection of points surrounding a line segment.  <a href="classppht_1_1point__set.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -90,6 +87,9 @@ Classes</h2></td></tr>
 Typedefs</h2></td></tr>
 <tr class="memitem:a02fc71b676539c0877ed6869feca3853"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceppht.html#a02fc71b676539c0877ed6869feca3853">cossin_t</a> = std::pair&lt; double, double &gt;</td></tr>
 <tr class="separator:a02fc71b676539c0877ed6869feca3853"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a396a33a395bd44d0f83357c8efe2d9b3"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceppht.html#a396a33a395bd44d0f83357c8efe2d9b3">line_t</a> = std::pair&lt; std::size_t, double &gt;</td></tr>
+<tr class="memdesc:a396a33a395bd44d0f83357c8efe2d9b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">The definition of a line in Hough space.  <a href="namespaceppht.html#a396a33a395bd44d0f83357c8efe2d9b3">More...</a><br /></td></tr>
+<tr class="separator:a396a33a395bd44d0f83357c8efe2d9b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -103,10 +103,6 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a65cf942dc09d432abd4bac48af8804ed"><td class="memTemplParams" colspan="2">template&lt;class State , class Accumulator  = accumulator&lt;&gt;&gt; </td></tr>
-<tr class="memitem:a65cf942dc09d432abd4bac48af8804ed"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classppht_1_1segment__t.html">segment_t</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceppht.html#a65cf942dc09d432abd4bac48af8804ed">find_segments</a> (State &amp;&amp;<a class="el" href="classppht_1_1state.html">state</a>, const <a class="el" href="structppht_1_1parameters.html">parameters</a> &amp;param=<a class="el" href="structppht_1_1parameters.html">parameters</a>{}, std::random_device::result_type seed=std::random_device{}())</td></tr>
-<tr class="memdesc:a65cf942dc09d432abd4bac48af8804ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simplified interface to the PPHT algorithm.  <a href="namespaceppht.html#a65cf942dc09d432abd4bac48af8804ed">More...</a><br /></td></tr>
-<tr class="separator:a65cf942dc09d432abd4bac48af8804ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8f7ea60086c280bdf0ffd08859d8523e"><td class="memTemplParams" colspan="2">template&lt;std::size_t Dim = 0, class RandomIt , class OutputIt &gt; </td></tr>
 <tr class="memitem:a8f7ea60086c280bdf0ffd08859d8523e"><td class="memTemplItemLeft" align="right" valign="top">OutputIt&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceppht.html#a8f7ea60086c280bdf0ffd08859d8523e">kd_search</a> (RandomIt begin, RandomIt end, OutputIt output, const <a class="el" href="structppht_1_1point__t.html">point_t</a> &amp;p, long limit)</td></tr>
 <tr class="separator:a8f7ea60086c280bdf0ffd08859d8523e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -118,6 +114,10 @@ Functions</h2></td></tr>
 <tr class="memitem:a09260eb4004b9decd7ae86a0263afd51"><td class="memTemplParams" colspan="2">template&lt;class ForwardIt &gt; </td></tr>
 <tr class="memitem:a09260eb4004b9decd7ae86a0263afd51"><td class="memTemplItemLeft" align="right" valign="top">ForwardIt&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceppht.html#a09260eb4004b9decd7ae86a0263afd51">postprocess</a> (ForwardIt begin, ForwardIt end, unsigned limit)</td></tr>
 <tr class="separator:a09260eb4004b9decd7ae86a0263afd51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1eb27c0993932833f2906edccb27b15"><td class="memTemplParams" colspan="2">template&lt;class State , class Accumulator  = accumulator&lt;&gt;&gt; </td></tr>
+<tr class="memitem:ac1eb27c0993932833f2906edccb27b15"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classppht_1_1segment__t.html">segment_t</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceppht.html#ac1eb27c0993932833f2906edccb27b15">find_segments</a> (State &amp;&amp;<a class="el" href="classppht_1_1state.html">state</a>, std::uint16_t channel_width=3, std::uint16_t max_gap=3, std::uint16_t min_length=10, std::random_device::result_type seed=std::random_device{}())</td></tr>
+<tr class="memdesc:ac1eb27c0993932833f2906edccb27b15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simplified interface to the PPHT algorithm.  <a href="namespaceppht.html#ac1eb27c0993932833f2906edccb27b15">More...</a><br /></td></tr>
+<tr class="separator:ac1eb27c0993932833f2906edccb27b15"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9f07cf00007b3c094373ca8b4c7bf6bd"><td class="memTemplParams" colspan="2">template&lt;template&lt; class &gt; class Raster&gt; </td></tr>
 <tr class="memitem:a9f07cf00007b3c094373ca8b4c7bf6bd"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classppht_1_1point__set.html">point_set</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceppht.html#a9f07cf00007b3c094373ca8b4c7bf6bd">scan</a> (<a class="el" href="classppht_1_1state.html">state</a>&lt; Raster &gt; &amp;s, <a class="el" href="classppht_1_1segment__t.html">segment_t</a> const &amp;segment, unsigned radius, unsigned max_gap)</td></tr>
 <tr class="memdesc:a9f07cf00007b3c094373ca8b4c7bf6bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Trace a scan channel.  <a href="namespaceppht.html#a9f07cf00007b3c094373ca8b4c7bf6bd">More...</a><br /></td></tr>
@@ -144,6 +144,22 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="a396a33a395bd44d0f83357c8efe2d9b3" name="a396a33a395bd44d0f83357c8efe2d9b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a396a33a395bd44d0f83357c8efe2d9b3">&#9670;&nbsp;</a></span>line_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="namespaceppht.html#a396a33a395bd44d0f83357c8efe2d9b3">ppht::line_t</a> = typedef std::pair&lt;std::size_t, double&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The definition of a line in Hough space. </p>
 
 </div>
 </div>
@@ -261,8 +277,8 @@ template&lt;class RandomIt &gt; </div>
 
 </div>
 </div>
-<a id="a65cf942dc09d432abd4bac48af8804ed" name="a65cf942dc09d432abd4bac48af8804ed"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a65cf942dc09d432abd4bac48af8804ed">&#9670;&nbsp;</a></span>find_segments()</h2>
+<a id="ac1eb27c0993932833f2906edccb27b15" name="ac1eb27c0993932833f2906edccb27b15"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1eb27c0993932833f2906edccb27b15">&#9670;&nbsp;</a></span>find_segments()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -278,8 +294,20 @@ template&lt;class State , class Accumulator  = accumulator&lt;&gt;&gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="structppht_1_1parameters.html">parameters</a> &amp;&#160;</td>
-          <td class="paramname"><em>param</em> = <code><a class="el" href="structppht_1_1parameters.html">parameters</a>{}</code>, </td>
+          <td class="paramtype">std::uint16_t&#160;</td>
+          <td class="paramname"><em>channel_width</em> = <code>3</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::uint16_t&#160;</td>
+          <td class="paramname"><em>max_gap</em> = <code>3</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::uint16_t&#160;</td>
+          <td class="paramname"><em>min_length</em> = <code>10</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -308,10 +336,10 @@ template&lt;class State , class Accumulator  = accumulator&lt;&gt;&gt; </div>
 <div class="line">  }</div>
 <div class="line">}</div>
 <div class="line"> </div>
-<div class="line"><span class="keyword">auto</span> segments = <a class="code hl_function" href="namespaceppht.html#a65cf942dc09d432abd4bac48af8804ed">ppht::find_segments</a>(std::move(state));</div>
-<div class="ttc" id="aclassppht_1_1state_html"><div class="ttname"><a href="classppht_1_1state.html">ppht::state</a></div><div class="ttdoc">The state class represents the current state of the algorithm.</div><div class="ttdef"><b>Definition:</b> state.hpp:31</div></div>
-<div class="ttc" id="aclassppht_1_1state_html_ac924d3997ba5265607c271d27defe368"><div class="ttname"><a href="classppht_1_1state.html#ac924d3997ba5265607c271d27defe368">ppht::state::mark_pending</a></div><div class="ttdeci">void mark_pending(point_t const &amp;point)</div><div class="ttdoc">Mark a pixel in the raster as pending.</div><div class="ttdef"><b>Definition:</b> state.hpp:125</div></div>
-<div class="ttc" id="anamespaceppht_html_a65cf942dc09d432abd4bac48af8804ed"><div class="ttname"><a href="namespaceppht.html#a65cf942dc09d432abd4bac48af8804ed">ppht::find_segments</a></div><div class="ttdeci">std::vector&lt; segment_t &gt; find_segments(State &amp;&amp;state, const parameters &amp;param=parameters{}, std::random_device::result_type seed=std::random_device{}())</div><div class="ttdoc">Simplified interface to the PPHT algorithm.</div><div class="ttdef"><b>Definition:</b> ppht.hpp:151</div></div>
+<div class="line"><span class="keyword">auto</span> segments = <a class="code hl_function" href="namespaceppht.html#ac1eb27c0993932833f2906edccb27b15">ppht::find_segments</a>(std::move(state));</div>
+<div class="ttc" id="aclassppht_1_1state_html"><div class="ttname"><a href="classppht_1_1state.html">ppht::state</a></div><div class="ttdoc">The state class represents the current state of the algorithm.</div><div class="ttdef"><b>Definition:</b> state.hpp:32</div></div>
+<div class="ttc" id="aclassppht_1_1state_html_ac924d3997ba5265607c271d27defe368"><div class="ttname"><a href="classppht_1_1state.html#ac924d3997ba5265607c271d27defe368">ppht::state::mark_pending</a></div><div class="ttdeci">void mark_pending(point_t const &amp;point)</div><div class="ttdoc">Mark a pixel in the raster as pending.</div><div class="ttdef"><b>Definition:</b> state.hpp:126</div></div>
+<div class="ttc" id="anamespaceppht_html_ac1eb27c0993932833f2906edccb27b15"><div class="ttname"><a href="namespaceppht.html#ac1eb27c0993932833f2906edccb27b15">ppht::find_segments</a></div><div class="ttdeci">std::vector&lt; segment_t &gt; find_segments(State &amp;&amp;state, std::uint16_t channel_width=3, std::uint16_t max_gap=3, std::uint16_t min_length=10, std::random_device::result_type seed=std::random_device{}())</div><div class="ttdoc">Simplified interface to the PPHT algorithm.</div><div class="ttdef"><b>Definition:</b> ppht.hpp:148</div></div>
 </div><!-- fragment --><dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">State</td><td>the class of the state parameter</td></tr>
@@ -322,7 +350,6 @@ template&lt;class State , class Accumulator  = accumulator&lt;&gt;&gt; </div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">state</td><td>an initialized <a class="el" href="classppht_1_1state.html">ppht::state</a> object or something similar</td></tr>
-    <tr><td class="paramname">param</td><td>optional tuning parameters to adjust the behavior of the algorithm</td></tr>
     <tr><td class="paramname">seed</td><td>a value to use as a seed for the URBG</td></tr>
   </table>
   </dd>

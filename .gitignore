@@ -1,4 +1,7 @@
+*.log
 *.o
+*.test
+*.trs
 .deps/
 /Doxyfile
 /autom4te.cache/

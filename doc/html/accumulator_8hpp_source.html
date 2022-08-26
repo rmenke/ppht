@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>PPHT: ppht/accumulator.hpp Source File</title>
+<title>PPHT: include/accumulator.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,7 +25,7 @@ MathJax.Hub.Config({
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">PPHT<span id="projectnumber">&#160;2.0.0-alpha.5</span>
+   <div id="projectname">PPHT<span id="projectnumber">&#160;2.0.0-alpha.11</span>
    </div>
    <div id="projectbrief">An implementation of PPHT as a header-only library</div>
   </td>
@@ -47,7 +47,7 @@ $(function() {
 <div id="main-nav"></div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_535e8af6a958c3727bafbc9640e03ec7.html">ppht</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -60,10 +60,10 @@ $(function() {
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#ifndef ppht_accumulator_hpp</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#define ppht_accumulator_hpp</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;<a class="code" href="parameters_8hpp.html">ppht/parameters.hpp</a>&gt;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;<a class="code" href="raster_8hpp.html">ppht/raster.hpp</a>&gt;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;<a class="code" href="trig_8hpp.html">ppht/trig.hpp</a>&gt;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;<a class="code" href="types_8hpp.html">ppht/types.hpp</a>&gt;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="raster_8hpp.html">raster.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;<a class="code" href="trig_8hpp.html">trig.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="types_8hpp.html">types.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="state_8hpp.html">state.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;algorithm&gt;</span></div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;cassert&gt;</span></div>
@@ -81,328 +81,244 @@ $(function() {
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &lt;utility&gt;</span></div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceppht.html">ppht</a> {</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="namespaceppht.html">   28</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceppht.html">ppht</a> {</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="keyword">template</span> &lt;<span class="keyword">class </span>Count = std::uint16_t,</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>          <span class="keyword">template</span> &lt;<span class="keyword">class</span>&gt; <span class="keyword">class </span>Raster = raster&gt;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>          <span class="keyword">template</span> &lt;<span class="keyword">class</span>&gt; <span class="keyword">class </span>Raster = <a class="code hl_class" href="classppht_1_1raster.html">raster</a>&gt;</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="classppht_1_1accumulator.html">   45</a></span><span class="keyword">class </span><a class="code hl_class" href="classppht_1_1accumulator.html">accumulator</a> {</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="classppht_1_1accumulator.html#a5e6bb0aed7790db516a3908fb9cf0a80">   47</a></span>    <span class="keyword">using</span> <a class="code hl_typedef" href="classppht_1_1accumulator.html#a5e6bb0aed7790db516a3908fb9cf0a80">URBG</a> = std::default_random_engine;</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="classppht_1_1accumulator.html#a92ee869bb03a6ced5ecf470d4328f5c4">   50</a></span>    <span class="keyword">using</span> <a class="code hl_typedef" href="classppht_1_1accumulator.html#a92ee869bb03a6ced5ecf470d4328f5c4">seed_t</a> = std::random_device::result_type;</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="classppht_1_1accumulator.html#aa791a41afd8aa1774a6bcb34f0ca286d">   53</a></span>    std::size_t <span class="keyword">const</span> <a class="code hl_variable" href="classppht_1_1accumulator.html#aa791a41afd8aa1774a6bcb34f0ca286d">_rows</a>;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="classppht_1_1accumulator.html#a15ab5949c754cb724863eb0539af7317">   53</a></span>    <span class="keywordtype">int</span> <span class="keyword">const</span> <a class="code hl_variable" href="classppht_1_1accumulator.html#a15ab5949c754cb724863eb0539af7317">_rho_scale</a>;</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="classppht_1_1accumulator.html#a43000d45677f61f8f2069602da3eea06">   56</a></span>    std::size_t <span class="keyword">const</span> <a class="code hl_variable" href="classppht_1_1accumulator.html#a43000d45677f61f8f2069602da3eea06">_cols</a>;</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="classppht_1_1accumulator.html#a15ab5949c754cb724863eb0539af7317">   59</a></span>    <span class="keywordtype">int</span> <span class="keyword">const</span> <a class="code hl_variable" href="classppht_1_1accumulator.html#a15ab5949c754cb724863eb0539af7317">_rho_scale</a>;</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="classppht_1_1accumulator.html#a5096b40064eeb7b961f2f00158163ff2">   62</a></span>    <span class="keywordtype">double</span> <span class="keyword">const</span> <a class="code hl_variable" href="classppht_1_1accumulator.html#a5096b40064eeb7b961f2f00158163ff2">_log_threshold</a>;</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="classppht_1_1accumulator.html#a627ac1a7abe04abf8ce01d630c6d8420">   65</a></span>    Count <span class="keyword">const</span> <a class="code hl_variable" href="classppht_1_1accumulator.html#a627ac1a7abe04abf8ce01d630c6d8420">_min_trigger_points</a>;</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="classppht_1_1accumulator.html#a0685499b80d4adbb6cb3799651ab53cf">   68</a></span>    Raster&lt;Count&gt; <a class="code hl_variable" href="classppht_1_1accumulator.html#a0685499b80d4adbb6cb3799651ab53cf">_counters</a>;</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="classppht_1_1accumulator.html#a362e2e2ce01e990641096e22da5475f9">   71</a></span>    Count <a class="code hl_variable" href="classppht_1_1accumulator.html#a362e2e2ce01e990641096e22da5475f9">_votes</a> = 0;</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="classppht_1_1accumulator.html#af05329f24d02f498ce4961823f4e3fc1">   74</a></span>    <a class="code hl_typedef" href="classppht_1_1accumulator.html#a5e6bb0aed7790db516a3908fb9cf0a80">URBG</a> <a class="code hl_variable" href="classppht_1_1accumulator.html#af05329f24d02f498ce4961823f4e3fc1">_urbg</a>;</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="classppht_1_1accumulator.html#ae7a4f7f7ed9af6e71d551f218cd38536">   88</a></span>    <span class="keywordtype">double</span> <a class="code hl_function" href="classppht_1_1accumulator.html#ae7a4f7f7ed9af6e71d551f218cd38536">scale_rho</a>(<span class="keywordtype">double</span> unscaled_rho) <span class="keyword">const</span> <span class="keyword">noexcept</span> {</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        <span class="keywordtype">double</span> <span class="keyword">const</span> offset = <a class="code hl_variable" href="classppht_1_1accumulator.html#a0685499b80d4adbb6cb3799651ab53cf">_counters</a>.rows() &gt;&gt; 1;</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        <span class="keywordflow">return</span> std::rint(std::scalbn(unscaled_rho, <a class="code hl_variable" href="classppht_1_1accumulator.html#a15ab5949c754cb724863eb0539af7317">_rho_scale</a>) + offset);</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    }</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno"><a class="line" href="classppht_1_1accumulator.html#a793d5129b3dabe924a839bd5ccf3ffe2">  103</a></span>    <span class="keywordtype">double</span> <a class="code hl_function" href="classppht_1_1accumulator.html#a793d5129b3dabe924a839bd5ccf3ffe2">unscale_rho</a>(<span class="keywordtype">double</span> scaled_rho) <span class="keyword">const</span> <span class="keyword">noexcept</span> {</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        <span class="keywordtype">double</span> <span class="keyword">const</span> offset = <a class="code hl_variable" href="classppht_1_1accumulator.html#a0685499b80d4adbb6cb3799651ab53cf">_counters</a>.rows() &gt;&gt; 1;</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        <span class="keywordflow">return</span> std::scalbn(scaled_rho - offset, -<a class="code hl_variable" href="classppht_1_1accumulator.html#a15ab5949c754cb724863eb0539af7317">_rho_scale</a>);</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    }</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    <span class="keyword">template</span> &lt;<span class="keyword">class</span> T, <span class="keyword">class</span> U&gt;</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno"><a class="line" href="classppht_1_1accumulator.html#a836391184051253c1ddb8239b4f0212d">  125</a></span>    <span class="keyword">static</span> T <a class="code hl_function" href="classppht_1_1accumulator.html#a836391184051253c1ddb8239b4f0212d">clamp</a>(U value) <span class="keyword">noexcept</span> {</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        <span class="keyword">using</span> limit = std::numeric_limits&lt;T&gt;;</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>        <span class="keywordflow">if</span> (value &gt;= <span class="keyword">static_cast&lt;</span>U<span class="keyword">&gt;</span>(limit::max())) {</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>            <span class="keywordflow">return</span> limit::max();</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>        }</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>        <span class="keywordflow">if</span> (value &lt;= <span class="keyword">static_cast&lt;</span>U<span class="keyword">&gt;</span>(limit::lowest())) {</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>            <span class="keywordflow">return</span> limit::lowest();</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>        }</div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span> </div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>        <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>(value);</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    }</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span> </div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno"><a class="line" href="classppht_1_1accumulator.html#a13c220fc16e37ce9ffbfa176a2c1e210">  160</a></span>    <a class="code hl_function" href="classppht_1_1accumulator.html#a13c220fc16e37ce9ffbfa176a2c1e210">accumulator</a>(std::size_t rows, std::size_t cols,</div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>                <span class="keyword">const</span> std::pair&lt;std::size_t, int&gt; &amp;<a class="code hl_function" href="classppht_1_1accumulator.html#a51ddcfb6a6d4705122d998e8a46fa45d">rho_info</a>,</div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>                <span class="keywordtype">double</span> log_threshold, std::size_t min_trigger_points,</div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>                <a class="code hl_typedef" href="classppht_1_1accumulator.html#a92ee869bb03a6ced5ecf470d4328f5c4">seed_t</a> seed) noexcept</div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>        : <a class="code hl_variable" href="classppht_1_1accumulator.html#aa791a41afd8aa1774a6bcb34f0ca286d">_rows</a>(rows)</div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>        , <a class="code hl_variable" href="classppht_1_1accumulator.html#a43000d45677f61f8f2069602da3eea06">_cols</a>(cols)</div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>        , <a class="code hl_variable" href="classppht_1_1accumulator.html#a15ab5949c754cb724863eb0539af7317">_rho_scale</a>(<a class="code hl_function" href="classppht_1_1accumulator.html#a51ddcfb6a6d4705122d998e8a46fa45d">rho_info</a>.second)</div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>        , <a class="code hl_variable" href="classppht_1_1accumulator.html#a5096b40064eeb7b961f2f00158163ff2">_log_threshold</a>(log_threshold)</div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>        , <a class="code hl_variable" href="classppht_1_1accumulator.html#a627ac1a7abe04abf8ce01d630c6d8420">_min_trigger_points</a>(min_trigger_points)</div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>        , <a class="code hl_variable" href="classppht_1_1accumulator.html#a0685499b80d4adbb6cb3799651ab53cf">_counters</a>(<a class="code hl_function" href="classppht_1_1accumulator.html#a51ddcfb6a6d4705122d998e8a46fa45d">rho_info</a>.first, <a class="code hl_variable" href="namespaceppht.html#afe497eaaaebd439ef153819b72f7096b">max_theta</a>)</div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>        , <a class="code hl_variable" href="classppht_1_1accumulator.html#af05329f24d02f498ce4961823f4e3fc1">_urbg</a>(seed) {}</div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span> </div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>  <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>    <span class="keyword">static</span> std::pair&lt;std::size_t, int&gt;</div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno"><a class="line" href="classppht_1_1accumulator.html#a51ddcfb6a6d4705122d998e8a46fa45d">  192</a></span>    <a class="code hl_function" href="classppht_1_1accumulator.html#a51ddcfb6a6d4705122d998e8a46fa45d">rho_info</a>(std::size_t rows, std::size_t cols) <span class="keyword">noexcept</span> {</div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>        <span class="keywordtype">double</span> diag = std::ceil(std::hypot(rows - 1, cols - 1));</div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>        <span class="keywordtype">int</span> rho_exp = std::ilogb(<a class="code hl_variable" href="namespaceppht.html#afe497eaaaebd439ef153819b72f7096b">max_theta</a> / (diag * 2.0 + 1.0));</div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span> </div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>        <span class="comment">// lo is 2 * diag * (1 &lt;&lt; rho_exp).</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="classppht_1_1accumulator.html#a093a0043f6840743a70cef694308c862">   57</a></span>    <span class="keywordtype">double</span> <a class="code hl_variable" href="classppht_1_1accumulator.html#a093a0043f6840743a70cef694308c862">_log_threshold</a> = std::log(1E-12);</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="classppht_1_1accumulator.html#a752366deaa0bd4e22492be5f9e9f9883">   61</a></span>    Count <a class="code hl_variable" href="classppht_1_1accumulator.html#a752366deaa0bd4e22492be5f9e9f9883">_min_trigger_points</a> = 3;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="classppht_1_1accumulator.html#a0685499b80d4adbb6cb3799651ab53cf">   64</a></span>    Raster&lt;Count&gt; <a class="code hl_variable" href="classppht_1_1accumulator.html#a0685499b80d4adbb6cb3799651ab53cf">_counters</a>;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="classppht_1_1accumulator.html#a362e2e2ce01e990641096e22da5475f9">   67</a></span>    Count <a class="code hl_variable" href="classppht_1_1accumulator.html#a362e2e2ce01e990641096e22da5475f9">_votes</a> = 0;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="classppht_1_1accumulator.html#af05329f24d02f498ce4961823f4e3fc1">   70</a></span>    <a class="code hl_typedef" href="classppht_1_1accumulator.html#a5e6bb0aed7790db516a3908fb9cf0a80">URBG</a> <a class="code hl_variable" href="classppht_1_1accumulator.html#af05329f24d02f498ce4961823f4e3fc1">_urbg</a>;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="classppht_1_1accumulator.html#ae7a4f7f7ed9af6e71d551f218cd38536">   84</a></span>    <span class="keywordtype">double</span> <a class="code hl_function" href="classppht_1_1accumulator.html#ae7a4f7f7ed9af6e71d551f218cd38536">scale_rho</a>(<span class="keywordtype">double</span> unscaled_rho) <span class="keyword">const</span> <span class="keyword">noexcept</span> {</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        <span class="keywordtype">double</span> <span class="keyword">const</span> offset = <a class="code hl_variable" href="classppht_1_1accumulator.html#a0685499b80d4adbb6cb3799651ab53cf">_counters</a>.rows() &gt;&gt; 1;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        <span class="keywordflow">return</span> std::rint(std::scalbn(unscaled_rho, <a class="code hl_variable" href="classppht_1_1accumulator.html#a15ab5949c754cb724863eb0539af7317">_rho_scale</a>) + offset);</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    }</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno"><a class="line" href="classppht_1_1accumulator.html#a793d5129b3dabe924a839bd5ccf3ffe2">   99</a></span>    <span class="keywordtype">double</span> <a class="code hl_function" href="classppht_1_1accumulator.html#a793d5129b3dabe924a839bd5ccf3ffe2">unscale_rho</a>(<span class="keywordtype">double</span> scaled_rho) <span class="keyword">const</span> <span class="keyword">noexcept</span> {</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        <span class="keywordtype">double</span> <span class="keyword">const</span> offset = <a class="code hl_variable" href="classppht_1_1accumulator.html#a0685499b80d4adbb6cb3799651ab53cf">_counters</a>.rows() &gt;&gt; 1;</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        <span class="keywordflow">return</span> std::scalbn(scaled_rho - offset, -<a class="code hl_variable" href="classppht_1_1accumulator.html#a15ab5949c754cb724863eb0539af7317">_rho_scale</a>);</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    }</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <span class="keyword">template</span> &lt;<span class="keyword">class</span> T, <span class="keyword">class</span> U&gt;</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno"><a class="line" href="classppht_1_1accumulator.html#acb0c13f74ed3568b1798fe07eb6f284e">  121</a></span>    <span class="keyword">static</span> <span class="keyword">constexpr</span> T <a class="code hl_function" href="classppht_1_1accumulator.html#acb0c13f74ed3568b1798fe07eb6f284e">clamp</a>(U value) <span class="keyword">noexcept</span> {</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        <span class="keyword">using</span> limit = std::numeric_limits&lt;T&gt;;</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span> </div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        <span class="keywordflow">if</span> (value &gt;= <span class="keyword">static_cast&lt;</span>U<span class="keyword">&gt;</span>(limit::max())) {</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>            <span class="keywordflow">return</span> limit::max();</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        }</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>        <span class="keywordflow">if</span> (value &lt;= <span class="keyword">static_cast&lt;</span>U<span class="keyword">&gt;</span>(limit::lowest())) {</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>            <span class="keywordflow">return</span> limit::lowest();</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>        }</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>        <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>(value);</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    }</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span> </div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno"><a class="line" href="classppht_1_1accumulator.html#a8e7018f01360a88edd6ce4497cd7f099">  146</a></span>    <a class="code hl_function" href="classppht_1_1accumulator.html#a8e7018f01360a88edd6ce4497cd7f099">accumulator</a>(<span class="keyword">const</span> std::pair&lt;std::size_t, int&gt; &amp;<a class="code hl_function" href="classppht_1_1accumulator.html#a51ddcfb6a6d4705122d998e8a46fa45d">rho_info</a>,</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>                <a class="code hl_typedef" href="classppht_1_1accumulator.html#a92ee869bb03a6ced5ecf470d4328f5c4">seed_t</a> seed) noexcept</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>        : <a class="code hl_variable" href="classppht_1_1accumulator.html#a15ab5949c754cb724863eb0539af7317">_rho_scale</a>(<a class="code hl_function" href="classppht_1_1accumulator.html#a51ddcfb6a6d4705122d998e8a46fa45d">rho_info</a>.second)</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>        , <a class="code hl_variable" href="classppht_1_1accumulator.html#a0685499b80d4adbb6cb3799651ab53cf">_counters</a>(<a class="code hl_function" href="classppht_1_1accumulator.html#a51ddcfb6a6d4705122d998e8a46fa45d">rho_info</a>.first, <a class="code hl_variable" href="namespaceppht.html#afe497eaaaebd439ef153819b72f7096b">max_theta</a>)</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>        , <a class="code hl_variable" href="classppht_1_1accumulator.html#af05329f24d02f498ce4961823f4e3fc1">_urbg</a>(seed) {}</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span> </div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>  <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>    <span class="keyword">static</span> std::pair&lt;std::size_t, int&gt;</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno"><a class="line" href="classppht_1_1accumulator.html#a51ddcfb6a6d4705122d998e8a46fa45d">  172</a></span>    <a class="code hl_function" href="classppht_1_1accumulator.html#a51ddcfb6a6d4705122d998e8a46fa45d">rho_info</a>(std::size_t rows, std::size_t cols) <span class="keyword">noexcept</span> {</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>        <span class="keywordtype">double</span> diag = std::ceil(std::hypot(rows - 1, cols - 1));</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>        <span class="keywordtype">int</span> rho_exp = std::ilogb(<a class="code hl_variable" href="namespaceppht.html#afe497eaaaebd439ef153819b72f7096b">max_theta</a> / (diag * 2.0 + 1.0));</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span> </div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>        <span class="comment">// lo is 2 * diag * (1 &lt;&lt; rho_exp).</span></div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span> </div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>        std::size_t lo = std::ceil(std::scalbn(diag, rho_exp + 1)) + 1;</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span> </div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>        <span class="comment">// hi is 2 * diag * (2 &lt;&lt; rho_exp).  This is the smallest</span></div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>        <span class="comment">// rho_exp such that 2 * diag * (1 &lt;&lt; rho_exp) &gt;= max_theta.</span></div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span> </div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>        std::size_t hi = std::ceil(std::scalbn(diag, rho_exp + 2)) + 1;</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span> </div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>        assert(lo &lt;= <a class="code hl_variable" href="namespaceppht.html#afe497eaaaebd439ef153819b72f7096b">max_theta</a> &amp;&amp; <a class="code hl_variable" href="namespaceppht.html#afe497eaaaebd439ef153819b72f7096b">max_theta</a> &lt;= hi);</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span> </div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>        <span class="comment">// Select the rho_exp that makes the counter matrix the most</span></div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>        <span class="comment">// square.</span></div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span> </div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>        <span class="keywordflow">if</span> ((<a class="code hl_variable" href="namespaceppht.html#afe497eaaaebd439ef153819b72f7096b">max_theta</a> - lo) &lt;= (hi - <a class="code hl_variable" href="namespaceppht.html#afe497eaaaebd439ef153819b72f7096b">max_theta</a>)) {</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>            <span class="keywordflow">return</span> std::make_pair(lo, rho_exp);</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>        }</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>        <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>            <span class="keywordflow">return</span> std::make_pair(hi, rho_exp + 1);</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>        }</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>    }</div>
 <div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span> </div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>        std::size_t lo = std::ceil(std::scalbn(diag, rho_exp + 1)) + 1;</div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span> </div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>        <span class="comment">// hi is 2 * diag * (2 &lt;&lt; rho_exp).  This is the smallest</span></div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>        <span class="comment">// rho_exp such that 2 * diag * (1 &lt;&lt; rho_exp) &gt;= max_theta.</span></div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span> </div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>        std::size_t hi = std::ceil(std::scalbn(diag, rho_exp + 2)) + 1;</div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span> </div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>        assert(lo &lt;= <a class="code hl_variable" href="namespaceppht.html#afe497eaaaebd439ef153819b72f7096b">max_theta</a> &amp;&amp; <a class="code hl_variable" href="namespaceppht.html#afe497eaaaebd439ef153819b72f7096b">max_theta</a> &lt;= hi);</div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span> </div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>        <span class="comment">// Select the rho_exp that makes the counter matrix the most</span></div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>        <span class="comment">// square.</span></div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span> </div>
-<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>        <span class="keywordflow">if</span> ((<a class="code hl_variable" href="namespaceppht.html#afe497eaaaebd439ef153819b72f7096b">max_theta</a> - lo) &lt;= (hi - <a class="code hl_variable" href="namespaceppht.html#afe497eaaaebd439ef153819b72f7096b">max_theta</a>)) {</div>
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>            <span class="keywordflow">return</span> std::make_pair(lo, rho_exp);</div>
-<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>        }</div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>        <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>            <span class="keywordflow">return</span> std::make_pair(hi, rho_exp + 1);</div>
-<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>        }</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno"><a class="line" href="classppht_1_1accumulator.html#aea10b31857bf8480130c33d25bcfe2d0">  208</a></span>    <a class="code hl_function" href="classppht_1_1accumulator.html#aea10b31857bf8480130c33d25bcfe2d0">accumulator</a>(std::size_t rows, std::size_t cols,</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>                <a class="code hl_typedef" href="classppht_1_1accumulator.html#a92ee869bb03a6ced5ecf470d4328f5c4">seed_t</a> seed = std::random_device{}())</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>        : <a class="code hl_class" href="classppht_1_1accumulator.html">accumulator</a>(<a class="code hl_function" href="classppht_1_1accumulator.html#a51ddcfb6a6d4705122d998e8a46fa45d">rho_info</a>(rows, cols), seed) {}</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span> </div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno"><a class="line" href="classppht_1_1accumulator.html#ae06c3bcd09882792dfb1a78078609729">  214</a></span>    <span class="keywordtype">double</span> <a class="code hl_function" href="classppht_1_1accumulator.html#ae06c3bcd09882792dfb1a78078609729">threshold</a>() const noexcept {</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>        <span class="keywordflow">return</span> std::exp(<a class="code hl_variable" href="classppht_1_1accumulator.html#a093a0043f6840743a70cef694308c862">_log_threshold</a>);</div>
 <div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>    }</div>
 <div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span> </div>
-<div class="line"><a id="l00230" name="l00230"></a><span class="lineno"><a class="line" href="classppht_1_1accumulator.html#a520d44b081be8797bf89dc9afbefd6a0">  230</a></span>    <a class="code hl_function" href="classppht_1_1accumulator.html#a520d44b081be8797bf89dc9afbefd6a0">accumulator</a>(std::size_t rows, std::size_t cols, <a class="code hl_struct" href="structppht_1_1parameters.html">parameters</a> <span class="keyword">const</span> &amp;param,</div>
-<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>                <a class="code hl_typedef" href="classppht_1_1accumulator.html#a92ee869bb03a6ced5ecf470d4328f5c4">seed_t</a> seed = std::random_device{}())</div>
-<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>        : <a class="code hl_class" href="classppht_1_1accumulator.html">accumulator</a>(rows, cols, <a class="code hl_function" href="classppht_1_1accumulator.html#a51ddcfb6a6d4705122d998e8a46fa45d">rho_info</a>(rows, cols),</div>
-<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>                      std::log(param.threshold), param.min_trigger_points,</div>
-<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>                      seed) {}</div>
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span> </div>
-<div class="line"><a id="l00250" name="l00250"></a><span class="lineno"><a class="line" href="classppht_1_1accumulator.html#a8ff140558c3734deb891878d3fec802f">  250</a></span>    <a class="code hl_class" href="classppht_1_1segment__t.html">segment_t</a> <a class="code hl_function" href="classppht_1_1accumulator.html#a8ff140558c3734deb891878d3fec802f">find_segment</a>(std::size_t theta, <span class="keywordtype">double</span> rho) {</div>
-<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>        <span class="comment">// There are a few degenerate cases where multiple matches for</span></div>
-<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>        <span class="comment">// the same endpoint can be found, e.g., a line through the</span></div>
-<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>        <span class="comment">// origin.  Using a set eliminates most of these cases.  See</span></div>
-<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>        <span class="comment">// the comment at the end for what happens to those that slip</span></div>
-<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>        <span class="comment">// through.</span></div>
-<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span> </div>
-<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>        std::set&lt;point_t&gt; endpoints;</div>
-<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span> </div>
-<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>        <span class="keyword">auto</span> <span class="keyword">const</span> &amp;cos_theta = std::get&lt;0&gt;(<a class="code hl_variable" href="namespaceppht.html#a5f6a8b027d6255d2c2b746906c3bc902">cossin</a>[theta]);</div>
-<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>        <span class="keyword">auto</span> <span class="keyword">const</span> &amp;sin_theta = std::get&lt;1&gt;(<a class="code hl_variable" href="namespaceppht.html#a5f6a8b027d6255d2c2b746906c3bc902">cossin</a>[theta]);</div>
-<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span> </div>
-<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>        <span class="keyword">auto</span> get_x = [&amp;](<span class="keywordtype">double</span> y) -&gt; <span class="keywordtype">long</span> {</div>
-<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>            <span class="keywordtype">double</span> x = std::rint((rho - sin_theta * y) / cos_theta);</div>
-<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>            <span class="keywordflow">return</span> clamp&lt;long&gt;(x);</div>
-<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>        };</div>
-<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span> </div>
-<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>        <span class="keyword">auto</span> get_y = [&amp;](<span class="keywordtype">double</span> x) -&gt; <span class="keywordtype">long</span> {</div>
-<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>            <span class="keywordtype">double</span> y = std::rint((rho - cos_theta * x) / sin_theta);</div>
-<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>            <span class="keywordflow">return</span> clamp&lt;long&gt;(y);</div>
-<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>        };</div>
-<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span> </div>
-<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>        <span class="keyword">auto</span> x_min = get_x(0);</div>
-<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>        <span class="keyword">auto</span> y_min = get_y(0);</div>
-<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>        <span class="keyword">auto</span> x_max = get_x(<a class="code hl_variable" href="classppht_1_1accumulator.html#aa791a41afd8aa1774a6bcb34f0ca286d">_rows</a> - 1);</div>
-<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>        <span class="keyword">auto</span> y_max = get_y(<a class="code hl_variable" href="classppht_1_1accumulator.html#a43000d45677f61f8f2069602da3eea06">_cols</a> - 1);</div>
-<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span> </div>
-<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>        <span class="keywordflow">if</span> (0 &lt;= y_min &amp;&amp; y_min &lt; <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(<a class="code hl_variable" href="classppht_1_1accumulator.html#aa791a41afd8aa1774a6bcb34f0ca286d">_rows</a>)) {</div>
-<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>            endpoints.emplace(0, y_min);</div>
-<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>        }</div>
-<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>        <span class="keywordflow">if</span> (0 &lt;= x_min &amp;&amp; x_min &lt; <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(<a class="code hl_variable" href="classppht_1_1accumulator.html#a43000d45677f61f8f2069602da3eea06">_cols</a>)) {</div>
-<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>            endpoints.emplace(x_min, 0);</div>
-<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>        }</div>
-<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>        <span class="keywordflow">if</span> (0 &lt;= y_max &amp;&amp; y_max &lt; <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(<a class="code hl_variable" href="classppht_1_1accumulator.html#aa791a41afd8aa1774a6bcb34f0ca286d">_rows</a>)) {</div>
-<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>            endpoints.emplace(<a class="code hl_variable" href="classppht_1_1accumulator.html#a43000d45677f61f8f2069602da3eea06">_cols</a> - 1, y_max);</div>
-<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>        }</div>
-<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>        <span class="keywordflow">if</span> (0 &lt;= x_max &amp;&amp; x_max &lt; <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(<a class="code hl_variable" href="classppht_1_1accumulator.html#a43000d45677f61f8f2069602da3eea06">_cols</a>)) {</div>
-<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>            endpoints.emplace(x_max, <a class="code hl_variable" href="classppht_1_1accumulator.html#aa791a41afd8aa1774a6bcb34f0ca286d">_rows</a> - 1);</div>
-<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>        }</div>
-<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span> </div>
-<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>        <span class="keywordflow">if</span> (endpoints.empty()) {</div>
-<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>            <span class="keywordflow">throw</span> std::logic_error{<span class="stringliteral">&quot;line (&quot;</span> + std::to_string(theta) + <span class="stringliteral">&quot;, &quot;</span> +</div>
-<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>                                   std::to_string(rho) +</div>
-<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>                                   <span class="stringliteral">&quot;) does not intersect bitmap&quot;</span>};</div>
-<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>        }</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno"><a class="line" href="classppht_1_1accumulator.html#a5b974d3915410833c4a9057af8bbe68d">  229</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classppht_1_1accumulator.html#a5b974d3915410833c4a9057af8bbe68d">threshold</a>(<span class="keywordtype">double</span> <a class="code hl_function" href="classppht_1_1accumulator.html#ae06c3bcd09882792dfb1a78078609729">threshold</a>) <span class="keyword">noexcept</span> {</div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>        <a class="code hl_variable" href="classppht_1_1accumulator.html#a093a0043f6840743a70cef694308c862">_log_threshold</a> = std::log(<a class="code hl_function" href="classppht_1_1accumulator.html#ae06c3bcd09882792dfb1a78078609729">threshold</a>);</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>    }</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span> </div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno"><a class="line" href="classppht_1_1accumulator.html#a6f8b0454f86478e78511773da2cee808">  235</a></span>    <span class="keywordtype">double</span> <a class="code hl_function" href="classppht_1_1accumulator.html#a6f8b0454f86478e78511773da2cee808">min_trigger_points</a>() const noexcept {</div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="classppht_1_1accumulator.html#a752366deaa0bd4e22492be5f9e9f9883">_min_trigger_points</a>;</div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>    }</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span> </div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno"><a class="line" href="classppht_1_1accumulator.html#a6908da4927eac93a6947dae71bb1ee14">  250</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classppht_1_1accumulator.html#a6908da4927eac93a6947dae71bb1ee14">min_trigger_points</a>(<span class="keywordtype">double</span> <a class="code hl_function" href="classppht_1_1accumulator.html#a6f8b0454f86478e78511773da2cee808">min_trigger_points</a>) <span class="keyword">noexcept</span> {</div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>        <a class="code hl_variable" href="classppht_1_1accumulator.html#a752366deaa0bd4e22492be5f9e9f9883">_min_trigger_points</a> = <a class="code hl_function" href="classppht_1_1accumulator.html#a6f8b0454f86478e78511773da2cee808">min_trigger_points</a>;</div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>    }</div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span> </div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>    <span class="keyword">template</span> &lt;<span class="keyword">class</span> ForwardIt&gt;</div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno"><a class="line" href="classppht_1_1accumulator.html#a678b544a8ec9b7a70075c39719d271ac">  265</a></span>    ForwardIt <a class="code hl_function" href="classppht_1_1accumulator.html#a678b544a8ec9b7a70075c39719d271ac">best_candidate</a>(ForwardIt begin, ForwardIt end) {</div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>        <span class="keyword">auto</span> best = std::gcd(std::get&lt;0&gt;(*begin), <a class="code hl_variable" href="namespaceppht.html#afe497eaaaebd439ef153819b72f7096b">max_theta</a> / 2);</div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span> </div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> iter = std::next(begin); iter != end; ++iter) {</div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>            <span class="keyword">auto</span> gcd = std::gcd(std::get&lt;0&gt;(*iter), <a class="code hl_variable" href="namespaceppht.html#afe497eaaaebd439ef153819b72f7096b">max_theta</a> / 2);</div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>            <span class="keywordflow">if</span> (best &lt; gcd) {</div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>                begin = iter;</div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>                best = gcd;</div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>            }</div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>        }</div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span> </div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>        <span class="keywordflow">return</span> begin;</div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>    }</div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span> </div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno"><a class="line" href="classppht_1_1accumulator.html#a2c96fb1adda550a2771a1f84c14ea6c1">  293</a></span>    std::optional&lt;line_t&gt; <a class="code hl_function" href="classppht_1_1accumulator.html#a2c96fb1adda550a2771a1f84c14ea6c1">vote</a>(<a class="code hl_struct" href="structppht_1_1point__t.html">point_t</a> <span class="keyword">const</span> &amp;p) {</div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>        <span class="keyword">auto</span> <span class="keyword">const</span> max_rho = <a class="code hl_variable" href="classppht_1_1accumulator.html#a0685499b80d4adbb6cb3799651ab53cf">_counters</a>.rows();</div>
 <div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span> </div>
-<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>        <span class="comment">// If endpoints.size() &gt; 2, ignore the points in the middle.</span></div>
-<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>        <span class="comment">// If endpoints.size() == 1, create single-pixel segment.</span></div>
-<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span> </div>
-<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>        <span class="keywordflow">return</span> <a class="code hl_class" href="classppht_1_1segment__t.html">segment_t</a>{*endpoints.begin(), *endpoints.rbegin()};</div>
-<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>    }</div>
-<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span> </div>
-<div class="line"><a id="l00319" name="l00319"></a><span class="lineno"><a class="line" href="classppht_1_1accumulator.html#a02c160abbc583112e4706c4ce82ac389">  319</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classppht_1_1accumulator.html#a02c160abbc583112e4706c4ce82ac389">vote</a>(<a class="code hl_struct" href="structppht_1_1point__t.html">point_t</a> <span class="keyword">const</span> &amp;p, <a class="code hl_class" href="classppht_1_1segment__t.html">segment_t</a> &amp;segment) {</div>
-<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>        <span class="keyword">auto</span> <span class="keyword">const</span> max_rho = <a class="code hl_variable" href="classppht_1_1accumulator.html#a0685499b80d4adbb6cb3799651ab53cf">_counters</a>.rows();</div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>        Count n = <a class="code hl_variable" href="classppht_1_1accumulator.html#a752366deaa0bd4e22492be5f9e9f9883">_min_trigger_points</a>;</div>
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span> </div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>        std::vector&lt;line_t&gt; found;</div>
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span> </div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>        std::size_t theta;</div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>        <span class="keywordtype">double</span> rho;</div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span> </div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>        <span class="comment">// Increment the cells in the register, keeping track of the</span></div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>        <span class="comment">// current maxima.</span></div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span> </div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>        <span class="keywordflow">for</span> (theta = 0; theta &lt; <a class="code hl_variable" href="namespaceppht.html#afe497eaaaebd439ef153819b72f7096b">max_theta</a>; ++theta) {</div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>            rho = <a class="code hl_function" href="classppht_1_1accumulator.html#ae7a4f7f7ed9af6e71d551f218cd38536">scale_rho</a>(p.<a class="code hl_function" href="structppht_1_1point__t.html#ae689341aa47eca75e914448a806629c3">dot</a>(<a class="code hl_variable" href="namespaceppht.html#a5f6a8b027d6255d2c2b746906c3bc902">cossin</a>[theta]));</div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>            <span class="keywordflow">if</span> (rho &lt; 0 || rho &gt;= max_rho) <span class="keywordflow">continue</span>;</div>
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span> </div>
+<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>            <span class="keyword">auto</span> &amp;counter = <a class="code hl_variable" href="classppht_1_1accumulator.html#a0685499b80d4adbb6cb3799651ab53cf">_counters</a>[rho][theta];</div>
+<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span> </div>
+<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span>            ++counter;</div>
+<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span> </div>
+<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>            <span class="comment">// If we have found a new maxima, update n and discard the</span></div>
+<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span>            <span class="comment">// old candidates.</span></div>
+<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span> </div>
+<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>            <span class="keywordflow">if</span> (n &lt; counter) {</div>
+<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span>                n = counter;</div>
+<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>                found.clear();</div>
+<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>            }</div>
 <div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span> </div>
-<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span>        Count n = <a class="code hl_variable" href="classppht_1_1accumulator.html#a627ac1a7abe04abf8ce01d630c6d8420">_min_trigger_points</a>;</div>
-<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span> </div>
-<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span>        <span class="keyword">using</span> line_t = std::pair&lt;std::size_t, double&gt;;</div>
-<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span> </div>
-<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span>        std::vector&lt;line_t&gt; found;</div>
-<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span> </div>
-<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span>        std::size_t theta;</div>
-<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>        <span class="keywordtype">double</span> rho;</div>
+<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span>            <span class="keywordflow">if</span> (n == counter) {</div>
+<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span>                found.emplace_back(theta, <a class="code hl_function" href="classppht_1_1accumulator.html#a793d5129b3dabe924a839bd5ccf3ffe2">unscale_rho</a>(rho));</div>
+<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span>            }</div>
+<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span>        }</div>
+<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span> </div>
+<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>        ++<a class="code hl_variable" href="classppht_1_1accumulator.html#a362e2e2ce01e990641096e22da5475f9">_votes</a>;</div>
+<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span> </div>
+<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>        <span class="comment">// If we do not have a candidate line, stop.</span></div>
 <div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span> </div>
-<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span>        <span class="comment">// Increment the cells in the register, keeping track of the</span></div>
-<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span>        <span class="comment">// current maxima.</span></div>
-<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span> </div>
-<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span>        <span class="keywordflow">for</span> (theta = 0; theta &lt; <a class="code hl_variable" href="namespaceppht.html#afe497eaaaebd439ef153819b72f7096b">max_theta</a>; ++theta) {</div>
-<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>            rho = <a class="code hl_function" href="classppht_1_1accumulator.html#ae7a4f7f7ed9af6e71d551f218cd38536">scale_rho</a>(p.<a class="code hl_function" href="structppht_1_1point__t.html#ae689341aa47eca75e914448a806629c3">dot</a>(<a class="code hl_variable" href="namespaceppht.html#a5f6a8b027d6255d2c2b746906c3bc902">cossin</a>[theta]));</div>
-<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span>            <span class="keywordflow">if</span> (rho &lt; 0 || rho &gt;= max_rho) <span class="keywordflow">continue</span>;</div>
-<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span> </div>
-<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span>            <span class="keyword">auto</span> &amp;counter = <a class="code hl_variable" href="classppht_1_1accumulator.html#a0685499b80d4adbb6cb3799651ab53cf">_counters</a>[rho][theta];</div>
+<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span>        <span class="keywordflow">if</span> (found.empty()) <span class="keywordflow">return</span> std::nullopt;</div>
+<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span> </div>
+<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span>        <span class="comment">// There are max_theta * max_rho cells in the register.</span></div>
+<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span>        <span class="comment">// Each vote will increment max_theta of these cells, one</span></div>
+<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>        <span class="comment">// per column.</span></div>
+<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span>        <span class="comment">//</span></div>
+<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>        <span class="comment">// Assuming the null hypothesis (the image is random noise),</span></div>
+<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span>        <span class="comment">// E[n] = votes/max_rho for all cells in the register.</span></div>
 <div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span> </div>
-<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span>            ++counter;</div>
+<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span>        <span class="keywordtype">double</span> <span class="keyword">const</span> lambda = <span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>(<a class="code hl_variable" href="classppht_1_1accumulator.html#a362e2e2ce01e990641096e22da5475f9">_votes</a>) / max_rho;</div>
 <div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span> </div>
-<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span>            <span class="comment">// If we have found a new maxima, update n and discard the</span></div>
-<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span>            <span class="comment">// old candidates.</span></div>
-<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span> </div>
-<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span>            <span class="keywordflow">if</span> (n &lt; counter) {</div>
-<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span>                n = counter;</div>
-<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>                found.clear();</div>
-<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span>            }</div>
-<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span> </div>
-<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span>            <span class="keywordflow">if</span> (n == counter) {</div>
-<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span>                found.emplace_back(theta, <a class="code hl_function" href="classppht_1_1accumulator.html#a793d5129b3dabe924a839bd5ccf3ffe2">unscale_rho</a>(rho));</div>
-<div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span>            }</div>
-<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span>        }</div>
-<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span> </div>
-<div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span>        ++<a class="code hl_variable" href="classppht_1_1accumulator.html#a362e2e2ce01e990641096e22da5475f9">_votes</a>;</div>
+<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span>        <span class="comment">// For the null hypothesis, the cells are filled (roughly)</span></div>
+<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span>        <span class="comment">// according to a Poisson model:</span></div>
+<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span>        <span class="comment">//</span></div>
+<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span>        <span class="comment">//    p(n) = λⁿ/n!·exp(-λ)</span></div>
+<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span>        <span class="comment">//         = λⁿ/Γ(n+1)·exp(-λ)</span></div>
+<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>        <span class="comment">// ln p(n) = n·ln(λ) - lnΓ(n+1) - λ</span></div>
+<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span> </div>
+<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span>        <span class="keywordtype">double</span> <span class="keyword">const</span> lnp =</div>
+<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span>            n * std::log(lambda) - std::lgamma(n + 1) - lambda;</div>
+<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span> </div>
+<div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span>        <span class="comment">// lnp is the log probability that a bin filled randomly would</span></div>
+<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span>        <span class="comment">// contain a count of n. If the probability is above the</span></div>
+<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span>        <span class="comment">// significance threshold, we assume that the bin was filled</span></div>
+<div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span>        <span class="comment">// by noise and tell the caller we did not find a segment.</span></div>
 <div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span> </div>
-<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span>        <span class="comment">// If we do not have a candidate line, stop.</span></div>
+<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span>        <span class="keywordflow">if</span> (lnp &gt;= <a class="code hl_variable" href="classppht_1_1accumulator.html#a093a0043f6840743a70cef694308c862">_log_threshold</a>) <span class="keywordflow">return</span> std::nullopt;</div>
 <div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span> </div>
-<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span>        <span class="keywordflow">if</span> (found.empty()) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span>        <span class="comment">// Reject the null hypothesis.</span></div>
 <div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span> </div>
-<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span>        <span class="comment">// There are max_theta * max_rho cells in the register.</span></div>
-<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span>        <span class="comment">// Each vote will increment max_theta of these cells, one</span></div>
-<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span>        <span class="comment">// per column.</span></div>
-<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span>        <span class="comment">//</span></div>
-<div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span>        <span class="comment">// Assuming the null hypothesis (the image is random noise),</span></div>
-<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span>        <span class="comment">// E[n] = votes/max_rho for all cells in the register.</span></div>
-<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span> </div>
-<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span>        <span class="keywordtype">double</span> <span class="keyword">const</span> lambda = <span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>(<a class="code hl_variable" href="classppht_1_1accumulator.html#a362e2e2ce01e990641096e22da5475f9">_votes</a>) / max_rho;</div>
-<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span> </div>
-<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span>        <span class="comment">// For the null hypothesis, the cells are filled (roughly)</span></div>
-<div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span>        <span class="comment">// according to a Poisson model:</span></div>
-<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span>        <span class="comment">//</span></div>
-<div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span>        <span class="comment">//    p(n) = λⁿ/n!·exp(-λ)</span></div>
-<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span>        <span class="comment">//         = λⁿ/Γ(n+1)·exp(-λ)</span></div>
-<div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span>        <span class="comment">// ln p(n) = n·ln(λ) - lnΓ(n+1) - λ</span></div>
-<div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span> </div>
-<div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span>        <span class="keywordtype">double</span> <span class="keyword">const</span> lnp =</div>
-<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span>            n * std::log(lambda) - std::lgamma(n + 1) - lambda;</div>
+<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span>        assert(!found.empty());</div>
+<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span> </div>
+<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span>        <span class="keywordflow">return</span> *<a class="code hl_function" href="classppht_1_1accumulator.html#a678b544a8ec9b7a70075c39719d271ac">best_candidate</a>(found.begin(), found.end());</div>
+<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span>    }</div>
+<div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span> </div>
+<div class="line"><a id="l00371" name="l00371"></a><span class="lineno"><a class="line" href="classppht_1_1accumulator.html#a81095d6f10832e7abae3d8c34d42f186">  371</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classppht_1_1accumulator.html#a81095d6f10832e7abae3d8c34d42f186">unvote</a>(<a class="code hl_struct" href="structppht_1_1point__t.html">point_t</a> <span class="keyword">const</span> &amp;p) {</div>
+<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span>        <span class="keyword">auto</span> <span class="keyword">const</span> max_rho = <a class="code hl_variable" href="classppht_1_1accumulator.html#a0685499b80d4adbb6cb3799651ab53cf">_counters</a>.rows();</div>
+<div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span> </div>
+<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span>        <span class="keywordflow">for</span> (std::size_t theta = 0; theta &lt; <a class="code hl_variable" href="namespaceppht.html#afe497eaaaebd439ef153819b72f7096b">max_theta</a>; ++theta) {</div>
+<div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span>            <span class="keywordtype">double</span> <span class="keyword">const</span> rho = <a class="code hl_function" href="classppht_1_1accumulator.html#ae7a4f7f7ed9af6e71d551f218cd38536">scale_rho</a>(p.<a class="code hl_function" href="structppht_1_1point__t.html#ae689341aa47eca75e914448a806629c3">dot</a>(<a class="code hl_variable" href="namespaceppht.html#a5f6a8b027d6255d2c2b746906c3bc902">cossin</a>[theta]));</div>
+<div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span>            <span class="keywordflow">if</span> (rho &lt; 0 || rho &gt;= max_rho) <span class="keywordflow">continue</span>;</div>
+<div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span> </div>
+<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span>            <span class="keyword">auto</span> &amp;counter = <a class="code hl_variable" href="classppht_1_1accumulator.html#a0685499b80d4adbb6cb3799651ab53cf">_counters</a>[rho][theta];</div>
 <div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span> </div>
-<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span>        <span class="comment">// lnp is the log probability that a bin filled randomly would</span></div>
-<div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span>        <span class="comment">// contain a count of n. If the probability is above the</span></div>
-<div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span>        <span class="comment">// significance threshold, we assume that the bin was filled</span></div>
-<div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span>        <span class="comment">// by noise and tell the caller we did not find a segment.</span></div>
-<div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span> </div>
-<div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span>        <span class="keywordflow">if</span> (lnp &gt;= <a class="code hl_variable" href="classppht_1_1accumulator.html#a5096b40064eeb7b961f2f00158163ff2">_log_threshold</a>) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span>            <span class="keywordflow">if</span> (counter == 0) {</div>
+<div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span>                <span class="keywordflow">throw</span> std::logic_error{__func__};</div>
+<div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span>            }</div>
+<div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span> </div>
+<div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span>            --counter;</div>
+<div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span>        }</div>
 <div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span> </div>
-<div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span>        <span class="comment">// Reject the null hypothesis.</span></div>
-<div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span> </div>
-<div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span>        <span class="keywordflow">if</span> (found.size() == 1) {</div>
-<div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span>            std::tie(theta, rho) = found.at(0);</div>
-<div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span>        }</div>
-<div class="line"><a id="l00392" name="l00392"></a><span class="lineno">  392</span>        <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00393" name="l00393"></a><span class="lineno">  393</span>            <span class="keyword">auto</span> begin = found.begin();</div>
-<div class="line"><a id="l00394" name="l00394"></a><span class="lineno">  394</span>            <span class="keyword">auto</span> end = found.end();</div>
-<div class="line"><a id="l00395" name="l00395"></a><span class="lineno">  395</span> </div>
-<div class="line"><a id="l00396" name="l00396"></a><span class="lineno">  396</span>            <span class="keywordflow">if</span> (begin-&gt;first == 0 &amp;&amp; (end-1)-&gt;first == <a class="code hl_variable" href="namespaceppht.html#afe497eaaaebd439ef153819b72f7096b">max_theta</a> - 1) {</div>
-<div class="line"><a id="l00397" name="l00397"></a><span class="lineno">  397</span>                <span class="comment">// If we have values at both ends of the vector there</span></div>
-<div class="line"><a id="l00398" name="l00398"></a><span class="lineno">  398</span>                <span class="comment">// is a chance that we have a &quot;wraparound&quot; cluster.</span></div>
-<div class="line"><a id="l00399" name="l00399"></a><span class="lineno">  399</span>                <span class="comment">// Since every line (θ, ρ) has a counterpart of (θ +</span></div>
-<div class="line"><a id="l00400" name="l00400"></a><span class="lineno">  400</span>                <span class="comment">// π/2, -ρ), replace the points at the beginning of</span></div>
-<div class="line"><a id="l00401" name="l00401"></a><span class="lineno">  401</span>                <span class="comment">// the vector with their counterparts, effectively</span></div>
-<div class="line"><a id="l00402" name="l00402"></a><span class="lineno">  402</span>                <span class="comment">// transplanting the points with angles in quadrant I</span></div>
-<div class="line"><a id="l00403" name="l00403"></a><span class="lineno">  403</span>                <span class="comment">// into points with angles in quadrant III.</span></div>
-<div class="line"><a id="l00404" name="l00404"></a><span class="lineno">  404</span> </div>
-<div class="line"><a id="l00405" name="l00405"></a><span class="lineno">  405</span>                <span class="keywordflow">for</span> (<span class="keyword">auto</span> iter = begin; iter != end; ++iter) {</div>
-<div class="line"><a id="l00406" name="l00406"></a><span class="lineno">  406</span>                    <span class="keywordflow">if</span> (iter-&gt;first &lt; <a class="code hl_variable" href="namespaceppht.html#afe497eaaaebd439ef153819b72f7096b">max_theta</a> / 2) {</div>
-<div class="line"><a id="l00407" name="l00407"></a><span class="lineno">  407</span>                        iter-&gt;first += <a class="code hl_variable" href="namespaceppht.html#afe497eaaaebd439ef153819b72f7096b">max_theta</a>;</div>
-<div class="line"><a id="l00408" name="l00408"></a><span class="lineno">  408</span>                        iter-&gt;second = -(iter-&gt;second);</div>
-<div class="line"><a id="l00409" name="l00409"></a><span class="lineno">  409</span>                    }</div>
-<div class="line"><a id="l00410" name="l00410"></a><span class="lineno">  410</span>                    <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00411" name="l00411"></a><span class="lineno">  411</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><a id="l00412" name="l00412"></a><span class="lineno">  412</span>                    }</div>
-<div class="line"><a id="l00413" name="l00413"></a><span class="lineno">  413</span>                }</div>
-<div class="line"><a id="l00414" name="l00414"></a><span class="lineno">  414</span> </div>
-<div class="line"><a id="l00415" name="l00415"></a><span class="lineno">  415</span>                std::sort(begin, end);</div>
-<div class="line"><a id="l00416" name="l00416"></a><span class="lineno">  416</span>            }</div>
-<div class="line"><a id="l00417" name="l00417"></a><span class="lineno">  417</span> </div>
-<div class="line"><a id="l00418" name="l00418"></a><span class="lineno">  418</span>            <span class="comment">// Recalculate the maximum distance between the first and</span></div>
-<div class="line"><a id="l00419" name="l00419"></a><span class="lineno">  419</span>            <span class="comment">// last in the cluster.</span></div>
-<div class="line"><a id="l00420" name="l00420"></a><span class="lineno">  420</span> </div>
-<div class="line"><a id="l00421" name="l00421"></a><span class="lineno">  421</span>            <span class="keyword">auto</span> <span class="keyword">const</span> diff = (end-1)-&gt;first - begin-&gt;first + 1;</div>
-<div class="line"><a id="l00422" name="l00422"></a><span class="lineno">  422</span> </div>
-<div class="line"><a id="l00423" name="l00423"></a><span class="lineno">  423</span>            <span class="comment">// If the difference is the same as the number of points</span></div>
-<div class="line"><a id="l00424" name="l00424"></a><span class="lineno">  424</span>            <span class="comment">// in the cluster, then the range is continuous and it is</span></div>
-<div class="line"><a id="l00425" name="l00425"></a><span class="lineno">  425</span>            <span class="comment">// safe to take the median value.  Otherwise, return.</span></div>
-<div class="line"><a id="l00426" name="l00426"></a><span class="lineno">  426</span> </div>
-<div class="line"><a id="l00427" name="l00427"></a><span class="lineno">  427</span>            if (diff != found.size()) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00428" name="l00428"></a><span class="lineno">  428</span> </div>
-<div class="line"><a id="l00429" name="l00429"></a><span class="lineno">  429</span>            <span class="keyword">auto</span> median = begin + diff / 2;</div>
-<div class="line"><a id="l00430" name="l00430"></a><span class="lineno">  430</span>            std::tie(theta, rho) = *median;</div>
-<div class="line"><a id="l00431" name="l00431"></a><span class="lineno">  431</span> </div>
-<div class="line"><a id="l00432" name="l00432"></a><span class="lineno">  432</span>            <span class="comment">// If the median is in quadrant III, move it back to</span></div>
-<div class="line"><a id="l00433" name="l00433"></a><span class="lineno">  433</span>            <span class="comment">// quadrant I.</span></div>
-<div class="line"><a id="l00434" name="l00434"></a><span class="lineno">  434</span> </div>
-<div class="line"><a id="l00435" name="l00435"></a><span class="lineno">  435</span>            <span class="keywordflow">if</span> (theta &gt;= <a class="code hl_variable" href="namespaceppht.html#afe497eaaaebd439ef153819b72f7096b">max_theta</a>) {</div>
-<div class="line"><a id="l00436" name="l00436"></a><span class="lineno">  436</span>                theta -= <a class="code hl_variable" href="namespaceppht.html#afe497eaaaebd439ef153819b72f7096b">max_theta</a>, rho = -rho;</div>
-<div class="line"><a id="l00437" name="l00437"></a><span class="lineno">  437</span>            }</div>
-<div class="line"><a id="l00438" name="l00438"></a><span class="lineno">  438</span>        }</div>
-<div class="line"><a id="l00439" name="l00439"></a><span class="lineno">  439</span> </div>
-<div class="line"><a id="l00440" name="l00440"></a><span class="lineno">  440</span>        segment = <a class="code hl_function" href="classppht_1_1accumulator.html#a8ff140558c3734deb891878d3fec802f">find_segment</a>(theta, rho);</div>
-<div class="line"><a id="l00441" name="l00441"></a><span class="lineno">  441</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00442" name="l00442"></a><span class="lineno">  442</span>    }</div>
-<div class="line"><a id="l00443" name="l00443"></a><span class="lineno">  443</span> </div>
-<div class="line"><a id="l00449" name="l00449"></a><span class="lineno"><a class="line" href="classppht_1_1accumulator.html#a81095d6f10832e7abae3d8c34d42f186">  449</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classppht_1_1accumulator.html#a81095d6f10832e7abae3d8c34d42f186">unvote</a>(<a class="code hl_struct" href="structppht_1_1point__t.html">point_t</a> <span class="keyword">const</span> &amp;p) {</div>
-<div class="line"><a id="l00450" name="l00450"></a><span class="lineno">  450</span>        <span class="keyword">auto</span> <span class="keyword">const</span> max_rho = <a class="code hl_variable" href="classppht_1_1accumulator.html#a0685499b80d4adbb6cb3799651ab53cf">_counters</a>.rows();</div>
-<div class="line"><a id="l00451" name="l00451"></a><span class="lineno">  451</span> </div>
-<div class="line"><a id="l00452" name="l00452"></a><span class="lineno">  452</span>        <span class="keywordflow">for</span> (std::size_t theta = 0; theta &lt; <a class="code hl_variable" href="namespaceppht.html#afe497eaaaebd439ef153819b72f7096b">max_theta</a>; ++theta) {</div>
-<div class="line"><a id="l00453" name="l00453"></a><span class="lineno">  453</span>            <span class="keywordtype">double</span> <span class="keyword">const</span> rho = <a class="code hl_function" href="classppht_1_1accumulator.html#ae7a4f7f7ed9af6e71d551f218cd38536">scale_rho</a>(p.<a class="code hl_function" href="structppht_1_1point__t.html#ae689341aa47eca75e914448a806629c3">dot</a>(<a class="code hl_variable" href="namespaceppht.html#a5f6a8b027d6255d2c2b746906c3bc902">cossin</a>[theta]));</div>
-<div class="line"><a id="l00454" name="l00454"></a><span class="lineno">  454</span>            <span class="keywordflow">if</span> (rho &lt; 0 || rho &gt;= max_rho) <span class="keywordflow">continue</span>;</div>
-<div class="line"><a id="l00455" name="l00455"></a><span class="lineno">  455</span> </div>
-<div class="line"><a id="l00456" name="l00456"></a><span class="lineno">  456</span>            <span class="keyword">auto</span> &amp;counter = <a class="code hl_variable" href="classppht_1_1accumulator.html#a0685499b80d4adbb6cb3799651ab53cf">_counters</a>[rho][theta];</div>
-<div class="line"><a id="l00457" name="l00457"></a><span class="lineno">  457</span> </div>
-<div class="line"><a id="l00458" name="l00458"></a><span class="lineno">  458</span>            <span class="keywordflow">if</span> (counter == 0) {</div>
-<div class="line"><a id="l00459" name="l00459"></a><span class="lineno">  459</span>                <span class="keywordflow">throw</span> std::logic_error{__func__};</div>
-<div class="line"><a id="l00460" name="l00460"></a><span class="lineno">  460</span>            }</div>
-<div class="line"><a id="l00461" name="l00461"></a><span class="lineno">  461</span> </div>
-<div class="line"><a id="l00462" name="l00462"></a><span class="lineno">  462</span>            --counter;</div>
-<div class="line"><a id="l00463" name="l00463"></a><span class="lineno">  463</span>        }</div>
-<div class="line"><a id="l00464" name="l00464"></a><span class="lineno">  464</span> </div>
-<div class="line"><a id="l00465" name="l00465"></a><span class="lineno">  465</span>        --<a class="code hl_variable" href="classppht_1_1accumulator.html#a362e2e2ce01e990641096e22da5475f9">_votes</a>;</div>
-<div class="line"><a id="l00466" name="l00466"></a><span class="lineno">  466</span>    }</div>
-<div class="line"><a id="l00467" name="l00467"></a><span class="lineno">  467</span>};</div>
-<div class="line"><a id="l00468" name="l00468"></a><span class="lineno">  468</span> </div>
-<div class="line"><a id="l00469" name="l00469"></a><span class="lineno">  469</span>} <span class="comment">// namespace ppht</span></div>
-<div class="line"><a id="l00470" name="l00470"></a><span class="lineno">  470</span> </div>
-<div class="line"><a id="l00471" name="l00471"></a><span class="lineno">  471</span><span class="preprocessor">#endif </span><span class="comment">/* ppht_accumulator_hpp */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span>        --<a class="code hl_variable" href="classppht_1_1accumulator.html#a362e2e2ce01e990641096e22da5475f9">_votes</a>;</div>
+<div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span>    }</div>
+<div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span>};</div>
+<div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span> </div>
+<div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span>} <span class="comment">// namespace ppht</span></div>
+<div class="line"><a id="l00392" name="l00392"></a><span class="lineno">  392</span> </div>
+<div class="line"><a id="l00393" name="l00393"></a><span class="lineno">  393</span><span class="preprocessor">#endif </span><span class="comment">/* ppht_accumulator_hpp */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="aclassppht_1_1accumulator_html"><div class="ttname"><a href="classppht_1_1accumulator.html">ppht::accumulator</a></div><div class="ttdoc">A collection of counters for line candidates.</div><div class="ttdef"><b>Definition:</b> accumulator.hpp:45</div></div>
-<div class="ttc" id="aclassppht_1_1accumulator_html_a02c160abbc583112e4706c4ce82ac389"><div class="ttname"><a href="classppht_1_1accumulator.html#a02c160abbc583112e4706c4ce82ac389">ppht::accumulator::vote</a></div><div class="ttdeci">bool vote(point_t const &amp;p, segment_t &amp;segment)</div><div class="ttdoc">Add all lines passing through the given point to the accumulator.</div><div class="ttdef"><b>Definition:</b> accumulator.hpp:319</div></div>
-<div class="ttc" id="aclassppht_1_1accumulator_html_a0685499b80d4adbb6cb3799651ab53cf"><div class="ttname"><a href="classppht_1_1accumulator.html#a0685499b80d4adbb6cb3799651ab53cf">ppht::accumulator::_counters</a></div><div class="ttdeci">Raster&lt; Count &gt; _counters</div><div class="ttdoc">Matrix of counters (quantized -space).</div><div class="ttdef"><b>Definition:</b> accumulator.hpp:68</div></div>
-<div class="ttc" id="aclassppht_1_1accumulator_html_a13c220fc16e37ce9ffbfa176a2c1e210"><div class="ttname"><a href="classppht_1_1accumulator.html#a13c220fc16e37ce9ffbfa176a2c1e210">ppht::accumulator::accumulator</a></div><div class="ttdeci">accumulator(std::size_t rows, std::size_t cols, const std::pair&lt; std::size_t, int &gt; &amp;rho_info, double log_threshold, std::size_t min_trigger_points, seed_t seed) noexcept</div><div class="ttdoc">Construct an instance of accumulator.</div><div class="ttdef"><b>Definition:</b> accumulator.hpp:160</div></div>
-<div class="ttc" id="aclassppht_1_1accumulator_html_a15ab5949c754cb724863eb0539af7317"><div class="ttname"><a href="classppht_1_1accumulator.html#a15ab5949c754cb724863eb0539af7317">ppht::accumulator::_rho_scale</a></div><div class="ttdeci">int const _rho_scale</div><div class="ttdoc">Exponent by which to scale raw rho values.</div><div class="ttdef"><b>Definition:</b> accumulator.hpp:59</div></div>
-<div class="ttc" id="aclassppht_1_1accumulator_html_a362e2e2ce01e990641096e22da5475f9"><div class="ttname"><a href="classppht_1_1accumulator.html#a362e2e2ce01e990641096e22da5475f9">ppht::accumulator::_votes</a></div><div class="ttdeci">Count _votes</div><div class="ttdoc">Votes still in effect.</div><div class="ttdef"><b>Definition:</b> accumulator.hpp:71</div></div>
-<div class="ttc" id="aclassppht_1_1accumulator_html_a43000d45677f61f8f2069602da3eea06"><div class="ttname"><a href="classppht_1_1accumulator.html#a43000d45677f61f8f2069602da3eea06">ppht::accumulator::_cols</a></div><div class="ttdeci">std::size_t const _cols</div><div class="ttdoc">Width of bitmap image.</div><div class="ttdef"><b>Definition:</b> accumulator.hpp:56</div></div>
-<div class="ttc" id="aclassppht_1_1accumulator_html_a5096b40064eeb7b961f2f00158163ff2"><div class="ttname"><a href="classppht_1_1accumulator.html#a5096b40064eeb7b961f2f00158163ff2">ppht::accumulator::_log_threshold</a></div><div class="ttdeci">double const _log_threshold</div><div class="ttdoc">Log-probability threshold for rejecting the null hypothesis.</div><div class="ttdef"><b>Definition:</b> accumulator.hpp:62</div></div>
-<div class="ttc" id="aclassppht_1_1accumulator_html_a51ddcfb6a6d4705122d998e8a46fa45d"><div class="ttname"><a href="classppht_1_1accumulator.html#a51ddcfb6a6d4705122d998e8a46fa45d">ppht::accumulator::rho_info</a></div><div class="ttdeci">static std::pair&lt; std::size_t, int &gt; rho_info(std::size_t rows, std::size_t cols) noexcept</div><div class="ttdoc">Calculate parameters for scaling rho.</div><div class="ttdef"><b>Definition:</b> accumulator.hpp:192</div></div>
-<div class="ttc" id="aclassppht_1_1accumulator_html_a520d44b081be8797bf89dc9afbefd6a0"><div class="ttname"><a href="classppht_1_1accumulator.html#a520d44b081be8797bf89dc9afbefd6a0">ppht::accumulator::accumulator</a></div><div class="ttdeci">accumulator(std::size_t rows, std::size_t cols, parameters const &amp;param, seed_t seed=std::random_device{}())</div><div class="ttdoc">Construct an instance of accumulator.</div><div class="ttdef"><b>Definition:</b> accumulator.hpp:230</div></div>
+<div class="ttc" id="aclassppht_1_1accumulator_html_a0685499b80d4adbb6cb3799651ab53cf"><div class="ttname"><a href="classppht_1_1accumulator.html#a0685499b80d4adbb6cb3799651ab53cf">ppht::accumulator::_counters</a></div><div class="ttdeci">Raster&lt; Count &gt; _counters</div><div class="ttdoc">Matrix of counters (quantized -space).</div><div class="ttdef"><b>Definition:</b> accumulator.hpp:64</div></div>
+<div class="ttc" id="aclassppht_1_1accumulator_html_a093a0043f6840743a70cef694308c862"><div class="ttname"><a href="classppht_1_1accumulator.html#a093a0043f6840743a70cef694308c862">ppht::accumulator::_log_threshold</a></div><div class="ttdeci">double _log_threshold</div><div class="ttdoc">Log-probability threshold for rejecting the null hypothesis.</div><div class="ttdef"><b>Definition:</b> accumulator.hpp:57</div></div>
+<div class="ttc" id="aclassppht_1_1accumulator_html_a15ab5949c754cb724863eb0539af7317"><div class="ttname"><a href="classppht_1_1accumulator.html#a15ab5949c754cb724863eb0539af7317">ppht::accumulator::_rho_scale</a></div><div class="ttdeci">int const _rho_scale</div><div class="ttdoc">Exponent by which to scale raw rho values.</div><div class="ttdef"><b>Definition:</b> accumulator.hpp:53</div></div>
+<div class="ttc" id="aclassppht_1_1accumulator_html_a2c96fb1adda550a2771a1f84c14ea6c1"><div class="ttname"><a href="classppht_1_1accumulator.html#a2c96fb1adda550a2771a1f84c14ea6c1">ppht::accumulator::vote</a></div><div class="ttdeci">std::optional&lt; line_t &gt; vote(point_t const &amp;p)</div><div class="ttdoc">Add all lines passing through the given point to the accumulator.</div><div class="ttdef"><b>Definition:</b> accumulator.hpp:293</div></div>
+<div class="ttc" id="aclassppht_1_1accumulator_html_a362e2e2ce01e990641096e22da5475f9"><div class="ttname"><a href="classppht_1_1accumulator.html#a362e2e2ce01e990641096e22da5475f9">ppht::accumulator::_votes</a></div><div class="ttdeci">Count _votes</div><div class="ttdoc">Votes still in effect.</div><div class="ttdef"><b>Definition:</b> accumulator.hpp:67</div></div>
+<div class="ttc" id="aclassppht_1_1accumulator_html_a51ddcfb6a6d4705122d998e8a46fa45d"><div class="ttname"><a href="classppht_1_1accumulator.html#a51ddcfb6a6d4705122d998e8a46fa45d">ppht::accumulator::rho_info</a></div><div class="ttdeci">static std::pair&lt; std::size_t, int &gt; rho_info(std::size_t rows, std::size_t cols) noexcept</div><div class="ttdoc">Calculate parameters for scaling rho.</div><div class="ttdef"><b>Definition:</b> accumulator.hpp:172</div></div>
+<div class="ttc" id="aclassppht_1_1accumulator_html_a5b974d3915410833c4a9057af8bbe68d"><div class="ttname"><a href="classppht_1_1accumulator.html#a5b974d3915410833c4a9057af8bbe68d">ppht::accumulator::threshold</a></div><div class="ttdeci">void threshold(double threshold) noexcept</div><div class="ttdoc">Set the probability threshold for rejecting the null hypothesis.</div><div class="ttdef"><b>Definition:</b> accumulator.hpp:229</div></div>
 <div class="ttc" id="aclassppht_1_1accumulator_html_a5e6bb0aed7790db516a3908fb9cf0a80"><div class="ttname"><a href="classppht_1_1accumulator.html#a5e6bb0aed7790db516a3908fb9cf0a80">ppht::accumulator::URBG</a></div><div class="ttdeci">std::default_random_engine URBG</div><div class="ttdoc">A uniform random bit generator.</div><div class="ttdef"><b>Definition:</b> accumulator.hpp:47</div></div>
-<div class="ttc" id="aclassppht_1_1accumulator_html_a627ac1a7abe04abf8ce01d630c6d8420"><div class="ttname"><a href="classppht_1_1accumulator.html#a627ac1a7abe04abf8ce01d630c6d8420">ppht::accumulator::_min_trigger_points</a></div><div class="ttdeci">Count const _min_trigger_points</div><div class="ttdoc">Number of points required to trigger a channel scan.</div><div class="ttdef"><b>Definition:</b> accumulator.hpp:65</div></div>
-<div class="ttc" id="aclassppht_1_1accumulator_html_a793d5129b3dabe924a839bd5ccf3ffe2"><div class="ttname"><a href="classppht_1_1accumulator.html#a793d5129b3dabe924a839bd5ccf3ffe2">ppht::accumulator::unscale_rho</a></div><div class="ttdeci">double unscale_rho(double scaled_rho) const noexcept</div><div class="ttdoc">Convert a scaled rho value back to a raw value.</div><div class="ttdef"><b>Definition:</b> accumulator.hpp:103</div></div>
-<div class="ttc" id="aclassppht_1_1accumulator_html_a81095d6f10832e7abae3d8c34d42f186"><div class="ttname"><a href="classppht_1_1accumulator.html#a81095d6f10832e7abae3d8c34d42f186">ppht::accumulator::unvote</a></div><div class="ttdeci">void unvote(point_t const &amp;p)</div><div class="ttdef"><b>Definition:</b> accumulator.hpp:449</div></div>
-<div class="ttc" id="aclassppht_1_1accumulator_html_a836391184051253c1ddb8239b4f0212d"><div class="ttname"><a href="classppht_1_1accumulator.html#a836391184051253c1ddb8239b4f0212d">ppht::accumulator::clamp</a></div><div class="ttdeci">static T clamp(U value) noexcept</div><div class="ttdoc">Restrict the value to the range of the target type.</div><div class="ttdef"><b>Definition:</b> accumulator.hpp:125</div></div>
-<div class="ttc" id="aclassppht_1_1accumulator_html_a8ff140558c3734deb891878d3fec802f"><div class="ttname"><a href="classppht_1_1accumulator.html#a8ff140558c3734deb891878d3fec802f">ppht::accumulator::find_segment</a></div><div class="ttdeci">segment_t find_segment(std::size_t theta, double rho)</div><div class="ttdoc">Find the portion of the line that lies within the bounds of the bitmap.</div><div class="ttdef"><b>Definition:</b> accumulator.hpp:250</div></div>
+<div class="ttc" id="aclassppht_1_1accumulator_html_a678b544a8ec9b7a70075c39719d271ac"><div class="ttname"><a href="classppht_1_1accumulator.html#a678b544a8ec9b7a70075c39719d271ac">ppht::accumulator::best_candidate</a></div><div class="ttdeci">ForwardIt best_candidate(ForwardIt begin, ForwardIt end)</div><div class="ttdoc">Find lines that are parallel to major axes.</div><div class="ttdef"><b>Definition:</b> accumulator.hpp:265</div></div>
+<div class="ttc" id="aclassppht_1_1accumulator_html_a6908da4927eac93a6947dae71bb1ee14"><div class="ttname"><a href="classppht_1_1accumulator.html#a6908da4927eac93a6947dae71bb1ee14">ppht::accumulator::min_trigger_points</a></div><div class="ttdeci">void min_trigger_points(double min_trigger_points) noexcept</div><div class="ttdoc">Set the minimum number of voting points required to trigger a scan.</div><div class="ttdef"><b>Definition:</b> accumulator.hpp:250</div></div>
+<div class="ttc" id="aclassppht_1_1accumulator_html_a6f8b0454f86478e78511773da2cee808"><div class="ttname"><a href="classppht_1_1accumulator.html#a6f8b0454f86478e78511773da2cee808">ppht::accumulator::min_trigger_points</a></div><div class="ttdeci">double min_trigger_points() const noexcept</div><div class="ttdoc">Get the minimum number of voting points required to trigger a scan.</div><div class="ttdef"><b>Definition:</b> accumulator.hpp:235</div></div>
+<div class="ttc" id="aclassppht_1_1accumulator_html_a752366deaa0bd4e22492be5f9e9f9883"><div class="ttname"><a href="classppht_1_1accumulator.html#a752366deaa0bd4e22492be5f9e9f9883">ppht::accumulator::_min_trigger_points</a></div><div class="ttdeci">Count _min_trigger_points</div><div class="ttdoc">The minimum number of points required to trigger a scan.</div><div class="ttdef"><b>Definition:</b> accumulator.hpp:61</div></div>
+<div class="ttc" id="aclassppht_1_1accumulator_html_a793d5129b3dabe924a839bd5ccf3ffe2"><div class="ttname"><a href="classppht_1_1accumulator.html#a793d5129b3dabe924a839bd5ccf3ffe2">ppht::accumulator::unscale_rho</a></div><div class="ttdeci">double unscale_rho(double scaled_rho) const noexcept</div><div class="ttdoc">Convert a scaled rho value back to a raw value.</div><div class="ttdef"><b>Definition:</b> accumulator.hpp:99</div></div>
+<div class="ttc" id="aclassppht_1_1accumulator_html_a81095d6f10832e7abae3d8c34d42f186"><div class="ttname"><a href="classppht_1_1accumulator.html#a81095d6f10832e7abae3d8c34d42f186">ppht::accumulator::unvote</a></div><div class="ttdeci">void unvote(point_t const &amp;p)</div><div class="ttdef"><b>Definition:</b> accumulator.hpp:371</div></div>
+<div class="ttc" id="aclassppht_1_1accumulator_html_a8e7018f01360a88edd6ce4497cd7f099"><div class="ttname"><a href="classppht_1_1accumulator.html#a8e7018f01360a88edd6ce4497cd7f099">ppht::accumulator::accumulator</a></div><div class="ttdeci">accumulator(const std::pair&lt; std::size_t, int &gt; &amp;rho_info, seed_t seed) noexcept</div><div class="ttdoc">Construct an instance of accumulator.</div><div class="ttdef"><b>Definition:</b> accumulator.hpp:146</div></div>
 <div class="ttc" id="aclassppht_1_1accumulator_html_a92ee869bb03a6ced5ecf470d4328f5c4"><div class="ttname"><a href="classppht_1_1accumulator.html#a92ee869bb03a6ced5ecf470d4328f5c4">ppht::accumulator::seed_t</a></div><div class="ttdeci">std::random_device::result_type seed_t</div><div class="ttdoc">The type of seed for the URBG.</div><div class="ttdef"><b>Definition:</b> accumulator.hpp:50</div></div>
-<div class="ttc" id="aclassppht_1_1accumulator_html_aa791a41afd8aa1774a6bcb34f0ca286d"><div class="ttname"><a href="classppht_1_1accumulator.html#aa791a41afd8aa1774a6bcb34f0ca286d">ppht::accumulator::_rows</a></div><div class="ttdeci">std::size_t const _rows</div><div class="ttdoc">Height of bitmap image.</div><div class="ttdef"><b>Definition:</b> accumulator.hpp:53</div></div>
-<div class="ttc" id="aclassppht_1_1accumulator_html_ae7a4f7f7ed9af6e71d551f218cd38536"><div class="ttname"><a href="classppht_1_1accumulator.html#ae7a4f7f7ed9af6e71d551f218cd38536">ppht::accumulator::scale_rho</a></div><div class="ttdeci">double scale_rho(double unscaled_rho) const noexcept</div><div class="ttdoc">Convert a raw rho value to an index value.</div><div class="ttdef"><b>Definition:</b> accumulator.hpp:88</div></div>
-<div class="ttc" id="aclassppht_1_1accumulator_html_af05329f24d02f498ce4961823f4e3fc1"><div class="ttname"><a href="classppht_1_1accumulator.html#af05329f24d02f498ce4961823f4e3fc1">ppht::accumulator::_urbg</a></div><div class="ttdeci">URBG _urbg</div><div class="ttdoc">Random number generator.</div><div class="ttdef"><b>Definition:</b> accumulator.hpp:74</div></div>
-<div class="ttc" id="aclassppht_1_1segment__t_html"><div class="ttname"><a href="classppht_1_1segment__t.html">ppht::segment_t</a></div><div class="ttdef"><b>Definition:</b> types.hpp:68</div></div>
-<div class="ttc" id="anamespaceppht_html"><div class="ttname"><a href="namespaceppht.html">ppht</a></div><div class="ttdoc">The basic namespace of the library.</div></div>
+<div class="ttc" id="aclassppht_1_1accumulator_html_acb0c13f74ed3568b1798fe07eb6f284e"><div class="ttname"><a href="classppht_1_1accumulator.html#acb0c13f74ed3568b1798fe07eb6f284e">ppht::accumulator::clamp</a></div><div class="ttdeci">static constexpr T clamp(U value) noexcept</div><div class="ttdoc">Restrict the value to the range of the target type.</div><div class="ttdef"><b>Definition:</b> accumulator.hpp:121</div></div>
+<div class="ttc" id="aclassppht_1_1accumulator_html_ae06c3bcd09882792dfb1a78078609729"><div class="ttname"><a href="classppht_1_1accumulator.html#ae06c3bcd09882792dfb1a78078609729">ppht::accumulator::threshold</a></div><div class="ttdeci">double threshold() const noexcept</div><div class="ttdoc">Get the probability threshold for rejecting the null hypothesis.</div><div class="ttdef"><b>Definition:</b> accumulator.hpp:214</div></div>
+<div class="ttc" id="aclassppht_1_1accumulator_html_ae7a4f7f7ed9af6e71d551f218cd38536"><div class="ttname"><a href="classppht_1_1accumulator.html#ae7a4f7f7ed9af6e71d551f218cd38536">ppht::accumulator::scale_rho</a></div><div class="ttdeci">double scale_rho(double unscaled_rho) const noexcept</div><div class="ttdoc">Convert a raw rho value to an index value.</div><div class="ttdef"><b>Definition:</b> accumulator.hpp:84</div></div>
+<div class="ttc" id="aclassppht_1_1accumulator_html_aea10b31857bf8480130c33d25bcfe2d0"><div class="ttname"><a href="classppht_1_1accumulator.html#aea10b31857bf8480130c33d25bcfe2d0">ppht::accumulator::accumulator</a></div><div class="ttdeci">accumulator(std::size_t rows, std::size_t cols, seed_t seed=std::random_device{}())</div><div class="ttdoc">Construct an instance of accumulator.</div><div class="ttdef"><b>Definition:</b> accumulator.hpp:208</div></div>
+<div class="ttc" id="aclassppht_1_1accumulator_html_af05329f24d02f498ce4961823f4e3fc1"><div class="ttname"><a href="classppht_1_1accumulator.html#af05329f24d02f498ce4961823f4e3fc1">ppht::accumulator::_urbg</a></div><div class="ttdeci">URBG _urbg</div><div class="ttdoc">Random number generator.</div><div class="ttdef"><b>Definition:</b> accumulator.hpp:70</div></div>
+<div class="ttc" id="aclassppht_1_1raster_html"><div class="ttname"><a href="classppht_1_1raster.html">ppht::raster</a></div><div class="ttdoc">A simple class to manage a 2D array of elements.</div><div class="ttdef"><b>Definition:</b> raster.hpp:19</div></div>
+<div class="ttc" id="anamespaceppht_html"><div class="ttname"><a href="namespaceppht.html">ppht</a></div><div class="ttdoc">The basic namespace of the library.</div><div class="ttdef"><b>Definition:</b> accumulator.hpp:28</div></div>
 <div class="ttc" id="anamespaceppht_html_a5f6a8b027d6255d2c2b746906c3bc902"><div class="ttname"><a href="namespaceppht.html#a5f6a8b027d6255d2c2b746906c3bc902">ppht::cossin</a></div><div class="ttdeci">cossin_t cossin[]</div><div class="ttdef"><b>Definition:</b> trig.hpp:13</div></div>
 <div class="ttc" id="anamespaceppht_html_afe497eaaaebd439ef153819b72f7096b"><div class="ttname"><a href="namespaceppht.html#afe497eaaaebd439ef153819b72f7096b">ppht::max_theta</a></div><div class="ttdeci">static constexpr std::size_t max_theta</div><div class="ttdef"><b>Definition:</b> trig.hpp:3616</div></div>
-<div class="ttc" id="aparameters_8hpp_html"><div class="ttname"><a href="parameters_8hpp.html">parameters.hpp</a></div></div>
 <div class="ttc" id="araster_8hpp_html"><div class="ttname"><a href="raster_8hpp.html">raster.hpp</a></div></div>
-<div class="ttc" id="astructppht_1_1parameters_html"><div class="ttname"><a href="structppht_1_1parameters.html">ppht::parameters</a></div><div class="ttdoc">The tunable parameters of the analyzer.</div><div class="ttdef"><b>Definition:</b> parameters.hpp:18</div></div>
+<div class="ttc" id="astate_8hpp_html"><div class="ttname"><a href="state_8hpp.html">state.hpp</a></div></div>
 <div class="ttc" id="astructppht_1_1point__t_html"><div class="ttname"><a href="structppht_1_1point__t.html">ppht::point_t</a></div><div class="ttdoc">A basic integral point.</div><div class="ttdef"><b>Definition:</b> types.hpp:15</div></div>
 <div class="ttc" id="astructppht_1_1point__t_html_ae689341aa47eca75e914448a806629c3"><div class="ttname"><a href="structppht_1_1point__t.html#ae689341aa47eca75e914448a806629c3">ppht::point_t::dot</a></div><div class="ttdeci">auto dot(const P &amp;p) const</div><div class="ttdef"><b>Definition:</b> types.hpp:55</div></div>
 <div class="ttc" id="atrig_8hpp_html"><div class="ttname"><a href="trig_8hpp.html">trig.hpp</a></div></div>

@@ -1,6 +1,6 @@
-<map id="ppht/raster.hpp" name="ppht/raster.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="41,5,151,31"/>
-<area shape="rect" id="node2" href="$ppht_8hpp.html" title=" " alt="" coords="59,152,133,177"/>
-<area shape="rect" id="node3" href="$accumulator_8hpp.html" title=" " alt="" coords="21,79,170,104"/>
-<area shape="rect" id="node4" href="$state_8hpp.html" title=" " alt="" coords="195,79,301,104"/>
+<map id="include/raster.hpp" name="include/raster.hpp">
+<area shape="rect" id="node1" title=" " alt="" coords="10,5,137,31"/>
+<area shape="rect" id="node2" href="$accumulator_8hpp.html" title=" " alt="" coords="26,152,191,177"/>
+<area shape="rect" id="node3" href="$ppht_8hpp.html" title=" " alt="" coords="49,225,168,251"/>
+<area shape="rect" id="node4" href="$state_8hpp.html" title=" " alt="" coords="111,79,233,104"/>
 </map>

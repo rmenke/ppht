@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>PPHT: ppht::channel&lt; Point &gt; Class Template Reference</title>
+<title>PPHT: ppht::channel Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,7 +25,7 @@ MathJax.Hub.Config({
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">PPHT<span id="projectnumber">&#160;2.0.0-alpha.5</span>
+   <div id="projectname">PPHT<span id="projectnumber">&#160;2.0.0-alpha.11</span>
    </div>
    <div id="projectbrief">An implementation of PPHT as a header-only library</div>
   </td>
@@ -54,11 +54,10 @@ $(function() {
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pri-types">Private Types</a> &#124;
 <a href="#pri-static-methods">Static Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classppht_1_1channel-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">ppht::channel&lt; Point &gt; Class Template Reference</div></div>
+  <div class="headertitle"><div class="title">ppht::channel Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
@@ -66,6 +65,12 @@ $(function() {
  <a href="classppht_1_1channel.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="channel_8hpp_source.html">channel.hpp</a>&gt;</code></p>
+<div class="dynheader">
+Collaboration diagram for ppht::channel:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classppht_1_1channel__coll__graph.svg" width="151" height="211"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
@@ -84,46 +89,40 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a3318e7cb73ae13c69edddc99145e25a6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1channel.html#a3318e7cb73ae13c69edddc99145e25a6">channel</a> (const Point &amp;p0, const Point &amp;p1, std::size_t radius)</td></tr>
-<tr class="memdesc:a3318e7cb73ae13c69edddc99145e25a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a channel with given radius between two points.  <a href="classppht_1_1channel.html#a3318e7cb73ae13c69edddc99145e25a6">More...</a><br /></td></tr>
-<tr class="separator:a3318e7cb73ae13c69edddc99145e25a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a60d68a9bde5f602befc28e8df47d971d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classppht_1_1channel_1_1iterator.html">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1channel.html#a60d68a9bde5f602befc28e8df47d971d">begin</a> () const</td></tr>
-<tr class="memdesc:a60d68a9bde5f602befc28e8df47d971d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an iterator to the starting point.  <a href="classppht_1_1channel.html#a60d68a9bde5f602befc28e8df47d971d">More...</a><br /></td></tr>
-<tr class="separator:a60d68a9bde5f602befc28e8df47d971d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad1409e447158c389acefd7a21ef51eed"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classppht_1_1channel_1_1iterator.html">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1channel.html#ad1409e447158c389acefd7a21ef51eed">end</a> () const</td></tr>
-<tr class="memdesc:ad1409e447158c389acefd7a21ef51eed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an iterator one past the ending point.  <a href="classppht_1_1channel.html#ad1409e447158c389acefd7a21ef51eed">More...</a><br /></td></tr>
-<tr class="separator:ad1409e447158c389acefd7a21ef51eed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-types" name="pri-types"></a>
-Private Types</h2></td></tr>
-<tr class="memitem:a49b7c383379a281e3c479b70cad18b53"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1channel.html#a49b7c383379a281e3c479b70cad18b53">int_t</a> = std::decay_t&lt; std::common_type_t&lt; decltype(std::get&lt; 0 &gt;(std::declval&lt; Point &gt;())), decltype(std::get&lt; 1 &gt;(std::declval&lt; Point &gt;()))&gt; &gt;</td></tr>
-<tr class="memdesc:a49b7c383379a281e3c479b70cad18b53"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of integer used for the coordinates of a point.  <a href="classppht_1_1channel.html#a49b7c383379a281e3c479b70cad18b53">More...</a><br /></td></tr>
-<tr class="separator:a49b7c383379a281e3c479b70cad18b53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abde518681661511c6d4e84487b4ef98a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1channel.html#abde518681661511c6d4e84487b4ef98a">channel</a> (const <a class="el" href="structppht_1_1point__t.html">point_t</a> &amp;p0, const <a class="el" href="structppht_1_1point__t.html">point_t</a> &amp;p1, std::size_t radius)</td></tr>
+<tr class="memdesc:abde518681661511c6d4e84487b4ef98a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a channel with given radius between two points.  <a href="classppht_1_1channel.html#abde518681661511c6d4e84487b4ef98a">More...</a><br /></td></tr>
+<tr class="separator:abde518681661511c6d4e84487b4ef98a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a170ef6c5fe1364dd52814f484b35a169"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classppht_1_1channel_1_1iterator.html">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1channel.html#a170ef6c5fe1364dd52814f484b35a169">begin</a> () const</td></tr>
+<tr class="memdesc:a170ef6c5fe1364dd52814f484b35a169"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an iterator to the starting point.  <a href="classppht_1_1channel.html#a170ef6c5fe1364dd52814f484b35a169">More...</a><br /></td></tr>
+<tr class="separator:a170ef6c5fe1364dd52814f484b35a169"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a968fc94b6e4272de71fd0731df8985c0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classppht_1_1channel_1_1iterator.html">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1channel.html#a968fc94b6e4272de71fd0731df8985c0">end</a> () const</td></tr>
+<tr class="memdesc:a968fc94b6e4272de71fd0731df8985c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an iterator one past the ending point.  <a href="classppht_1_1channel.html#a968fc94b6e4272de71fd0731df8985c0">More...</a><br /></td></tr>
+<tr class="separator:a968fc94b6e4272de71fd0731df8985c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
 Static Private Member Functions</h2></td></tr>
-<tr class="memitem:a7868f42ab58bab771352ee54cca40a6a"><td class="memItemLeft" align="right" valign="top">static auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1channel.html#a7868f42ab58bab771352ee54cca40a6a">signum</a> (<a class="el" href="classppht_1_1channel.html#a49b7c383379a281e3c479b70cad18b53">int_t</a> value)</td></tr>
-<tr class="separator:a7868f42ab58bab771352ee54cca40a6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adfc0732f06cef6e97cccf20c3b1f7b9a"><td class="memTemplParams" colspan="2">template&lt;class... Args&gt; </td></tr>
-<tr class="memitem:adfc0732f06cef6e97cccf20c3b1f7b9a"><td class="memTemplItemLeft" align="right" valign="top">static std::unique_ptr&lt; <a class="el" href="classppht_1_1channel_1_1scanner.html">scanner</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classppht_1_1channel.html#adfc0732f06cef6e97cccf20c3b1f7b9a">make_scanner</a> (Point delta, Args &amp;&amp;...args)</td></tr>
-<tr class="memdesc:adfc0732f06cef6e97cccf20c3b1f7b9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct the appropriate scanner based on the delta vector.  <a href="classppht_1_1channel.html#adfc0732f06cef6e97cccf20c3b1f7b9a">More...</a><br /></td></tr>
-<tr class="separator:adfc0732f06cef6e97cccf20c3b1f7b9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60192296afbe843bb77fb6c1954536af"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
+<tr class="memitem:a60192296afbe843bb77fb6c1954536af"><td class="memTemplItemLeft" align="right" valign="top">static T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classppht_1_1channel.html#a60192296afbe843bb77fb6c1954536af">signum</a> (T value)</td></tr>
+<tr class="separator:a60192296afbe843bb77fb6c1954536af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1855cbb334cf36381ddd5f0d30618d65"><td class="memTemplParams" colspan="2">template&lt;class... Args&gt; </td></tr>
+<tr class="memitem:a1855cbb334cf36381ddd5f0d30618d65"><td class="memTemplItemLeft" align="right" valign="top">static std::unique_ptr&lt; <a class="el" href="classppht_1_1channel_1_1scanner.html">scanner</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classppht_1_1channel.html#a1855cbb334cf36381ddd5f0d30618d65">make_scanner</a> (<a class="el" href="structppht_1_1point__t.html">point_t</a> delta, Args &amp;&amp;...args)</td></tr>
+<tr class="memdesc:a1855cbb334cf36381ddd5f0d30618d65"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct the appropriate scanner based on the delta vector.  <a href="classppht_1_1channel.html#a1855cbb334cf36381ddd5f0d30618d65">More...</a><br /></td></tr>
+<tr class="separator:a1855cbb334cf36381ddd5f0d30618d65"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a34e0577103dfb58473243b572789b951"><td class="memItemLeft" align="right" valign="top">const Point&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1channel.html#a34e0577103dfb58473243b572789b951">_p0</a></td></tr>
-<tr class="separator:a34e0577103dfb58473243b572789b951"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3643f97afee17f776bdf46221d3385af"><td class="memItemLeft" align="right" valign="top">const Point&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1channel.html#a3643f97afee17f776bdf46221d3385af">_p1</a></td></tr>
-<tr class="separator:a3643f97afee17f776bdf46221d3385af"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8b5f252a1bed13caee290ab5c929fdc7"><td class="memItemLeft" align="right" valign="top">const std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1channel.html#a8b5f252a1bed13caee290ab5c929fdc7">_radius</a></td></tr>
-<tr class="separator:a8b5f252a1bed13caee290ab5c929fdc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a923a8e7084cae9666c5debd82bf3812c"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structppht_1_1point__t.html">point_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1channel.html#a923a8e7084cae9666c5debd82bf3812c">_p0</a></td></tr>
+<tr class="separator:a923a8e7084cae9666c5debd82bf3812c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adeb2b848281beade7f021a8b63be232f"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structppht_1_1point__t.html">point_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1channel.html#adeb2b848281beade7f021a8b63be232f">_p1</a></td></tr>
+<tr class="separator:adeb2b848281beade7f021a8b63be232f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0185b29a81e050c3c9386bfbf8b9b188"><td class="memItemLeft" align="right" valign="top">const std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1channel.html#a0185b29a81e050c3c9386bfbf8b9b188">_radius</a></td></tr>
+<tr class="separator:a0185b29a81e050c3c9386bfbf8b9b188"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><div class="compoundTemplParams">template&lt;class Point&gt;<br />
-class ppht::channel&lt; Point &gt;</div><p >An object representing a line segment between two points. </p>
+<div class="textblock"><p >An object representing a line segment between two points. </p>
 <p >A channel instance is an immutable factory object that acts as a pseudo-container for range-based iteration. The values produced are sets of points describing a perpendicular line segment intersecting a canonical point on the ideal line between the two endpoints. In rare cases the canonical point may not be a member of the point set, but is adjacent to one.</p>
 <p >Typical use case:</p>
-<div class="fragment"><div class="line"><span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;[canon, pts] : <a class="code hl_function" href="classppht_1_1channel.html#a3318e7cb73ae13c69edddc99145e25a6">channel</a>{p1, p2, rdus}) {</div>
+<div class="fragment"><div class="line"><span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;[canon, pts] : <a class="code hl_function" href="classppht_1_1channel.html#abde518681661511c6d4e84487b4ef98a">channel</a>{p1, p2, rdus}) {</div>
 <div class="line">  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;[x, y] : pts) {</div>
 <div class="line">    <span class="keywordflow">if</span> (test(x, y)) {</div>
 <div class="line">      segment.insert(canon);</div>
@@ -131,62 +130,27 @@ class ppht::channel&lt; Point &gt;</div><p >An object representing a line segmen
 <div class="line">    }</div>
 <div class="line">  }</div>
 <div class="line">}</div>
-<div class="ttc" id="aclassppht_1_1channel_html_a3318e7cb73ae13c69edddc99145e25a6"><div class="ttname"><a href="classppht_1_1channel.html#a3318e7cb73ae13c69edddc99145e25a6">ppht::channel::channel</a></div><div class="ttdeci">channel(const Point &amp;p0, const Point &amp;p1, std::size_t radius)</div><div class="ttdoc">Construct a channel with given radius between two points.</div><div class="ttdef"><b>Definition:</b> channel.hpp:291</div></div>
-</div><!-- fragment --><dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">Point</td><td>the type used for coordinate pairs </td></tr>
-  </table>
-  </dd>
-</dl>
-</div><h2 class="groupheader">Member Typedef Documentation</h2>
-<a id="a49b7c383379a281e3c479b70cad18b53" name="a49b7c383379a281e3c479b70cad18b53"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a49b7c383379a281e3c479b70cad18b53">&#9670;&nbsp;</a></span>int_t</h2>
+<div class="ttc" id="aclassppht_1_1channel_html_abde518681661511c6d4e84487b4ef98a"><div class="ttname"><a href="classppht_1_1channel.html#abde518681661511c6d4e84487b4ef98a">ppht::channel::channel</a></div><div class="ttdeci">channel(const point_t &amp;p0, const point_t &amp;p1, std::size_t radius)</div><div class="ttdoc">Construct a channel with given radius between two points.</div><div class="ttdef"><b>Definition:</b> channel.hpp:282</div></div>
+</div><!-- fragment --> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="abde518681661511c6d4e84487b4ef98a" name="abde518681661511c6d4e84487b4ef98a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abde518681661511c6d4e84487b4ef98a">&#9670;&nbsp;</a></span>channel()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;class Point &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="classppht_1_1channel.html">ppht::channel</a>&lt; Point &gt;::<a class="el" href="classppht_1_1channel.html#a49b7c383379a281e3c479b70cad18b53">int_t</a> =  std::decay_t&lt; std::common_type_t&lt;decltype(std::get&lt;0&gt;(std::declval&lt;Point&gt;())), decltype(std::get&lt;1&gt;(std::declval&lt;Point&gt;()))&gt; &gt;</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The type of integer used for the coordinates of a point. </p>
-
-</div>
-</div>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a3318e7cb73ae13c69edddc99145e25a6" name="a3318e7cb73ae13c69edddc99145e25a6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3318e7cb73ae13c69edddc99145e25a6">&#9670;&nbsp;</a></span>channel()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class Point &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classppht_1_1channel.html">ppht::channel</a>&lt; Point &gt;::<a class="el" href="classppht_1_1channel.html">channel</a> </td>
+          <td class="memname">ppht::channel::channel </td>
           <td>(</td>
-          <td class="paramtype">const Point &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="structppht_1_1point__t.html">point_t</a> &amp;&#160;</td>
           <td class="paramname"><em>p0</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const Point &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="structppht_1_1point__t.html">point_t</a> &amp;&#160;</td>
           <td class="paramname"><em>p1</em>, </td>
         </tr>
         <tr>
@@ -222,19 +186,17 @@ template&lt;class Point &gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a60d68a9bde5f602befc28e8df47d971d" name="a60d68a9bde5f602befc28e8df47d971d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a60d68a9bde5f602befc28e8df47d971d">&#9670;&nbsp;</a></span>begin()</h2>
+<a id="a170ef6c5fe1364dd52814f484b35a169" name="a170ef6c5fe1364dd52814f484b35a169"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a170ef6c5fe1364dd52814f484b35a169">&#9670;&nbsp;</a></span>begin()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;class Point &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classppht_1_1channel_1_1iterator.html">iterator</a> <a class="el" href="classppht_1_1channel.html">ppht::channel</a>&lt; Point &gt;::begin </td>
+          <td class="memname"><a class="el" href="classppht_1_1channel_1_1iterator.html">iterator</a> ppht::channel::begin </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -252,19 +214,17 @@ template&lt;class Point &gt; </div>
 
 </div>
 </div>
-<a id="ad1409e447158c389acefd7a21ef51eed" name="ad1409e447158c389acefd7a21ef51eed"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad1409e447158c389acefd7a21ef51eed">&#9670;&nbsp;</a></span>end()</h2>
+<a id="a968fc94b6e4272de71fd0731df8985c0" name="a968fc94b6e4272de71fd0731df8985c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a968fc94b6e4272de71fd0731df8985c0">&#9670;&nbsp;</a></span>end()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;class Point &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classppht_1_1channel_1_1iterator.html">iterator</a> <a class="el" href="classppht_1_1channel.html">ppht::channel</a>&lt; Point &gt;::end </td>
+          <td class="memname"><a class="el" href="classppht_1_1channel_1_1iterator.html">iterator</a> ppht::channel::end </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -282,13 +242,11 @@ template&lt;class Point &gt; </div>
 
 </div>
 </div>
-<a id="adfc0732f06cef6e97cccf20c3b1f7b9a" name="adfc0732f06cef6e97cccf20c3b1f7b9a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adfc0732f06cef6e97cccf20c3b1f7b9a">&#9670;&nbsp;</a></span>make_scanner()</h2>
+<a id="a1855cbb334cf36381ddd5f0d30618d65" name="a1855cbb334cf36381ddd5f0d30618d65"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1855cbb334cf36381ddd5f0d30618d65">&#9670;&nbsp;</a></span>make_scanner()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;class Point &gt; </div>
 <div class="memtemplate">
 template&lt;class... Args&gt; </div>
 <table class="mlabels">
@@ -296,9 +254,9 @@ template&lt;class... Args&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static std::unique_ptr&lt; <a class="el" href="classppht_1_1channel_1_1scanner.html">scanner</a> &gt; <a class="el" href="classppht_1_1channel.html">ppht::channel</a>&lt; Point &gt;::make_scanner </td>
+          <td class="memname">static std::unique_ptr&lt; <a class="el" href="classppht_1_1channel_1_1scanner.html">scanner</a> &gt; ppht::channel::make_scanner </td>
           <td>(</td>
-          <td class="paramtype">Point&#160;</td>
+          <td class="paramtype"><a class="el" href="structppht_1_1point__t.html">point_t</a>&#160;</td>
           <td class="paramname"><em>delta</em>, </td>
         </tr>
         <tr>
@@ -332,21 +290,21 @@ template&lt;class... Args&gt; </div>
 
 </div>
 </div>
-<a id="a7868f42ab58bab771352ee54cca40a6a" name="a7868f42ab58bab771352ee54cca40a6a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7868f42ab58bab771352ee54cca40a6a">&#9670;&nbsp;</a></span>signum()</h2>
+<a id="a60192296afbe843bb77fb6c1954536af" name="a60192296afbe843bb77fb6c1954536af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a60192296afbe843bb77fb6c1954536af">&#9670;&nbsp;</a></span>signum()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Point &gt; </div>
+template&lt;class T &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static auto <a class="el" href="classppht_1_1channel.html">ppht::channel</a>&lt; Point &gt;::signum </td>
+          <td class="memname">static T ppht::channel::signum </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classppht_1_1channel.html#a49b7c383379a281e3c479b70cad18b53">int_t</a>&#160;</td>
+          <td class="paramtype">T&#160;</td>
           <td class="paramname"><em>value</em></td><td>)</td>
           <td></td>
         </tr>
@@ -361,19 +319,17 @@ template&lt;class Point &gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a34e0577103dfb58473243b572789b951" name="a34e0577103dfb58473243b572789b951"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a34e0577103dfb58473243b572789b951">&#9670;&nbsp;</a></span>_p0</h2>
+<a id="a923a8e7084cae9666c5debd82bf3812c" name="a923a8e7084cae9666c5debd82bf3812c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a923a8e7084cae9666c5debd82bf3812c">&#9670;&nbsp;</a></span>_p0</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;class Point &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const Point <a class="el" href="classppht_1_1channel.html">ppht::channel</a>&lt; Point &gt;::_p0</td>
+          <td class="memname">const <a class="el" href="structppht_1_1point__t.html">point_t</a> ppht::channel::_p0</td>
         </tr>
       </table>
   </td>
@@ -385,19 +341,17 @@ template&lt;class Point &gt; </div>
 
 </div>
 </div>
-<a id="a3643f97afee17f776bdf46221d3385af" name="a3643f97afee17f776bdf46221d3385af"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3643f97afee17f776bdf46221d3385af">&#9670;&nbsp;</a></span>_p1</h2>
+<a id="adeb2b848281beade7f021a8b63be232f" name="adeb2b848281beade7f021a8b63be232f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adeb2b848281beade7f021a8b63be232f">&#9670;&nbsp;</a></span>_p1</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;class Point &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const Point <a class="el" href="classppht_1_1channel.html">ppht::channel</a>&lt; Point &gt;::_p1</td>
+          <td class="memname">const <a class="el" href="structppht_1_1point__t.html">point_t</a> ppht::channel::_p1</td>
         </tr>
       </table>
   </td>
@@ -409,19 +363,17 @@ template&lt;class Point &gt; </div>
 
 </div>
 </div>
-<a id="a8b5f252a1bed13caee290ab5c929fdc7" name="a8b5f252a1bed13caee290ab5c929fdc7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8b5f252a1bed13caee290ab5c929fdc7">&#9670;&nbsp;</a></span>_radius</h2>
+<a id="a0185b29a81e050c3c9386bfbf8b9b188" name="a0185b29a81e050c3c9386bfbf8b9b188"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0185b29a81e050c3c9386bfbf8b9b188">&#9670;&nbsp;</a></span>_radius</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;class Point &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const std::size_t <a class="el" href="classppht_1_1channel.html">ppht::channel</a>&lt; Point &gt;::_radius</td>
+          <td class="memname">const std::size_t ppht::channel::_radius</td>
         </tr>
       </table>
   </td>
@@ -434,7 +386,7 @@ template&lt;class Point &gt; </div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>ppht/<a class="el" href="channel_8hpp_source.html">channel.hpp</a></li>
+<li>include/<a class="el" href="channel_8hpp_source.html">channel.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

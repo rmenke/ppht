@@ -1,5 +1,5 @@
-<map id="ppht::channel&lt; Point &gt;::scanner" name="ppht::channel&lt; Point &gt;::scanner">
-<area shape="rect" id="node1" title="An interface used to advance the iterator." alt="" coords="5,40,149,79"/>
-<area shape="rect" id="node2" href="$classppht_1_1channel_1_1axial__scanner.html" title="A scanner optimized for axial lines." alt="" coords="197,5,375,44"/>
-<area shape="rect" id="node3" href="$classppht_1_1channel_1_1bresenham__scanner.html" title="A general Bresenham&#45;Murphy thick line scanner." alt="" coords="205,68,367,120"/>
+<map id="ppht::channel::scanner" name="ppht::channel::scanner">
+<area shape="rect" id="node1" title="An interface used to advance the iterator." alt="" coords="85,5,241,31"/>
+<area shape="rect" id="node2" href="$classppht_1_1channel_1_1axial__scanner.html" title="A scanner optimized for axial lines." alt="" coords="5,79,142,117"/>
+<area shape="rect" id="node3" href="$classppht_1_1channel_1_1bresenham__scanner.html" title="A general Bresenham&#45;Murphy thick line scanner." alt="" coords="166,79,341,117"/>
 </map>

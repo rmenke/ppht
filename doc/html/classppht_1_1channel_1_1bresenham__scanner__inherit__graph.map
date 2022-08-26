@@ -1,4 +1,4 @@
-<map id="ppht::channel&lt; Point &gt;::bresenham_scanner&lt; Major &gt;" name="ppht::channel&lt; Point &gt;::bresenham_scanner&lt; Major &gt;">
-<area shape="rect" id="node1" title="A general Bresenham&#45;Murphy thick line scanner." alt="" coords="5,92,167,144"/>
-<area shape="rect" id="node2" href="$classppht_1_1channel_1_1scanner.html" title="An interface used to advance the iterator." alt="" coords="15,5,158,44"/>
+<map id="ppht::channel::bresenham_scanner&lt; Major &gt;" name="ppht::channel::bresenham_scanner&lt; Major &gt;">
+<area shape="rect" id="node1" title="A general Bresenham&#45;Murphy thick line scanner." alt="" coords="5,79,181,117"/>
+<area shape="rect" id="node2" href="$classppht_1_1channel_1_1scanner.html" title="An interface used to advance the iterator." alt="" coords="15,5,171,31"/>
 </map>

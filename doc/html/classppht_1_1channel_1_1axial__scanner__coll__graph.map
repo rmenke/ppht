@@ -1,4 +1,6 @@
-<map id="ppht::channel&lt; Point &gt;::axial_scanner&lt; Major &gt;" name="ppht::channel&lt; Point &gt;::axial_scanner&lt; Major &gt;">
-<area shape="rect" id="node1" title="A scanner optimized for axial lines." alt="" coords="5,92,184,131"/>
-<area shape="rect" id="node2" href="$classppht_1_1channel_1_1scanner.html" title="An interface used to advance the iterator." alt="" coords="23,5,166,44"/>
+<map id="ppht::channel::axial_scanner&lt; Major &gt;" name="ppht::channel::axial_scanner&lt; Major &gt;">
+<area shape="rect" id="node1" title="A scanner optimized for axial lines." alt="" coords="63,167,200,205"/>
+<area shape="rect" id="node2" href="$classppht_1_1channel_1_1scanner.html" title="An interface used to advance the iterator." alt="" coords="5,80,162,105"/>
+<area shape="rect" id="node3" href="$structppht_1_1point__t.html" title="A basic integral point." alt="" coords="185,80,280,105"/>
+<area shape="rect" id="node4" title=" " alt="" coords="163,5,303,31"/>
 </map>

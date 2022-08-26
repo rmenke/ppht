@@ -25,7 +25,7 @@ MathJax.Hub.Config({
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">PPHT<span id="projectnumber">&#160;2.0.0-alpha.5</span>
+   <div id="projectname">PPHT<span id="projectnumber">&#160;2.0.0-alpha.11</span>
    </div>
    <div id="projectbrief">An implementation of PPHT as a header-only library</div>
   </td>
@@ -91,6 +91,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1c53c201dc3a59ae1fbe60232587d94e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1state.html#a1c53c201dc3a59ae1fbe60232587d94e">next</a> (<a class="el" href="structppht_1_1point__t.html">point_t</a> &amp;point)</td></tr>
 <tr class="memdesc:a1c53c201dc3a59ae1fbe60232587d94e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a random pixel with <code>pending</code> status.  <a href="classppht_1_1state.html#a1c53c201dc3a59ae1fbe60232587d94e">More...</a><br /></td></tr>
 <tr class="separator:a1c53c201dc3a59ae1fbe60232587d94e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f6f457e7ddff39c14fd5b00728ced30"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classppht_1_1segment__t.html">segment_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classppht_1_1state.html#a6f6f457e7ddff39c14fd5b00728ced30">line_intersect</a> (<a class="el" href="namespaceppht.html#a396a33a395bd44d0f83357c8efe2d9b3">line_t</a> const &amp;line) const</td></tr>
+<tr class="memdesc:a6f6f457e7ddff39c14fd5b00728ced30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find the portion of the line that lies within the bounds of the bitmap.  <a href="classppht_1_1state.html#a6f6f457e7ddff39c14fd5b00728ced30">More...</a><br /></td></tr>
+<tr class="separator:a6f6f457e7ddff39c14fd5b00728ced30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-types" name="pri-types"></a>
 Private Types</h2></td></tr>
@@ -274,6 +277,44 @@ template&lt;template&lt; class &gt; class Raster = raster&gt; </div>
 
 <p>Get the number of columns of the state image. </p>
 <dl class="section return"><dt>Returns</dt><dd>the width of the underlying raster. </dd></dl>
+
+</div>
+</div>
+<a id="a6f6f457e7ddff39c14fd5b00728ced30" name="a6f6f457e7ddff39c14fd5b00728ced30"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f6f457e7ddff39c14fd5b00728ced30">&#9670;&nbsp;</a></span>line_intersect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;template&lt; class &gt; class Raster = raster&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classppht_1_1segment__t.html">segment_t</a> <a class="el" href="classppht_1_1state.html">ppht::state</a>&lt; Raster &gt;::line_intersect </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespaceppht.html#a396a33a395bd44d0f83357c8efe2d9b3">line_t</a> const &amp;&#160;</td>
+          <td class="paramname"><em>line</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Find the portion of the line that lies within the bounds of the bitmap. </p>
+<p >Given a line in \(\theta\rho\)-space, return the line segment that is the portion of the line that intersects the bitmap.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">line</td><td>the line in \((\theta,\rho)\) format</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the portion of the line within the bounds of the bitmap in integral coordinates. </dd></dl>
 
 </div>
 </div>
@@ -534,7 +575,7 @@ template&lt;template&lt; class &gt; class Raster = raster&gt; </div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>ppht/<a class="el" href="state_8hpp_source.html">state.hpp</a></li>
+<li>include/<a class="el" href="state_8hpp_source.html">state.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

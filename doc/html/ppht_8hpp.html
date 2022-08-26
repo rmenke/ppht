@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>PPHT: ppht.hpp File Reference</title>
+<title>PPHT: include/ppht.hpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,7 +25,7 @@ MathJax.Hub.Config({
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">PPHT<span id="projectnumber">&#160;2.0.0-alpha.5</span>
+   <div id="projectname">PPHT<span id="projectnumber">&#160;2.0.0-alpha.11</span>
    </div>
    <div id="projectbrief">An implementation of PPHT as a header-only library</div>
   </td>
@@ -45,6 +45,10 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
@@ -53,16 +57,16 @@ $(function() {
   <div class="headertitle"><div class="title">ppht.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="accumulator_8hpp_source.html">ppht/accumulator.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="parameters_8hpp_source.html">ppht/parameters.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="point__set_8hpp_source.html">ppht/point_set.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="postprocess_8hpp_source.html">ppht/postprocess.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="raster_8hpp_source.html">ppht/raster.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="state_8hpp_source.html">ppht/state.hpp</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="accumulator_8hpp_source.html">accumulator.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="point__set_8hpp_source.html">point_set.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="postprocess_8hpp_source.html">postprocess.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="raster_8hpp_source.html">raster.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="state_8hpp_source.html">state.hpp</a>&quot;</code><br />
+<code>#include &lt;cstdint&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for ppht.hpp:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="ppht_8hpp__incl.svg" width="2319" height="330"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="ppht_8hpp__incl.svg" width="2000" height="403"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div>
@@ -76,10 +80,10 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a65cf942dc09d432abd4bac48af8804ed"><td class="memTemplParams" colspan="2">template&lt;class State , class Accumulator  = accumulator&lt;&gt;&gt; </td></tr>
-<tr class="memitem:a65cf942dc09d432abd4bac48af8804ed"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; segment_t &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceppht.html#a65cf942dc09d432abd4bac48af8804ed">ppht::find_segments</a> (State &amp;&amp;state, const parameters &amp;param=parameters{}, std::random_device::result_type seed=std::random_device{}())</td></tr>
-<tr class="memdesc:a65cf942dc09d432abd4bac48af8804ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simplified interface to the PPHT algorithm.  <a href="namespaceppht.html#a65cf942dc09d432abd4bac48af8804ed">More...</a><br /></td></tr>
-<tr class="separator:a65cf942dc09d432abd4bac48af8804ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1eb27c0993932833f2906edccb27b15"><td class="memTemplParams" colspan="2">template&lt;class State , class Accumulator  = accumulator&lt;&gt;&gt; </td></tr>
+<tr class="memitem:ac1eb27c0993932833f2906edccb27b15"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; segment_t &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceppht.html#ac1eb27c0993932833f2906edccb27b15">ppht::find_segments</a> (State &amp;&amp;state, std::uint16_t channel_width=3, std::uint16_t max_gap=3, std::uint16_t min_length=10, std::random_device::result_type seed=std::random_device{}())</td></tr>
+<tr class="memdesc:ac1eb27c0993932833f2906edccb27b15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simplified interface to the PPHT algorithm.  <a href="namespaceppht.html#ac1eb27c0993932833f2906edccb27b15">More...</a><br /></td></tr>
+<tr class="separator:ac1eb27c0993932833f2906edccb27b15"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 <!-- start footer part -->

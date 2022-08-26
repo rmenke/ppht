@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>PPHT: ppht.hpp Source File</title>
+<title>PPHT: include/ppht.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,7 +25,7 @@ MathJax.Hub.Config({
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">PPHT<span id="projectnumber">&#160;2.0.0-alpha.5</span>
+   <div id="projectname">PPHT<span id="projectnumber">&#160;2.0.0-alpha.11</span>
    </div>
    <div id="projectbrief">An implementation of PPHT as a header-only library</div>
   </td>
@@ -45,6 +45,10 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
 </div><!-- top -->
 <div class="header">
   <div class="headertitle"><div class="title">ppht.hpp</div></div>
@@ -56,62 +60,65 @@ $(function() {
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="preprocessor">#ifndef ppht_hpp</span></div>
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="preprocessor">#define ppht_hpp</span></div>
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="preprocessor">#include &quot;<a class="code" href="accumulator_8hpp.html">ppht/accumulator.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="preprocessor">#include &quot;<a class="code" href="parameters_8hpp.html">ppht/parameters.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="preprocessor">#include &quot;<a class="code" href="point__set_8hpp.html">ppht/point_set.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="preprocessor">#include &quot;<a class="code" href="postprocess_8hpp.html">ppht/postprocess.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="preprocessor">#include &quot;<a class="code" href="raster_8hpp.html">ppht/raster.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span><span class="preprocessor">#include &quot;<a class="code" href="state_8hpp.html">ppht/state.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceppht.html">ppht</a> {</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span><span class="keyword">template</span> &lt;<span class="keyword">class</span> State, <span class="keyword">class</span> Accumulator = accumulator&lt;&gt;&gt;</div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>std::vector&lt;segment_t&gt;</div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno"><a class="line" href="namespaceppht.html#a65cf942dc09d432abd4bac48af8804ed">  151</a></span><a class="code hl_function" href="namespaceppht.html#a65cf942dc09d432abd4bac48af8804ed">find_segments</a>(State &amp;&amp;<a class="code hl_class" href="classppht_1_1state.html">state</a>, <span class="keyword">const</span> <a class="code hl_struct" href="structppht_1_1parameters.html">parameters</a> &amp;param = <a class="code hl_struct" href="structppht_1_1parameters.html">parameters</a>{},</div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>              std::random_device::result_type seed = std::random_device{}()) {</div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>    <span class="keyword">const</span> <span class="keyword">auto</span> min_length_squared = param.min_length * param.min_length;</div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span> </div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    std::vector&lt;segment_t&gt; segments;</div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span> </div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>    Accumulator accumulator{state.rows(), state.cols(), param, seed};</div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span> </div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>    point_t point;</div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span> </div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    <span class="keyword">const</span> <span class="keyword">auto</span> channel_radius = param.channel_width &gt;&gt; 1;</div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span> </div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    <span class="keywordflow">while</span> (state.next(point)) {</div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>        segment_t scan_channel;</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="preprocessor">#include &quot;<a class="code" href="accumulator_8hpp.html">accumulator.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="preprocessor">#include &quot;<a class="code" href="point__set_8hpp.html">point_set.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="preprocessor">#include &quot;<a class="code" href="postprocess_8hpp.html">postprocess.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="preprocessor">#include &quot;<a class="code" href="raster_8hpp.html">raster.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="preprocessor">#include &quot;<a class="code" href="state_8hpp.html">state.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="preprocessor">#include &lt;cstdint&gt;</span></div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceppht.html">ppht</a> {</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span><span class="keyword">template</span> &lt;<span class="keyword">class</span> State, <span class="keyword">class</span> Accumulator = accumulator&lt;&gt;&gt;</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno"><a class="line" href="namespaceppht.html#ac1eb27c0993932833f2906edccb27b15">  148</a></span>std::vector&lt;segment_t&gt; <a class="code hl_function" href="namespaceppht.html#ac1eb27c0993932833f2906edccb27b15">find_segments</a>(</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    State &amp;&amp;<a class="code hl_class" href="classppht_1_1state.html">state</a>, std::uint16_t channel_width = 3,</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    std::uint16_t max_gap = 3, std::uint16_t min_length = 10,</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>    std::random_device::result_type seed = std::random_device{}()) {</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    <span class="keyword">const</span> <span class="keyword">auto</span> min_length_squared = min_length * min_length;</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span> </div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    std::vector&lt;segment_t&gt; segments;</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span> </div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    Accumulator accumulator{state.rows(), state.cols(), seed};</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span> </div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    point_t point;</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span> </div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    <span class="keyword">const</span> <span class="keyword">auto</span> channel_radius = channel_width &gt;&gt; 1;</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span> </div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    <span class="keywordflow">while</span> (state.next(point)) {</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span> result = accumulator.vote(point); result) {</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>            <span class="keyword">auto</span> <span class="keyword">const</span> scan_channel = state.line_intersect(*result);</div>
 <div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span> </div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>        <span class="keywordflow">if</span> (accumulator.vote(point, scan_channel)) {</div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>            point_set found = <a class="code hl_function" href="namespaceppht.html#a9f07cf00007b3c094373ca8b4c7bf6bd">scan</a>(state, scan_channel, channel_radius,</div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>                                   param.max_gap);</div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span> </div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>            <span class="keywordflow">if</span> (found.length_squared() &gt;= min_length_squared) {</div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>                <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;&amp;point : found) {</div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>                    <span class="keyword">auto</span> status = state.status(point);</div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span> </div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>                    <span class="keywordflow">if</span> (status == <a class="code hl_enumvalue" href="namespaceppht.html#a62df3910999f59d178dd7090a4c89d86ae6c5099536830b50645dc1f77dfc4873">status_t::voted</a>) {</div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>                        accumulator.unvote(point);</div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>                    }</div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>                    <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>                        <span class="keywordflow">if</span> (status != <a class="code hl_enumvalue" href="namespaceppht.html#a62df3910999f59d178dd7090a4c89d86afb573f653d4d73258e47c80e98bad364">status_t::pending</a>) {</div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>                            <span class="keyword">using namespace </span>std;</div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>                            <span class="keywordflow">throw</span> std::logic_error{</div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>                                <span class="stringliteral">&quot;Unexpected pixel with status &quot;</span>s +</div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>                                to_string(status)};</div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>                        }</div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>                    }</div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span> </div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>                    state.mark_done(point);</div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>                }</div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span> </div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>                segments.push_back(found.segment());</div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>            }</div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>        }</div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>    }</div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span> </div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>    segments.erase(<a class="code hl_function" href="namespaceppht.html#a09260eb4004b9decd7ae86a0263afd51">postprocess</a>(segments.begin(), segments.end(),</div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>                               channel_radius), segments.end());</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>            point_set found =</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>                <a class="code hl_function" href="namespaceppht.html#a9f07cf00007b3c094373ca8b4c7bf6bd">scan</a>(state, scan_channel, channel_radius, max_gap);</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span> </div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>            <span class="keywordflow">if</span> (found.length_squared() &gt;= min_length_squared) {</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>                <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;&amp;point : found) {</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>                    <span class="keyword">auto</span> status = state.status(point);</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span> </div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>                    <span class="keywordflow">if</span> (status == <a class="code hl_enumvalue" href="namespaceppht.html#a62df3910999f59d178dd7090a4c89d86ae6c5099536830b50645dc1f77dfc4873">status_t::voted</a>) {</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>                        accumulator.unvote(point);</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>                    }</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>                    <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>                        <span class="keywordflow">if</span> (status != <a class="code hl_enumvalue" href="namespaceppht.html#a62df3910999f59d178dd7090a4c89d86afb573f653d4d73258e47c80e98bad364">status_t::pending</a>) {</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>                            <span class="keyword">using namespace </span>std;</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>                            <span class="keywordflow">throw</span> std::logic_error{</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>                                <span class="stringliteral">&quot;Unexpected pixel with status &quot;</span>s +</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>                                to_string(status)};</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>                        }</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>                    }</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span> </div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>                    state.mark_done(point);</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>                }</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span> </div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>                segments.push_back(found.segment());</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>            }</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>        }</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>    }</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span> </div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>    segments.erase(</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>        <a class="code hl_function" href="namespaceppht.html#a09260eb4004b9decd7ae86a0263afd51">postprocess</a>(segments.begin(), segments.end(), channel_radius),</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>        segments.end());</div>
 <div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span> </div>
 <div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>    <span class="keywordflow">return</span> segments;</div>
 <div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>}</div>
@@ -120,19 +127,17 @@ $(function() {
 <div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span> </div>
 <div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span><span class="preprocessor">#endif </span><span class="comment">/* ppht_hpp */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="aaccumulator_8hpp_html"><div class="ttname"><a href="accumulator_8hpp.html">accumulator.hpp</a></div></div>
-<div class="ttc" id="aclassppht_1_1state_html"><div class="ttname"><a href="classppht_1_1state.html">ppht::state</a></div><div class="ttdoc">The state class represents the current state of the algorithm.</div><div class="ttdef"><b>Definition:</b> state.hpp:31</div></div>
-<div class="ttc" id="anamespaceppht_html"><div class="ttname"><a href="namespaceppht.html">ppht</a></div><div class="ttdoc">The basic namespace of the library.</div></div>
+<div class="ttc" id="aclassppht_1_1state_html"><div class="ttname"><a href="classppht_1_1state.html">ppht::state</a></div><div class="ttdoc">The state class represents the current state of the algorithm.</div><div class="ttdef"><b>Definition:</b> state.hpp:32</div></div>
+<div class="ttc" id="anamespaceppht_html"><div class="ttname"><a href="namespaceppht.html">ppht</a></div><div class="ttdoc">The basic namespace of the library.</div><div class="ttdef"><b>Definition:</b> accumulator.hpp:28</div></div>
 <div class="ttc" id="anamespaceppht_html_a09260eb4004b9decd7ae86a0263afd51"><div class="ttname"><a href="namespaceppht.html#a09260eb4004b9decd7ae86a0263afd51">ppht::postprocess</a></div><div class="ttdeci">ForwardIt postprocess(ForwardIt begin, ForwardIt end, unsigned limit)</div><div class="ttdef"><b>Definition:</b> postprocess.hpp:44</div></div>
-<div class="ttc" id="anamespaceppht_html_a62df3910999f59d178dd7090a4c89d86ae6c5099536830b50645dc1f77dfc4873"><div class="ttname"><a href="namespaceppht.html#a62df3910999f59d178dd7090a4c89d86ae6c5099536830b50645dc1f77dfc4873">ppht::voted</a></div><div class="ttdeci">@ voted</div><div class="ttdoc">Pixel is set and voted.</div><div class="ttdef"><b>Definition:</b> types.hpp:103</div></div>
-<div class="ttc" id="anamespaceppht_html_a62df3910999f59d178dd7090a4c89d86afb573f653d4d73258e47c80e98bad364"><div class="ttname"><a href="namespaceppht.html#a62df3910999f59d178dd7090a4c89d86afb573f653d4d73258e47c80e98bad364">ppht::pending</a></div><div class="ttdeci">@ pending</div><div class="ttdoc">Pixel is set but not yet voted.</div><div class="ttdef"><b>Definition:</b> types.hpp:102</div></div>
-<div class="ttc" id="anamespaceppht_html_a65cf942dc09d432abd4bac48af8804ed"><div class="ttname"><a href="namespaceppht.html#a65cf942dc09d432abd4bac48af8804ed">ppht::find_segments</a></div><div class="ttdeci">std::vector&lt; segment_t &gt; find_segments(State &amp;&amp;state, const parameters &amp;param=parameters{}, std::random_device::result_type seed=std::random_device{}())</div><div class="ttdoc">Simplified interface to the PPHT algorithm.</div><div class="ttdef"><b>Definition:</b> ppht.hpp:151</div></div>
-<div class="ttc" id="anamespaceppht_html_a9f07cf00007b3c094373ca8b4c7bf6bd"><div class="ttname"><a href="namespaceppht.html#a9f07cf00007b3c094373ca8b4c7bf6bd">ppht::scan</a></div><div class="ttdeci">point_set scan(state&lt; Raster &gt; &amp;s, segment_t const &amp;segment, unsigned radius, unsigned max_gap)</div><div class="ttdoc">Trace a scan channel.</div><div class="ttdef"><b>Definition:</b> state.hpp:216</div></div>
-<div class="ttc" id="aparameters_8hpp_html"><div class="ttname"><a href="parameters_8hpp.html">parameters.hpp</a></div></div>
+<div class="ttc" id="anamespaceppht_html_a62df3910999f59d178dd7090a4c89d86ae6c5099536830b50645dc1f77dfc4873"><div class="ttname"><a href="namespaceppht.html#a62df3910999f59d178dd7090a4c89d86ae6c5099536830b50645dc1f77dfc4873">ppht::voted</a></div><div class="ttdeci">@ voted</div><div class="ttdoc">Pixel is set and voted.</div><div class="ttdef"><b>Definition:</b> types.hpp:106</div></div>
+<div class="ttc" id="anamespaceppht_html_a62df3910999f59d178dd7090a4c89d86afb573f653d4d73258e47c80e98bad364"><div class="ttname"><a href="namespaceppht.html#a62df3910999f59d178dd7090a4c89d86afb573f653d4d73258e47c80e98bad364">ppht::pending</a></div><div class="ttdeci">@ pending</div><div class="ttdoc">Pixel is set but not yet voted.</div><div class="ttdef"><b>Definition:</b> types.hpp:105</div></div>
+<div class="ttc" id="anamespaceppht_html_a9f07cf00007b3c094373ca8b4c7bf6bd"><div class="ttname"><a href="namespaceppht.html#a9f07cf00007b3c094373ca8b4c7bf6bd">ppht::scan</a></div><div class="ttdeci">point_set scan(state&lt; Raster &gt; &amp;s, segment_t const &amp;segment, unsigned radius, unsigned max_gap)</div><div class="ttdoc">Trace a scan channel.</div><div class="ttdef"><b>Definition:</b> state.hpp:281</div></div>
+<div class="ttc" id="anamespaceppht_html_ac1eb27c0993932833f2906edccb27b15"><div class="ttname"><a href="namespaceppht.html#ac1eb27c0993932833f2906edccb27b15">ppht::find_segments</a></div><div class="ttdeci">std::vector&lt; segment_t &gt; find_segments(State &amp;&amp;state, std::uint16_t channel_width=3, std::uint16_t max_gap=3, std::uint16_t min_length=10, std::random_device::result_type seed=std::random_device{}())</div><div class="ttdoc">Simplified interface to the PPHT algorithm.</div><div class="ttdef"><b>Definition:</b> ppht.hpp:148</div></div>
 <div class="ttc" id="apoint__set_8hpp_html"><div class="ttname"><a href="point__set_8hpp.html">point_set.hpp</a></div></div>
 <div class="ttc" id="apostprocess_8hpp_html"><div class="ttname"><a href="postprocess_8hpp.html">postprocess.hpp</a></div></div>
 <div class="ttc" id="araster_8hpp_html"><div class="ttname"><a href="raster_8hpp.html">raster.hpp</a></div></div>
 <div class="ttc" id="astate_8hpp_html"><div class="ttname"><a href="state_8hpp.html">state.hpp</a></div></div>
-<div class="ttc" id="astructppht_1_1parameters_html"><div class="ttname"><a href="structppht_1_1parameters.html">ppht::parameters</a></div><div class="ttdoc">The tunable parameters of the analyzer.</div><div class="ttdef"><b>Definition:</b> parameters.hpp:18</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
