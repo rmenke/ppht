@@ -51,7 +51,7 @@ int main() {
 
     test_plan plan;
 
-    std::vector<ppht::segment_t> segments;
+    std::vector<std::pair<ppht::point_t, ppht::point_t>> segments;
 
     segments.push_back({{0, 0}, {50, 1}});
     segments.push_back({{100, 0}, {51, 0}});
@@ -64,7 +64,7 @@ int main() {
     segments.erase(end, segments.end());
 
     eq(1, segments.size());
-    eq(ppht::segment_t{{0, 0}, {150, 0}}, segments[0]);
+    eq(std::make_pair(ppht::point_t{0, 0}, ppht::point_t{150, 0}), segments[0]);
 
     segments.clear();
 

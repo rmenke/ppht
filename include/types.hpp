@@ -20,7 +20,8 @@ struct point_t : std::array<long, 2> {
         std::get<1>(*this) = 0;
     }
 
-    point_t(long a, long b) : std::array<long, 2>({{a, b}}) {}
+    point_t(long a, long b)
+        : std::array<long, 2>({{a, b}}) {}
 
     long length_squared() const {
         auto &x = std::get<0>(*this);
@@ -32,22 +33,22 @@ struct point_t : std::array<long, 2> {
         return std::hypot(std::get<0>(*this), std::get<1>(*this));
     }
 
-    point_t operator +(const point_t &p) const {
+    point_t operator+(const point_t &p) const {
         return {std::get<0>(*this) + std::get<0>(p),
                 std::get<1>(*this) + std::get<1>(p)};
     }
 
-    point_t operator -(const point_t &p) const {
+    point_t operator-(const point_t &p) const {
         return {std::get<0>(*this) - std::get<0>(p),
                 std::get<1>(*this) - std::get<1>(p)};
     }
 
-    point_t operator *(const point_t &p) const {
+    point_t operator*(const point_t &p) const {
         return {std::get<0>(*this) * std::get<0>(p),
                 std::get<1>(*this) * std::get<1>(p)};
     }
 
-    point_t operator /(long d) const {
+    point_t operator/(long d) const {
         return {std::get<0>(*this) / d, std::get<1>(*this) / d};
     }
 
@@ -57,55 +58,48 @@ struct point_t : std::array<long, 2> {
                std::get<1>(*this) * std::get<1>(p);
     }
 
-    friend std::ostream &operator <<(std::ostream &o, const point_t &p) {
+    friend std::ostream &operator<<(std::ostream &o, const point_t &p) {
         return o << "(" << std::get<0>(p) << ", " << std::get<1>(p) << ")";
     }
 };
 
-/**
- * A pair of points representing a line segment.
- */
-class segment_t : public std::pair<point_t, point_t> {
-    using std::pair<point_t, point_t>::pair;
+/// @brief Equal-to operator for pairs of points.
+///
+/// Pairs of points represent primitive line segments, and should be
+/// considered non-directional.
+///
+/// @param a a line segment
+/// @param b a line segment
+/// @return true if the endpoints are equal pairwise
+inline bool operator==(const std::pair<point_t, point_t> &a,
+                       const std::pair<point_t, point_t> &b) {
+    return (a.first == b.first && a.second == b.second) ||
+           (a.first == b.second && a.second == b.first);
+}
 
-public:
-    /**
-     * Implementation of the equality predicate.
-     *
-     * Segments are equivalent if they have the same endpoints in
-     * either order.
-     *
-     * @param rhs the segment to compare
-     *
-     * @return true if the segments are equal
-     */
-    bool operator ==(const segment_t &rhs) const {
-        return (first == rhs.first && second == rhs.second)
-            || (first == rhs.second && second == rhs.first);
-    }
-
-    /**
-     * Implementation of the inequality predicate.
-     *
-     * @param rhs the segment to compare
-     *
-     * @return true if the segments are not equal
-     */
-    bool operator !=(const segment_t &rhs) const {
-        return !operator ==(rhs);
-    }
-};
+/// @brief Not-equal-to operator for pairs of points.
+///
+/// Pairs of points represent primitive line segments, and should be
+/// considered non-directional.
+///
+/// @param a a line segment
+/// @param b a line segment
+/// @return false if the endpoints are equal pairwise
+inline bool operator!=(const std::pair<point_t, point_t> &a,
+                       const std::pair<point_t, point_t> &b) {
+    return !operator==(a, b);
+}
 
 /// The definition of a line in Hough space.
 using line_t = std::pair<std::size_t, double>;
 
 /// The status of a pixel in a @ref state map.
 enum status_t {
-    unset,                      ///< Pixel is unset.
-    pending,                    ///< Pixel is set but not yet voted.
-    voted,                      ///< Pixel is set and voted.
-    done                        ///< Pixel has been incorporated into
-                                ///  a segment.
+    unset,   ///< Pixel is unset.
+    pending, ///< Pixel is set but not yet voted.
+    voted,   ///< Pixel is set and voted.
+    done     ///< Pixel has been incorporated into
+             ///  a segment.
 };
 
 } // namespace ppht

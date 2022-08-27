@@ -145,13 +145,13 @@ namespace ppht {
  * @returns a vector of line segments
  */
 template <class State, class Accumulator = accumulator<>>
-std::vector<segment_t> find_segments(
+std::vector<std::pair<point_t, point_t>> find_segments(
     State &&state, std::uint16_t channel_width = 3,
     std::uint16_t max_gap = 3, std::uint16_t min_length = 10,
     std::random_device::result_type seed = std::random_device{}()) {
     const auto min_length_squared = min_length * min_length;
 
-    std::vector<segment_t> segments;
+    std::vector<std::pair<point_t, point_t>> segments;
 
     Accumulator accumulator{state.rows(), state.cols(), seed};
 

@@ -103,18 +103,18 @@ int main() {
 
     auto actual = find_segments(image_01, 3, 3, 10, seed);
 
-    std::vector<segment_t> expected = {segment_t{{20, 20}, {100, 20}},
-                                       segment_t{{20, 20}, {20, 100}},
-                                       segment_t{{100, 20}, {100, 100}},
-                                       segment_t{{20, 100}, {100, 100}},
-                                       segment_t{{120, 20}, {200, 20}},
-                                       segment_t{{120, 20}, {120, 100}},
-                                       segment_t{{200, 20}, {200, 100}},
-                                       segment_t{{120, 100}, {200, 100}},
-                                       segment_t{{220, 20}, {300, 20}},
-                                       segment_t{{220, 20}, {220, 100}},
-                                       segment_t{{300, 20}, {300, 100}},
-                                       segment_t{{220, 100}, {300, 100}}};
+    std::vector<std::pair<point_t, point_t>> expected = {{{20, 20}, {100, 20}},
+                                       {{20, 20}, {20, 100}},
+                                       {{100, 20}, {100, 100}},
+                                       {{20, 100}, {100, 100}},
+                                       {{120, 20}, {200, 20}},
+                                       {{120, 20}, {120, 100}},
+                                       {{200, 20}, {200, 100}},
+                                       {{120, 100}, {200, 100}},
+                                       {{220, 20}, {300, 20}},
+                                       {{220, 20}, {220, 100}},
+                                       {{300, 20}, {300, 100}},
+                                       {{220, 100}, {300, 100}}};
 
     static auto within = [](const point_t &p1, const point_t &p2) {
         auto dx = static_cast<double>(p1[0]) - p2[0];
@@ -122,7 +122,7 @@ int main() {
         return dx * dx + dy * dy <= 25.0;
     };
 
-    static auto similar = [](const segment_t &s1, const segment_t &s2) {
+    static auto similar = [](const std::pair<point_t, point_t> &s1, const std::pair<point_t, point_t> &s2) {
         return within(s1.first, s2.first) && within(s1.second, s2.second);
     };
 
@@ -150,10 +150,10 @@ int main() {
 
     actual = find_segments(image_02, 3, 3, 10, seed);
 
-    expected = {segment_t{{20, 20}, {80, 20}},
-                segment_t{{20, 20}, {20, 140}},
-                segment_t{{20, 140}, {80, 80}},
-                segment_t{{80, 20}, {80, 80}}};
+    expected = {{{20, 20}, {80, 20}},
+                {{20, 20}, {20, 140}},
+                {{20, 140}, {80, 80}},
+                {{80, 20}, {80, 80}}};
 
     b1 = actual.begin();
     e1 = actual.end();

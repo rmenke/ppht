@@ -22,7 +22,7 @@ class point_set {
     std::set<point_t> _points;
 
     /// @brief The segment making up the canonical points of the set.
-    segment_t _segment;
+    std::pair<point_t, point_t> _segment;
 
 public:
     /**
@@ -64,7 +64,7 @@ public:
      *
      * @return the segment associated with the point set.
      */
-    const segment_t &segment() const {
+    const std::pair<point_t, point_t> &segment() const {
         return _segment;
     }
 

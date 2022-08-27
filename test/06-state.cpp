@@ -16,32 +16,33 @@ static inline ostream &operator<<(ostream &o, const pair<F, S> &p) {
 
 } // namespace std
 
-void test_intersection() {
+static void test_intersection() {
     using namespace tap;
 
     ppht::state<> s(240, 320);
 
-    ppht::segment_t expected{{0, 141}, {141, 0}};
-    ppht::segment_t actual = s.line_intersect({900, 100});
+    std::pair<ppht::point_t, ppht::point_t> expected{{0, 141}, {141, 0}};
+    std::pair<ppht::point_t, ppht::point_t> actual =
+        s.line_intersect({900, 100});
 
     eq(expected, actual, "simple intersection");
 
-    expected = ppht::segment_t{{44, 239}, {283, 0}};
+    expected = std::make_pair(ppht::point_t{44, 239}, ppht::point_t{283, 0});
     actual = s.line_intersect({900, 200});
 
     eq(expected, actual, "truncated intersection 1");
 
-    expected = ppht::segment_t{{185, 239}, {319, 105}};
+    expected = std::make_pair(ppht::point_t{185, 239}, ppht::point_t{319, 105});
     actual = s.line_intersect({900, 300});
 
     eq(expected, actual, "truncated intersection 2");
 
-    expected = ppht::segment_t{{0, 0}, {0, 0}};
+    expected = std::make_pair(ppht::point_t{0, 0}, ppht::point_t{0, 0});
     actual = s.line_intersect({900, 0});
 
     eq(expected, actual, "degenerate intersection 1");
 
-    expected = ppht::segment_t{{0, 0}, {239, 239}};
+    expected = std::make_pair(ppht::point_t{0, 0}, ppht::point_t{239, 239});
     actual = s.line_intersect({2700, 0});
 
     eq(expected, actual, "degenerate intersection 2");
@@ -67,8 +68,8 @@ int main() {
 
     for (p[1] = 0U; p[1] < static_cast<long>(state.rows()); ++p[1]) {
         for (p[0] = 0U; p[0] < static_cast<long>(state.cols()); ++p[0]) {
-            all_clear = all_clear &&
-                state.status(p) == ppht::status_t::unset;
+            all_clear =
+                all_clear && state.status(p) == ppht::status_t::unset;
         }
     }
 

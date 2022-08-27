@@ -195,7 +195,7 @@ class state {
     ///
     /// @return the portion of the line within the bounds of the bitmap
     /// in integral coordinates.
-    segment_t line_intersect(line_t const &line) const {
+    std::pair<point_t, point_t> line_intersect(line_t const &line) const {
         // There are a few degenerate cases where multiple matches for
         // the same endpoint can be found, e.g., a line through the
         // origin.  Using a set eliminates most of these cases.  See
@@ -246,7 +246,7 @@ class state {
         // If endpoints.size() > 2, ignore the points in the middle.
         // If endpoints.size() == 1, create single-pixel segment.
 
-        return segment_t{*endpoints.begin(), *endpoints.rbegin()};
+        return std::make_pair(*endpoints.begin(), *endpoints.rbegin());
     }
 };
 
@@ -278,8 +278,8 @@ class state {
  * @sa find_offsets()
  */
 template <template <class> class Raster>
-point_set scan(state<Raster> &s, segment_t const &segment, unsigned radius,
-               unsigned max_gap) {
+point_set scan(state<Raster> &s, std::pair<point_t, point_t> const &segment,
+               unsigned radius, unsigned max_gap) {
     // The initial gap is technically infinite, but anything
     // larger than max_gap will do.
     auto gap = max_gap + 1;

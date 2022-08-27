@@ -71,7 +71,7 @@ int main() {
 
     auto result = ppht::make_scanner(segment);
 
-    eq(ppht::segment_t{{0, 3}, {5, 0}}, segment, "segment reversed");
+    eq(std::make_pair(ppht::point_t{0, 3}, ppht::point_t{5, 0}), segment, "segment reversed");
 
     instanceof<ppht::bresenham_scanner<0, -1>>(*result, "correct scanner");
     instanceof<ppht::bresenham_scanner<0, -1>>(*result->clone(), "correct scanner copy");
