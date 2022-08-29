@@ -104,8 +104,8 @@ public:
         const auto &a = std::get<0>(_segment);
         const auto &b = std::get<1>(_segment);
 
-        const auto dx = std::abs(std::get<0>(a) - std::get<0>(b));
-        const auto dy = std::abs(std::get<1>(a) - std::get<1>(b));
+        const auto dx = std::abs(a.x - b.x);
+        const auto dy = std::abs(a.y - b.y);
 
         return dx * dx + dy * dy;
     }

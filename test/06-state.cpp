@@ -66,8 +66,8 @@ int main() {
     bool all_clear = true;
     ppht::point_t p;
 
-    for (p[1] = 0U; p[1] < static_cast<long>(state.rows()); ++p[1]) {
-        for (p[0] = 0U; p[0] < static_cast<long>(state.cols()); ++p[0]) {
+    for (p.y = 0U; p.y < static_cast<long>(state.rows()); ++p.y) {
+        for (p.x = 0U; p.x < static_cast<long>(state.cols()); ++p.x) {
             all_clear =
                 all_clear && state.status(p) == ppht::status_t::unset;
         }

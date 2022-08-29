@@ -76,19 +76,19 @@ int main() {
     for (int i = 0; i < 4; ++i) {
         ppht::point_t a, b;
 
-        a[0] = (i * 25) + dist(urbg);
-        a[1] = (i * 25) + dist(urbg);
-        b[0] = ((i+1) * 25) + dist(urbg);
-        b[1] = ((i+1) * 25) + dist(urbg);
+        a.x = (i * 25) + dist(urbg);
+        a.y = (i * 25) + dist(urbg);
+        b.x = ((i+1) * 25) + dist(urbg);
+        b.y = ((i+1) * 25) + dist(urbg);
 
         if (flip(urbg)) std::swap(a, b);
 
         segments.emplace_back(a, b);
 
-        a[0] = (i * 25) + dist(urbg);
-        a[1] = dist(urbg);
-        b[0] = ((i+1) * 25) + dist(urbg);
-        b[1] = dist(urbg);
+        a.x = (i * 25) + dist(urbg);
+        a.y = dist(urbg);
+        b.x = ((i+1) * 25) + dist(urbg);
+        b.y = dist(urbg);
 
         if (flip(urbg)) std::swap(a, b);
 

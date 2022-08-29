@@ -62,7 +62,8 @@ class channel {
         ///
         /// @param point the reference point
         /// @param points the set to which points will be added
-        virtual void fill(point_t point, std::set<point_t> &points) const = 0;
+        virtual void fill(point_t point,
+                          std::set<point_t> &points) const = 0;
 
         /// @brief Advance the point along the line.
         ///
@@ -94,23 +95,23 @@ class channel {
 
       public:
         axial_scanner(point_t delta, std::size_t radius)
-            : step{signum(std::get<0>(delta)), signum(std::get<1>(delta))}
+            : step{signum(delta.x), signum(delta.y)}
             , radius(radius) {
-            assert(std::get<Major>(step) != 0);
-            assert(std::get<Minor>(step) == 0);
+            assert(get<Major>(step) != 0);
+            assert(get<Minor>(step) == 0);
         }
 
         void fill(point_t point, std::set<point_t> &points) const override {
-            std::get<Minor>(point) -= radius;
+            get<Minor>(point) -= radius;
 
             for (std::size_t m = 1; m < 2 * radius; ++m) {
-                ++std::get<Minor>(point);
+                ++get<Minor>(point);
                 points.insert(point);
             }
         }
 
         void advance(point_t &point) override {
-            std::get<Major>(point) += std::get<Major>(step);
+            get<Major>(point) += get<Major>(step);
         }
     };
 
@@ -140,32 +141,31 @@ class channel {
         const double _width;
 
         const long _threshold =
-            std::get<Major>(_delta) - 2 * std::get<Minor>(_delta);
-        const long _post_minor_move = -2 * std::get<Major>(_delta);
-        const long _post_major_move = 2 * std::get<Minor>(_delta);
+            get<Major>(_delta) - 2 * get<Minor>(_delta);
+        const long _post_minor_move = -2 * get<Major>(_delta);
+        const long _post_major_move = 2 * get<Minor>(_delta);
 
         long _error = 0, _phase = 0;
 
         void perpendiculars(point_t point, std::set<point_t> &points,
-                            long initial_phase,
-                            long initial_error) const {
+                            long initial_phase, long initial_error) const {
             auto p = point;
             auto phase = initial_phase;
 
             const auto d =
-                std::get<Major>(_delta) + std::get<Minor>(_delta);
+                get<Major>(_delta) + get<Minor>(_delta);
 
             for (auto tk = d - initial_error; tk < _width;
                  tk -= _post_minor_move) {
                 points.insert(p);
 
                 if (phase >= _threshold) {
-                    std::get<Major>(p) += std::get<Major>(_perp_step);
+                    get<Major>(p) += get<Major>(_perp_step);
                     phase += _post_minor_move;
                     tk += _post_major_move;
                 }
 
-                std::get<Minor>(p) += std::get<Minor>(_perp_step);
+                get<Minor>(p) += get<Minor>(_perp_step);
                 phase += _post_major_move;
             }
 
@@ -177,34 +177,30 @@ class channel {
                 points.insert(p);
 
                 if (phase > _threshold) {
-                    std::get<Major>(p) -= std::get<Major>(_perp_step);
+                    get<Major>(p) -= get<Major>(_perp_step);
                     phase += _post_minor_move;
                     tk += _post_major_move;
                 }
 
-                std::get<Minor>(p) -= std::get<Minor>(_perp_step);
+                get<Minor>(p) -= get<Minor>(_perp_step);
                 phase += _post_major_move;
             }
         }
 
       public:
         bresenham_scanner(point_t delta, std::size_t radius)
-            : _delta{std::abs(std::get<0>(delta)),
-                     std::abs(std::get<1>(delta))}
-            , _step{signum(std::get<0>(delta)), signum(std::get<1>(delta))}
-            , _perp_step{Major == 0 ? -std::get<0>(_step)
-                                    : +std::get<0>(_step),
-                         Major == 0 ? +std::get<1>(_step)
-                                    : -std::get<1>(_step)}
-            , _width{2.0 * radius *
-                     std::hypot(std::get<0>(_delta), std::get<1>(_delta))} {
+            : _delta{std::abs(delta.x), std::abs(delta.y)}
+            , _step{signum(delta.x), signum(delta.y)}
+            , _perp_step{Major == 0 ? -_step.x : +_step.x,
+                         Major == 0 ? +_step.y : -_step.y}
+            , _width{2.0 * radius * std::hypot(_delta.x, _delta.y)} {
         }
 
         void fill(point_t point, std::set<point_t> &points) const override {
             perpendiculars(point, points, _phase, _error);
 
             if (_error >= _threshold && _phase >= _threshold) {
-                std::get<Minor>(point) += std::get<Minor>(_step);
+                get<Minor>(point) += get<Minor>(_step);
                 perpendiculars(
                     point, points,
                     (_phase + _post_minor_move + _post_major_move),
@@ -216,7 +212,7 @@ class channel {
 
         void advance(point_t &pt) override {
             if (_error >= _threshold) {
-                std::get<Minor>(pt) += std::get<Minor>(_step);
+                get<Minor>(pt) += get<Minor>(_step);
                 _error += _post_minor_move;
 
                 if (_phase >= _threshold) { _phase += _post_minor_move; }
@@ -224,7 +220,7 @@ class channel {
                 _phase += _post_major_move;
             }
 
-            std::get<Major>(pt) += std::get<Major>(_step);
+            get<Major>(pt) += get<Major>(_step);
             _error += _post_major_move;
         }
     };
@@ -244,13 +240,10 @@ class channel {
     template <class... Args>
     static inline std::unique_ptr<class scanner>
     make_scanner(point_t delta, Args &&...args) {
-        const auto dx = std::get<0>(delta);
-        const auto dy = std::get<1>(delta);
-
         class scanner *impl;
 
-        if (std::abs(dx) > std::abs(dy)) { // major == 0
-            if (dy == 0)
+        if (std::abs(delta.x) > std::abs(delta.y)) { // major == 0
+            if (delta.y == 0)
                 impl = new axial_scanner<0>{delta,
                                             std::forward<Args>(args)...};
             else
@@ -258,7 +251,7 @@ class channel {
                     delta, std::forward<Args>(args)...};
         }
         else { // major == 1
-            if (dx == 0)
+            if (delta.x == 0)
                 impl = new axial_scanner<1>{delta,
                                             std::forward<Args>(args)...};
             else
@@ -437,10 +430,7 @@ class channel {
     ///
     /// @return an iterator
     iterator begin() const {
-        point_t delta{
-            std::get<0>(_p1) - std::get<0>(_p0),
-            std::get<1>(_p1) - std::get<1>(_p0),
-        };
+        point_t delta{_p1.x - _p0.x, _p1.y - _p0.y};
         return iterator{_p0, delta, _radius};
     }
 
@@ -448,10 +438,7 @@ class channel {
     ///
     /// @return an iterator
     iterator end() const {
-        point_t delta{
-            std::get<0>(_p1) - std::get<0>(_p0),
-            std::get<1>(_p1) - std::get<1>(_p0),
-        };
+        point_t delta{_p1.x - _p0.x, _p1.y - _p0.y};
         return std::move(++iterator{_p1, delta, _radius});
     }
 };

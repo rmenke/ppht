@@ -36,6 +36,8 @@ namespace ppht {
 template <std::size_t Dim = 0, class RandomIt, class OutputIt>
 OutputIt kd_search(RandomIt begin, RandomIt end, OutputIt output,
                    const point_t &p, long limit) {
+    using namespace std;        // for ADL
+
     if (begin == end) return output;
 
     // Divide the points into approximately equal sets using the line
@@ -44,14 +46,14 @@ OutputIt kd_search(RandomIt begin, RandomIt end, OutputIt output,
     // on the separating line may appear on either side of the median
     // element.
 
-    auto median = begin + std::distance(begin, end) / 2;
+    auto median = begin + distance(begin, end) / 2;
 
-    std::nth_element(begin, median, end, [] (auto &&a, auto &&b) -> bool {
-        point_t &pta = std::get<0>(a), &ptb = std::get<0>(b);
-        return std::get<Dim>(pta) < std::get<Dim>(ptb);
+    nth_element(begin, median, end, [] (auto &&a, auto &&b) -> bool {
+        point_t &pta = get<0>(a), &ptb = get<0>(b);
+        return get<Dim>(pta) < get<Dim>(ptb);
     });
 
-    point_t &midpt = std::get<0>(*median);
+    point_t &midpt = get<0>(*median);
 
     // If the midpoint is within the limit, add it to the output.
 
@@ -75,7 +77,7 @@ OutputIt kd_search(RandomIt begin, RandomIt end, OutputIt output,
     // side.  No points on the "before" side will be in the
     // neighborhood.
 
-    auto d_plane = std::get<Dim>(p) - std::get<Dim>(midpt);
+    auto d_plane = get<Dim>(p) - get<Dim>(midpt);
 
     if (d_plane <= limit) {
         output = kd_search<1 - Dim>(begin, median, output, p, limit);

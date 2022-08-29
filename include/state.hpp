@@ -79,10 +79,10 @@ class state {
         , _urbg(seed) {
         point_t p;
 
-        for (p[1] = 0; p[1] < _state.rows; ++p[1]) {
-            auto const row = _state[p[1]];
-            for (p[0] = 0; p[0] < _state.cols; ++p[0]) {
-                if (row[p[0]] == status_t::pending) {
+        for (p.y = 0; p.y < _state.rows; ++p.y) {
+            auto const row = _state[p.y];
+            for (p.x = 0; p.x < _state.cols; ++p.x) {
+                if (row[p.x] == status_t::pending) {
                     _pending.push_back(p);
                 }
             }
@@ -115,7 +115,7 @@ class state {
      * @return the status of the pixel.
      */
     status_t status(point_t const &point) const {
-        return _state[std::get<1>(point)][std::get<0>(point)];
+        return _state[point.y][point.x];
     }
 
     /**
@@ -124,10 +124,7 @@ class state {
      * @param point the pixel to mark.
      */
     void mark_pending(point_t const &point) {
-        auto const x = std::get<0>(point);
-        auto const y = std::get<1>(point);
-
-        _state[y][x] = status_t::pending;
+        _state[point.y][point.x] = status_t::pending;
         _pending.emplace_back(point);
     }
 
@@ -137,10 +134,7 @@ class state {
      * @param point the pixel to mark.
      */
     void mark_done(point_t const &point) {
-        auto const x = std::get<0>(point);
-        auto const y = std::get<1>(point);
-
-        _state[y][x] = status_t::done;
+        _state[point.y][point.x] = status_t::done;
     }
 
     /**
@@ -176,7 +170,7 @@ class state {
 
         point = std::exchange(*iter, *(--end));
 
-        auto &cell = _state[std::get<1>(point)][std::get<0>(point)];
+        auto &cell = _state[point.y][point.x];
 
         assert(cell == status_t::pending);
 
@@ -296,8 +290,8 @@ point_set scan(state<Raster> &s, std::pair<point_t, point_t> const &segment,
         std::set<point_t> found;
 
         for (auto const &p : points) {
-            if (p[0] < 0 || p[0] >= c) continue;
-            if (p[1] < 0 || p[1] >= r) continue;
+            if (p.x < 0 || p.x >= c) continue;
+            if (p.y < 0 || p.y >= r) continue;
 
             auto status = s.status(p);
 

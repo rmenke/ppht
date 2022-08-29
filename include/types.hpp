@@ -12,56 +12,89 @@
 namespace ppht {
 
 /// A basic integral point.
-struct point_t : std::array<long, 2> {
-    using std::array<long, 2>::array;
-
-    point_t() {
-        std::get<0>(*this) = 0;
-        std::get<1>(*this) = 0;
-    }
+struct point_t {
+    long x, y;
 
     point_t(long a, long b)
-        : std::array<long, 2>({{a, b}}) {}
+        : x(a)
+        , y(b) {}
+
+    point_t()
+        : point_t(0, 0) {}
 
     long length_squared() const {
-        auto &x = std::get<0>(*this);
-        auto &y = std::get<1>(*this);
         return x * x + y * y;
     }
 
     double length() const {
-        return std::hypot(std::get<0>(*this), std::get<1>(*this));
+        return std::hypot(x, y);
     }
 
     point_t operator+(const point_t &p) const {
-        return {std::get<0>(*this) + std::get<0>(p),
-                std::get<1>(*this) + std::get<1>(p)};
+        return {x + p.x, y + p.y};
     }
 
     point_t operator-(const point_t &p) const {
-        return {std::get<0>(*this) - std::get<0>(p),
-                std::get<1>(*this) - std::get<1>(p)};
+        return {x - p.x, y - p.y};
     }
 
     point_t operator*(const point_t &p) const {
-        return {std::get<0>(*this) * std::get<0>(p),
-                std::get<1>(*this) * std::get<1>(p)};
+        return {x * p.x, y * p.y};
     }
 
     point_t operator/(long d) const {
-        return {std::get<0>(*this) / d, std::get<1>(*this) / d};
+        return {x / d, y / d};
     }
 
-    template <class P>
-    auto dot(const P &p) const {
-        return std::get<0>(*this) * std::get<0>(p) +
-               std::get<1>(*this) * std::get<1>(p);
+    bool operator==(const point_t &p) const {
+        return x == p.x && y == p.y;
+    }
+
+    bool operator!=(const point_t &p) const {
+        return !operator==(p);
+    }
+
+    bool operator<(const point_t &p) const {
+        if (x < p.x) return true;
+        if (p.x < x) return false;
+        return y < p.y;
+    }
+
+    auto dot(const std::pair<double, double> &p) const {
+        using namespace std;
+        return x * get<0>(p) + y * get<1>(p);
     }
 
     friend std::ostream &operator<<(std::ostream &o, const point_t &p) {
-        return o << "(" << std::get<0>(p) << ", " << std::get<1>(p) << ")";
+        return o << "(" << p.x << ", " << p.y << ")";
     }
 };
+
+template <std::size_t>
+inline long &get(point_t &p);
+
+template <>
+inline long &get<0>(point_t &p) {
+    return p.x;
+}
+
+template <>
+inline long &get<1>(point_t &p) {
+    return p.y;
+}
+
+template <std::size_t>
+inline long get(const point_t &p);
+
+template <>
+inline long get<0>(const point_t &p) {
+    return p.x;
+}
+
+template <>
+inline long get<1>(const point_t &p) {
+    return p.y;
+}
 
 /// @brief Equal-to operator for pairs of points.
 ///
@@ -98,8 +131,7 @@ enum status_t {
     unset,   ///< Pixel is unset.
     pending, ///< Pixel is set but not yet voted.
     voted,   ///< Pixel is set and voted.
-    done     ///< Pixel has been incorporated into
-             ///  a segment.
+    done     ///< Pixel has been incorporated into a segment.
 };
 
 } // namespace ppht
