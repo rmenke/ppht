@@ -97,8 +97,8 @@ void test_unvoting(seed_t seed) {
     ppht::accumulator<> acc(240, 320, seed);
 
     try {
-        ok(!acc.vote(ppht::point_t{50, 50}), "vote recorded");
-        acc.unvote(ppht::point_t{50, 50});
+        ok(!acc.vote(ppht::point{50, 50}), "vote recorded");
+        acc.unvote(ppht::point{50, 50});
         pass("no exception thrown");
     }
     catch (...) {
@@ -106,7 +106,7 @@ void test_unvoting(seed_t seed) {
     }
 
     try {
-        acc.unvote(ppht::point_t{50, 50});
+        acc.unvote(ppht::point{50, 50});
         fail("exception thrown");
     }
     catch (...) {

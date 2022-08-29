@@ -37,7 +37,7 @@ class state {
     Raster<status_t> _state;
 
     /// A collection of pixels marked 'pending' in the raster.
-    std::vector<point_t> _pending;
+    std::vector<point> _pending;
 
     /// The URBG the class will use to select the next pending pixel.
     URBG _urbg;
@@ -77,7 +77,7 @@ class state {
           URBG::result_type seed = std::random_device{}())
         : _state(std::move(s))
         , _urbg(seed) {
-        point_t p;
+        point p;
 
         for (p.y = 0; p.y < _state.rows; ++p.y) {
             auto const row = _state[p.y];
@@ -114,7 +114,7 @@ class state {
      *
      * @return the status of the pixel.
      */
-    status_t status(point_t const &point) const {
+    status_t status(point const &point) const {
         return _state[point.y][point.x];
     }
 
@@ -123,7 +123,7 @@ class state {
      *
      * @param point the pixel to mark.
      */
-    void mark_pending(point_t const &point) {
+    void mark_pending(point const &point) {
         _state[point.y][point.x] = status_t::pending;
         _pending.emplace_back(point);
     }
@@ -133,7 +133,7 @@ class state {
      *
      * @param point the pixel to mark.
      */
-    void mark_done(point_t const &point) {
+    void mark_done(point const &point) {
         _state[point.y][point.x] = status_t::done;
     }
 
@@ -149,7 +149,7 @@ class state {
      * @return true if @c point is a valid pending pixel; false if there
      * are no more pending pixels in the raster
      */
-    bool next(point_t &point) {
+    bool next(point &point) {
         auto begin = _pending.begin();
         auto end = _pending.end();
 
@@ -189,7 +189,7 @@ class state {
     ///
     /// @return the portion of the line within the bounds of the bitmap
     /// in integral coordinates.
-    std::pair<point_t, point_t> line_intersect(line_t const &line) const {
+    std::pair<point, point> line_intersect(line_t const &line) const {
         // There are a few degenerate cases where multiple matches for
         // the same endpoint can be found, e.g., a line through the
         // origin.  Using a set eliminates most of these cases.  See
@@ -199,7 +199,7 @@ class state {
         auto const &t = std::get<0>(line);
         auto const &r = std::get<1>(line);
 
-        std::set<point_t> endpoints;
+        std::set<point> endpoints;
 
         auto const &cost = std::get<0>(cossin[t]);
         auto const &sint = std::get<1>(cossin[t]);
@@ -272,7 +272,7 @@ class state {
  * @sa find_offsets()
  */
 template <template <class> class Raster>
-point_set scan(state<Raster> &s, std::pair<point_t, point_t> const &segment,
+point_set scan(state<Raster> &s, std::pair<point, point> const &segment,
                unsigned radius, unsigned max_gap) {
     // The initial gap is technically infinite, but anything
     // larger than max_gap will do.
@@ -286,17 +286,17 @@ point_set scan(state<Raster> &s, std::pair<point_t, point_t> const &segment,
     long const r = s.rows();
     long const c = s.cols();
 
-    for (auto const &[point, points] : channel(p0, p1, radius)) {
-        std::set<point_t> found;
+    for (auto const &[canonical, points] : channel(p0, p1, radius)) {
+        std::set<point> found;
 
-        for (auto const &p : points) {
-            if (p.x < 0 || p.x >= c) continue;
-            if (p.y < 0 || p.y >= r) continue;
+        for (auto const &pt : points) {
+            if (pt.x < 0 || pt.x >= c) continue;
+            if (pt.y < 0 || pt.y >= r) continue;
 
-            auto status = s.status(p);
+            auto status = s.status(pt);
 
             if (status == status_t::pending || status == status_t::voted) {
-                found.insert(p);
+                found.insert(pt);
             }
         }
 
@@ -306,7 +306,7 @@ point_set scan(state<Raster> &s, std::pair<point_t, point_t> const &segment,
         else {
             // If the gap is too large to ignore, start a new point set.
             if (gap > max_gap) point_sets.emplace_back();
-            point_sets.back().add_point(point, found);
+            point_sets.back().add_point(canonical, found);
 
             gap = 0;
         }

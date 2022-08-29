@@ -19,10 +19,10 @@ namespace ppht {
  */
 class point_set {
     /// @brief The points added to the set.
-    std::set<point_t> _points;
+    std::set<point> _points;
 
     /// @brief The segment making up the canonical points of the set.
-    std::pair<point_t, point_t> _segment;
+    std::pair<point, point> _segment;
 
 public:
     /**
@@ -48,7 +48,7 @@ public:
      * @param points additional points to add to the set.
      */
     template <class Points>
-    void add_point(point_t canonical, Points &&points) {
+    void add_point(point canonical, Points &&points) {
         if (_points.empty()) _segment.first = canonical;
         _segment.second = canonical;
 
@@ -64,7 +64,7 @@ public:
      *
      * @return the segment associated with the point set.
      */
-    const std::pair<point_t, point_t> &segment() const {
+    const std::pair<point, point> &segment() const {
         return _segment;
     }
 

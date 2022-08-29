@@ -15,14 +15,14 @@ namespace ppht {
 
 template <class RandomIt>
 static inline auto find_nearest(RandomIt begin, RandomIt end,
-                                const point_t &p, unsigned limit) {
+                                const point &p, unsigned limit) {
     std::vector<typename std::iterator_traits<RandomIt>::value_type> result;
     kd_search(begin, end, std::back_inserter(result), p, limit);
     return result;
 }
 
-static inline auto distance_to_line_squared(const point_t &pnt1,
-                                            const point_t &pnt2) {
+static inline auto distance_to_line_squared(const point &pnt1,
+                                            const point &pnt2) {
     using namespace std;
 
     const auto delta = pnt2 - pnt1;
@@ -34,7 +34,7 @@ static inline auto distance_to_line_squared(const point_t &pnt1,
 
     const double D = delta.length_squared();
 
-    return [px, py, dx, dy, D] (const point_t &p0) {
+    return [px, py, dx, dy, D] (const point &p0) {
         const double N = dx * (py - get<1>(p0)) - dy * (px - get<0>(p0));
         return (N * N) / D;
     };
@@ -47,16 +47,16 @@ ForwardIt postprocess(ForwardIt begin, ForwardIt end, unsigned limit) {
     const auto limit_squared = limit * limit;
 
     for (auto i = begin; i != end; ++i) {
-        point_t &a = i->first;
-        point_t &b = i->second;
+        point &a = i->first;
+        point &b = i->second;
 
-        using tuple_t = tuple<reference_wrapper<point_t>, reference_wrapper<point_t>, ForwardIt>;
+        using tuple_t = tuple<reference_wrapper<point>, reference_wrapper<point>, ForwardIt>;
 
         vector<tuple_t> pool;
 
         for (auto j = i + 1; j != end; ++j) {
-            point_t &c = j->first;
-            point_t &d = j->second;
+            point &c = j->first;
+            point &d = j->second;
 
             pool.emplace_back(c, d, j);
             pool.emplace_back(d, c, j);
@@ -70,8 +70,8 @@ ForwardIt postprocess(ForwardIt begin, ForwardIt end, unsigned limit) {
             auto neighbors = find_nearest(bp, ep, b, limit);
 
             for (auto &&neighbor : neighbors) {
-                point_t &c = get<0>(neighbor);
-                point_t &d = get<1>(neighbor);
+                point &c = get<0>(neighbor);
+                point &d = get<1>(neighbor);
 
                 // The order of the points along the new segment will
                 // be a - b ~ c - d

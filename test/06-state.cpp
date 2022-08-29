@@ -21,28 +21,28 @@ static void test_intersection() {
 
     ppht::state<> s(240, 320);
 
-    std::pair<ppht::point_t, ppht::point_t> expected{{0, 141}, {141, 0}};
-    std::pair<ppht::point_t, ppht::point_t> actual =
+    std::pair<ppht::point, ppht::point> expected{{0, 141}, {141, 0}};
+    std::pair<ppht::point, ppht::point> actual =
         s.line_intersect({900, 100});
 
     eq(expected, actual, "simple intersection");
 
-    expected = std::make_pair(ppht::point_t{44, 239}, ppht::point_t{283, 0});
+    expected = std::make_pair(ppht::point{44, 239}, ppht::point{283, 0});
     actual = s.line_intersect({900, 200});
 
     eq(expected, actual, "truncated intersection 1");
 
-    expected = std::make_pair(ppht::point_t{185, 239}, ppht::point_t{319, 105});
+    expected = std::make_pair(ppht::point{185, 239}, ppht::point{319, 105});
     actual = s.line_intersect({900, 300});
 
     eq(expected, actual, "truncated intersection 2");
 
-    expected = std::make_pair(ppht::point_t{0, 0}, ppht::point_t{0, 0});
+    expected = std::make_pair(ppht::point{0, 0}, ppht::point{0, 0});
     actual = s.line_intersect({900, 0});
 
     eq(expected, actual, "degenerate intersection 1");
 
-    expected = std::make_pair(ppht::point_t{0, 0}, ppht::point_t{239, 239});
+    expected = std::make_pair(ppht::point{0, 0}, ppht::point{239, 239});
     actual = s.line_intersect({2700, 0});
 
     eq(expected, actual, "degenerate intersection 2");
@@ -64,7 +64,7 @@ int main() {
     ppht::state<> state(5, 5);
 
     bool all_clear = true;
-    ppht::point_t p;
+    ppht::point p;
 
     for (p.y = 0U; p.y < static_cast<long>(state.rows()); ++p.y) {
         for (p.x = 0U; p.x < static_cast<long>(state.cols()); ++p.x) {
@@ -81,7 +81,7 @@ int main() {
 
     ok(state.next(p), "fetch point");
 
-    eq(ppht::point_t{3, 2}, p, "correct point");
+    eq(ppht::point{3, 2}, p, "correct point");
 
     ok(!state.next(p), "no more points");
 

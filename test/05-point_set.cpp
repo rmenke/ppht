@@ -47,25 +47,25 @@ int main() {
     ok(ps.empty(), "initially empty");
     eq(-1, ps.length_squared(), "length is indeterminate");
 
-    ps.add_point({5,5}, std::vector<ppht::point_t>{{4,4}, {6,6}});
+    ps.add_point({5,5}, std::vector<ppht::point>{{4,4}, {6,6}});
 
     ok(!ps.empty(), "no longer empty");
     eq(0, ps.length_squared(), "length of one point is zero");
-    eq(std::make_pair(ppht::point_t{5,5}, ppht::point_t{5,5}), ps.segment(),
+    eq(std::make_pair(ppht::point{5,5}, ppht::point{5,5}), ps.segment(),
        "canonical segment updated");
 
     auto singular = ps;
 
-    ps.add_point({4,6}, std::vector<ppht::point_t>{{3,5}, {5,7}});
+    ps.add_point({4,6}, std::vector<ppht::point>{{3,5}, {5,7}});
 
     eq(2, ps.length_squared(), "length updated");
-    eq(std::make_pair(ppht::point_t{5,5}, ppht::point_t{4,6}), ps.segment(),
+    eq(std::make_pair(ppht::point{5,5}, ppht::point{4,6}), ps.segment(),
        "canonical segment updated");
 
-    ps.add_point({3,7}, std::vector<ppht::point_t>{{3,5}});
+    ps.add_point({3,7}, std::vector<ppht::point>{{3,5}});
 
     eq(8, ps.length_squared(), "length updated");
-    eq(std::make_pair(ppht::point_t{5,5}, ppht::point_t{3,7}), ps.segment(),
+    eq(std::make_pair(ppht::point{5,5}, ppht::point{3,7}), ps.segment(),
        "canonical segment updated");
 
     lt(ppht::point_set{}, singular, "empty set is smaller than nonempty set");
@@ -75,13 +75,13 @@ int main() {
     auto e = ps.end();
 
     ok(b != e, "iterator not done");
-    eq(ppht::point_t{3,5}, *(b++), "point 1");
+    eq(ppht::point{3,5}, *(b++), "point 1");
     ok(b != e, "iterator not done");
-    eq(ppht::point_t{4,4}, *(b++), "point 2");
+    eq(ppht::point{4,4}, *(b++), "point 2");
     ok(b != e, "iterator not done");
-    eq(ppht::point_t{5,7}, *(b++), "point 3");
+    eq(ppht::point{5,7}, *(b++), "point 3");
     ok(b != e, "iterator not done");
-    eq(ppht::point_t{6,6}, *(b++), "point 4");
+    eq(ppht::point{6,6}, *(b++), "point 4");
     ok(b == e, "iterator done");
 
     return test_status();

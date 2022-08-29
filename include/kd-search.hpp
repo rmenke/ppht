@@ -35,7 +35,7 @@ namespace ppht {
  */
 template <std::size_t Dim = 0, class RandomIt, class OutputIt>
 OutputIt kd_search(RandomIt begin, RandomIt end, OutputIt output,
-                   const point_t &p, long limit) {
+                   const point &p, long limit) {
     using namespace std;        // for ADL
 
     if (begin == end) return output;
@@ -49,11 +49,11 @@ OutputIt kd_search(RandomIt begin, RandomIt end, OutputIt output,
     auto median = begin + distance(begin, end) / 2;
 
     nth_element(begin, median, end, [] (auto &&a, auto &&b) -> bool {
-        point_t &pta = get<0>(a), &ptb = get<0>(b);
+        point &pta = get<0>(a), &ptb = get<0>(b);
         return get<Dim>(pta) < get<Dim>(ptb);
     });
 
-    point_t &midpt = get<0>(*median);
+    point &midpt = get<0>(*median);
 
     // If the midpoint is within the limit, add it to the output.
 

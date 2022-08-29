@@ -12,15 +12,15 @@
 namespace ppht {
 
 /// A basic integral point.
-struct point_t {
+struct point {
     long x, y;
 
-    point_t(long a, long b)
+    point(long a, long b)
         : x(a)
         , y(b) {}
 
-    point_t()
-        : point_t(0, 0) {}
+    point()
+        : point(0, 0) {}
 
     long length_squared() const {
         return x * x + y * y;
@@ -30,31 +30,31 @@ struct point_t {
         return std::hypot(x, y);
     }
 
-    point_t operator+(const point_t &p) const {
+    point operator+(const point &p) const {
         return {x + p.x, y + p.y};
     }
 
-    point_t operator-(const point_t &p) const {
+    point operator-(const point &p) const {
         return {x - p.x, y - p.y};
     }
 
-    point_t operator*(const point_t &p) const {
+    point operator*(const point &p) const {
         return {x * p.x, y * p.y};
     }
 
-    point_t operator/(long d) const {
+    point operator/(long d) const {
         return {x / d, y / d};
     }
 
-    bool operator==(const point_t &p) const {
+    bool operator==(const point &p) const {
         return x == p.x && y == p.y;
     }
 
-    bool operator!=(const point_t &p) const {
+    bool operator!=(const point &p) const {
         return !operator==(p);
     }
 
-    bool operator<(const point_t &p) const {
+    bool operator<(const point &p) const {
         if (x < p.x) return true;
         if (p.x < x) return false;
         return y < p.y;
@@ -65,34 +65,34 @@ struct point_t {
         return x * get<0>(p) + y * get<1>(p);
     }
 
-    friend std::ostream &operator<<(std::ostream &o, const point_t &p) {
+    friend std::ostream &operator<<(std::ostream &o, const point &p) {
         return o << "(" << p.x << ", " << p.y << ")";
     }
 };
 
 template <std::size_t>
-inline long &get(point_t &p);
+inline long &get(point &p);
 
 template <>
-inline long &get<0>(point_t &p) {
+inline long &get<0>(point &p) {
     return p.x;
 }
 
 template <>
-inline long &get<1>(point_t &p) {
+inline long &get<1>(point &p) {
     return p.y;
 }
 
 template <std::size_t>
-inline long get(const point_t &p);
+inline long get(const point &p);
 
 template <>
-inline long get<0>(const point_t &p) {
+inline long get<0>(const point &p) {
     return p.x;
 }
 
 template <>
-inline long get<1>(const point_t &p) {
+inline long get<1>(const point &p) {
     return p.y;
 }
 
@@ -104,8 +104,8 @@ inline long get<1>(const point_t &p) {
 /// @param a a line segment
 /// @param b a line segment
 /// @return true if the endpoints are equal pairwise
-inline bool operator==(const std::pair<point_t, point_t> &a,
-                       const std::pair<point_t, point_t> &b) {
+inline bool operator==(const std::pair<point, point> &a,
+                       const std::pair<point, point> &b) {
     return (a.first == b.first && a.second == b.second) ||
            (a.first == b.second && a.second == b.first);
 }
@@ -118,8 +118,8 @@ inline bool operator==(const std::pair<point_t, point_t> &a,
 /// @param a a line segment
 /// @param b a line segment
 /// @return false if the endpoints are equal pairwise
-inline bool operator!=(const std::pair<point_t, point_t> &a,
-                       const std::pair<point_t, point_t> &b) {
+inline bool operator!=(const std::pair<point, point> &a,
+                       const std::pair<point, point> &b) {
     return !operator==(a, b);
 }
 

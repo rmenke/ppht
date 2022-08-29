@@ -103,7 +103,7 @@ int main() {
 
     auto actual = find_segments(image_01, 3, 3, 10, seed);
 
-    std::vector<std::pair<point_t, point_t>> expected = {{{20, 20}, {100, 20}},
+    std::vector<std::pair<point, point>> expected = {{{20, 20}, {100, 20}},
                                        {{20, 20}, {20, 100}},
                                        {{100, 20}, {100, 100}},
                                        {{20, 100}, {100, 100}},
@@ -116,13 +116,13 @@ int main() {
                                        {{300, 20}, {300, 100}},
                                        {{220, 100}, {300, 100}}};
 
-    static auto within = [](const point_t &p1, const point_t &p2) {
+    static auto within = [](const point &p1, const point &p2) {
         auto dx = static_cast<double>(p1.x) - p2.x;
         auto dy = static_cast<double>(p1.y) - p2.y;
         return dx * dx + dy * dy <= 25.0;
     };
 
-    static auto similar = [](const std::pair<point_t, point_t> &s1, const std::pair<point_t, point_t> &s2) {
+    static auto similar = [](const std::pair<point, point> &s1, const std::pair<point, point> &s2) {
         return within(s1.first, s2.first) && within(s1.second, s2.second);
     };
 

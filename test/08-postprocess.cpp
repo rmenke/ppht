@@ -51,7 +51,7 @@ int main() {
 
     test_plan plan;
 
-    std::vector<std::pair<ppht::point_t, ppht::point_t>> segments;
+    std::vector<std::pair<ppht::point, ppht::point>> segments;
 
     segments.push_back({{0, 0}, {50, 1}});
     segments.push_back({{100, 0}, {51, 0}});
@@ -64,7 +64,7 @@ int main() {
     segments.erase(end, segments.end());
 
     eq(1, segments.size());
-    eq(std::make_pair(ppht::point_t{0, 0}, ppht::point_t{150, 0}), segments[0]);
+    eq(std::make_pair(ppht::point{0, 0}, ppht::point{150, 0}), segments[0]);
 
     segments.clear();
 
@@ -74,7 +74,7 @@ int main() {
     std::bernoulli_distribution flip;
 
     for (int i = 0; i < 4; ++i) {
-        ppht::point_t a, b;
+        ppht::point a, b;
 
         a.x = (i * 25) + dist(urbg);
         a.y = (i * 25) + dist(urbg);

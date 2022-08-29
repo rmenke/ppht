@@ -290,7 +290,7 @@ class accumulator {
      *
      * @see unvote()
      */
-    std::optional<line_t> vote(point_t const &p) {
+    std::optional<line_t> vote(point const &p) {
         auto const max_rho = _counters.rows();
 
         Count n = _min_trigger_points;
@@ -368,7 +368,7 @@ class accumulator {
      *
      * @param p the point to unregister
      */
-    void unvote(point_t const &p) {
+    void unvote(point const &p) {
         auto const max_rho = _counters.rows();
 
         for (std::size_t theta = 0; theta < max_theta; ++theta) {
