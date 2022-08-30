@@ -161,10 +161,7 @@ std::vector<std::pair<point, point>> find_segments(
 
     while (state.next(pt)) {
         if (auto result = accumulator.vote(pt); result) {
-            auto const scan_channel = state.line_intersect(*result);
-
-            point_set found =
-                scan(state, scan_channel, channel_radius, max_gap);
+            point_set found = state.scan(*result, channel_radius, max_gap);
 
             if (found.length_squared() >= min_length_squared) {
                 for (auto &&point : found) {

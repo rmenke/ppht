@@ -115,6 +115,8 @@ class state {
      * @return the status of the pixel.
      */
     status_t status(point const &point) const {
+        if (point.x < 0 || point.x >= cols()) return unset;
+        if (point.y < 0 || point.y >= rows()) return unset;
         return _state[point.y][point.x];
     }
 
@@ -242,84 +244,70 @@ class state {
 
         return std::make_pair(*endpoints.begin(), *endpoints.rbegin());
     }
-};
 
-/**
- * @brief Trace a scan channel.
- *
- * Iterate over the points in the scan channel described by @c
- * segment: these are the canonical points.  For each canonical point,
- * examine all of the pixels within the channel radius.  If any are
- * set, add the canonical point to the current segment.  At the end of
- * a gap of @c max_gap pixels, end the current segment and start a new
- * one.  Upon completion of the scan, return the longest segment found
- * so far.
- *
- * @param s the state object to update
- *
- * @param segment the canonical segment of the scan channel
- *
- * @param radius the number of pixels to check around the canonical
- *   segment
- *
- * @param max_gap the number of consecutive missed pixels that can
- *   appear in a segment
- *
- * @returns a @ref point_set around the longest segment found
- *
- * @throws std::logic_error if no points are set in the scan channel
- *
- * @sa find_offsets()
- */
-template <template <class> class Raster>
-point_set scan(state<Raster> &s, std::pair<point, point> const &segment,
-               unsigned radius, unsigned max_gap) {
-    // The initial gap is technically infinite, but anything
-    // larger than max_gap will do.
-    auto gap = max_gap + 1;
+    /// @brief Trace a scan channel.
+    ///
+    /// Iterate over the points in the scan channel described by @c
+    /// segment: these are the canonical points.  For each canonical point,
+    /// examine all of the pixels within the channel radius.  If any are
+    /// set, add the canonical point to the current segment.  At the end of
+    /// a gap of @c max_gap pixels, end the current segment and start a new
+    /// one.  Upon completion of the scan, return the longest segment found
+    /// so far.
+    ///
+    /// @param line the channel to scan
+    ///
+    /// @param radius the number of pixels to check around the line
+    ///
+    /// @param max_gap the number of consecutive missed pixels that can
+    ///   appear in a segment
+    ///
+    /// @returns a @ref point_set around the longest segment found
+    ///
+    /// @throws std::logic_error if no points are set in the scan channel
+    ///
+    /// @sa line_intersect()
+    auto scan(const line_t &line, std::size_t radius, std::size_t max_gap) {
+        // The initial gap is technically infinite, but anything
+        // larger than max_gap will do.
+        auto gap = max_gap + 1;
 
-    std::vector<point_set> point_sets;
+        std::vector<point_set> point_sets;
 
-    auto const &p0 = std::get<0>(segment);
-    auto const &p1 = std::get<1>(segment);
+        auto [p0, p1] = line_intersect(line);
 
-    long const r = s.rows();
-    long const c = s.cols();
+        for (auto const &[canonical, points] : channel(p0, p1, radius)) {
+            std::set<point> found;
 
-    for (auto const &[canonical, points] : channel(p0, p1, radius)) {
-        std::set<point> found;
+            for (auto const &pt : points) {
+                if (auto s = status(pt); s == pending || s == voted) {
+                    found.insert(pt);
+                }
+            }
 
-        for (auto const &pt : points) {
-            if (pt.x < 0 || pt.x >= c) continue;
-            if (pt.y < 0 || pt.y >= r) continue;
+            if (found.empty()) {
+                ++gap;
+            }
+            else {
+                // If the gap is too large to ignore, start a new
+                // point set.
+                if (gap > max_gap) point_sets.emplace_back();
+                point_sets.back().add_point(canonical, found);
 
-            auto status = s.status(pt);
-
-            if (status == status_t::pending || status == status_t::voted) {
-                found.insert(pt);
+                gap = 0;
             }
         }
 
-        if (found.empty()) { // no hits
-            ++gap;
+        if (point_sets.empty()) {
+            throw std::logic_error{"channel contained no viable segments"};
         }
-        else {
-            // If the gap is too large to ignore, start a new point set.
-            if (gap > max_gap) point_sets.emplace_back();
-            point_sets.back().add_point(canonical, found);
 
-            gap = 0;
-        }
+        auto longest =
+            std::max_element(point_sets.begin(), point_sets.end());
+
+        return *longest;
     }
-
-    if (point_sets.empty()) {
-        throw std::logic_error{"channel contained no viable segments"};
-    }
-
-    auto longest = std::max_element(point_sets.begin(), point_sets.end());
-
-    return *longest;
-}
+};
 
 } // namespace ppht
 
