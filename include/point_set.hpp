@@ -25,6 +25,10 @@ class point_set {
     std::pair<point, point> _segment;
 
 public:
+    const line_t line;
+
+    point_set(const line_t &line) : line(line) {}
+
     /**
      * @brief Check to see if any points have been added to the point set.
      *

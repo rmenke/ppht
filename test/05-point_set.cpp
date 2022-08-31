@@ -42,7 +42,7 @@ int main() {
 
     test_plan plan;
 
-    ppht::point_set ps;
+    ppht::point_set ps{{0, 0}};
 
     ok(ps.empty(), "initially empty");
     eq(-1, ps.length_squared(), "length is indeterminate");
@@ -68,7 +68,7 @@ int main() {
     eq(std::make_pair(ppht::point{5,5}, ppht::point{3,7}), ps.segment(),
        "canonical segment updated");
 
-    lt(ppht::point_set{}, singular, "empty set is smaller than nonempty set");
+    lt(ppht::point_set{{0, 0}}, singular, "empty set is smaller than nonempty set");
     lt(singular, ps, "point_sets ordered by length");
 
     auto b = ps.begin();

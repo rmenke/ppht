@@ -115,8 +115,10 @@ class state {
      * @return the status of the pixel.
      */
     status_t status(point const &point) const {
-        if (point.x < 0 || point.x >= cols()) return unset;
-        if (point.y < 0 || point.y >= rows()) return unset;
+        if (point.x < 0 || point.x >= static_cast<long>(_state.cols()) ||
+            point.y < 0 || point.y >= static_cast<long>(_state.rows())) {
+            return unset;
+        }
         return _state[point.y][point.x];
     }
 
@@ -291,7 +293,7 @@ class state {
             else {
                 // If the gap is too large to ignore, start a new
                 // point set.
-                if (gap > max_gap) point_sets.emplace_back();
+                if (gap > max_gap) point_sets.emplace_back(line);
                 point_sets.back().add_point(canonical, found);
 
                 gap = 0;
