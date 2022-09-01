@@ -13,26 +13,22 @@ namespace ppht {
 /**
  * @brief A collection of points surrounding a line segment.
  *
- * The point_set represents a line segment and the image pixels that
- * make up the segment.  The segment need not pass through all of the
- * points and may consist of points not in the pixel set.
+ * The point set represents a part of a line and a set of image pixels
+ * near that portion of the line.  The segment need not pass through
+ * all of the pixels and may have points not in the pixel set.
  */
 class point_set {
-    /// @brief The points added to the set.
+    /// @brief The pixel points added to the set.
     std::set<point> _points;
 
-    /// @brief The segment making up the canonical points of the set.
-    std::pair<point, point> _segment;
+    /// @brief The endpoints of the segment.
+    std::pair<point, point> _endpoints;
 
-public:
-    const line_t line;
-
-    point_set(const line_t &line) : line(line) {}
-
+  public:
     /**
      * @brief Check to see if any points have been added to the point set.
      *
-     * @return true if no points are in the set.
+     * @return true if no points are in the set
      */
     bool empty() const {
         return _points.empty();
@@ -47,17 +43,21 @@ public:
      * passed in.
      *
      * @param canonical the point used to extend the segment.  Will
-     * not be added to the point set.
+     * not be added to the point set
      *
-     * @param points additional points to add to the set.
+     * @param points additional points to add to the set
      */
     template <class Points>
     void add_point(point canonical, Points &&points) {
-        if (_points.empty()) _segment.first = canonical;
-        _segment.second = canonical;
+        assert(!points.empty());
 
-        for (auto &&p : points) {
-            _points.insert(p);
+        auto &[a, b] = _endpoints;
+
+        if (_points.empty()) a = canonical;
+        b = canonical;
+
+        for (auto &&p : std::forward<Points>(points)) {
+            _points.insert(std::forward<decltype(p)>(p));
         }
     }
 
@@ -68,8 +68,8 @@ public:
      *
      * @return the segment associated with the point set.
      */
-    const std::pair<point, point> &segment() const {
-        return _segment;
+    const std::pair<point, point> &endpoints() const {
+        return _endpoints;
     }
 
     /**
@@ -93,23 +93,17 @@ public:
     /**
      * @brief The length of the segment squared.
      *
-     * If the point set is empty, returns -1.  This ensures that an
-     * empty point set is smaller than non-empty point sets when
-     * ranked by length.
+     * The result of this function is undefined if the point set is empty.
      *
-     * @return an integer that is the length of the segment squared, or
-     * -1 if the point set is empty.
-     *
-     * @sa operator <()
+     * @return an integer that is the length of the segment squared
      */
     std::ptrdiff_t length_squared() const {
-        if (_points.empty()) return -1;
+        assert(!_points.empty());
 
-        const auto &a = std::get<0>(_segment);
-        const auto &b = std::get<1>(_segment);
+        auto const &[a, b] = _endpoints;
 
-        const auto dx = std::abs(a.x - b.x);
-        const auto dy = std::abs(a.y - b.y);
+        const auto dx = std::abs(b.x - a.x);
+        const auto dy = std::abs(b.y - a.y);
 
         return dx * dx + dy * dy;
     }
@@ -118,8 +112,8 @@ public:
      * @brief Establish a "less than" relationship between point sets.
      *
      * A point set is "less than" another point set if its segment is
-     * shorter.  An empty point set is smaller than any non-empty
-     * point set.
+     * shorter.  An empty point set is considered smaller than any
+     * non-empty point set even if its length is undefined.
      *
      * @param rhs the point set to compare.
      *
@@ -129,6 +123,9 @@ public:
      * @sa length_squared()
      */
     bool operator<(const point_set &rhs) const {
+        if (rhs._points.empty()) return false;
+        if (_points.empty()) return true;
+
         return length_squared() < rhs.length_squared();
     }
 };

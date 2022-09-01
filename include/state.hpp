@@ -274,7 +274,7 @@ class state {
         // larger than max_gap will do.
         auto gap = max_gap + 1;
 
-        std::vector<point_set> point_sets;
+        std::vector<point_set> segments;
 
         auto [p0, p1] = line_intersect(line);
 
@@ -293,19 +293,19 @@ class state {
             else {
                 // If the gap is too large to ignore, start a new
                 // point set.
-                if (gap > max_gap) point_sets.emplace_back(line);
-                point_sets.back().add_point(canonical, found);
+                if (gap > max_gap) segments.emplace_back();
+                segments.back().add_point(canonical, found);
 
                 gap = 0;
             }
         }
 
-        if (point_sets.empty()) {
+        if (segments.empty()) {
             throw std::logic_error{"channel contained no viable segments"};
         }
 
         auto longest =
-            std::max_element(point_sets.begin(), point_sets.end());
+            std::max_element(segments.begin(), segments.end());
 
         return *longest;
     }
