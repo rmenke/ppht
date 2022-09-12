@@ -193,32 +193,29 @@ class state {
     ///
     /// @return the portion of the line within the bounds of the bitmap
     /// in integral coordinates.
-    std::pair<point, point> line_intersect(line_t const &line) const {
+    std::pair<point, point> line_intersect(line const &line) const {
         // There are a few degenerate cases where multiple matches for
         // the same endpoint can be found, e.g., a line through the
         // origin.  Using a set eliminates most of these cases.  See
         // the comment at the end for what happens to those that slip
         // through.
 
-        auto const &t = std::get<0>(line);
-        auto const &r = std::get<1>(line);
-
         std::set<point> endpoints;
 
-        auto const &cost = std::get<0>(cossin[t]);
-        auto const &sint = std::get<1>(cossin[t]);
+        auto const &cos_theta = std::get<0>(cossin[line.theta]);
+        auto const &sin_theta = std::get<1>(cossin[line.theta]);
 
         using limit = std::numeric_limits<long>;
         static constexpr long lo = limit::min();
         static constexpr long hi = limit::max();
 
         auto get_x = [&](double y) -> long {
-            double x = std::rint((r - sint * y) / cost);
+            double x = std::rint((line.rho - sin_theta * y) / cos_theta);
             return x < lo ? lo : hi < x ? hi : x;
         };
 
         auto get_y = [&](double x) -> long {
-            double y = std::rint((r - cost * x) / sint);
+            double y = std::rint((line.rho - cos_theta * x) / sin_theta);
             return y < lo ? lo : hi < y ? hi : y;
         };
 
@@ -236,8 +233,8 @@ class state {
         if (0 <= x_max && x_max <= w) endpoints.emplace(x_max, h);
 
         if (endpoints.empty()) {
-            throw std::logic_error{"line (" + std::to_string(t) + ", " +
-                                   std::to_string(r) +
+            throw std::logic_error{"line (" + std::to_string(line.theta) +
+                                   ", " + std::to_string(line.rho) +
                                    ") does not intersect bitmap"};
         }
 
@@ -269,7 +266,7 @@ class state {
     /// @throws std::logic_error if no points are set in the scan channel
     ///
     /// @sa line_intersect()
-    auto scan(const line_t &line, std::size_t radius, std::size_t max_gap) {
+    auto scan(const line &line, std::size_t radius, std::size_t max_gap) {
         // The initial gap is technically infinite, but anything
         // larger than max_gap will do.
         auto gap = max_gap + 1;
@@ -304,8 +301,7 @@ class state {
             throw std::logic_error{"channel contained no viable segments"};
         }
 
-        auto longest =
-            std::max_element(segments.begin(), segments.end());
+        auto longest = std::max_element(segments.begin(), segments.end());
 
         return *longest;
     }

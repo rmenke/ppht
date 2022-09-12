@@ -64,14 +64,14 @@ void test_voting(seed_t seed) {
 
     ppht::accumulator<> acc(240, 320, seed);
 
-    std::optional<ppht::line_t> found;
+    std::optional<ppht::line> found;
 
     for (auto &&i : point) {
         if ((found = acc.vote({i, i}))) break;
     }
 
     if (ok(found.has_value(), "unique segment found 1")) {
-        eq(ppht::line_t{2700, 0.0}, *found, "correct segment found 1");
+        eq(ppht::line{2700, 0.0}, *found, "correct segment found 1");
     }
     else {
         fail("correct segment found 1");
@@ -84,7 +84,7 @@ void test_voting(seed_t seed) {
     }
 
     if (ok(found.has_value(), "unique segment found 2")) {
-        eq(ppht::line_t{2700, -7.0}, *found, "correct segment found 2");
+        eq(ppht::line{2700, -7.0}, *found, "correct segment found 2");
     }
     else {
         fail("correct segment found 2");

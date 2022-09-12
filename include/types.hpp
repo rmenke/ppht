@@ -124,7 +124,22 @@ inline bool operator!=(const std::pair<point, point> &a,
 }
 
 /// The definition of a line in Hough space.
-using line_t = std::pair<std::size_t, double>;
+struct line {
+    std::size_t theta;
+    double rho;
+
+    line(std::size_t theta, double rho)
+        : theta(theta)
+        , rho(rho) {}
+
+    bool operator==(const line &rhs) const {
+        return theta == rhs.theta && rho == rhs.rho;
+    }
+
+    friend std::ostream &operator<<(std::ostream &os, const line &l) {
+        return os << u8"(θ = " << l.theta << u8", ρ = " << l.rho << ")";
+    }
+};
 
 /// The status of a pixel in a @ref state map.
 enum status_t {

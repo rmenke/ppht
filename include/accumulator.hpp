@@ -263,10 +263,10 @@ class accumulator {
     /// @return an iterator to the best candidate line
     template <class ForwardIt>
     ForwardIt best_candidate(ForwardIt begin, ForwardIt end) {
-        auto best = std::gcd(std::get<0>(*begin), max_theta / 2);
+        auto best = std::gcd(begin->theta, max_theta / 2);
 
         for (auto iter = std::next(begin); iter != end; ++iter) {
-            auto gcd = std::gcd(std::get<0>(*iter), max_theta / 2);
+            auto gcd = std::gcd(iter->theta, max_theta / 2);
             if (best < gcd) {
                 begin = iter;
                 best = gcd;
@@ -290,12 +290,12 @@ class accumulator {
      *
      * @see unvote()
      */
-    std::optional<line_t> vote(point const &p) {
+    std::optional<line> vote(point const &p) {
         auto const max_rho = _counters.rows();
 
         Count n = _min_trigger_points;
 
-        std::vector<line_t> found;
+        std::vector<line> found;
 
         std::size_t theta;
         double rho;
