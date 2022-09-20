@@ -4,26 +4,12 @@
 #ifndef ppht_accumulator_hpp
 #define ppht_accumulator_hpp
 
-#include "raster.hpp"
 #include "trig.hpp"
 #include "types.hpp"
-#include "state.hpp"
 
-#include <algorithm>
 #include <cassert>
-#include <cmath>
-#include <cstddef>
-#include <cstdint>
-#include <cstdlib>
-#include <limits>
-#include <memory>
+#include <optional>
 #include <random>
-#include <set>
-#include <stdexcept>
-#include <string>
-#include <tuple>
-#include <utility>
-#include <vector>
 
 namespace ppht {
 
@@ -37,11 +23,8 @@ namespace ppht {
  * of the image.
  *
  * @tparam Count the type used for the counters
- *
- * @tparam Raster the type used for the matrix of counters
  */
-template <class Count = std::uint16_t,
-          template <class> class Raster = raster>
+template <class Count = std::uint16_t>
 class accumulator {
     /// @brief A uniform random bit generator.
     using URBG = std::default_random_engine;
@@ -61,7 +44,10 @@ class accumulator {
     Count _min_trigger_points = 3;
 
     /// @brief Matrix of counters (quantized @f$\theta\rho@f$-space).
-    Raster<Count> _counters;
+    std::unique_ptr<Count[]> _counters;
+
+    /// @brief The number of rows in the @ref _counters matrix.
+    std::size_t const _max_rho;
 
     /// @brief Votes still in effect.
     Count _votes = 0;
@@ -82,7 +68,7 @@ class accumulator {
      * @sa unscale_rho()
      */
     double scale_rho(double unscaled_rho) const noexcept {
-        double const offset = _counters.rows() >> 1;
+        double const offset = _max_rho >> 1;
         return std::rint(std::scalbn(unscaled_rho, _rho_scale) + offset);
     }
 
@@ -97,7 +83,7 @@ class accumulator {
      *
      */
     double unscale_rho(double scaled_rho) const noexcept {
-        double const offset = _counters.rows() >> 1;
+        double const offset = _max_rho >> 1;
         return std::scalbn(scaled_rho - offset, -_rho_scale);
     }
 
@@ -146,7 +132,8 @@ class accumulator {
     accumulator(const std::pair<std::size_t, int> &rho_info,
                 seed_t seed) noexcept
         : _rho_scale(rho_info.second)
-        , _counters(rho_info.first, max_theta)
+        , _counters(new Count[rho_info.first * max_theta]{})
+        , _max_rho(rho_info.first)
         , _urbg(seed) {}
 
   public:
@@ -168,8 +155,8 @@ class accumulator {
      *
      * @return a pair containing scaling information for rho
      */
-    static std::pair<std::size_t, int>
-    rho_info(std::size_t rows, std::size_t cols) noexcept {
+    static std::pair<std::size_t, int> rho_info(std::size_t rows,
+                                                std::size_t cols) noexcept {
         double diag = std::ceil(std::hypot(rows - 1, cols - 1));
         int rho_exp = std::ilogb(max_theta / (diag * 2.0 + 1.0));
 
@@ -291,8 +278,6 @@ class accumulator {
      * @see unvote()
      */
     std::optional<line> vote(point const &p) {
-        auto const max_rho = _counters.rows();
-
         Count n = _min_trigger_points;
 
         std::vector<line> found;
@@ -305,9 +290,9 @@ class accumulator {
 
         for (theta = 0; theta < max_theta; ++theta) {
             rho = scale_rho(p.dot(cossin[theta]));
-            if (rho < 0 || rho >= max_rho) continue;
+            if (rho < 0 || rho >= _max_rho) continue;
 
-            auto &counter = _counters[rho][theta];
+            auto &counter = _counters[rho * max_theta + theta];
 
             ++counter;
 
@@ -337,7 +322,7 @@ class accumulator {
         // Assuming the null hypothesis (the image is random noise),
         // E[n] = votes/max_rho for all cells in the register.
 
-        double const lambda = static_cast<double>(_votes) / max_rho;
+        double const lambda = static_cast<double>(_votes) / _max_rho;
 
         // For the null hypothesis, the cells are filled (roughly)
         // according to a Poisson model:
@@ -369,13 +354,11 @@ class accumulator {
      * @param p the point to unregister
      */
     void unvote(point const &p) {
-        auto const max_rho = _counters.rows();
-
         for (std::size_t theta = 0; theta < max_theta; ++theta) {
             double const rho = scale_rho(p.dot(cossin[theta]));
-            if (rho < 0 || rho >= max_rho) continue;
+            if (rho < 0 || rho >= _max_rho) continue;
 
-            auto &counter = _counters[rho][theta];
+            auto &counter = _counters[rho * max_theta + theta];
 
             if (counter == 0) {
                 throw std::logic_error{__func__};
