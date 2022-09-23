@@ -28,13 +28,13 @@ namespace ppht {
  * in random order.  Extracting a pixel marks it as "voted."  Once
  * fully processed, any pixel may be marked "done."
  */
-template <template <class> class Raster = raster>
+template <class Raster = raster>
 class state {
     /// A uniform random bit generator.
     using URBG = std::default_random_engine;
 
     /// The status of each pixel in the bitmap.
-    Raster<status_t> _state;
+    Raster _state;
 
     /// A collection of pixels marked 'pending' in the raster.
     std::vector<point> _pending;
@@ -73,8 +73,7 @@ class state {
      *
      * @param seed the seed for the random engine
      */
-    state(Raster<status_t> &&s,
-          URBG::result_type seed = std::random_device{}())
+    state(Raster &&s, URBG::result_type seed = std::random_device{}())
         : _state(std::move(s))
         , _urbg(seed) {
         point p;
@@ -117,7 +116,7 @@ class state {
     status_t status(point const &point) const {
         if (point.x < 0 || point.x >= static_cast<long>(_state.cols()) ||
             point.y < 0 || point.y >= static_cast<long>(_state.rows())) {
-            return unset;
+            return status_t::unset;
         }
         return _state[point.y][point.x];
     }
@@ -279,7 +278,8 @@ class state {
             std::set<point> found;
 
             for (auto const &pt : points) {
-                if (auto s = status(pt); s == pending || s == voted) {
+                if (auto s = status(pt);
+                    s == status_t::pending || s == status_t::voted) {
                     found.insert(pt);
                 }
             }

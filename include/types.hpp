@@ -142,12 +142,35 @@ struct line {
 };
 
 /// The status of a pixel in a @ref state map.
-enum status_t {
+enum class status_t {
     unset,   ///< Pixel is unset.
     pending, ///< Pixel is set but not yet voted.
     voted,   ///< Pixel is set and voted.
     done     ///< Pixel has been incorporated into a segment.
 };
+
+inline std::string to_string(status_t s) {
+    using namespace std::string_literals;
+
+#define CASE(X)       \
+    case status_t::X: \
+        return #X##s;
+
+    switch (s) {
+        CASE(unset);
+        CASE(pending);
+        CASE(voted);
+        CASE(done);
+    }
+
+    return "unknown"s;
+
+#undef CASE
+}
+
+inline std::ostream &operator<<(std::ostream &os, status_t s) {
+    return os << to_string(s);
+}
 
 } // namespace ppht
 

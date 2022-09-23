@@ -4,6 +4,8 @@
 #ifndef ppht_raster_hpp
 #define ppht_raster_hpp
 
+#include "types.hpp"
+
 #include <memory>
 
 namespace ppht {
@@ -12,13 +14,10 @@ namespace ppht {
  * @brief A simple class to manage a 2D array of elements.
  *
  * Does not perform bounds checking or row alignment.
- *
- * @tparam T the type of elements to store.
  */
-template <class T>
 class raster {
     /// The elements of the raster.
-    std::unique_ptr<T[]> _data;
+    std::unique_ptr<status_t[]> _data;
 
     /// The height of this raster.
     std::size_t const _rows;
@@ -27,9 +26,6 @@ class raster {
     std::size_t const _cols;
 
   public:
-    /// The type of the cells of this raster.
-    using value_type = T;
-
     /**
      * @brief Create a new raster with the given size.
      *
@@ -38,7 +34,7 @@ class raster {
      * @param cols the number of columns (width) of the raster.
      */
     raster(std::size_t rows, std::size_t cols)
-        : _data(new T[rows * cols]{})
+        : _data(new status_t[rows * cols]{})
         , _rows(rows)
         , _cols(cols) {}
 
@@ -71,7 +67,7 @@ class raster {
      *
      * @return a pointer to the row
      */
-    T *operator[](std::size_t row) {
+    status_t *operator[](std::size_t row) {
         return _data.get() + row * _cols;
     }
 
@@ -87,7 +83,7 @@ class raster {
      *
      * @return a pointer to the row
      */
-    T const *operator[](std::size_t row) const {
+    status_t const *operator[](std::size_t row) const {
         return _data.get() + row * _cols;
     }
 };
