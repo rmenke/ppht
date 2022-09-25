@@ -6,7 +6,10 @@ include_HEADERS = include/ppht.hpp
 
 pphtdir = $(includedir)/ppht
 
-ppht_HEADERS = include/accumulator.hpp include/channel.hpp include/kd-search.hpp include/point_set.hpp include/postprocess.hpp include/raster.hpp include/state.hpp include/trig.hpp include/types.hpp
+ppht_HEADERS = include/accumulator.hpp include/channel.hpp	\
+               include/kd-search.hpp include/point_set.hpp	\
+               include/postprocess.hpp include/state.hpp	\
+               include/trig.hpp include/types.hpp
 
 git-add:
 	$(MAKE) distdir

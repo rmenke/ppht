@@ -1,11 +1,6 @@
-TESTS = 01-raster.test \
-        02-trig.test \
-        03-accumulator.test \
-        04-channel.test \
-        05-point_set.test \
-        06-state.test \
-        07-ppht.test \
-        08-postprocess.test
+TESTS = 01-trig.test 02-accumulator.test 03-channel.test	\
+        04-point_set.test 05-state.test 06-ppht.test		\
+        07-postprocess.test
 
 TEST_LOG_DRIVER = env AM_TAP_AWK='$(AWK)' $(SHELL) \
 	$(top_srcdir)/build-aux/tap-driver.sh

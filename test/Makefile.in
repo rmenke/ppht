@@ -87,10 +87,10 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
-TESTS = 01-raster.test$(EXEEXT) 02-trig.test$(EXEEXT) \
-	03-accumulator.test$(EXEEXT) 04-channel.test$(EXEEXT) \
-	05-point_set.test$(EXEEXT) 06-state.test$(EXEEXT) \
-	07-ppht.test$(EXEEXT) 08-postprocess.test$(EXEEXT)
+TESTS = 01-trig.test$(EXEEXT) 02-accumulator.test$(EXEEXT) \
+	03-channel.test$(EXEEXT) 04-point_set.test$(EXEEXT) \
+	05-state.test$(EXEEXT) 06-ppht.test$(EXEEXT) \
+	07-postprocess.test$(EXEEXT)
 check_PROGRAMS = $(am__EXEEXT_1)
 subdir = test
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
@@ -104,38 +104,35 @@ DIST_COMMON = $(srcdir)/Makefile.am $(am__DIST_COMMON)
 mkinstalldirs = $(install_sh) -d
 CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
-am__EXEEXT_1 = 01-raster.test$(EXEEXT) 02-trig.test$(EXEEXT) \
-	03-accumulator.test$(EXEEXT) 04-channel.test$(EXEEXT) \
-	05-point_set.test$(EXEEXT) 06-state.test$(EXEEXT) \
-	07-ppht.test$(EXEEXT) 08-postprocess.test$(EXEEXT)
-01_raster_test_SOURCES = 01-raster.cpp
-01_raster_test_OBJECTS = 01-raster.$(OBJEXT)
-01_raster_test_LDADD = $(LDADD)
+am__EXEEXT_1 = 01-trig.test$(EXEEXT) 02-accumulator.test$(EXEEXT) \
+	03-channel.test$(EXEEXT) 04-point_set.test$(EXEEXT) \
+	05-state.test$(EXEEXT) 06-ppht.test$(EXEEXT) \
+	07-postprocess.test$(EXEEXT)
+01_trig_test_SOURCES = 01-trig.cpp
+01_trig_test_OBJECTS = 01-trig.$(OBJEXT)
+01_trig_test_LDADD = $(LDADD)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
 am__v_lt_1 = 
-02_trig_test_SOURCES = 02-trig.cpp
-02_trig_test_OBJECTS = 02-trig.$(OBJEXT)
-02_trig_test_LDADD = $(LDADD)
-03_accumulator_test_SOURCES = 03-accumulator.cpp
-03_accumulator_test_OBJECTS = 03-accumulator.$(OBJEXT)
-03_accumulator_test_LDADD = $(LDADD)
-04_channel_test_SOURCES = 04-channel.cpp
-04_channel_test_OBJECTS = 04-channel.$(OBJEXT)
-04_channel_test_LDADD = $(LDADD)
-05_point_set_test_SOURCES = 05-point_set.cpp
-05_point_set_test_OBJECTS = 05-point_set.$(OBJEXT)
-05_point_set_test_LDADD = $(LDADD)
-06_state_test_SOURCES = 06-state.cpp
-06_state_test_OBJECTS = 06-state.$(OBJEXT)
-06_state_test_LDADD = $(LDADD)
-07_ppht_test_SOURCES = 07-ppht.cpp
-07_ppht_test_OBJECTS = 07-ppht.$(OBJEXT)
-07_ppht_test_LDADD = $(LDADD)
-08_postprocess_test_SOURCES = 08-postprocess.cpp
-08_postprocess_test_OBJECTS = 08-postprocess.$(OBJEXT)
-08_postprocess_test_LDADD = $(LDADD)
+02_accumulator_test_SOURCES = 02-accumulator.cpp
+02_accumulator_test_OBJECTS = 02-accumulator.$(OBJEXT)
+02_accumulator_test_LDADD = $(LDADD)
+03_channel_test_SOURCES = 03-channel.cpp
+03_channel_test_OBJECTS = 03-channel.$(OBJEXT)
+03_channel_test_LDADD = $(LDADD)
+04_point_set_test_SOURCES = 04-point_set.cpp
+04_point_set_test_OBJECTS = 04-point_set.$(OBJEXT)
+04_point_set_test_LDADD = $(LDADD)
+05_state_test_SOURCES = 05-state.cpp
+05_state_test_OBJECTS = 05-state.$(OBJEXT)
+05_state_test_LDADD = $(LDADD)
+06_ppht_test_SOURCES = 06-ppht.cpp
+06_ppht_test_OBJECTS = 06-ppht.$(OBJEXT)
+06_ppht_test_LDADD = $(LDADD)
+07_postprocess_test_SOURCES = 07-postprocess.cpp
+07_postprocess_test_OBJECTS = 07-postprocess.$(OBJEXT)
+07_postprocess_test_LDADD = $(LDADD)
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
 am__v_P_0 = false
@@ -151,10 +148,10 @@ am__v_at_1 =
 DEFAULT_INCLUDES = 
 depcomp = $(SHELL) $(top_srcdir)/build-aux/depcomp
 am__maybe_remake_depfiles = depfiles
-am__depfiles_remade = ./$(DEPDIR)/01-raster.Po ./$(DEPDIR)/02-trig.Po \
-	./$(DEPDIR)/03-accumulator.Po ./$(DEPDIR)/04-channel.Po \
-	./$(DEPDIR)/05-point_set.Po ./$(DEPDIR)/06-state.Po \
-	./$(DEPDIR)/07-ppht.Po ./$(DEPDIR)/08-postprocess.Po
+am__depfiles_remade = ./$(DEPDIR)/01-trig.Po \
+	./$(DEPDIR)/02-accumulator.Po ./$(DEPDIR)/03-channel.Po \
+	./$(DEPDIR)/04-point_set.Po ./$(DEPDIR)/05-state.Po \
+	./$(DEPDIR)/06-ppht.Po ./$(DEPDIR)/07-postprocess.Po
 am__mv = mv -f
 CXXCOMPILE = $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
 	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
@@ -174,11 +171,10 @@ AM_V_CXXLD = $(am__v_CXXLD_@AM_V@)
 am__v_CXXLD_ = $(am__v_CXXLD_@AM_DEFAULT_V@)
 am__v_CXXLD_0 = @echo "  CXXLD   " $@;
 am__v_CXXLD_1 = 
-SOURCES = 01-raster.cpp 02-trig.cpp 03-accumulator.cpp 04-channel.cpp \
-	05-point_set.cpp 06-state.cpp 07-ppht.cpp 08-postprocess.cpp
-DIST_SOURCES = 01-raster.cpp 02-trig.cpp 03-accumulator.cpp \
-	04-channel.cpp 05-point_set.cpp 06-state.cpp 07-ppht.cpp \
-	08-postprocess.cpp
+SOURCES = 01-trig.cpp 02-accumulator.cpp 03-channel.cpp \
+	04-point_set.cpp 05-state.cpp 06-ppht.cpp 07-postprocess.cpp
+DIST_SOURCES = 01-trig.cpp 02-accumulator.cpp 03-channel.cpp \
+	04-point_set.cpp 05-state.cpp 06-ppht.cpp 07-postprocess.cpp
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -579,37 +575,33 @@ clean-checkPROGRAMS:
 	echo " rm -f" $$list; \
 	rm -f $$list
 
-01-raster.test$(EXEEXT): $(01_raster_test_OBJECTS) $(01_raster_test_DEPENDENCIES) $(EXTRA_01_raster_test_DEPENDENCIES) 
-	@rm -f 01-raster.test$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(01_raster_test_OBJECTS) $(01_raster_test_LDADD) $(LIBS)
+01-trig.test$(EXEEXT): $(01_trig_test_OBJECTS) $(01_trig_test_DEPENDENCIES) $(EXTRA_01_trig_test_DEPENDENCIES) 
+	@rm -f 01-trig.test$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(01_trig_test_OBJECTS) $(01_trig_test_LDADD) $(LIBS)
 
-02-trig.test$(EXEEXT): $(02_trig_test_OBJECTS) $(02_trig_test_DEPENDENCIES) $(EXTRA_02_trig_test_DEPENDENCIES) 
-	@rm -f 02-trig.test$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(02_trig_test_OBJECTS) $(02_trig_test_LDADD) $(LIBS)
+02-accumulator.test$(EXEEXT): $(02_accumulator_test_OBJECTS) $(02_accumulator_test_DEPENDENCIES) $(EXTRA_02_accumulator_test_DEPENDENCIES) 
+	@rm -f 02-accumulator.test$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(02_accumulator_test_OBJECTS) $(02_accumulator_test_LDADD) $(LIBS)
 
-03-accumulator.test$(EXEEXT): $(03_accumulator_test_OBJECTS) $(03_accumulator_test_DEPENDENCIES) $(EXTRA_03_accumulator_test_DEPENDENCIES) 
-	@rm -f 03-accumulator.test$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(03_accumulator_test_OBJECTS) $(03_accumulator_test_LDADD) $(LIBS)
+03-channel.test$(EXEEXT): $(03_channel_test_OBJECTS) $(03_channel_test_DEPENDENCIES) $(EXTRA_03_channel_test_DEPENDENCIES) 
+	@rm -f 03-channel.test$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(03_channel_test_OBJECTS) $(03_channel_test_LDADD) $(LIBS)
 
-04-channel.test$(EXEEXT): $(04_channel_test_OBJECTS) $(04_channel_test_DEPENDENCIES) $(EXTRA_04_channel_test_DEPENDENCIES) 
-	@rm -f 04-channel.test$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(04_channel_test_OBJECTS) $(04_channel_test_LDADD) $(LIBS)
+04-point_set.test$(EXEEXT): $(04_point_set_test_OBJECTS) $(04_point_set_test_DEPENDENCIES) $(EXTRA_04_point_set_test_DEPENDENCIES) 
+	@rm -f 04-point_set.test$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(04_point_set_test_OBJECTS) $(04_point_set_test_LDADD) $(LIBS)
 
-05-point_set.test$(EXEEXT): $(05_point_set_test_OBJECTS) $(05_point_set_test_DEPENDENCIES) $(EXTRA_05_point_set_test_DEPENDENCIES) 
-	@rm -f 05-point_set.test$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(05_point_set_test_OBJECTS) $(05_point_set_test_LDADD) $(LIBS)
+05-state.test$(EXEEXT): $(05_state_test_OBJECTS) $(05_state_test_DEPENDENCIES) $(EXTRA_05_state_test_DEPENDENCIES) 
+	@rm -f 05-state.test$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(05_state_test_OBJECTS) $(05_state_test_LDADD) $(LIBS)
 
-06-state.test$(EXEEXT): $(06_state_test_OBJECTS) $(06_state_test_DEPENDENCIES) $(EXTRA_06_state_test_DEPENDENCIES) 
-	@rm -f 06-state.test$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(06_state_test_OBJECTS) $(06_state_test_LDADD) $(LIBS)
+06-ppht.test$(EXEEXT): $(06_ppht_test_OBJECTS) $(06_ppht_test_DEPENDENCIES) $(EXTRA_06_ppht_test_DEPENDENCIES) 
+	@rm -f 06-ppht.test$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(06_ppht_test_OBJECTS) $(06_ppht_test_LDADD) $(LIBS)
 
-07-ppht.test$(EXEEXT): $(07_ppht_test_OBJECTS) $(07_ppht_test_DEPENDENCIES) $(EXTRA_07_ppht_test_DEPENDENCIES) 
-	@rm -f 07-ppht.test$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(07_ppht_test_OBJECTS) $(07_ppht_test_LDADD) $(LIBS)
-
-08-postprocess.test$(EXEEXT): $(08_postprocess_test_OBJECTS) $(08_postprocess_test_DEPENDENCIES) $(EXTRA_08_postprocess_test_DEPENDENCIES) 
-	@rm -f 08-postprocess.test$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(08_postprocess_test_OBJECTS) $(08_postprocess_test_LDADD) $(LIBS)
+07-postprocess.test$(EXEEXT): $(07_postprocess_test_OBJECTS) $(07_postprocess_test_DEPENDENCIES) $(EXTRA_07_postprocess_test_DEPENDENCIES) 
+	@rm -f 07-postprocess.test$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(07_postprocess_test_OBJECTS) $(07_postprocess_test_LDADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -617,14 +609,13 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/01-raster.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/02-trig.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/03-accumulator.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/04-channel.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/05-point_set.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/06-state.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/07-ppht.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/08-postprocess.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/01-trig.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/02-accumulator.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/03-channel.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/04-point_set.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/05-state.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/06-ppht.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/07-postprocess.Po@am__quote@ # am--include-marker
 
 $(am__depfiles_remade):
 	@$(MKDIR_P) $(@D)
@@ -948,14 +939,13 @@ clean-am: clean-checkPROGRAMS clean-generic clean-libtool \
 	mostlyclean-am
 
 distclean: distclean-am
-		-rm -f ./$(DEPDIR)/01-raster.Po
-	-rm -f ./$(DEPDIR)/02-trig.Po
-	-rm -f ./$(DEPDIR)/03-accumulator.Po
-	-rm -f ./$(DEPDIR)/04-channel.Po
-	-rm -f ./$(DEPDIR)/05-point_set.Po
-	-rm -f ./$(DEPDIR)/06-state.Po
-	-rm -f ./$(DEPDIR)/07-ppht.Po
-	-rm -f ./$(DEPDIR)/08-postprocess.Po
+		-rm -f ./$(DEPDIR)/01-trig.Po
+	-rm -f ./$(DEPDIR)/02-accumulator.Po
+	-rm -f ./$(DEPDIR)/03-channel.Po
+	-rm -f ./$(DEPDIR)/04-point_set.Po
+	-rm -f ./$(DEPDIR)/05-state.Po
+	-rm -f ./$(DEPDIR)/06-ppht.Po
+	-rm -f ./$(DEPDIR)/07-postprocess.Po
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-tags
@@ -1001,14 +991,13 @@ install-ps-am:
 installcheck-am:
 
 maintainer-clean: maintainer-clean-am
-		-rm -f ./$(DEPDIR)/01-raster.Po
-	-rm -f ./$(DEPDIR)/02-trig.Po
-	-rm -f ./$(DEPDIR)/03-accumulator.Po
-	-rm -f ./$(DEPDIR)/04-channel.Po
-	-rm -f ./$(DEPDIR)/05-point_set.Po
-	-rm -f ./$(DEPDIR)/06-state.Po
-	-rm -f ./$(DEPDIR)/07-ppht.Po
-	-rm -f ./$(DEPDIR)/08-postprocess.Po
+		-rm -f ./$(DEPDIR)/01-trig.Po
+	-rm -f ./$(DEPDIR)/02-accumulator.Po
+	-rm -f ./$(DEPDIR)/03-channel.Po
+	-rm -f ./$(DEPDIR)/04-point_set.Po
+	-rm -f ./$(DEPDIR)/05-state.Po
+	-rm -f ./$(DEPDIR)/06-ppht.Po
+	-rm -f ./$(DEPDIR)/07-postprocess.Po
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 

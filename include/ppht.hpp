@@ -98,7 +98,6 @@
 #include "accumulator.hpp"
 #include "point_set.hpp"
 #include "postprocess.hpp"
-#include "raster.hpp"
 #include "state.hpp"
 
 #include <cstdint>

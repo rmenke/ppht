@@ -6,7 +6,6 @@
 
 #include "channel.hpp"
 #include "point_set.hpp"
-#include "raster.hpp"
 #include "trig.hpp"
 #include "types.hpp"
 
@@ -28,13 +27,15 @@ namespace ppht {
  * in random order.  Extracting a pixel marks it as "voted."  Once
  * fully processed, any pixel may be marked "done."
  */
-template <class Raster = raster>
 class state {
     /// A uniform random bit generator.
     using URBG = std::default_random_engine;
 
     /// The status of each pixel in the bitmap.
-    Raster _state;
+    std::unique_ptr<status_t[]> _status;
+
+    /// The dimensions of the bitmap.
+    std::size_t const _rows, _cols;
 
     /// A collection of pixels marked 'pending' in the raster.
     std::vector<point> _pending;
@@ -58,35 +59,10 @@ class state {
      */
     state(std::size_t rows, std::size_t cols,
           URBG::result_type seed = std::random_device{}())
-        : _state(rows, cols)
+        : _status(new status_t[rows * cols])
+        , _rows(rows)
+        , _cols(cols)
         , _urbg(seed) {}
-
-    /**
-     * @brief Use an existing state raster to construct an object.
-     *
-     * The raster will be consumed by this constructor.
-     *
-     * The pending queue will be loaded with all @c status_t::pending
-     * pixels in the state raster.
-     *
-     * @param s the raster used to create the state
-     *
-     * @param seed the seed for the random engine
-     */
-    state(Raster &&s, URBG::result_type seed = std::random_device{}())
-        : _state(std::move(s))
-        , _urbg(seed) {
-        point p;
-
-        for (p.y = 0; p.y < _state.rows; ++p.y) {
-            auto const row = _state[p.y];
-            for (p.x = 0; p.x < _state.cols; ++p.x) {
-                if (row[p.x] == status_t::pending) {
-                    _pending.push_back(p);
-                }
-            }
-        }
-    }
 
     /**
      * @brief Get the number of rows of the state image.
@@ -94,7 +70,7 @@ class state {
      * @return the height of the underlying raster.
      */
     std::size_t rows() const {
-        return _state.rows();
+        return _rows;
     }
 
     /**
@@ -103,7 +79,7 @@ class state {
      * @return the width of the underlying raster.
      */
     std::size_t cols() const {
-        return _state.cols();
+        return _cols;
     }
 
     /**
@@ -114,11 +90,12 @@ class state {
      * @return the status of the pixel.
      */
     status_t status(point const &point) const {
-        if (point.x < 0 || point.x >= static_cast<long>(_state.cols()) ||
-            point.y < 0 || point.y >= static_cast<long>(_state.rows())) {
+        if (point.x < 0 || point.x >= static_cast<long>(_cols) ||
+            point.y < 0 || point.y >= static_cast<long>(_rows)) {
             return status_t::unset;
         }
-        return _state[point.y][point.x];
+
+        return _status[point.y * _cols + point.x];
     }
 
     /**
@@ -127,7 +104,7 @@ class state {
      * @param point the pixel to mark.
      */
     void mark_pending(point const &point) {
-        _state[point.y][point.x] = status_t::pending;
+        _status[point.y * _cols + point.x] = status_t::pending;
         _pending.emplace_back(point);
     }
 
@@ -137,7 +114,7 @@ class state {
      * @param point the pixel to mark.
      */
     void mark_done(point const &point) {
-        _state[point.y][point.x] = status_t::done;
+        _status[point.y * _cols + point.x] = status_t::done;
     }
 
     /**
@@ -173,7 +150,7 @@ class state {
 
         point = std::exchange(*iter, *(--end));
 
-        auto &cell = _state[point.y][point.x];
+        auto &cell = _status[point.y * _cols + point.x];
 
         assert(cell == status_t::pending);
 

@@ -68,9 +68,9 @@ restart:
     return std::make_pair(end1, end2);
 }
 
-ppht::state<> _load_image(std::size_t rows, std::size_t cols,
+ppht::state _load_image(std::size_t rows, std::size_t cols,
                           std::uint8_t *data, unsigned seed) {
-    ppht::state<> state{rows, cols, seed};
+    ppht::state state{rows, cols, seed};
 
     std::size_t bytes_per_row = (cols + 7) >> 3;
 

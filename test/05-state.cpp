@@ -19,7 +19,7 @@ static inline ostream &operator<<(ostream &o, const pair<F, S> &p) {
 static void test_intersection() {
     using namespace tap;
 
-    ppht::state<> s(240, 320);
+    ppht::state s(240, 320);
 
     std::pair<ppht::point, ppht::point> expected{{0, 141}, {141, 0}};
     std::pair<ppht::point, ppht::point> actual =
@@ -61,7 +61,7 @@ int main() {
 
     test_plan plan{13};
 
-    ppht::state<> state(5, 5);
+    ppht::state state(5, 5);
 
     bool all_clear = true;
     ppht::point p;
