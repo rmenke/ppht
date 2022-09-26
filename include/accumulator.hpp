@@ -35,14 +35,6 @@ class accumulator {
     /// @brief Exponent by which to scale raw rho values.
     int const _rho_scale;
 
-    /// @brief Log-probability threshold for rejecting the null
-    /// hypothesis.
-    double _log_threshold = std::log(1E-12);
-
-    /// @brief The minimum number of points required to trigger a
-    /// scan.
-    Count _min_trigger_points = 3;
-
     /// @brief Matrix of counters (quantized @f$\theta\rho@f$-space).
     std::unique_ptr<Count[]> _counters;
 
@@ -88,36 +80,6 @@ class accumulator {
     }
 
     /**
-     * @brief Restrict the value to the range of the target type.
-     *
-     *  If the value is greater than the target type will allow,
-     * return the maximum value of the target type.  If the value is
-     * less than the target type will allow, return the minimum value
-     * of the target type.
-     *
-     * @tparam T the target type
-     *
-     * @tparam U the source type
-     *
-     * @param value the value to convert
-     *
-     * @return the value restricted to the limits of the target type
-     */
-    template <class T, class U>
-    static constexpr T clamp(U value) noexcept {
-        using limit = std::numeric_limits<T>;
-
-        if (value >= static_cast<U>(limit::max())) {
-            return limit::max();
-        }
-        if (value <= static_cast<U>(limit::lowest())) {
-            return limit::lowest();
-        }
-
-        return static_cast<T>(value);
-    }
-
-    /**
      * @brief Construct an instance of @ref accumulator.
      *
      * This constructor is called with the results of manipulation of
@@ -137,6 +99,14 @@ class accumulator {
         , _urbg(seed) {}
 
   public:
+    /// @brief Log-probability threshold for rejecting the null
+    /// hypothesis.
+    double log_threshold = std::log(1E-12);
+
+    /// @brief The minimum number of points required to trigger a
+    /// scan.
+    Count min_trigger_points = 3;
+
     /**
      * @brief Calculate parameters for scaling rho.
      *
@@ -196,48 +166,6 @@ class accumulator {
                 seed_t seed = std::random_device{}())
         : accumulator(rho_info(rows, cols), seed) {}
 
-    /// @brief Get the probability threshold for rejecting the null
-    /// hypothesis.
-    double threshold() const noexcept {
-        return std::exp(_log_threshold);
-    }
-
-    /// @brief Set the probability threshold for rejecting the null
-    /// hypothesis.
-    ///
-    /// If the probability of the null hypothesis is less than this
-    /// value, then a channel scan will be triggered.  Lowering this
-    /// value results in fewer false positives but increases the
-    /// chance of missing small segments.
-    ///
-    /// @param threshold the new threshold
-    ///
-    /// @sa min_trigger_points(double)
-    void threshold(double threshold) noexcept {
-        _log_threshold = std::log(threshold);
-    }
-
-    /// @brief Get the minimum number of voting points required to
-    /// trigger a scan.
-    double min_trigger_points() const noexcept {
-        return _min_trigger_points;
-    }
-
-    /// @brief Set the minimum number of voting points required to
-    /// trigger a scan.
-    ///
-    /// The simplification that the Poisson distribution approximates
-    /// the likelihood of random noise breaks down for small numbers.
-    /// Skip the probability calculation if the number of votes is
-    /// less than this.
-    ///
-    /// @param min_trigger_points the new count required to trigger a scan
-    ///
-    /// @sa threshold(double)
-    void min_trigger_points(double min_trigger_points) noexcept {
-        _min_trigger_points = min_trigger_points;
-    }
-
     /// @brief Find lines that are parallel to major axes.
     ///
     /// Returns the line most likely to be correct based on its angle.
@@ -278,7 +206,7 @@ class accumulator {
      * @see unvote()
      */
     std::optional<line> vote(point const &p) {
-        Count n = _min_trigger_points;
+        Count n = min_trigger_points;
 
         std::vector<line> found;
 
@@ -339,7 +267,7 @@ class accumulator {
         // significance threshold, we assume that the bin was filled
         // by noise and tell the caller we did not find a segment.
 
-        if (lnp >= _log_threshold) return std::nullopt;
+        if (lnp >= log_threshold) return std::nullopt;
 
         // Reject the null hypothesis.
 
