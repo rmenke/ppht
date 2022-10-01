@@ -1,8 +1,7 @@
 // Copyright (C) 2020-2022 by Rob Menke
 
-#include "tap.hpp"
-
 #include "channel.hpp"
+#include "tap.hpp"
 #include "types.hpp"
 
 #include <cstdlib>
@@ -11,8 +10,27 @@
 namespace std {
 
 template <class F, class S>
-static inline ostream &operator<<(ostream &o, const pair<F, S> &p) {
-    return o << '(' << p.first << ", " << p.second << ')';
+inline ostream &operator<<(ostream &os, const pair<F, S> &p) {
+    return os << '(' << p.first << ", " << p.second << ')';
+}
+
+template <class T>
+inline ostream &operator<<(ostream &os, const set<T> &s) {
+    auto b = s.begin();
+    auto e = s.end();
+
+    os << "{";
+
+    if (b != e) {
+        os << *b;
+        while (++b != e) os << ", " << *b;
+    }
+
+    return os << "}";
+}
+
+inline ostream &operator<<(ostream &os, const ppht::channel::iterator &i) {
+    return os << "iterator{" << (*i) << "}";
 }
 
 } // namespace std
@@ -20,187 +38,34 @@ static inline ostream &operator<<(ostream &o, const pair<F, S> &p) {
 int main() {
     using namespace tap;
 
-    test_plan plan{skip_all, 0, "new API needs work"};
+    test_plan plan;
 
-#if 0
-    ppht::segment_t segment;
-
-    ppht::channel channel({{5, 0}, {0, 5}});
+    ppht::channel channel{{0, 5}, {5, 0}, 1};
 
     auto iter = channel.begin();
     auto end = channel.end();
 
-    eq(2, iter->size(), "test field access operator");
-
-    eq(ppht::point_t{0, 5}, *iter, "correct value");
+    eq(ppht::point{0, 5}, iter->first, "correct value");
     ++iter;
     ne(end, iter, "iterator not done");
 
-    eq(ppht::point_t{1,4}, *iter, "correct value");
+    eq(ppht::point{1, 4}, iter->first, "correct value");
     ++iter;
     ne(end, iter, "iterator not done");
 
-    eq(ppht::point_t{2,3}, *iter, "correct value");
+    eq(ppht::point{2, 3}, iter->first, "correct value");
     ++iter;
     ne(end, iter, "iterator not done");
 
-    eq(ppht::point_t{3,2}, *iter, "correct value");
+    eq(ppht::point{3, 2}, iter->first, "correct value");
     ++iter;
     ne(end, iter, "iterator not done");
 
-    eq(ppht::point_t{4,1}, *iter, "correct value");
+    eq(ppht::point{4, 1}, iter->first, "correct value");
     ++iter;
     ne(end, iter, "iterator not done");
 
-    eq(ppht::point_t{5,0}, *iter, "correct value");
+    eq(ppht::point{5, 0}, iter->first, "correct value");
     ++iter;
     eq(end, iter, "iterator done");
-
-    iter = channel.begin();
-    auto prev = iter;
-
-    while (true) {
-        if (++iter == end) break;
-        ne(*prev, *iter, "advance");
-        prev = iter;
-    }
-
-    // octent VIII
-
-    segment = {{5, 0}, {0, 3}};
-
-    auto result = ppht::make_scanner(segment);
-
-    eq(std::make_pair(ppht::point_t{0, 3}, ppht::point_t{5, 0}), segment, "segment reversed");
-
-    instanceof<ppht::bresenham_scanner<0, -1>>(*result, "correct scanner");
-    instanceof<ppht::bresenham_scanner<0, -1>>(*result->clone(), "correct scanner copy");
-
-    ppht::point_t p_old, p_new;
-
-
-    p_old = p_new = segment.first; result->advance(p_new);
-    eq(1, p_new[0], "x-coord increased by one");
-    ge(p_old[1], p_new[1], "y-coord monotonically decreased");
-
-
-    p_old = p_new; result->advance(p_new);
-    eq(2, p_new[0], "x-coord increased by one");
-    ge(p_old[1], p_new[1], "y-coord monotonically decreased");
-
-    p_old = p_new; result->advance(p_new);
-    eq(3, p_new[0], "x-coord increased by one");
-    ge(p_old[1], p_new[1], "y-coord monotonically decreased");
-
-    p_old = p_new; result->advance(p_new);
-    eq(4, p_new[0], "x-coord increased by one");
-    ge(p_old[1], p_new[1], "y-coord monotonically decreased");
-
-    p_old = p_new; result->advance(p_new);
-    eq(5, p_new[0], "x-coord increased by one");
-    ge(p_old[1], p_new[1], "y-coord monotonically decreased");
-
-    // y-axis
-
-    segment = {{5, 0}, {5, 5}};
-
-    result = ppht::make_scanner(segment);
-
-    instanceof<ppht::axis_scanner<1>>(*result, "correct scanner");
-    instanceof<ppht::axis_scanner<1>>(*result->clone(), "correct scanner copy");
-
-    p_old = p_new = segment.first; result->advance(p_new);
-    eq(p_old[0], p_new[0], "x-coord unchanged");
-    lt(p_old[1], p_new[1], "y-coord increased");
-
-    p_old = p_new;
-    result->advance(p_new);
-    eq(p_old[0], p_new[0], "x-coord unchanged");
-    lt(p_old[1], p_new[1], "y-coord increased");
-
-    p_old = p_new; result->advance(p_new);
-    eq(p_old[0], p_new[0], "x-coord unchanged");
-    lt(p_old[1], p_new[1], "y-coord increased");
-
-    p_old = p_new; result->advance(p_new);
-    eq(p_old[0], p_new[0], "x-coord unchanged");
-    lt(p_old[1], p_new[1], "y-coord increased");
-
-    p_old = p_new; result->advance(p_new);
-    eq(p_old[0], p_new[0], "x-coord unchanged");
-    lt(p_old[1], p_new[1], "y-coord increased");
-
-    p_old = p_new; result->advance(p_new);
-    eq(p_old[0], p_new[0], "x-coord unchanged");
-    lt(p_old[1], p_new[1], "y-coord increased");
-
-    // x-axis
-
-    segment = {{0, 5}, {5, 5}};
-
-    result = ppht::make_scanner(segment);
-
-    instanceof<ppht::axis_scanner<0>>(*result, "correct scanner");
-    instanceof<ppht::axis_scanner<0>>(*result->clone(), "correct scanner copy");
-
-    p_old = p_new = segment.first; result->advance(p_new);
-    eq(p_old[0] + 1, p_new[0], "x-coord increased");
-    eq(p_old[1], p_new[1], "y-coord unchanged");
-
-    // octent I
-
-    segment = {{0, 0}, {5, 3}};
-
-    result = ppht::make_scanner(segment);
-
-    instanceof<ppht::bresenham_scanner<0,+1>>(*result, "correct scanner");
-    instanceof<ppht::bresenham_scanner<0,+1>>(*result->clone(), "correct scanner copy");
-
-    p_old = p_new = segment.first; result->advance(p_new);
-
-    while (p_old != segment.second) {
-        eq(p_old[0] + 1, p_new[0], "x-coord increased");
-        le(p_old[1], p_new[1], "y-coord increased");
-        p_old = p_new;
-        result->advance(p_new);
-    }
-
-    // octent II
-
-    segment = {{0, 0}, {3, 5}};
-
-    result = ppht::make_scanner(segment);
-
-    instanceof<ppht::bresenham_scanner<1,+1>>(*result, "correct scanner");
-    instanceof<ppht::bresenham_scanner<1,+1>>(*result->clone(), "correct scanner copy");
-
-    p_old = p_new = segment.first; result->advance(p_new);
-
-    while (p_old != segment.second) {
-        le(p_old[0], p_new[0], "x-coord increased");
-        eq(p_old[1] + 1, p_new[1], "y-coord increased");
-        p_old = p_new;
-        result->advance(p_new);
-    }
-
-    // octent III
-
-    segment = {{0, 5}, {3, 0}};
-
-    result = ppht::make_scanner(segment);
-
-    instanceof<ppht::bresenham_scanner<1,-1>>(*result, "correct scanner");
-    instanceof<ppht::bresenham_scanner<1,-1>>(*result->clone(), "correct scanner copy");
-
-    p_old = p_new = segment.first; result->advance(p_new);
-
-    while (p_old != segment.second) {
-        ge(p_old[0], p_new[0], "x-coord decreased");
-        eq(p_old[1] + 1, p_new[1], "y-coord increased");
-        p_old = p_new;
-        result->advance(p_new);
-    }
-
-    return test_status();
-#endif
 }

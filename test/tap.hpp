@@ -15,7 +15,7 @@
 
 namespace tap {
 
-void print() {}
+inline void print() {}
 
 template <class Arg, class... Args>
 void print(Arg &&arg, Args &&... args) {
