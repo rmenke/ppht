@@ -163,25 +163,8 @@ std::vector<std::pair<point, point>> find_segments(
             auto found = state.scan(*result, channel_radius, max_gap);
 
             if (found.length_squared() >= min_length_squared) {
-                for (auto &&point : found) {
-                    auto status = state.status(point);
-
-                    if (status == status_t::voted) {
-                        accumulator.unvote(point);
-                    }
-                    else {
-                        if (status != status_t::pending) {
-                            using namespace std;
-                            throw std::logic_error{
-                                "Unexpected pixel with status "s +
-                                to_string(status)};
-                        }
-                    }
-
-                    state.mark_done(point);
-                }
-
                 segments.push_back(found.endpoints());
+                std::move(found).commit(state, accumulator);
             }
         }
     }

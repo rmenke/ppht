@@ -1,10 +1,11 @@
 // Copyright (C) 2020-2022 by Rob Menke
 
-#include "tap.hpp"
-
 #include "point_set.hpp"
+#include "tap.hpp"
+#include "types.hpp"
 
 #include <iostream>
+#include <map>
 #include <vector>
 
 namespace std {
@@ -16,72 +17,80 @@ static inline ostream &operator<<(ostream &o, const pair<F, S> &p) {
 
 } // namespace std
 
-namespace ppht {
+namespace mock {
 
-static inline std::ostream &operator<<(std::ostream &o, const ppht::point_set &ps) {
-    o << "ppht::point_set{";
+struct state {
+    std::map<ppht::point, ppht::status_t> points;
 
-    if (!ps.empty()) {
-        o << ps.endpoints() << "; {";
-        auto b = ps.begin();
-        auto e = ps.end();
-        if (b != e) {
-            o << *b;
-            while (++b != e) o << ',' << *b;
-        }
-        o << "}";
+    state()
+        : points({{{3, 5}, ppht::status_t::voted},
+                  {{4, 4}, ppht::status_t::voted},
+                  {{5, 7}, ppht::status_t::pending},
+                  {{6, 6}, ppht::status_t::voted}}) {}
+
+    ppht::status_t status(ppht::point const &p) {
+        return points.at(p);
     }
 
-    return o << "}";
-}
+    void mark_done(ppht::point const &p) {
+        tap::ne(points.at(p), ppht::status_t::unset, "not unset ",
+                to_string(p));
+        tap::ne(points.at(p), ppht::status_t::done, "not done ",
+                to_string(p));
+        points.at(p) = ppht::status_t::done;
+    }
+};
 
-}
+struct accumulator {
+    std::set<ppht::point> points = {{3, 5}, {4, 4}, {6, 6}};
+
+    void unvote(ppht::point const &p) {
+        tap::eq(points.erase(p), 1, "unvote once ", to_string(p));
+    }
+};
+
+} // namespace mock
 
 int main() {
     using namespace tap;
 
-    test_plan plan;
+    test_plan plan = 24;
 
     ppht::point_set ps;
 
-    ok(ps.empty(), "initially empty");
+    ps.add_point({5, 5}, std::vector<ppht::point>{{4, 4}, {6, 6}});
 
-    ps.add_point({5,5}, std::vector<ppht::point>{{4,4}, {6,6}});
-
-    ok(!ps.empty(), "no longer empty");
     eq(0, ps.length_squared(), "length of one point is zero");
-    eq(std::make_pair(ppht::point{5,5}, ppht::point{5,5}), ps.endpoints(),
+    eq(std::make_pair(ppht::point{5, 5}, ppht::point{5, 5}), ps.endpoints(),
        "canonical segment updated");
 
     auto singular = ps;
 
-    ps.add_point({4,6}, std::vector<ppht::point>{{3,5}, {5,7}});
+    ps.add_point({4, 6}, std::vector<ppht::point>{{3, 5}, {5, 7}});
 
     eq(2, ps.length_squared(), "length updated");
-    eq(std::make_pair(ppht::point{5,5}, ppht::point{4,6}), ps.endpoints(),
+    eq(std::make_pair(ppht::point{5, 5}, ppht::point{4, 6}), ps.endpoints(),
        "canonical segment updated");
 
-    ps.add_point({3,7}, std::vector<ppht::point>{{3,5}});
+    ps.add_point({3, 7}, std::vector<ppht::point>{{3, 5}});
 
     eq(8, ps.length_squared(), "length updated");
-    eq(std::make_pair(ppht::point{5,5}, ppht::point{3,7}), ps.endpoints(),
+    eq(std::make_pair(ppht::point{5, 5}, ppht::point{3, 7}), ps.endpoints(),
        "canonical segment updated");
 
-    lt(ppht::point_set{}, singular, "empty set is smaller than nonempty set");
+    lt(ppht::point_set{}, singular,
+       "empty segment is \"shorter\" than nonempty segment");
     lt(singular, ps, "segments ordered by length");
 
-    auto b = ps.begin();
-    auto e = ps.end();
+    mock::state state;
+    mock::accumulator accumulator;
 
-    ok(b != e, "iterator not done");
-    eq(ppht::point{3,5}, *(b++), "point 1");
-    ok(b != e, "iterator not done");
-    eq(ppht::point{4,4}, *(b++), "point 2");
-    ok(b != e, "iterator not done");
-    eq(ppht::point{5,7}, *(b++), "point 3");
-    ok(b != e, "iterator not done");
-    eq(ppht::point{6,6}, *(b++), "point 4");
-    ok(b == e, "iterator done");
+    std::move(ps).commit(state, accumulator);
 
-    return test_status();
+    ok(accumulator.points.empty(), "all votes undone");
+
+    eq(state.points.at({3, 5}), ppht::status_t::done, "marked done 1");
+    eq(state.points.at({4, 4}), ppht::status_t::done, "marked done 2");
+    eq(state.points.at({5, 7}), ppht::status_t::done, "marked done 3");
+    eq(state.points.at({6, 6}), ppht::status_t::done, "marked done 4");
 }

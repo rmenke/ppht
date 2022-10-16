@@ -4,8 +4,10 @@
 #ifndef ppht_point_set_hpp
 #define ppht_point_set_hpp
 
+#include "accumulator.hpp"
 #include "types.hpp"
 
+#include <cassert>
 #include <set>
 
 namespace ppht {
@@ -25,15 +27,6 @@ class point_set {
     std::pair<point, point> _endpoints;
 
   public:
-    /**
-     * @brief Check to see if any points have been added to the point set.
-     *
-     * @return true if no points are in the set
-     */
-    bool empty() const {
-        return _points.empty();
-    }
-
     /**
      * @brief Add a collection of points and their canonical
      * representation to the point set.
@@ -73,24 +66,6 @@ class point_set {
     }
 
     /**
-     * @brief Get an iterator to the start of the point collection.
-     *
-     * @return a valid iterator
-     */
-    auto begin() const {
-        return _points.begin();
-    }
-
-    /**
-     * @brief Get an iterator after the end of the point collection.
-     *
-     * @return a valid past-the-end iterator
-     */
-    auto end() const {
-        return _points.end();
-    }
-
-    /**
      * @brief The length of the segment squared.
      *
      * The result of this function is undefined if the point set is empty.
@@ -123,10 +98,40 @@ class point_set {
      * @sa length_squared()
      */
     bool operator<(const point_set &rhs) const {
-        if (rhs._points.empty()) return false;
-        if (_points.empty()) return true;
+        bool const this_empty = _points.empty();
+        if (this_empty != rhs._points.empty()) return this_empty;
 
         return length_squared() < rhs.length_squared();
+    }
+
+    template <class State, class Accumulator>
+    void commit(State &state, Accumulator &accumulator) && {
+        for (auto &&point : std::move(_points)) {
+            auto status = state.status(point);
+
+            if (status == status_t::voted) {
+                accumulator.unvote(point);
+            }
+            else {
+                assert(status == status_t::pending);
+            }
+
+            state.mark_done(point);
+        }
+    }
+
+    friend std::ostream &operator<<(std::ostream &os, point_set const &s) {
+        os << "point_set{" << s._endpoints;
+
+        auto b = s._points.begin();
+        auto e = s._points.end();
+
+        if (b != e) {
+            os << "; points: " << *b;
+            while (++b != e) os << ", " << *b;
+        }
+
+        return os << "}";
     }
 };
 

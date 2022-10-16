@@ -7,6 +7,8 @@
 #include <array>
 #include <cmath>
 #include <iostream>
+#include <ostream>
+#include <sstream>
 #include <utility>
 
 namespace ppht {
@@ -68,6 +70,12 @@ struct point {
     friend std::ostream &operator<<(std::ostream &o, const point &p) {
         return o << "(" << p.x << ", " << p.y << ")";
     }
+
+    friend std::string to_string(const point &p) {
+        std::ostringstream os;
+        os << p;
+        return std::move(os).str();
+    }
 };
 
 template <std::size_t>
@@ -121,6 +129,16 @@ inline bool operator==(const std::pair<point, point> &a,
 inline bool operator!=(const std::pair<point, point> &a,
                        const std::pair<point, point> &b) {
     return !operator==(a, b);
+}
+
+/// @brief Output operator for pairs of points.
+///
+/// @param os a reference to the output stream
+/// @param s a line segment
+/// @return the first argument of the function
+inline std::ostream &operator<<(std::ostream &os,
+                                const std::pair<point, point> &s) {
+    return os << get<0>(s) << "--" << get<1>(s);
 }
 
 /// The definition of a line in Hough space.
