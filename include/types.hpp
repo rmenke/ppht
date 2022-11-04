@@ -104,42 +104,32 @@ inline long get<1>(const point &p) {
     return p.y;
 }
 
-/// @brief Equal-to operator for pairs of points.
-///
-/// Pairs of points represent primitive line segments, and should be
-/// considered non-directional.
-///
-/// @param a a line segment
-/// @param b a line segment
-/// @return true if the endpoints are equal pairwise
-inline bool operator==(const std::pair<point, point> &a,
-                       const std::pair<point, point> &b) {
-    return (a.first == b.first && a.second == b.second) ||
-           (a.first == b.second && a.second == b.first);
-}
+/// A segment is an unordered pair of points.
+class segment : public std::pair<point, point> {
+  public:
+    segment() = default;
 
-/// @brief Not-equal-to operator for pairs of points.
-///
-/// Pairs of points represent primitive line segments, and should be
-/// considered non-directional.
-///
-/// @param a a line segment
-/// @param b a line segment
-/// @return false if the endpoints are equal pairwise
-inline bool operator!=(const std::pair<point, point> &a,
-                       const std::pair<point, point> &b) {
-    return !operator==(a, b);
-}
+    segment(const point &a, const point &b)
+        : std::pair<point, point>(a, b) {}
 
-/// @brief Output operator for pairs of points.
-///
-/// @param os a reference to the output stream
-/// @param s a line segment
-/// @return the first argument of the function
-inline std::ostream &operator<<(std::ostream &os,
-                                const std::pair<point, point> &s) {
-    return os << get<0>(s) << "--" << get<1>(s);
-}
+    segment(const segment &) = default;
+    segment(segment &&) = default;
+
+    segment &operator=(const segment &) = default;
+    segment &operator=(segment &&) = default;
+
+    constexpr bool operator==(const segment &rhs) const {
+        return (first == rhs.first && second == rhs.second) ||
+               (first == rhs.second && second == rhs.first);
+    }
+    constexpr bool operator!=(const segment &rhs) const {
+        return !operator==(rhs);
+    }
+
+    friend std::ostream &operator<<(std::ostream &os, const segment &s) {
+        return os << s.first << "--" << s.second;
+    }
+};
 
 /// The definition of a line in Hough space.
 struct line {

@@ -163,7 +163,7 @@ std::vector<std::pair<point, point>> find_segments(
             auto found = state.scan(*result, channel_radius, max_gap);
 
             if (found.length_squared() >= min_length_squared) {
-                segments.push_back(found.endpoints());
+                segments.push_back(found.segment());
                 std::move(found).commit(state, accumulator);
             }
         }

@@ -61,7 +61,7 @@ int main() {
     ps.add_point({5, 5}, std::vector<ppht::point>{{4, 4}, {6, 6}});
 
     eq(0, ps.length_squared(), "length of one point is zero");
-    eq(std::make_pair(ppht::point{5, 5}, ppht::point{5, 5}), ps.endpoints(),
+    eq(ppht::segment(ppht::point{5, 5}, ppht::point{5, 5}), ps.segment(),
        "canonical segment updated");
 
     auto singular = ps;
@@ -69,13 +69,13 @@ int main() {
     ps.add_point({4, 6}, std::vector<ppht::point>{{3, 5}, {5, 7}});
 
     eq(2, ps.length_squared(), "length updated");
-    eq(std::make_pair(ppht::point{5, 5}, ppht::point{4, 6}), ps.endpoints(),
+    eq(ppht::segment(ppht::point{5, 5}, ppht::point{4, 6}), ps.segment(),
        "canonical segment updated");
 
     ps.add_point({3, 7}, std::vector<ppht::point>{{3, 5}});
 
     eq(8, ps.length_squared(), "length updated");
-    eq(std::make_pair(ppht::point{5, 5}, ppht::point{3, 7}), ps.endpoints(),
+    eq(ppht::segment(ppht::point{5, 5}, ppht::point{3, 7}), ps.segment(),
        "canonical segment updated");
 
     lt(ppht::point_set{}, singular,

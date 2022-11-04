@@ -23,8 +23,8 @@ class point_set {
     /// @brief The pixel points added to the set.
     std::set<point> _points;
 
-    /// @brief The endpoints of the segment.
-    std::pair<point, point> _endpoints;
+    /// @brief The canonical segment of the point set.
+    class segment _segment;
 
   public:
     /**
@@ -44,7 +44,7 @@ class point_set {
     void add_point(point canonical, Points &&points) {
         assert(!points.empty());
 
-        auto &[a, b] = _endpoints;
+        auto &[a, b] = _segment;
 
         if (_points.empty()) a = canonical;
         b = canonical;
@@ -61,8 +61,8 @@ class point_set {
      *
      * @return the segment associated with the point set.
      */
-    const std::pair<point, point> &endpoints() const {
-        return _endpoints;
+    const class segment &segment() const noexcept {
+        return _segment;
     }
 
     /**
@@ -75,7 +75,7 @@ class point_set {
     std::ptrdiff_t length_squared() const {
         assert(!_points.empty());
 
-        auto const &[a, b] = _endpoints;
+        auto const &[a, b] = _segment;
 
         const auto dx = std::abs(b.x - a.x);
         const auto dy = std::abs(b.y - a.y);
@@ -121,7 +121,7 @@ class point_set {
     }
 
     friend std::ostream &operator<<(std::ostream &os, point_set const &s) {
-        os << "point_set{" << s._endpoints;
+        os << "point_set{" << s._segment;
 
         auto b = s._points.begin();
         auto e = s._points.end();
