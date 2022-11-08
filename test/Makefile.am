@@ -1,3 +1,5 @@
+include $(top_srcdir)/aminclude_static.am
+
 TESTS = 01-types.test 02-trig.test 03-accumulator.test 04-channel.test \
         05-point_set.test 06-state.test 07-ppht.test \
         08-postprocess.test
@@ -5,11 +7,15 @@ TESTS = 01-types.test 02-trig.test 03-accumulator.test 04-channel.test \
 TEST_LOG_DRIVER = env AM_TAP_AWK='$(AWK)' $(SHELL) \
 	$(top_srcdir)/build-aux/tap-driver.sh
 
-AM_CPPFLAGS = -I$(top_srcdir)/include
-AM_CXXFLAGS = -Wall -Wpedantic
+AM_CPPFLAGS = -I$(top_srcdir)/include $(CODE_COVERAGE_CPPFLAGS)
+AM_CXXFLAGS = -Wall -Wpedantic $(CODE_COVERAGE_CXXFLAGS)
 AM_DEFAULT_SOURCE_EXT = .cpp
+
+LIBS = $(CODE_COVERAGE_LIBS)
 
 EXTRA_DIST = tap.hpp image-01.hpp image-02.hpp image-03.hpp
 
 check_PROGRAMS = $(TESTS)
 
+clean-local: code-coverage-clean
+distclean-local: code-coverage-dist-clean

@@ -24,6 +24,8 @@ LT_INIT
 LT_LANG([C++])
 AX_CXX_COMPILE_STDCXX([17],[noext],[mandatory])
 
+AX_CODE_COVERAGE
+
 AC_CONFIG_FILES([Makefile test/Makefile Doxyfile])
 
 AC_OUTPUT

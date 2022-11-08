@@ -1,3 +1,5 @@
+include $(top_srcdir)/aminclude_static.am
+
 ACLOCAL_AMFLAGS = -I m4 --install
 
 SUBDIRS = test
@@ -32,6 +34,7 @@ gh-release: git-tag dist-gzip
 	gh release create "v$(PACKAGE_VERSION)" \
 		"$(abs_top_builddir)/$(distdir).tar.gz"
 
-clean-local:
+clean-local: code-coverage-clean
 	@find . -name '*~' -print0 | xargs -0t $(RM)
 
+distclean-local: code-coverage-dist-clean
