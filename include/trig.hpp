@@ -3616,6 +3616,6 @@ inline cossin_t cossin[] = {
 static constexpr std::size_t max_theta =
     std::extent<decltype(cossin)>::value;
 
-}; // namespace ppht
+} // namespace ppht
 
 #endif

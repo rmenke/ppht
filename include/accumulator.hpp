@@ -8,6 +8,7 @@
 #include "types.hpp"
 
 #include <cassert>
+#include <memory>
 #include <optional>
 #include <random>
 

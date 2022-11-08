@@ -9,22 +9,43 @@
 #include <iostream>
 #include <ostream>
 #include <sstream>
+#include <type_traits>
 #include <utility>
 
 namespace ppht {
 
 /// A basic integral point.
-struct point {
-    long x, y;
+template <class T>
+struct coord {
+    static_assert(std::is_arithmetic_v<T>, "type must be arithmetic");
+    static_assert(std::is_signed_v<T>, "type must be signed");
 
-    point(long a, long b)
-        : x(a)
-        , y(b) {}
+    T x, y;
 
-    point()
-        : point(0, 0) {}
+    template <class U1, class U2>
+    constexpr coord(U1 &&a, U2 &&b)
+        : x(std::forward<U1>(a))
+        , y(std::forward<U2>(b)) {}
 
-    long length_squared() const {
+    template <class U1, class U2>
+    constexpr coord(const std::pair<U1, U2> &pair)
+        : x(pair.first)
+        , y(pair.second) {}
+
+    constexpr coord()
+        : coord(T{}, T{}) {}
+
+    template <class U>
+    constexpr coord(const coord<U> &r)
+        : x(r.x)
+        , y(r.y) {}
+
+    template <class U>
+    constexpr coord(coord<U> &&r)
+        : x(std::move(r.x))
+        , y(std::move(r.y)) {}
+
+    constexpr auto length_squared() const {
         return x * x + y * y;
     }
 
@@ -32,34 +53,61 @@ struct point {
         return std::hypot(x, y);
     }
 
-    point operator+(const point &p) const {
-        return {x + p.x, y + p.y};
+    template <class U>
+    constexpr auto operator+(const coord<U> &p) const {
+        using V = std::common_type_t<T, U>;
+        return coord<V>{x + p.x, y + p.y};
     }
 
-    point operator-(const point &p) const {
-        return {x - p.x, y - p.y};
+    template <class U>
+    constexpr auto operator-(const coord<U> &p) const {
+        using V = std::common_type_t<T, U>;
+        return coord<V>{x - p.x, y - p.y};
     }
 
-    point operator*(const point &p) const {
-        return {x * p.x, y * p.y};
+    template <class U>
+    constexpr auto operator*(const coord<U> &p) const {
+        using V = std::common_type_t<T, U>;
+        return coord<V>{x * p.x, y * p.y};
     }
 
-    point operator/(long d) const {
-        return {x / d, y / d};
+    template <class U, class V = typename std::common_type<T, U>::type>
+    constexpr auto operator*(U d) const {
+        return coord<V>{x * d, y * d};
     }
 
-    bool operator==(const point &p) const {
+    template <class U>
+    constexpr auto operator/(const coord<U> &p) const {
+        using V = std::common_type_t<T, U>;
+        return coord<V>{x / p.x, y / p.y};
+    }
+
+    template <class U, class V = typename std::common_type<T, U>::type>
+    constexpr auto operator/(U d) const {
+        return coord<V>{x / d, y / d};
+    }
+
+    template <class U>
+    constexpr bool operator==(const coord<U> &p) const {
         return x == p.x && y == p.y;
     }
 
-    bool operator!=(const point &p) const {
+    template <class U>
+    constexpr bool operator!=(const coord<U> &p) const {
         return !operator==(p);
     }
 
-    bool operator<(const point &p) const {
+    template <class U>
+    constexpr bool operator<(const coord<U> &p) const {
         if (x < p.x) return true;
         if (p.x < x) return false;
         return y < p.y;
+    }
+
+    template <class U>
+    constexpr auto dot(const coord<U> &p) const {
+        auto q = operator*(p);
+        return q.x + q.y;
     }
 
     auto dot(const std::pair<double, double> &p) const {
@@ -67,16 +115,18 @@ struct point {
         return x * get<0>(p) + y * get<1>(p);
     }
 
-    friend std::ostream &operator<<(std::ostream &o, const point &p) {
+    friend std::ostream &operator<<(std::ostream &o, const coord &p) {
         return o << "(" << p.x << ", " << p.y << ")";
     }
 
-    friend std::string to_string(const point &p) {
+    friend std::string to_string(const coord &p) {
         std::ostringstream os;
         os << p;
         return std::move(os).str();
     }
 };
+
+using point = coord<long>;
 
 template <std::size_t>
 inline long &get(point &p);
