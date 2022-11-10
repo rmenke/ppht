@@ -4,11 +4,13 @@
 #ifndef ppht_trig_hpp
 #define ppht_trig_hpp
 
+#include "types.hpp"
+
 #include <utility>
 
 namespace ppht {
 
-using cossin_t = std::pair<double, double>;
+using cossin_t = coord<double>;
 
 inline cossin_t cossin[] = {
     {+0x1.0000000000000p+00, +0x0.0000000000000p+00}, // 0

@@ -9,12 +9,13 @@
 #include <iostream>
 #include <ostream>
 #include <sstream>
+#include <tuple>
 #include <type_traits>
 #include <utility>
 
 namespace ppht {
 
-/// A basic integral point.
+/// An ordered pair.
 template <class T>
 struct coord {
     static_assert(std::is_arithmetic_v<T>, "type must be arithmetic");
@@ -110,11 +111,6 @@ struct coord {
         return q.x + q.y;
     }
 
-    auto dot(const std::pair<double, double> &p) const {
-        using namespace std;
-        return x * get<0>(p) + y * get<1>(p);
-    }
-
     friend std::ostream &operator<<(std::ostream &o, const coord &p) {
         return o << "(" << p.x << ", " << p.y << ")";
     }
@@ -128,30 +124,44 @@ struct coord {
 
 using point = coord<long>;
 
-template <std::size_t>
-inline long &get(point &p);
+namespace {
 
-template <>
-inline long &get<0>(point &p) {
-    return p.x;
+template <std::size_t N, class U>
+struct coord_element;
+
+template <class U>
+struct coord_element<0, U> {
+    constexpr coord_element() = default;
+
+    constexpr U &get(coord<U> &c) const noexcept {
+        return c.x;
+    }
+    constexpr const U &get(const coord<U> &c) const noexcept {
+        return c.x;
+    }
+};
+
+template <class U>
+struct coord_element<1, U> {
+    constexpr coord_element() = default;
+
+    constexpr U &get(coord<U> &c) const noexcept {
+        return c.y;
+    }
+    constexpr const U &get(const coord<U> &c) const noexcept {
+        return c.y;
+    }
+};
+
+} // namespace
+
+template <std::size_t N, class U>
+constexpr U &get(coord<U> &c) {
+    return coord_element<N, U>{}.get(c);
 }
-
-template <>
-inline long &get<1>(point &p) {
-    return p.y;
-}
-
-template <std::size_t>
-inline long get(const point &p);
-
-template <>
-inline long get<0>(const point &p) {
-    return p.x;
-}
-
-template <>
-inline long get<1>(const point &p) {
-    return p.y;
+template <std::size_t N, class U>
+constexpr const U &get(const coord<U> &c) {
+    return coord_element<N, U>{}.get(c);
 }
 
 /// A segment is an unordered pair of points.
@@ -231,5 +241,26 @@ inline std::ostream &operator<<(std::ostream &os, status_t s) {
 }
 
 } // namespace ppht
+
+/// @brief The size of a coordinate pair.
+///
+/// A constant value.
+///
+/// @tparam U the type of the coordinate pair
+template <class U>
+struct std::tuple_size<ppht::coord<U>>
+    : std::integral_constant<std::size_t, 2> {};
+
+/// @brief The type of an element of a coordinate pair.
+///
+/// Both elements are the same type.
+///
+/// @tparam N the index of the element
+/// @tparam U the type of the coordinate pair
+template <std::size_t N, class U>
+struct std::tuple_element<N, ppht::coord<U>> {
+    static_assert(N < 2, "only two data members in coord");
+    using type = U;
+};
 
 #endif /* ppht_types_hpp */

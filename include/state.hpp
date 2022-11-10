@@ -178,8 +178,8 @@ class state {
 
         std::set<point> endpoints;
 
-        auto const &cos_theta = std::get<0>(cossin[line.theta]);
-        auto const &sin_theta = std::get<1>(cossin[line.theta]);
+        auto const &cos_theta = get<0>(cossin[line.theta]);
+        auto const &sin_theta = get<1>(cossin[line.theta]);
 
         using limit = std::numeric_limits<long>;
         static constexpr long lo = limit::min();
