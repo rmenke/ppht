@@ -4,105 +4,215 @@
 #ifndef ppht_postprocess_hpp
 #define ppht_postprocess_hpp
 
-#include "kd-search.hpp"
+// clang-format off
+#ifndef PPHT_DEBUG
+#    define PPHT_DEBUG(...) do {} while (0)
+#endif
+// clang-format on
+
+#include "trig.hpp"
 #include "types.hpp"
 
-#include <cassert>
-#include <queue>
 #include <vector>
 
 namespace ppht {
 
-template <class RandomIt>
-static inline auto find_nearest(RandomIt begin, RandomIt end,
-                                const point &p, unsigned limit) {
-    std::vector<typename std::iterator_traits<RandomIt>::value_type> result;
-    kd_search(begin, end, std::back_inserter(result), p, limit);
-    return result;
-}
+/// @brief A utility to fuse nearly colinear segments.
+///
+/// PPHT tends to sacrifice finding full segments because of its
+/// random sampling. The end result is often a number of short
+/// segments where a long segment would have been found.  The
+/// postprocessor looks for segments along the same line that are
+/// adjacent and combines them.
+///
+/// Segments are considered colinear if one segment's endpoint is
+/// within a given distance to one of the other segment's endpoints
+/// and the angle between the segments is near to 180°.
+///
+class postprocessor {
+    /// @brief Cached cosine of the angle allowed for near
+    /// colinearity.
+    ///
+    /// Making this a mutable field avoids the need for an extra
+    /// parameter to extend_head().
+    ///
+    mutable double cosine_threshold;
 
-static inline auto distance_to_line_squared(const point &pnt1,
-                                            const point &pnt2) {
-    using namespace std;
+  public:
+    /// @brief The space between nearby points.
+    std::size_t gap_limit = 2;
 
-    const auto delta = pnt2 - pnt1;
+    /// @brief The allowed angle in thetas between segments still
+    /// considered colinear.
+    ///
+    /// Segments are considered colinear if one segment's endpoint is
+    /// nearby the other segment's endpoint and the angle between the
+    /// segments at least <code>max_theta - angle_tolerance</code>.
+    std::size_t angle_tolerance = 40;
 
-    const double px = get<0>(pnt1);
-    const double py = get<1>(pnt1);
-    const double dx = get<0>(delta);
-    const double dy = get<1>(delta);
+    /// @brief Modified <em>kd</em>-search for line segments.
+    ///
+    /// Finds the segments whose first point is within @p limit of the
+    /// reference point @p p.
+    ///
+    /// @note This function reorders the elements in the range.
+    ///
+    /// @param begin the start of the range
+    /// @param end the end of the range
+    /// @param out the output iterator
+    /// @param p the reference point
+    ///
+    /// @return the output iterator
+    ///
+    template <std::size_t Dim = 0, class RandomIt, class OutputIt,
+              class Point>
+    OutputIt find_nearest(RandomIt begin, RandomIt end, OutputIt out,
+                          Point &&p) const {
+        if (begin == end) return out;
 
-    const double D = delta.length_squared();
+        RandomIt mid = begin + std::distance(begin, end) / 2;
+        assert(mid != end);
 
-    return [px, py, dx, dy, D] (const point &p0) {
-        const double N = dx * (py - get<1>(p0)) - dy * (px - get<0>(p0));
-        return (N * N) / D;
-    };
-}
+        std::nth_element(begin, mid, end, [](auto &&a, auto &&b) {
+            return get<Dim>(a.first) < get<Dim>(b.first);
+        });
 
-template <class ForwardIt>
-ForwardIt postprocess(ForwardIt begin, ForwardIt end, unsigned limit) {
-    using namespace std;
+        PPHT_DEBUG("    dividing plane through ", (Dim ? "y" : "x"), " = ",
+                   get<Dim>(mid->first), "; candidates ",
+                   std::distance(begin, end));
 
-    const auto limit_squared = limit * limit;
+        auto d_plane = get<Dim>(p) - get<Dim>(mid->first);
 
-    for (auto i = begin; i != end; ++i) {
-        point &a = i->first;
-        point &b = i->second;
+        const bool is_lo = d_plane <= +static_cast<long>(gap_limit);
+        const bool is_hi = d_plane >= -static_cast<long>(gap_limit);
 
-        using tuple_t = tuple<reference_wrapper<point>, reference_wrapper<point>, ForwardIt>;
+        if (is_lo && is_hi) {
+            const auto d_other = get<1 - Dim>(p) - get<1 - Dim>(mid->first);
+            const auto d_squared = d_other * d_other + d_plane * d_plane;
 
-        vector<tuple_t> pool;
-
-        for (auto j = i + 1; j != end; ++j) {
-            point &c = j->first;
-            point &d = j->second;
-
-            pool.emplace_back(c, d, j);
-            pool.emplace_back(d, c, j);
-        }
-
-        auto bp = pool.begin();
-        auto ep = pool.end();
-
-        for (auto pass = 1; pass <= 2; ++pass) {
-        restart:
-            auto neighbors = find_nearest(bp, ep, b, limit);
-
-            for (auto &&neighbor : neighbors) {
-                point &c = get<0>(neighbor);
-                point &d = get<1>(neighbor);
-
-                // The order of the points along the new segment will
-                // be a - b ~ c - d
-
-                auto d2l = distance_to_line_squared(a, d);
-
-                if (d2l(b) > limit_squared) continue;
-                if (d2l(c) > limit_squared) continue;
-
-                // All four points are (near) colinear, and
-                // ‖b - c‖ < limit
-
-                b = d;
-                std::iter_swap(get<2>(neighbor), --end);
-
-                auto past_end = [&] (auto &&t) -> bool {
-                    return get<2>(t) == end;
-                };
-
-                ep = std::remove_if(bp, ep, past_end);
-
-                goto restart;
+            if (d_squared <= gap_limit * gap_limit) {
+                PPHT_DEBUG("    found ", *mid);
+                *out = *mid;
+                ++out;
             }
-
-            std::swap(a, b);
         }
+
+        if (is_lo) out = find_nearest<1 - Dim>(begin, mid, out, p);
+        if (is_hi) out = find_nearest<1 - Dim>(mid + 1, end, out, p);
+
+        return out;
     }
 
-    return end;
-}
+    /// @brief Extend a directed segment by replacing its head endpoint.
+    ///
+    /// @param current an iterator pointing at the current segment
+    /// @param end the end of the undirected segments
+    /// @param segments a cache of directed segments
+    ///
+    template <class ForwardIt>
+    ForwardIt extend_head(ForwardIt current, ForwardIt end,
+                          std::vector<segment> &segments) const {
+        if (current == end) return end;
 
-}
+        PPHT_DEBUG("extending segment ", *current);
+
+        auto sbeg = segments.begin();
+        auto send = std::remove(sbeg, segments.end(), *current);
+
+        auto &[tail1, head1] = *current;
+
+        std::vector<segment> found;
+
+        PPHT_DEBUG("  looking for neighbors of ", head1, "...");
+
+        find_nearest(sbeg, send, std::back_inserter(found), head1);
+
+        if (found.empty()) {
+            PPHT_DEBUG("  none found.");
+            return end;
+        }
+
+        PPHT_DEBUG("  found ", found);
+
+        for (auto const &seg : found) {
+            auto &[tail2, head2] = seg;
+
+            PPHT_DEBUG("    examining ", seg);
+
+            auto const mdpt = (head1 + tail2) / 2.0;
+            auto const vec1 = (tail1 - mdpt);
+            auto const vec2 = (head2 - mdpt);
+
+            double const cosine =
+                vec1.dot(vec2) / vec1.length() / vec2.length();
+
+            PPHT_DEBUG("    cosine is ", cosine, " (threshold ",
+                       cosine_threshold, ")");
+
+            if (cosine <= cosine_threshold) {
+                PPHT_DEBUG("      merging ", *current, " and ", seg);
+
+                head1 = head2;
+
+                end = std::remove(current, end, seg);
+                send = std::remove(sbeg, send, seg);
+
+                segments.erase(send, segments.end());
+
+                return extend_head(current, end, segments);
+            }
+        }
+
+        return end;
+    }
+
+    /// @brief Combine segments that are near-colinear.
+    ///
+    /// For all of the segments @f$\overline{ab}@f$ in the range,
+    /// generate the @em directed segments @f$\vec{ab}@f$ and
+    /// @f$\vec{ba}.@f$ For every pair of directed segments
+    /// @f$\vec{ab}@f$ and @f$\vec{cd}@f$, if the angle between the
+    /// two vectors is less than or equal to @ref angle_tolerance and
+    /// the distance between @f$b@f$ and @f$c@f$ is less than or equal
+    /// to @ref gap_limit then replace the equivalent @em undirected
+    /// segments @f$\overline{ab}@f$ and @f$\overline{cd}@f$ with a
+    /// new segment @f$\overline{ad}.@f$
+    ///
+    /// @param begin the start of the range of segments
+    /// @param end the end of the range of segments
+    ///
+    /// @return the new end of the range of segments
+    ///
+    template <class ForwardIt>
+    ForwardIt operator()(ForwardIt begin, ForwardIt end) const {
+        if (begin == end) return end;
+
+        cosine_threshold = - cossin.at(angle_tolerance).x;
+
+        PPHT_DEBUG("Updating cosine_threshold = ", cosine_threshold);
+
+        std::vector<segment> segments;
+
+        for (auto iter = std::next(begin); iter != end; ++iter) {
+            auto const &[tail, head] = *iter;
+
+            segments.emplace_back(tail, head);
+            segments.emplace_back(head, tail);
+        }
+
+        for (auto iter = begin; iter != end; ++iter) {
+            auto &[tail, head] = *iter;
+
+            end = extend_head(iter, end, segments);
+            std::swap(tail, head);
+            end = extend_head(iter, end, segments);
+            std::swap(tail, head);
+        }
+
+        return end;
+    }
+};
+
+} // namespace ppht
 
 #endif /* ppht_postprocess_hpp */

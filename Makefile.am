@@ -8,10 +8,9 @@ include_HEADERS = include/ppht.hpp
 
 pphtdir = $(includedir)/ppht
 
-ppht_HEADERS = include/accumulator.hpp include/channel.hpp	\
-               include/kd-search.hpp include/point_set.hpp	\
-               include/postprocess.hpp include/state.hpp	\
-               include/trig.hpp include/types.hpp
+ppht_HEADERS = include/accumulator.hpp include/channel.hpp		\
+               include/point_set.hpp include/postprocess.hpp		\
+               include/state.hpp include/trig.hpp include/types.hpp
 
 git-add:
 	$(MAKE) distdir
@@ -35,6 +34,7 @@ gh-release: git-tag dist-gzip
 		"$(abs_top_builddir)/$(distdir).tar.gz"
 
 clean-local: code-coverage-clean
+	$(RM) -r doc
 	@find . -name '*~' -print0 | xargs -0t $(RM)
 
 distclean-local: code-coverage-dist-clean

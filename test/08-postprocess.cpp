@@ -2,6 +2,8 @@
 
 #include "tap.hpp"
 
+#define PPHT_DEBUG(...) tap::diag("DEBUG: ", __VA_ARGS__)
+
 #include "postprocess.hpp"
 
 #include <random>
@@ -9,67 +11,71 @@
 namespace std {
 
 template <class T>
-static inline ostream &print_tuple(ostream &o, const T &, index_sequence<>) {
-    return o;
-}
-
-template <class T, std::size_t Ix, std::size_t... Ir>
-static inline ostream &print_tuple(ostream &o, const T &t, index_sequence<Ix, Ir...>) {
-    if (Ix > 0) o << ", ";
-    return print_tuple(o << get<Ix>(t), t, index_sequence<Ir...>{});
-}
-
-template <class... T>
-static inline ostream &operator <<(ostream &o, const tuple<T...> &t) {
-    return print_tuple(o << '(', t, index_sequence_for<T...>{}) << ')';
-}
-
-template <class F, class S>
-static inline ostream &operator <<(ostream &o, const pair<F, S> &p) {
-    return print_tuple(o << '(', p, make_index_sequence<2>{}) << ')';
-}
-
-template <class T>
-static inline ostream &operator <<(ostream &o, const vector<T> &v) {
-    o << '[';
+ostream &operator<<(ostream &os, const vector<T> &v) {
+    os << '[';
 
     auto b = v.begin();
     auto e = v.end();
 
     if (b != e) {
-        o << *b;
-        while (++b != e) o << ", " << *b;
+        os << *b;
+        while (++b != e) os << ", " << *b;
     }
 
-    return o << ']';
+    return os << ']';
 }
 
-}
+} // namespace std
 
 int main() {
     using namespace tap;
 
-    test_plan plan;
+    test_plan plan = 11;
 
-    std::vector<std::pair<ppht::point, ppht::point>> segments;
+    std::vector<ppht::segment> segments;
 
     segments.push_back({{0, 0}, {50, 1}});
     segments.push_back({{100, 0}, {51, 0}});
     segments.push_back({{101, 1}, {150, 0}});
 
-    auto end = ppht::postprocess(segments.begin(), segments.end(), 3.0);
+    ppht::postprocessor postprocessor;
 
-    ok(segments.end() != end);
+    postprocessor.gap_limit = 3;
+    postprocessor.angle_tolerance = 80;
+    auto end = postprocessor(segments.begin(), segments.end());
+
+    ok(segments.end() != end, "elements removed - 1");
 
     segments.erase(end, segments.end());
 
-    eq(1, segments.size());
-    eq(std::make_pair(ppht::point{0, 0}, ppht::point{150, 0}), segments[0]);
+    eq(1, segments.size(), "all fusions performed - 1");
+    eq(ppht::segment(ppht::point{0, 0}, ppht::point{150, 0}), segments[0],
+       "segments fused correctly - 1");
 
     segments.clear();
 
-    std::random_device rd;
-    std::default_random_engine urbg{rd()};
+    segments.push_back({{101, 1}, {150, 0}});
+    segments.push_back({{100, 0}, {51, 0}});
+    segments.push_back({{0, 0}, {50, 1}});
+
+    end = postprocessor(segments.begin(), segments.end());
+
+    ok(segments.end() != end, "elements removed - 2");
+
+    segments.erase(end, segments.end());
+
+    eq(1, segments.size(), "all fusions performed - 2");
+    eq(ppht::segment(ppht::point{0, 0}, ppht::point{150, 0}), segments[0],
+       "segments fused correctly - 2");
+
+    segments.clear();
+
+    // unsigned seed = std::random_device()();
+    unsigned seed = 2795261323U;
+
+    diag("seed = ", seed);
+
+    std::default_random_engine urbg{seed};
     std::uniform_int_distribution<> dist{-1, 1};
     std::bernoulli_distribution flip;
 
@@ -78,8 +84,8 @@ int main() {
 
         a.x = (i * 25) + dist(urbg);
         a.y = (i * 25) + dist(urbg);
-        b.x = ((i+1) * 25) + dist(urbg);
-        b.y = ((i+1) * 25) + dist(urbg);
+        b.x = ((i + 1) * 25) + dist(urbg);
+        b.y = ((i + 1) * 25) + dist(urbg);
 
         if (flip(urbg)) std::swap(a, b);
 
@@ -87,7 +93,7 @@ int main() {
 
         a.x = (i * 25) + dist(urbg);
         a.y = dist(urbg);
-        b.x = ((i+1) * 25) + dist(urbg);
+        b.x = ((i + 1) * 25) + dist(urbg);
         b.y = dist(urbg);
 
         if (flip(urbg)) std::swap(a, b);
@@ -97,15 +103,41 @@ int main() {
 
     std::shuffle(segments.begin(), segments.end(), urbg);
 
-    end = ppht::postprocess(segments.begin(), segments.end(), 4);
+    postprocessor.gap_limit = 5;
+    end = postprocessor(segments.begin(), segments.end());
 
-    ok(segments.end() != end);
+    ok(segments.end() != end, "elements removed - 3");
 
     segments.erase(end, segments.end());
 
-    if (!eq(2, segments.size())) {
+    if (!eq(2, segments.size(), "segments fused correctly - 3")) {
         diag(segments);
     }
 
-    return test_status();
+    segments.clear();
+
+    segments.push_back({{0, 0}, {50, 50}});
+    segments.push_back({{100, 100}, {50, 50}});
+    segments.push_back({{50, 75}, {50, 50}});
+
+    postprocessor.gap_limit = 1;
+    end = postprocessor(segments.begin(), segments.end());
+
+    ok(segments.end() != end, "elements removed");
+
+    segments.erase(end, segments.end());
+
+    if (!eq(2, segments.size(), "segments fused correctly")) {
+        diag(segments);
+    }
+
+    std::vector<ppht::segment> expected;
+
+    expected.push_back({{0, 0}, {100, 100}});
+    expected.push_back({{50, 50}, {50, 75}});
+
+    std::sort(segments.begin(), segments.end());
+    std::sort(expected.begin(), expected.end());
+
+    eq(expected, segments, "oblique segment ignored");
 }

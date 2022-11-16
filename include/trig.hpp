@@ -6,13 +6,24 @@
 
 #include "types.hpp"
 
+#include <array>
 #include <utility>
 
 namespace ppht {
 
 using cossin_t = coord<double>;
 
-inline cossin_t cossin[] = {
+/// @brief Range of allowable @f$\theta@f$ values.
+///
+/// @f$\mathrm{One}\ \theta = 0.05^\circ = \frac{\pi}{9}\ \text{rad}.@f$
+static constexpr std::size_t max_theta = 3600;
+
+/// @brief Table of precalculated cosine and sine values.
+///
+/// A table of precalculated cosine and sine values for angles in the
+/// range @f$[0, \pi)@f$ radians or [0, @ref
+/// max_theta) thetas.
+inline std::array<cossin_t, max_theta> cossin{{
     {+0x1.0000000000000p+00, +0x0.0000000000000p+00}, // 0
     {+0x1.fffff3393210cp-01, +0x1.c9870c6d303cbp-11}, // 1
     {+0x1.ffffcce4c8e64p-01, +0x1.c98701025eb1fp-10}, // 2
@@ -3613,10 +3624,7 @@ inline cossin_t cossin[] = {
     {-0x1.ffff8d02c66a4p-01, +0x1.5725327c4169bp-09}, // 3597
     {-0x1.ffffcce4c8e64p-01, +0x1.c98701025e9c0p-10}, // 3598
     {-0x1.fffff3393210cp-01, +0x1.c9870c6d308b5p-11}  // 3599
-};
-
-static constexpr std::size_t max_theta =
-    std::extent<decltype(cossin)>::value;
+}};
 
 } // namespace ppht
 
