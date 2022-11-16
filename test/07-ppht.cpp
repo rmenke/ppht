@@ -1,16 +1,14 @@
 // Copyright (C) 2020-2022 by Rob Menke
 
-#include "tap.hpp"
-
-#include "ppht.hpp"
-
 #include "image-01.hpp"
 #include "image-02.hpp"
+#include "ppht.hpp"
+#include "tap.hpp"
 
 namespace std {
 
 template <class T>
-static inline ostream &operator <<(ostream &o, const vector<T> &v) {
+static inline ostream &operator<<(ostream &o, const vector<T> &v) {
     auto b = v.begin();
     auto e = v.end();
 
@@ -18,32 +16,32 @@ static inline ostream &operator <<(ostream &o, const vector<T> &v) {
 
     if (b != e) {
         o << *b;
-        while (++b != e) {
-            o << ", " << *b;
-        }
+        while (++b != e) { o << ", " << *b; }
     }
 
     return o << ']';
 }
 
 template <class T>
-static inline ostream &print_tuple(ostream &o, const T &, index_sequence<>) {
+static inline ostream &print_tuple(ostream &o, const T &,
+                                   index_sequence<>) {
     return o;
 }
 
 template <class T, std::size_t Ix, std::size_t... Ir>
-static inline ostream &print_tuple(ostream &o, const T &t, index_sequence<Ix, Ir...>) {
+static inline ostream &print_tuple(ostream &o, const T &t,
+                                   index_sequence<Ix, Ir...>) {
     if (Ix > 0) o << ", ";
     return print_tuple(o << get<Ix>(t), t, index_sequence<Ir...>{});
 }
 
 template <class... T>
-static inline ostream &operator <<(ostream &o, const tuple<T...> &t) {
+static inline ostream &operator<<(ostream &o, const tuple<T...> &t) {
     return print_tuple(o << '(', t, index_sequence_for<T...>{}) << ')';
 }
 
 template <class F, class S>
-static inline ostream &operator <<(ostream &o, const pair<F, S> &p) {
+static inline ostream &operator<<(ostream &o, const pair<F, S> &p) {
     return print_tuple(o << '(', p, make_index_sequence<2>{}) << ')';
 }
 
@@ -51,9 +49,8 @@ static inline ostream &operator <<(ostream &o, const pair<F, S> &p) {
 
 template <class ForwardIt, class Pred>
 std::pair<ForwardIt, ForwardIt>
-remove_pairs(ForwardIt begin1, ForwardIt end1,
-             ForwardIt begin2, ForwardIt end2,
-             Pred pred) {
+remove_pairs(ForwardIt begin1, ForwardIt end1, ForwardIt begin2,
+             ForwardIt end2, Pred pred) {
 restart:
     for (auto i = begin1; i != end1; ++i) {
         for (auto j = begin2; j != end2; ++j) {
@@ -69,7 +66,7 @@ restart:
 }
 
 ppht::state _load_image(std::size_t rows, std::size_t cols,
-                          std::uint8_t *data, unsigned seed) {
+                        std::uint8_t *data, unsigned seed) {
     ppht::state state{rows, cols, seed};
 
     std::size_t bytes_per_row = (cols + 7) >> 3;
@@ -103,18 +100,13 @@ int main() {
 
     auto actual = find_segments(image_01, 3, 3, 10, seed);
 
-    std::vector<std::pair<point, point>> expected = {{{20, 20}, {100, 20}},
-                                       {{20, 20}, {20, 100}},
-                                       {{100, 20}, {100, 100}},
-                                       {{20, 100}, {100, 100}},
-                                       {{120, 20}, {200, 20}},
-                                       {{120, 20}, {120, 100}},
-                                       {{200, 20}, {200, 100}},
-                                       {{120, 100}, {200, 100}},
-                                       {{220, 20}, {300, 20}},
-                                       {{220, 20}, {220, 100}},
-                                       {{300, 20}, {300, 100}},
-                                       {{220, 100}, {300, 100}}};
+    std::vector<segment> expected = {
+        {{20, 20}, {100, 20}},   {{20, 20}, {20, 100}},
+        {{100, 20}, {100, 100}}, {{20, 100}, {100, 100}},
+        {{120, 20}, {200, 20}},  {{120, 20}, {120, 100}},
+        {{200, 20}, {200, 100}}, {{120, 100}, {200, 100}},
+        {{220, 20}, {300, 20}},  {{220, 20}, {220, 100}},
+        {{300, 20}, {300, 100}}, {{220, 100}, {300, 100}}};
 
     static auto within = [](const point &p1, const point &p2) {
         auto dx = static_cast<double>(p1.x) - p2.x;
@@ -122,7 +114,8 @@ int main() {
         return dx * dx + dy * dy <= 25.0;
     };
 
-    static auto similar = [](const std::pair<point, point> &s1, const std::pair<point, point> &s2) {
+    static auto similar = [](const std::pair<point, point> &s1,
+                             const std::pair<point, point> &s2) {
         return within(s1.first, s2.first) && within(s1.second, s2.second);
     };
 

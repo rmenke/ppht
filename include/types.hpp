@@ -78,6 +78,12 @@ struct coord {
     }
 
     template <class U>
+    constexpr coord operator*=(U d) {
+        x *= d, y *= d;
+        return *this;
+    }
+
+    template <class U>
     constexpr auto operator/(const coord<U> &p) const {
         using V = std::common_type_t<T, U>;
         return coord<V>{x / p.x, y / p.y};
@@ -86,6 +92,12 @@ struct coord {
     template <class U, class V = typename std::common_type<T, U>::type>
     constexpr auto operator/(U d) const {
         return coord<V>{x / d, y / d};
+    }
+
+    template <class U>
+    constexpr coord operator/=(U d) {
+        x /= d, y /= d;
+        return *this;
     }
 
     template <class U>
